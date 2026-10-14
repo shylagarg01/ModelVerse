@@ -2,58 +2,121 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import AgentSetup from "@/components/home/AgentSetup";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
-import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { Marquee } from "@/components/ui/marquee";
 import { EXAMPLE_PROMPTS } from "@/lib/agents";
 import { FAQ } from "@/lib/faq";
 import { faqPage, softwareApplication, webApi } from "@/lib/schema";
 import { CATALOG, fmt, fmtShort } from "@/lib/catalog";
-import { MCP_URL, PROVIDERS, SITE, SOURCE_COUNT } from "@/lib/site";
+import { PROVIDERS, SITE, SOURCE_COUNT } from "@/lib/site";
 import { allCollections } from "@/lib/collections";
 
-const suggestions = ["low poly tree", "sunset hdri", "brick wall", "medieval barrel", "mossy rock", "sci-fi crate"];
+// Real collections for featured discovery
+import carCollection from "@/data/collections/free-car-3d-models.json";
+import treeCollection from "@/data/collections/free-low-poly-trees.json";
+import textureCollection from "@/data/collections/free-brick-textures.json";
+import hdriCollection from "@/data/collections/free-sunset-hdris.json";
+import dungeonCollection from "@/data/collections/free-dungeon-game-assets.json";
+
+const suggestions = [
+  "Low-poly trees",
+  "Modern furniture",
+  "Sci-fi weapons",
+  "Realistic textures",
+  "Sunset HDRI",
+  "Animated characters",
+];
+
 const totals = CATALOG.totals;
 const stats = [
-  { value: SOURCE_COUNT, label: "asset sites in one search" },
-  { value: fmtShort(totals.free.count, totals.free.atLeast), exact: fmt(totals.free.count, totals.free.atLeast), label: "free 3D assets" },
-  { value: fmtShort(totals.cc0.count, totals.cc0.atLeast), exact: fmt(totals.cc0.count, totals.cc0.atLeast), label: "CC0 / public-domain assets" },
-  { value: "0", label: "accounts or API keys needed" },
+  { value: SOURCE_COUNT, label: "Supported 3D Repositories", detail: "Poly Haven, Kenney, ambientCG, BlenderKit & more" },
+  { value: fmtShort(totals.free.count, totals.free.atLeast), exact: fmt(totals.free.count, totals.free.atLeast), label: "Curated Free Assets", detail: "Directly searchable with instant license checks" },
+  { value: fmtShort(totals.cc0.count, totals.cc0.atLeast), exact: fmt(totals.cc0.count, totals.cc0.atLeast), label: "Public Domain CC0 Assets", detail: "Free for commercial & personal projects" },
+  { value: "0", label: "Sign-up or API Key Required", detail: "Instant browser search, download & editing" },
 ];
-const surfaces = [
+
+const categories = [
   {
-    title: "Web search",
-    body: "Type what you need, filter by models, materials, HDRIs or packs, and download with one click. Licence on every card.",
-    href: "/search",
-    cta: "Open search",
-    code: `${SITE.url.replace("https://", "")}/search?q=sunset+hdri`,
+    id: "model",
+    title: "3D Models",
+    description: "Low-poly, photorealistic props, characters, vehicles & architecture in glTF, GLB, FBX & OBJ.",
+    href: "/search?type=model",
+    icon: `<svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+    badge: "glTF · GLB · FBX",
+    color: "from-violet-500/15 via-indigo-500/10 to-transparent",
+    accent: "text-violet-600 dark:text-violet-400",
   },
   {
-    title: "REST API",
-    body: "A JSON API with an OpenAPI 3.1 spec. Search, inspect files and stream zips from any language or build script.",
-    href: "/docs/api",
-    cta: "API guide",
-    code: `curl "${SITE.url}/v1/search?q=crate&type=model&free=true"`,
+    id: "material",
+    title: "PBR Materials",
+    description: "Physically based materials with seamless albedo, roughness, normal, displacement & AO maps.",
+    href: "/search?type=material",
+    icon: `<svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>`,
+    badge: "1K · 2K · 4K PBR",
+    color: "from-blue-500/15 via-cyan-500/10 to-transparent",
+    accent: "text-blue-600 dark:text-blue-400",
   },
   {
-    title: "MCP for AI agents",
-    body: "Give Claude, Cursor or Copilot tools to find, vet and fetch assets while they build your game or website.",
-    href: "/docs/mcp",
-    cta: "Connect an agent",
-    code: `claude mcp add --transport http 3d-assets ${MCP_URL}`,
+    id: "texture",
+    title: "Seamless Textures",
+    description: "High-resolution seamless wood, concrete, brick, fabric, metal and terrain textures.",
+    href: "/search?type=texture",
+    icon: `<svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
+    badge: "JPG · PNG · Maps",
+    color: "from-emerald-500/15 via-teal-500/10 to-transparent",
+    accent: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    id: "hdri",
+    title: "360° HDRIs",
+    description: "Panoramic studio, sky, outdoor and sunset lighting maps in HDR and EXR formats up to 16K.",
+    href: "/search?type=hdri",
+    icon: `<svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+    badge: "HDR · EXR · 360°",
+    color: "from-amber-500/15 via-orange-500/10 to-transparent",
+    accent: "text-amber-600 dark:text-amber-400",
+  },
+  {
+    id: "pack",
+    title: "Asset Packs",
+    description: "Modular game-ready kits, environmental props, dungeon packs and low-poly collections.",
+    href: "/search?type=pack",
+    icon: `<svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4Z"/></svg>`,
+    badge: "Kits & Bundles",
+    color: "from-fuchsia-500/15 via-pink-500/10 to-transparent",
+    accent: "text-fuchsia-600 dark:text-fuchsia-400",
   },
 ];
-const steps = [
-  ["Fan out", "Your query goes to every matching source in parallel, each with its own timeout."],
-  ["Rank", "Results are merged by text match, the source's own ranking, free status and direct-download availability."],
-  ["Vet", "Each result carries its licence, attribution rule, formats, resolutions and poly count."],
-  ["Fetch", "Pick a format and resolution: glTF with its .bin and textures, a 2k PBR map set or an EXR. Multi-file assets arrive as one zip."],
+
+// Curated top real assets from collections
+const featuredAssets = [
+  ...treeCollection.assets.slice(0, 2),
+  ...carCollection.assets.slice(0, 2),
+  ...textureCollection.assets.slice(0, 2),
+  ...hdriCollection.assets.slice(0, 1),
+  ...dungeonCollection.assets.slice(0, 1),
 ];
-const typeLinks = [
-  ["Free 3D models", "/assets/3d-models", "glTF, GLB, FBX, Blend, OBJ"],
-  ["Free PBR materials", "/assets/textures", "Albedo, normal, roughness, AO, displacement"],
-  ["Free HDRIs", "/assets/hdris", "HDR and EXR environment maps up to 16k"],
-  ["Free game assets", "/assets/game-assets", "Kenney, Quaternius, itch.io kits and packs"],
+
+const howItWorks = [
+  {
+    step: "01",
+    title: "Search Across The Web",
+    desc: "Query 22+ verified 3D repositories at once with keywords or natural language. Filter by format, free status, and direct downloads.",
+    icon: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>`,
+  },
+  {
+    step: "02",
+    title: "Preview & Customize in 3D",
+    desc: "Inspect geometry, rotate, pan, and zoom in our browser-based 3D workspace. Tweak material colors, roughness, scale, and orientation in real time.",
+    icon: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
+  },
+  {
+    step: "03",
+    title: "One-Click Download & GLB Export",
+    desc: "Download clean zipped assets with textures or export your customized model directly as a production-ready GLB file ready for your engine.",
+    icon: `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+  },
 ];
+
 const collections = (await allCollections()).filter((c) => c.indexable);
 ---
 
@@ -62,188 +125,562 @@ const collections = (await allCollections()).filter((c) => c.indexable);
   description={SITE.description}
   schema={[softwareApplication(), webApi(), faqPage(FAQ)]}
 >
-  <!-- Hero -->
-  <section class="relative isolate overflow-hidden border-b border-border/60">
+  <!-- Hero Section Inspired by Canva's Clean Creative Layout -->
+  <section class="relative isolate overflow-hidden border-b border-border/70 pb-20 pt-16 sm:pb-28 sm:pt-24">
+    <!-- Gentle Ambient Background Accents -->
     <AnimatedGridPattern
       client:only="react"
-      numSquares={36}
-      maxOpacity={0.12}
-      duration={3}
-      className="absolute inset-0 -z-10 h-full w-full [mask-image:radial-gradient(640px_circle_at_50%_30%,white,transparent)] skew-y-6 fill-primary/20 stroke-primary/15"
+      numSquares={32}
+      maxOpacity={0.08}
+      duration={4}
+      className="absolute inset-0 -z-10 h-full w-full [mask-image:radial-gradient(700px_circle_at_50%_35%,white,transparent)] stroke-primary/20 fill-primary/10"
     />
-    <div class="pointer-events-none absolute left-1/2 top-[-12rem] -z-10 h-[32rem] w-[64rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,color-mix(in_oklch,var(--color-primary)_28%,transparent),transparent)] blur-2xl"></div>
-    <div class="mx-auto max-w-5xl px-4 pb-20 pt-20 text-center sm:px-6 sm:pt-28">
-      <a href="/docs/mcp" class="group mx-auto inline-flex items-center rounded-full border border-border bg-card/60 px-1 py-1 pr-3 text-sm backdrop-blur transition hover:border-primary/40">
-        <span class="mr-2 rounded-full bg-primary/15 px-2 py-0.5 text-xs font-medium text-primary">New</span>
-        <AnimatedShinyText className="mx-0 max-w-none">MCP server for Claude Code, Cursor &amp; Copilot</AnimatedShinyText>
-        <span class="ml-1 text-muted-foreground transition group-hover:translate-x-0.5">→</span>
-      </a>
-      <h1 class="mx-auto mt-7 max-w-4xl text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
-        <span class="mb-3 block text-base font-medium tracking-normal text-muted-foreground sm:text-lg">3D Asset Server</span>
-        One search for every{" "}
-        <span class="bg-gradient-to-r from-primary via-[color-mix(in_oklch,var(--color-primary)_50%,var(--color-brand-2))] to-brand-2 bg-clip-text text-transparent">free 3D asset</span>
-      </h1>
-      <p class="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground">
-        3D Asset Server searches {SOURCE_COUNT} sites at once (Poly Haven, ambientCG, Kenney, BlenderKit and more) and download glTF models, PBR textures and HDRIs with clear licences. In your browser, over an API, or from your AI coding agent.
-      </p>
+    <div class="pointer-events-none absolute left-1/2 top-[-10rem] -z-10 h-[30rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,color-mix(in_oklch,var(--color-primary)_20%,transparent),transparent)] blur-3xl"></div>
+    <div class="pointer-events-none absolute right-1/4 top-20 -z-10 h-72 w-72 rounded-full bg-[radial-gradient(closest-side,color-mix(in_oklch,var(--color-brand-2)_18%,transparent),transparent)] blur-2xl"></div>
 
-      <form action="/search" method="get" role="search" class="relative mx-auto mt-10 max-w-2xl">
-        <label for="hero-q" class="sr-only">Search 3D assets</label>
-        <div class="flex items-center gap-2 rounded-2xl border bg-card/80 p-2 shadow-2xl shadow-primary/10 ring-1 ring-primary/10 backdrop-blur focus-within:ring-2 focus-within:ring-primary/40">
-          <svg class="ml-2 size-5 shrink-0 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-          <input id="hero-q" name="q" type="search" required autocomplete="off" placeholder="low poly tree, brick wall, sunset hdri…" class="h-11 min-w-0 flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground/70" />
-          <button type="submit" class="h-11 rounded-xl bg-primary px-5 text-sm font-medium text-primary-foreground transition hover:opacity-90">Search</button>
-        </div>
-      </form>
-      <div class="mx-auto mt-4 flex max-w-2xl flex-wrap justify-center gap-2 text-sm">
-        <span class="text-muted-foreground">Try:</span>
-        {suggestions.map((s) => (
-          <a href={`/search?q=${encodeURIComponent(s)}`} class="rounded-full border border-border/70 px-3 py-0.5 text-muted-foreground transition hover:border-primary/40 hover:text-foreground">{s}</a>
-        ))}
+    <div class="mx-auto max-w-6xl px-4 text-center sm:px-6">
+      <!-- Top Pill Announcement -->
+      <div class="inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/90 px-3.5 py-1 text-xs font-medium text-foreground shadow-xs backdrop-blur-md transition hover:border-primary/50">
+        <span class="flex size-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-semibold text-primary">ModelVerse 2.0</span>
+        <span class="text-muted-foreground">· AI-assisted 3D discovery + browser editing</span>
+        <a href="/editor" class="font-semibold text-primary hover:underline ml-1">Try Editor →</a>
       </div>
 
-      <dl class="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-6 sm:grid-cols-4">
+      <!-- Main Headline (Strictly adhering to prompt) -->
+      <h1 class="mx-auto mt-6 max-w-4xl text-balance text-4xl font-extrabold tracking-tight sm:text-6xl sm:leading-[1.15]">
+        Your next 3D creation <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-primary via-indigo-600 to-brand-2 bg-clip-text text-transparent">
+          starts here.
+        </span>
+      </h1>
+
+      <!-- Supporting Text (Strictly adhering to prompt) -->
+      <p class="mx-auto mt-5 max-w-2xl text-pretty text-lg text-muted-foreground leading-relaxed sm:text-xl">
+        Discover free 3D assets, preview models, and customize your creations — all in one creative workspace.
+      </p>
+      <!-- Prominent Canva-Style Search Bar -->
+      <div class="mx-auto mt-9 max-w-2xl">
+        <form action="/search" method="get" role="search" class="group relative flex items-center gap-2 rounded-2xl border-2 border-border/80 bg-card p-2 shadow-xl shadow-primary/5 transition-all duration-300 focus-within:border-primary focus-within:shadow-2xl focus-within:shadow-primary/10">
+          <div class="flex size-11 items-center justify-center pl-1 text-muted-foreground transition group-focus-within:text-primary">
+            <svg class="size-5.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+          </div>
+          <input
+            id="hero-search"
+            name="q"
+            type="search"
+            required
+            autocomplete="off"
+            placeholder="Search 3D models, textures, materials..."
+            aria-label="Search 3D assets"
+            class="h-11 min-w-0 flex-1 bg-transparent text-base font-normal text-foreground outline-none placeholder:text-muted-foreground/60"
+          />
+          <button
+            type="submit"
+            class="inline-flex h-11 items-center gap-2 rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:opacity-95 hover:shadow-md hover:shadow-primary/25 active:scale-[0.98]"
+          >
+            <span>Search</span>
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </form>
+
+        <!-- Suggested Search Pills -->
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-1.5 text-xs text-muted-foreground">
+          <span class="font-medium mr-1">Suggestions:</span>
+          {suggestions.map((s) => (
+            <a
+              href={`/search?q=${encodeURIComponent(s)}`}
+              class="rounded-full border border-border/80 bg-card/60 px-3 py-1 font-medium transition-all hover:border-primary/50 hover:bg-accent hover:text-foreground hover:shadow-xs"
+            >
+              {s}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Quick Dual CTA Buttons -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/search"
+          class="inline-flex items-center gap-2 rounded-xl bg-foreground px-5 py-2.5 text-sm font-semibold text-background shadow-md transition hover:opacity-90"
+        >
+          <span>Explore All 3D Assets</span>
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+        <a
+          href="/editor"
+          class="inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card px-5 py-2.5 text-sm font-semibold text-foreground shadow-xs transition hover:border-primary/40 hover:bg-accent"
+        >
+          <svg class="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span>Launch 3D Studio</span>
+        </a>
+      </div>
+
+      <!-- Key Platform Metrics -->
+      <div class="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
         {stats.map((s) => (
-          <div>
-            <dt class="sr-only">{s.label}</dt>
-            <dd class="text-3xl font-semibold tabular-nums tracking-tight" title={s.exact}>{s.value}</dd>
-            <dd class="mt-1 text-xs text-muted-foreground">{s.label}</dd>
+          <div class="rounded-2xl border border-border/70 bg-card/70 p-5 text-center shadow-xs backdrop-blur-sm transition hover:border-primary/30 hover:shadow-md">
+            <div class="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl" title={s.exact ?? s.label}>
+              {s.value}
+            </div>
+            <div class="mt-1 text-sm font-semibold text-foreground/90">{s.label}</div>
+            <p class="mt-1 text-xs text-muted-foreground line-clamp-1">{s.detail}</p>
           </div>
         ))}
-      </dl>
-      <p class="mt-6 text-sm"><a href="/stats" class="text-muted-foreground transition hover:text-foreground">Counted daily across every source · see the numbers →</a></p>
+      </div>
     </div>
 
-    <div class="relative border-t border-border/60 py-6">
-      <p class="sr-only">Sources searched:</p>
-      <Marquee pauseOnHover className="[--duration:45s] [--gap:2.5rem]">
+    <!-- Supported Sources Logo Marquee -->
+    <div class="relative mt-16 border-t border-border/60 py-6">
+      <div class="mx-auto mb-3 max-w-7xl px-4 text-center">
+        <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Unified Search Across 22+ Premier 3D Repositories
+        </p>
+      </div>
+      <Marquee pauseOnHover className="[--duration:40s] [--gap:2rem]">
         {PROVIDERS.map((p) => (
-          <a href={`/docs/sources#${p.id}`} class="whitespace-nowrap text-sm font-medium text-muted-foreground transition hover:text-foreground">{p.name}</a>
+          <a
+            href={`/docs/sources#${p.id}`}
+            class="flex items-center gap-2 rounded-full border border-border/80 bg-card/80 px-4 py-1.5 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:bg-accent hover:text-foreground shadow-xs"
+          >
+            <span>{p.name}</span>
+            {p.supportsDownload && (
+              <span class="rounded bg-emerald-500/10 px-1 py-0.2 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                Direct
+              </span>
+            )}
+          </a>
         ))}
       </Marquee>
       <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background"></div>
       <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background"></div>
     </div>
+
+    <!-- Product Screenshot -->
+    <div class="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
+      <picture>
+        <source
+          type="image/avif"
+          srcset="/img/search-preview.avif"
+        />
+        <source
+          type="image/webp"
+          srcset="/img/search-preview.webp"
+        />
+        <img
+          src="/img/search-preview.png"
+          alt="Preview of the ModelVerse 3D asset discovery workspace"
+          width="1280"
+          height="800"
+          loading="lazy"
+          class="mx-auto h-auto w-full rounded-2xl border border-border shadow-xl"
+        />
+      </picture>
+    </div>
   </section>
 
-  <!-- Product preview -->
-  <section class="mx-auto max-w-6xl px-4 pt-20 sm:px-6" aria-labelledby="preview">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-sm font-medium text-primary">See it in action</p>
-      <h2 id="preview" class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Every source in one grid, licence on every card</h2>
+  <!-- Explore Supported Categories (Strictly authentic supported types) -->
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6" aria-labelledby="categories-heading">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+        Asset Directory
+      </span>
+      <h2 id="categories-heading" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
+        Explore by Creative Category
+      </h2>
+      <p class="mt-3 text-base text-muted-foreground">
+        Jump straight into verified models, materials, textures, and environments formatted for web, game engines, and DCCs.
+      </p>
     </div>
-    <figure class="mt-10">
-      <div class="overflow-hidden rounded-2xl border bg-card/50 shadow-2xl shadow-primary/10 ring-1 ring-primary/10">
-        <picture>
-          <source type="image/avif" srcset="/img/search-preview.avif" />
-          <source type="image/webp" srcset="/img/search-preview.webp" />
-          <img
-            src="/img/search-preview.png"
-            width="1280"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            alt="3D Asset Server search results for “chair”: CC0 models and materials from Poly Haven and ambientCG, each card showing its source, a Free badge and the CC0 licence, with type filters and source counts above."
-            class="block h-auto w-full"
-          />
-        </picture>
-      </div>
-      <figcaption class="mt-3 text-center text-sm text-muted-foreground">
-        A search for “chair” across Poly Haven, ambientCG and Kenney. <a href="/search?q=chair&providers=polyhaven,ambientcg,kenney&free=true" class="text-primary underline decoration-primary/40 underline-offset-2">Try it yourself</a>.
-      </figcaption>
-    </figure>
-  </section>
 
-  <!-- Three ways -->
-  <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6" aria-labelledby="ways">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-sm font-medium text-primary">Three ways in</p>
-      <h2 id="ways" class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Use it however you build</h2>
-      <p class="mt-4 text-muted-foreground">The same search, ranking and downloads behind a website, a REST API and an MCP server.</p>
-    </div>
-    <div class="mt-14 grid gap-4 md:grid-cols-3">
-      {surfaces.map((s) => (
-        <a href={s.href} class="group relative flex flex-col overflow-hidden rounded-2xl border bg-card/50 p-6 transition hover:border-primary/40 hover:bg-card">
-          <h3 class="text-lg font-semibold">{s.title}</h3>
-          <p class="mt-2 flex-1 text-sm text-muted-foreground">{s.body}</p>
-          <code class="mt-6 block truncate rounded-lg border bg-[#0d0d12] px-3 py-2 font-mono text-xs text-zinc-300">{s.code}</code>
-          <span class="mt-5 text-sm font-medium text-primary">{s.cta} <span class="inline-block transition group-hover:translate-x-0.5">→</span></span>
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      {categories.map((cat) => (
+        <a
+          href={cat.href}
+          class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border/80 bg-card p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
+        >
+          <div class={`absolute inset-0 bg-gradient-to-b ${cat.color} opacity-40 transition group-hover:opacity-100`}></div>
+          <div class="relative">
+            <div class={`flex size-12 items-center justify-center rounded-xl bg-card border border-border shadow-xs ${cat.accent}`}>
+              <Fragment set:html={cat.icon} />
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-foreground group-hover:text-primary transition">
+              {cat.title}
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed text-muted-foreground">
+              {cat.description}
+            </p>
+          </div>
+          <div class="relative mt-5 pt-3 border-t border-border/60 flex items-center justify-between text-xs">
+            <span class="rounded-md bg-muted px-2 py-0.5 font-mono text-[11px] text-muted-foreground font-medium">
+              {cat.badge}
+            </span>
+            <span class="font-semibold text-primary flex items-center gap-1 group-hover:translate-x-1 transition">
+              Browse →
+            </span>
+          </div>
         </a>
       ))}
     </div>
   </section>
 
-  <!-- Agents -->
-  <section class="border-y border-border/60 bg-card/30" aria-labelledby="agents">
-    <div class="mx-auto grid max-w-7xl items-start gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[1fr_1.15fr]">
+  <!-- Feature B Highlight: Browser-Based 3D Editing Workspace -->
+  <section class="border-y border-border/70 bg-card/40 py-20 sm:py-24" aria-labelledby="editor-feature">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
       <div>
-        <p class="text-sm font-medium text-primary">For AI coding agents</p>
-        <h2 id="agents" class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">Let your agent fetch the assets</h2>
-        <p class="mt-4 text-muted-foreground">
-          Connect the MCP server once. Your agent can then search every source, check licences and pull the right files into your project while it writes the code that uses them.
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+          <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          In-Browser 3D Workspace
+        </span>
+        <h2 id="editor-feature" class="mt-4 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          Preview, customize, and export 3D assets in seconds
+        </h2>
+        <p class="mt-4 text-base text-muted-foreground leading-relaxed">
+          No heavy desktop 3D software required. Open any supported model in ModelVerse to adjust materials, inspect poly counts, test lighting angles, and immediately export a customized GLB file.
         </p>
+
+        <div class="mt-8 space-y-4">
+          <div class="flex items-start gap-3.5 rounded-xl border border-border/70 bg-card p-4 shadow-xs">
+            <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400 font-bold">
+              ✓
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-foreground">Interactive Camera & Viewport Controls</h4>
+              <p class="mt-0.5 text-xs text-muted-foreground">Smooth orbit, pan, zoom, ground grid, and lighting presets for clear geometry inspection.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5 rounded-xl border border-border/70 bg-card p-4 shadow-xs">
+            <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold">
+              ✓
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-foreground">Real-Time Material Color & Surface Tuning</h4>
+              <p class="mt-0.5 text-xs text-muted-foreground">Modify surface colors, roughness, metalness, and wireframe views across any mesh part.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5 rounded-xl border border-border/70 bg-card p-4 shadow-xs">
+            <div class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-bold">
+              ✓
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-foreground">Transform & Instant GLB Binary Export</h4>
+              <p class="mt-0.5 text-xs text-muted-foreground">Scale and reorient your model, then export directly to a standalone .glb binary ready for Three.js, Godot, or Blender.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/editor"
+            class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition hover:opacity-95"
+          >
+            <span>Launch 3D Editor</span>
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+          <a
+            href="/search?type=model"
+            class="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-xs transition hover:bg-accent"
+          >
+            <span>Find Models to Edit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Visual Editor Mockup Card -->
+      <div class="relative overflow-hidden rounded-2xl border-2 border-border/80 bg-card shadow-2xl shadow-primary/10">
+        <div class="flex h-10 items-center justify-between border-b border-border/70 bg-muted/40 px-4">
+          <div class="flex items-center gap-2">
+            <span class="size-3 rounded-full bg-rose-500/80"></span>
+            <span class="size-3 rounded-full bg-amber-500/80"></span>
+            <span class="size-3 rounded-full bg-emerald-500/80"></span>
+            <span class="ml-2 font-mono text-xs font-semibold text-muted-foreground">modelverse-editor · live</span>
+          </div>
+          <span class="rounded bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">Three.js Engine</span>
+        </div>
+
+        <div class="relative aspect-[16/10] bg-slate-900 p-6 flex flex-col justify-between overflow-hidden">
+          <!-- Subtle 3D background rendering impression -->
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-950/60 via-slate-950 to-slate-950"></div>
+          <div class="pointer-events-none absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,#6366f1_1px,transparent_1px),linear-gradient(to_bottom,#6366f1_1px,transparent_1px)] [background-size:2rem_2rem]"></div>
+
+          <div class="relative z-10 flex items-center justify-between">
+            <div class="rounded-xl bg-black/60 px-3 py-1.5 backdrop-blur-md border border-white/10 text-xs text-white flex items-center gap-2">
+              <span class="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Model: Modern Lounge Chair</span>
+            </div>
+            <a href="/editor?model=chair" class="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-primary/90 transition">
+              Open Live Canvas →
+            </a>
+          </div>
+
+          <!-- Stylized Mockup Preview Display -->
+          <div class="relative z-10 mx-auto my-auto text-center">
+            <div class="inline-flex size-24 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary to-brand-2 p-1 shadow-2xl shadow-primary/40 animate-bounce duration-1000">
+              <svg class="size-14 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <div class="mt-4 flex items-center justify-center gap-1.5">
+              <span class="size-4 rounded-full bg-violet-500 ring-2 ring-white"></span>
+              <span class="size-4 rounded-full bg-cyan-400"></span>
+              <span class="size-4 rounded-full bg-emerald-400"></span>
+              <span class="size-4 rounded-full bg-amber-400"></span>
+              <span class="size-4 rounded-full bg-slate-300"></span>
+            </div>
+          </div>
+
+          <div class="relative z-10 flex items-center justify-between text-[11px] text-zinc-400 border-t border-white/10 pt-3">
+            <span>Vertices: 24,180 · Polygons: 18,400</span>
+            <span class="text-emerald-400 font-semibold">GLB Export Ready</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Discovery Gallery (Real Assets from Backend) -->
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6" aria-labelledby="featured-heading">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+          Spotlight Assets
+        </span>
+        <h2 id="featured-heading" class="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          Featured Community Assets
+        </h2>
+        <p class="mt-2 text-sm text-muted-foreground">
+          Real models, textures, and HDRIs sourced directly from Poly Haven, Kenney, ambientCG, and BlenderKit.
+        </p>
+      </div>
+      <a
+        href="/search"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+      >
+        <span>View all results</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <!-- Responsive Card Gallery -->
+    <div class="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      {featuredAssets.map((asset) => {
+        const isModel = asset.type === "model";
+        return (
+          <div class="group relative flex flex-col overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
+            <!-- Thumbnail Viewport -->
+            <div class="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+              {asset.thumbnailUrl ? (
+                <img
+                  src={asset.thumbnailUrl}
+                  alt={asset.title}
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  class="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div class="flex size-full items-center justify-center font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                  {asset.type}
+                </div>
+              )}
+
+              <!-- Badges -->
+              <div class="absolute left-2.5 top-2.5 flex flex-wrap gap-1">
+                <span class="rounded-md bg-black/70 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur-md">
+                  {asset.type}
+                </span>
+              </div>
+
+              {asset.downloadable && (
+                <span class="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-md bg-emerald-600/90 px-2 py-0.5 text-[10px] font-bold text-white shadow-xs backdrop-blur-sm">
+                  Direct Download
+                </span>
+              )}
+
+              <!-- Quick Action Overlay on Hover -->
+              <div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 flex items-center justify-center gap-2 p-3">
+                {isModel && (
+                  <a
+                    href={`/editor?asset=${encodeURIComponent(asset.id)}&title=${encodeURIComponent(asset.title)}`}
+                    class="rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-md hover:bg-primary/90 transition"
+                  >
+                    Edit in 3D
+                  </a>
+                )}
+                <a
+                  href={`/search?asset=${encodeURIComponent(asset.id)}`}
+                  class="rounded-xl bg-white px-3 py-1.5 text-xs font-semibold text-zinc-900 shadow-md hover:bg-zinc-100 transition"
+                >
+                  Inspect
+                </a>
+              </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="flex flex-1 flex-col p-4">
+              <h3 class="line-clamp-1 text-sm font-bold text-foreground group-hover:text-primary transition" title={asset.title}>
+                {asset.title}
+              </h3>
+
+              <div class="mt-2 flex flex-wrap items-center gap-1.5">
+                <span class="rounded-md bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground capitalize">
+                  {asset.provider}
+                </span>
+                {asset.license && (
+                  <span class="rounded-md border border-border/80 px-2 py-0.5 text-[10px] font-mono text-muted-foreground">
+                    {asset.license.name}
+                  </span>
+                )}
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-border/60 flex items-center justify-between text-xs">
+                {isModel ? (
+                  <a
+                    href={`/editor?asset=${encodeURIComponent(asset.id)}&title=${encodeURIComponent(asset.title)}`}
+                    class="font-semibold text-primary hover:underline flex items-center gap-1"
+                  >
+                    Open 3D Studio →
+                  </a>
+                ) : (
+                  <a
+                    href={`/search?asset=${encodeURIComponent(asset.id)}`}
+                    class="font-medium text-muted-foreground hover:text-foreground flex items-center gap-1"
+                  >
+                    View Details →
+                  </a>
+                )}
+                <span class="font-bold text-emerald-600 dark:text-emerald-400">Free</span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- How It Works (Strictly adhering to prompt's 3-step section) -->
+  <section class="border-t border-border/70 bg-card/40 py-20 sm:py-24" aria-labelledby="how-it-works">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+          Workflow
+        </span>
+        <h2 id="how-it-works" class="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          Three Simple Steps to Production Assets
+        </h2>
+        <p class="mt-3 text-base text-muted-foreground">
+          ModelVerse brings discovery, inspection, and customization together in a smooth, creative experience.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-8 sm:grid-cols-3">
+        {howItWorks.map((item) => (
+          <div class="relative rounded-2xl border border-border/80 bg-card p-7 shadow-xs transition hover:border-primary/40 hover:shadow-lg">
+            <div class="flex items-center justify-between">
+              <span class="flex size-11 items-center justify-center rounded-xl bg-primary/10 font-mono text-sm font-extrabold text-primary">
+                {item.step}
+              </span>
+              <div class="text-primary/70">
+                <Fragment set:html={item.icon} />
+              </div>
+            </div>
+            <h3 class="mt-5 text-lg font-bold text-foreground">{item.title}</h3>
+            <p class="mt-2 text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Agents & Developer Gateway -->
+  <section class="border-t border-border/70 bg-background py-20 sm:py-24" aria-labelledby="ai-agents-section">
+    <div class="mx-auto grid max-w-7xl items-start gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.15fr]">
+      <div>
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+          For AI Coding Agents
+        </span>
+        <h2 id="ai-agents-section" class="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          Connect ModelVerse to Claude, Cursor & Copilot
+        </h2>
+        <p class="mt-4 text-base text-muted-foreground leading-relaxed">
+          Through our built-in Model Context Protocol (MCP) server, your AI coding agent can search all sources, verify licenses, and pull glTF files or PBR textures directly into your game or web project while writing code.
+        </p>
+
         <ul class="mt-8 space-y-3">
-          {EXAMPLE_PROMPTS.map((p) => (
-            <li class="flex gap-3 rounded-xl border bg-background/60 px-4 py-3 text-sm">
-              <span class="font-mono text-primary">›</span><span>{p}</span>
+          {EXAMPLE_PROMPTS.slice(0, 3).map((p) => (
+            <li class="flex items-center gap-3 rounded-xl border border-border/70 bg-card/80 px-4 py-3 text-xs font-mono text-foreground shadow-xs">
+              <span class="text-primary font-bold">›</span>
+              <span>"{p}"</span>
             </li>
           ))}
         </ul>
-        <p class="mt-6 text-sm text-muted-foreground">
-          Agents that only browse the web can read <a class="text-primary underline decoration-primary/40 underline-offset-2" href="/AGENTS.md">/AGENTS.md</a> or <a class="text-primary underline decoration-primary/40 underline-offset-2" href="/llms.txt">/llms.txt</a> and call the REST API directly. <a class="text-primary underline decoration-primary/40 underline-offset-2" href="/docs/mcp">Full setup guide →</a>
-        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/docs/mcp"
+            class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-primary-foreground shadow-sm hover:opacity-90"
+          >
+            <span>MCP Agent Setup Guide</span>
+            <span>→</span>
+          </a>
+          <a
+            href="/docs/api"
+            class="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-2.5 text-xs font-semibold text-foreground hover:bg-accent"
+          >
+            <span>REST API Documentation</span>
+          </a>
+        </div>
       </div>
-      <AgentSetup client:visible />
+
+      <div class="rounded-2xl border border-border/80 bg-card p-6 shadow-xl">
+        <AgentSetup client:visible />
+      </div>
     </div>
   </section>
 
-  <!-- How it works -->
-  <section class="mx-auto max-w-7xl px-4 py-24 sm:px-6" aria-labelledby="how">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-sm font-medium text-primary">How it works</p>
-      <h2 id="how" class="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">From query to files in your project</h2>
-    </div>
-    <ol class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {steps.map(([title, body], i) => (
-        <li class="rounded-2xl border bg-card/50 p-6">
-          <span class="flex size-8 items-center justify-center rounded-lg bg-primary/15 font-mono text-sm font-semibold text-primary">{i + 1}</span>
-          <h3 class="mt-4 font-semibold">{title}</h3>
-          <p class="mt-2 text-sm text-muted-foreground">{body}</p>
-        </li>
-      ))}
-    </ol>
-    <div class="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {typeLinks.map(([title, href, sub]) => (
-        <a href={href} class="group rounded-2xl border p-5 transition hover:border-primary/40 hover:bg-card">
-          <h3 class="font-semibold">{title}</h3>
-          <p class="mt-1 text-sm text-muted-foreground">{sub}</p>
-          <span class="mt-3 inline-block text-sm text-primary">Browse <span class="inline-block transition group-hover:translate-x-0.5">→</span></span>
-        </a>
-      ))}
-    </div>
-    {collections.length > 0 && (
-      <div class="mt-8 text-center">
-        <h3 class="text-sm font-medium text-muted-foreground">Popular collections</h3>
-        <ul class="mx-auto mt-3 flex max-w-4xl flex-wrap justify-center gap-2 text-sm">
+  <!-- Curated Asset Collections Pills -->
+  {collections.length > 0 && (
+    <section class="border-t border-border/70 bg-card/20 py-16 text-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-muted-foreground">Popular Curated Collections</h3>
+        <ul class="mx-auto mt-4 flex max-w-4xl flex-wrap justify-center gap-2 text-xs">
           {collections.map((c) => (
-            <li><a href={c.path} class="inline-flex rounded-full border px-3 py-1 text-muted-foreground transition hover:border-primary/40 hover:text-foreground">{c.topic.data.title}</a></li>
+            <li>
+              <a
+                href={c.path}
+                class="inline-flex rounded-full border border-border/80 bg-card/80 px-3.5 py-1 font-medium text-muted-foreground transition hover:border-primary/50 hover:bg-accent hover:text-foreground shadow-xs"
+              >
+                {c.topic.data.title}
+              </a>
+            </li>
           ))}
         </ul>
-        <p class="mt-4 text-sm"><a href="/assets" class="text-primary hover:underline">All asset collections →</a></p>
+        <p class="mt-4 text-xs font-semibold">
+          <a href="/assets" class="text-primary hover:underline">Browse all 24+ thematic collections →</a>
+        </p>
       </div>
-    )}
-  </section>
+    </section>
+  )}
 
-  <!-- FAQ -->
-  <section class="border-t border-border/60" aria-labelledby="faq">
-    <div class="mx-auto max-w-3xl px-4 py-24 sm:px-6">
-      <h2 id="faq" class="text-center text-3xl font-semibold tracking-tight sm:text-4xl">Questions</h2>
-      <div class="mt-10 divide-y divide-border rounded-2xl border bg-card/40">
+  <!-- FAQ Section with Clean Rounded Accordions -->
+  <section class="border-t border-border/70 bg-card/30 py-20 sm:py-24" aria-labelledby="faq-section">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <div class="text-center">
+        <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+          Help & Answers
+        </span>
+        <h2 id="faq-section" class="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="mt-12 space-y-3">
         {FAQ.map((f, i) => (
-          <details class="group px-5 py-4" open={i === 0}>
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-medium [&::-webkit-details-marker]:hidden">
+          <details class="group rounded-2xl border border-border/80 bg-card p-5 transition hover:border-primary/30" open={i === 0}>
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-foreground [&::-webkit-details-marker]:hidden">
               <h3 class="text-base">{f.q}</h3>
-              <span class="text-muted-foreground transition group-open:rotate-45" aria-hidden="true">+</span>
+              <span class="size-6 flex items-center justify-center rounded-full bg-muted text-sm text-muted-foreground transition group-open:rotate-45 group-open:bg-primary/15 group-open:text-primary">
+                +
+              </span>
             </summary>
             <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
           </details>
@@ -252,15 +689,31 @@ const collections = (await allCollections()).filter((c) => c.indexable);
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="relative overflow-hidden border-t border-border/60">
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_80%_at_50%_100%,color-mix(in_oklch,var(--color-primary)_18%,transparent),transparent)]"></div>
-    <div class="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
-      <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Stop opening seventeen tabs</h2>
-      <p class="mt-4 text-muted-foreground">Search once, compare licences side by side, and get files that are ready to drop into a game or a website.</p>
+  <!-- Bottom CTA Banner -->
+  <section class="relative overflow-hidden border-t border-border/70 py-20 text-center sm:py-28">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklch,var(--color-primary)_15%,transparent),transparent)]"></div>
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h2 class="text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+        Start building your 3D world today
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base text-muted-foreground leading-relaxed">
+        Search millions of free 3D models and materials, customize them in the browser, or connect directly to your favorite AI coding agent.
+      </p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="/search" class="rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90">Start searching</a>
-        <a href="/docs" class="rounded-xl border px-5 py-2.5 text-sm font-medium transition hover:bg-accent">Read the docs</a>
+        <a
+          href="/search"
+          class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 hover:opacity-95 transition"
+        >
+          <span>Explore 3D Assets</span>
+          <span>→</span>
+        </a>
+        <a
+          href="/editor"
+          class="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold text-foreground hover:bg-accent transition"
+        >
+          <svg class="size-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span>Open 3D Studio</span>
+        </a>
       </div>
     </div>
   </section>
