@@ -157,9 +157,8 @@ const collections = (await allCollections()).filter((c) => c.indexable);
 
       <!-- Supporting Text (Strictly adhering to prompt) -->
       <p class="mx-auto mt-5 max-w-2xl text-pretty text-lg text-muted-foreground leading-relaxed sm:text-xl">
-        Discover, preview, and customize 3D assets from across the web — all in one creative workspace.
+        Discover free 3D assets, preview models, and customize your creations — all in one creative workspace.
       </p>
-
       <!-- Prominent Canva-Style Search Bar -->
       <div class="mx-auto mt-9 max-w-2xl">
         <form action="/search" method="get" role="search" class="group relative flex items-center gap-2 rounded-2xl border-2 border-border/80 bg-card p-2 shadow-xl shadow-primary/5 transition-all duration-300 focus-within:border-primary focus-within:shadow-2xl focus-within:shadow-primary/10">
@@ -255,6 +254,28 @@ const collections = (await allCollections()).filter((c) => c.indexable);
       </Marquee>
       <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background"></div>
       <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background"></div>
+    </div>
+
+    <!-- Product Screenshot -->
+    <div class="mx-auto mt-12 max-w-5xl px-4 sm:px-6">
+      <picture>
+        <source
+          type="image/avif"
+          srcset="/img/search-preview.avif"
+        />
+        <source
+          type="image/webp"
+          srcset="/img/search-preview.webp"
+        />
+        <img
+          src="/img/search-preview.png"
+          alt="Preview of the ModelVerse 3D asset discovery workspace"
+          width="1280"
+          height="800"
+          loading="lazy"
+          class="mx-auto h-auto w-full rounded-2xl border border-border shadow-xl"
+        />
+      </picture>
     </div>
   </section>
 
