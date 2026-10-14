@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ModelEditor from "@/components/editor/ModelEditor";
+import { breadcrumbs } from "@/lib/schema";
+---
+
+<BaseLayout
+  title="3D Model Editor & Customizer"
+  description="Open, preview, inspect geometry, modify materials, rotate, scale and export GLB 3D models directly in your browser."
+  schema={[breadcrumbs([{ name: "Home", path: "/" }, { name: "3D Editor", path: "/editor" }])]}
+>
+  <ModelEditor client:only="react" />
+</BaseLayout>

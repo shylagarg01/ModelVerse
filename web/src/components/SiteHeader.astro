@@ -3,52 +3,118 @@ import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { NAV, SITE } from "@/lib/site";
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-// Highlight only the most specific nav item that matches (Reference, not also API).
 const matches = NAV.filter((i) => (i.href === "/docs" ? path === "/docs" : path === i.href || path.startsWith(i.href + "/")));
 const current = matches.sort((a, b) => b.href.length - a.href.length)[0]?.href;
 const active = (href: string) => href === current;
 ---
-<header class="sticky top-0 z-40 border-b border-border/60 bg-background/75 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
-  <div class="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4 sm:px-6">
-    <a href="/" class="flex items-center gap-2 font-semibold tracking-tight" aria-label={`${SITE.name} home`}>
-      <Logo class="size-6" id="logo-header" />
-      <span>{SITE.name}</span>
+<header class="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 transition-colors">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+    <!-- Brand / Logo -->
+    <a href="/" class="group flex items-center gap-2.5 font-bold tracking-tight text-foreground transition" aria-label="ModelVerse home">
+      <div class="flex size-9 items-center justify-center rounded-xl bg-gradient-to-tr from-primary/15 via-primary/5 to-brand-2/15 p-1 transition group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/20">
+        <Logo class="size-6" id="header-logo" />
+      </div>
+      <div class="flex items-center text-lg font-black tracking-tight">
+        <span>Model</span>
+        <span class="bg-gradient-to-r from-primary via-indigo-600 to-brand-2 bg-clip-text text-transparent">Verse</span>
+      </div>
     </a>
-    <nav class="hidden items-center gap-1 text-sm md:flex" aria-label="Main">
-      {NAV.map((item) => (
-        <a
-          href={item.href}
-          aria-current={active(item.href) ? "page" : undefined}
-          class="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:bg-accent/60"
-        >
-          {item.label}
-        </a>
-      ))}
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden items-center gap-1 text-sm font-medium md:flex" aria-label="Main navigation">
+      {NAV.map((item) => {
+        const isCurrent = active(item.href);
+        const isEditor = item.href === "/editor";
+        return (
+          <a
+            href={item.href}
+            aria-current={isCurrent ? "page" : undefined}
+            class:list={[
+              "relative flex items-center gap-1.5 rounded-full px-3.5 py-1.5 transition-all duration-200",
+              isCurrent
+                ? "bg-primary/10 text-primary font-semibold shadow-xs"
+                : "text-muted-foreground hover:bg-accent/80 hover:text-foreground",
+            ]}
+          >
+            <span>{item.label}</span>
+            {isEditor && (
+              <span class="inline-flex items-center rounded-full bg-gradient-to-r from-primary to-brand-2 px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider text-white shadow-xs">
+                New
+              </span>
+            )}
+          </a>
+        );
+      })}
     </nav>
-    <div class="ml-auto flex items-center gap-1">
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-2">
+      <!-- Quick Search Button -->
       <a
-        href="/docs/mcp"
-        class="hidden rounded-md border border-primary/30 bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20 sm:inline-flex"
+        href="/search"
+        class="hidden sm:inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/60 px-3.5 py-1.5 text-xs text-muted-foreground transition hover:border-primary/50 hover:bg-accent hover:text-foreground"
+        aria-label="Quick search 3D assets"
       >
-        Add to your agent
+        <svg class="size-3.5 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+        <span>Search assets...</span>
+        <kbd class="rounded border border-border bg-muted/60 px-1 py-0.5 text-[10px] font-mono text-muted-foreground">⌘K</kbd>
       </a>
+
+      <!-- 3D Editor CTA Button -->
+      <a
+        href="/editor"
+        class="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 hover:shadow-md hover:shadow-primary/20"
+      >
+        <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>Open 3D Studio</span>
+      </a>
+
+      <!-- GitHub Link -->
       <a
         href={SITE.repo}
-        class="inline-flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-        aria-label="Source code on GitHub"
-        rel="noopener"
+        class="inline-flex size-9 items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground"
+        aria-label="GitHub Repository"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <svg class="size-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.17 1.18a10.9 10.9 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" /></svg>
       </a>
+
+      <!-- Theme Switcher -->
       <ThemeToggle />
+
+      <!-- Mobile Menu Toggle Details -->
       <details class="relative md:hidden">
-        <summary class="flex size-9 cursor-pointer list-none items-center justify-center rounded-md text-muted-foreground hover:bg-accent [&::-webkit-details-marker]:hidden" aria-label="Menu">
-          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        <summary class="flex size-9 cursor-pointer list-none items-center justify-center rounded-full text-muted-foreground hover:bg-accent hover:text-foreground [&::-webkit-details-marker]:hidden" aria-label="Open Navigation Menu">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
         </summary>
-        <nav class="absolute right-0 top-11 w-56 rounded-xl border bg-popover p-2 shadow-xl" aria-label="Mobile">
-          {NAV.map((item) => <a href={item.href} class="block rounded-md px-3 py-2 text-sm hover:bg-accent">{item.label}</a>)}
-        </nav>
+        <div class="fixed inset-x-4 top-18 z-50 rounded-2xl border border-border/80 bg-popover/95 p-3 shadow-2xl backdrop-blur-xl">
+          <div class="mb-2 flex items-center justify-between border-b border-border/60 pb-2 px-2">
+            <span class="text-xs font-semibold text-muted-foreground">Navigation</span>
+            <span class="text-[11px] text-primary font-medium">ModelVerse</span>
+          </div>
+          <nav class="space-y-1">
+            {NAV.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  "flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium transition",
+                  active(item.href) ? "bg-primary/10 text-primary font-semibold" : "text-muted-foreground hover:bg-accent hover:text-foreground",
+                ]}
+              >
+                <span>{item.label}</span>
+                {item.href === "/editor" && <span class="rounded bg-primary/20 px-1.5 py-0.5 text-[10px] text-primary font-semibold">3D Studio</span>}
+              </a>
+            ))}
+            <div class="pt-2">
+              <a href="/editor" class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-2.5 text-xs font-semibold text-primary-foreground shadow-sm">
+                <span>Launch 3D Editor</span>
+              </a>
+            </div>
+          </nav>
+        </div>
       </details>
     </div>
   </div>
 </header>
+

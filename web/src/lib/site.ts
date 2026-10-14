@@ -3,13 +3,13 @@ import organization from "@/data/organization.json";
 import providers from "@/data/providers.json";
 
 export const SITE = {
-  name: "3D Asset Server",
-  shortName: "3D Assets",
+  name: "ModelVerse",
+  shortName: "ModelVerse",
   url: (import.meta.env.SITE as string | undefined)?.replace(/\/$/, "") ?? "https://3d.shep.bot",
-  tagline: "One search for free 3D models, textures, HDRIs and game assets",
-  homeTitle: "3D Asset Server: Search Free 3D Models, Textures & HDRIs",
+  tagline: "Your next 3D creation starts here",
+  homeTitle: "ModelVerse · 3D Asset Discovery & Creative Workspace",
   description:
-    `Search ${providers.length} 3D asset sites at once and download free glTF models, CC0 PBR textures and HDRIs with clear licences. Web search, REST API and MCP for AI agents.`,
+    `Discover, preview, and customize 3D models, textures, materials and HDRIs from ${providers.length} sources across the web — all in one creative workspace.`,
   repo: "https://github.com/arielshad/3d-asset-server",
   image: "/og.png",
   locale: "en_US",
@@ -44,12 +44,11 @@ export function ogImagePath(route: string): string {
 export const MCP_URL = `${SITE.url}/mcp`;
 
 export const NAV = [
-  { href: "/search", label: "Search" },
+  { href: "/search", label: "Explore Assets" },
+  { href: "/editor", label: "3D Editor" },
+  { href: "/docs/sources", label: "Sources" },
+  { href: "/docs", label: "Documentation" },
   { href: "/assets", label: "Collections" },
-  { href: "/docs", label: "Docs" },
-  { href: "/docs/mcp", label: "AI agents" },
-  { href: "/docs/api", label: "API" },
-  { href: "/docs/api/reference", label: "Reference" },
   { href: "/stats", label: "Stats" },
 ];
 
