@@ -1,0 +1,7 @@
+**/node_modules
+**/dist
+web/.astro
+test
+downloads
+assets
+.git

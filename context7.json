@@ -1,0 +1,18 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "3D Asset Server",
+  "description": "Search and download gateway for 3D models, PBR materials, textures, HDRIs and game asset packs across 20 sites (Poly Haven, ambientCG, Kenney, BlenderKit and more), with licence info on every result. Exposed as a REST API, an MCP server, a web UI and a CLI.",
+  "folders": ["web/src/pages/docs", "web/src/content", "docs"],
+  "excludeFolders": ["web/src/content/collections", "test", "prompts", "node_modules"],
+  "excludeFiles": ["SEO-GEO-AUDIT.md", "CHANGELOG.md", "LICENSE"],
+  "rules": [
+    "The hosted instance is https://3d.shep.bot; it needs no account or API key.",
+    "Flow: GET /v1/search?q=..., then GET /v1/assets/{id} for licence and files, then GET /v1/assets/{id}/download?format=...&resolution=....",
+    "URL-encode asset ids (they look like provider:slug, e.g. polyhaven:ArmChair_01) when putting them in a path.",
+    "Follow redirects on download (curl -L): single files redirect to the source CDN, multi-file assets (glTF + .bin + textures, PBR map sets) arrive as one zip.",
+    "A 409 from /download means the source does not allow direct download; send the user to the asset's url instead.",
+    "Providers with status \"link\" in the search response block bots; use their searchUrl rather than retrying.",
+    "Check license.commercialUse and license.attributionRequired before shipping an asset.",
+    "MCP endpoint (Streamable HTTP, no auth): https://3d.shep.bot/mcp with tools search_assets, get_asset and list_providers."
+  ]
+}

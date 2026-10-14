@@ -1,0 +1,316 @@
+{
+  "integrated": [
+    {
+      "id": "polyhaven",
+      "name": "Poly Haven",
+      "homepage": "https://polyhaven.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "ambientcg",
+      "name": "ambientCG",
+      "homepage": "https://ambientcg.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "cgbookcase",
+      "name": "cgbookcase",
+      "homepage": "https://www.cgbookcase.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "sharetextures",
+      "name": "ShareTextures",
+      "homepage": "https://www.sharetextures.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "blenderkit",
+      "name": "BlenderKit",
+      "homepage": "https://www.blendkit.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "fab",
+      "name": "Fab",
+      "homepage": "https://www.fab.com",
+      "access": "link",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "kenney",
+      "name": "Kenney",
+      "homepage": "https://kenney.nl/assets",
+      "access": "scrape",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "poliigon",
+      "name": "Poliigon",
+      "homepage": "https://www.poliigon.com",
+      "access": "link",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "quaternius",
+      "name": "Quaternius",
+      "homepage": "https://quaternius.com",
+      "access": "scrape",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "threedtextures",
+      "name": "3DTextures.me",
+      "homepage": "https://3dtextures.me",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "threedtexel",
+      "name": "3DTexel",
+      "homepage": "https://3dtexel.com",
+      "access": "api",
+      "addedAt": "2026-10-06",
+      "addedBy": "agent"
+    },
+    {
+      "id": "texturecan",
+      "name": "TextureCan",
+      "homepage": "https://www.texturecan.com",
+      "access": "scrape",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "texturescom",
+      "name": "Textures.com",
+      "homepage": "https://www.textures.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "hdrmaps",
+      "name": "HDRMAPS",
+      "homepage": "https://hdrmaps.com",
+      "access": "api",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "hdrihub",
+      "name": "HDRI Hub",
+      "homepage": "https://www.hdri-hub.com",
+      "access": "scrape",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "cgtrader",
+      "name": "CGTrader",
+      "homepage": "https://www.cgtrader.com",
+      "access": "scrape",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "turbosquid",
+      "name": "TurboSquid",
+      "homepage": "https://www.turbosquid.com",
+      "access": "link",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "itchio",
+      "name": "itch.io",
+      "homepage": "https://itch.io/game-assets",
+      "access": "scrape",
+      "addedAt": "2026-10-04",
+      "addedBy": "launch"
+    },
+    {
+      "id": "polyfork",
+      "name": "Polyfork",
+      "homepage": "https://polyfork.dev",
+      "access": "api",
+      "addedAt": "2026-10-06",
+      "addedBy": "human"
+    },
+    {
+      "id": "threedassets",
+      "name": "3DAssets.dev",
+      "homepage": "https://3dassets.dev",
+      "access": "api",
+      "addedAt": "2026-10-07",
+      "addedBy": "agent"
+    },
+    {
+      "id": "opengameart",
+      "name": "OpenGameArt",
+      "homepage": "https://opengameart.org",
+      "access": "scrape",
+      "addedAt": "2026-10-09",
+      "addedBy": "agent"
+    },
+    {
+      "id": "sketchfab",
+      "name": "Sketchfab",
+      "homepage": "https://sketchfab.com",
+      "access": "api",
+      "addedAt": "2026-10-10",
+      "addedBy": "agent"
+    },
+    {
+      "id": "freestylized",
+      "name": "FreeStylized",
+      "homepage": "https://freestylized.com",
+      "access": "api",
+      "addedAt": "2026-10-11",
+      "addedBy": "agent"
+    }
+  ],
+  "rejected": [
+    {
+      "name": "CC0 Textures",
+      "homepage": "https://cc0-textures.com",
+      "checkedAt": "2026-10-14",
+      "reason": "re-hosts textures from other vendors such as ShareTextures (vendor field on each page), which we already search; no public search API"
+    },
+    {
+      "name": "FurniMesh",
+      "homepage": "https://furnimesh.com",
+      "checkedAt": "2026-10-14",
+      "reason": "furniture-only GLB library with no stated licence for downloads, no API, terms silent on automated access, and an AI generator upsell",
+      "recheckAfter": "2027-01-12"
+    },
+    {
+      "name": "Cinevva game assets",
+      "homepage": "https://app.cinevva.com",
+      "checkedAt": "2026-10-14",
+      "reason": "aggregator of Kenney, Quaternius, Poly Haven, ambientCG and others we already search; robots.txt disallows /api/"
+    },
+    {
+      "name": "game-icons.net",
+      "homepage": "https://game-icons.net",
+      "checkedAt": "2026-10-14",
+      "reason": "about 4,000 CC-BY 2D SVG icons, but search is client-side Algolia and listings span six sitemaps, too many requests per search; not 3D",
+      "recheckAfter": "2027-01-12"
+    },
+    {
+      "name": "BlendSwap",
+      "homepage": "https://www.blendswap.com",
+      "checkedAt": "2026-10-14",
+      "reason": "automated requests get HTTP 403, so no search access could be verified",
+      "recheckAfter": "2027-01-12"
+    },
+    {
+      "name": "FreePBR",
+      "homepage": "https://freepbr.com",
+      "checkedAt": "2026-10-14",
+      "reason": "automated requests get HTTP 403 and textures are personal-use only with a paid commercial licence"
+    },
+    {
+      "name": "Icosa Gallery",
+      "homepage": "https://icosa.gallery",
+      "checkedAt": "2026-10-13",
+      "reason": "public keyless API with about 130,000 CC0/CC-BY models, but uncached searches took 30-35 seconds, longer than the server's 15 second request timeout; mostly Tilt Brush sketches",
+      "recheckAfter": "2027-01-11"
+    },
+    {
+      "name": "Texture Labs",
+      "homepage": "https://texturelabs.org",
+      "checkedAt": "2026-10-13",
+      "reason": "photographic 2D textures for Photoshop with no catalogue in the WordPress REST API (posts endpoint reports 0), so no reliable search"
+    },
+    {
+      "name": "Public Domain Textures",
+      "homepage": "https://www.publicdomaintextures.com",
+      "checkedAt": "2026-10-13",
+      "reason": "domain now serves an unrelated gambling spam page and no longer hosts textures"
+    },
+    {
+      "name": "OpenHDRI",
+      "homepage": "https://openhdri.org",
+      "checkedAt": "2026-10-12",
+      "reason": "CC0 and downloadable, but only about 60 HDRIs so far; too small for now (same bar as GobKit)",
+      "recheckAfter": "2027-01-10"
+    },
+    {
+      "name": "CGEES",
+      "homepage": "https://www.cgees.com",
+      "checkedAt": "2026-10-12",
+      "reason": "every page is behind a Cloudflare JavaScript challenge and robots.txt blocks /api and AI bots, so no automated search",
+      "recheckAfter": "2027-01-10"
+    },
+    {
+      "name": "KayKit (Kay Lousberg)",
+      "homepage": "https://kaylousberg.com/game-assets",
+      "checkedAt": "2026-10-12",
+      "reason": "only a handful of packs on a static page and the downloads are hosted on itch.io, which we already search"
+    },
+    {
+      "name": "The Met 3D models",
+      "homepage": "https://www.metmuseum.org",
+      "checkedAt": "2026-10-12",
+      "reason": "only about 135 scans and the site answered automated requests with HTTP 429, so access could not be verified",
+      "recheckAfter": "2027-01-10"
+    },
+    {
+      "name": "Smithsonian 3D",
+      "homepage": "https://3d.si.edu",
+      "checkedAt": "2026-10-11",
+      "reason": "site returned a 'temporarily unavailable' page for its API, so access could not be verified",
+      "recheckAfter": "2027-01-09"
+    },
+    {
+      "name": "Poly Pizza",
+      "homepage": "https://poly.pizza",
+      "checkedAt": "2026-10-10",
+      "reason": "every page including robots.txt is behind a Cloudflare JavaScript challenge, so no automated search; most models are CC-BY",
+      "recheckAfter": "2027-01-08"
+    },
+    {
+      "name": "PolyScan",
+      "homepage": "https://polyscann.com",
+      "checkedAt": "2026-10-09",
+      "reason": "only about 214 assets, listings do not say model or texture, extra pages load through an undocumented script, and downloads sit behind an ad-block check",
+      "recheckAfter": "2027-01-07"
+    },
+    {
+      "name": "Mixos",
+      "homepage": "https://www.mixos.io",
+      "checkedAt": "2026-10-06",
+      "reason": "free models and textures are sourced from Poly Haven, which we already search"
+    },
+    {
+      "name": "GobKit",
+      "homepage": "https://gobkit.com",
+      "checkedAt": "2026-10-06",
+      "reason": "only about 79 curated free models plus an AI generator service; too small for now",
+      "recheckAfter": "2027-01-04"
+    },
+    {
+      "name": "Open Source 3D Assets",
+      "homepage": "https://www.opensource3dassets.com",
+      "checkedAt": "2026-10-06",
+      "reason": "no documented public search API and mostly avatars; robots.txt served is for a sister site",
+      "recheckAfter": "2027-01-04"
+    }
+  ]
+}
