@@ -84,73 +84,160 @@ export function AssetDetail({ asset, providerName }: { asset: Asset; providerNam
     ["Asset id", <code className="font-mono text-xs">{a.id}</code>],
   ];
 
+  const is3DModel = a.type === "model" || a.formats?.some((f) => f.includes("gltf") || f.includes("glb") || f.includes("blend") || f.includes("fbx") || f.includes("obj"));
+  const editorUrl = `/editor?asset=${encodeURIComponent(asset.id)}&title=${encodeURIComponent(a.title)}`;
+
   return (
-    <div className="space-y-6 px-6 pb-10">
-      {hero && <img src={hero} alt={`Preview of ${a.title}`} referrerPolicy="no-referrer" className="aspect-[4/3] w-full rounded-xl border object-cover" />}
-      <dl className="grid grid-cols-[7rem_1fr] gap-x-3 gap-y-2 text-sm">
-        {rows
-          .filter(([, v]) => v !== undefined && v !== "")
-          .map(([k, v]) => (
-            <div key={k} className="contents">
-              <dt className="text-muted-foreground">{k}</dt>
-              <dd>{v}</dd>
-            </div>
-          ))}
-      </dl>
-      {a.description && <p className="text-sm leading-relaxed text-muted-foreground">{a.description}</p>}
-      {a.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1">
-          {a.tags.slice(0, 14).map((t) => <Badge key={t} variant="secondary" className="text-[10px]">{t}</Badge>)}
+    <div className="space-y-6 px-6 pb-12">
+      {/* Asset Preview Thumbnail */}
+      {hero ? (
+        <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-muted">
+          <img src={hero} alt={`Preview of ${a.title}`} referrerPolicy="no-referrer" className="aspect-[4/3] w-full object-cover" />
+          {is3DModel && (
+            <a
+              href={editorUrl}
+              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 text-xs font-semibold text-white shadow-lg backdrop-blur-sm transition hover:opacity-95 hover:scale-105"
+            >
+              <FileBox className="size-4" />
+              <span>Open in 3D Studio</span>
+            </a>
+          )}
         </div>
-      )}
-      <div className="flex flex-wrap gap-2">
+      ) : null}
+
+      {/* Main Action Bar */}
+      <div className="flex flex-wrap items-center gap-2">
+        {is3DModel && (
+          <Button asChild className="rounded-xl bg-primary text-white shadow-sm hover:opacity-95">
+            <a href={editorUrl}>
+              <FileBox className="size-4" />
+              <span>Open in 3D Editor</span>
+            </a>
+          </Button>
+        )}
         {source && (
-          <Button variant="outline" asChild>
-            <a href={source} target="_blank" rel="noopener noreferrer">Open on {providerName} <ArrowUpRight className="size-4" /></a>
+          <Button variant="outline" className="rounded-xl" asChild>
+            <a href={source} target="_blank" rel="noopener noreferrer">
+              <span>View on {providerName}</span>
+              <ArrowUpRight className="size-4" />
+            </a>
           </Button>
         )}
         <ShareButton title={a.title} url={`${origin}/search?asset=${encodeURIComponent(asset.id)}`} />
       </div>
 
+      {/* Description */}
+      {a.description && <p className="text-sm leading-relaxed text-muted-foreground">{a.description}</p>}
+
+      {/* Metadata Specification Table */}
+      <div className="rounded-2xl border border-border/80 bg-card/60 p-4 shadow-xs">
+        <h4 className="mb-3 text-xs font-bold uppercase tracking-wider text-muted-foreground">Asset Specifications</h4>
+        <dl className="grid grid-cols-[7rem_1fr] gap-x-3 gap-y-2.5 text-xs sm:text-sm">
+          {rows
+            .filter(([, v]) => v !== undefined && v !== "")
+            .map(([k, v]) => (
+              <div key={k} className="contents">
+                <dt className="text-muted-foreground font-medium">{k}</dt>
+                <dd className="font-semibold text-foreground">{v}</dd>
+              </div>
+            ))}
+        </dl>
+      </div>
+
+      {/* Tags */}
+      {a.tags.length > 0 && (
+        <div>
+          <span className="mb-2 block text-xs font-semibold text-muted-foreground">Tags</span>
+          <div className="flex flex-wrap gap-1.5">
+            {a.tags.slice(0, 14).map((t) => (
+              <Badge key={t} variant="secondary" className="rounded-lg text-[11px] font-medium">
+                {t}
+              </Badge>
+            ))}
+          </div>
+        </div>
+      )}
+
       <Separator />
 
-      <section aria-label="Download">
-        <h3 className="mb-3 flex items-center gap-2 font-medium"><FileBox className="size-4 text-primary" /> Download</h3>
-        {!full && !failed && <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="size-4 animate-spin" /> Loading files…</p>}
-        {(failed || (full && !files.length)) && (
-          <p className="text-sm text-muted-foreground">No direct downloads from this source. Get it on the source page.</p>
+      {/* Direct Download Options */}
+      <section aria-label="Download Options" className="rounded-2xl border border-border/80 bg-card/80 p-5 shadow-xs">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="flex items-center gap-2 font-bold text-sm text-foreground">
+            <Download className="size-4 text-primary" /> Download Files
+          </h3>
+          {a.downloadable ? (
+            <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+              Direct Available
+            </span>
+          ) : (
+            <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+              External Source
+            </span>
+          )}
+        </div>
+
+        {!full && !failed && (
+          <p className="flex items-center gap-2 text-xs text-muted-foreground py-2">
+            <Loader2 className="size-4 animate-spin text-primary" /> Checking download servers…
+          </p>
         )}
+
+        {(failed || (full && !files.length)) && (
+          <div className="rounded-xl border border-border/70 bg-muted/40 p-3 text-xs text-muted-foreground">
+            <p>Direct download is not mirrored locally for this source asset.</p>
+            {source && (
+              <a href={source} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+                Download directly on {providerName} <ArrowUpRight className="size-3" />
+              </a>
+            )}
+          </div>
+        )}
+
         {files.length > 0 && (
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <select aria-label="Format" value={format} onChange={(e) => setFormat(e.target.value)} className="h-9 rounded-md border bg-background px-2 text-sm">
+              <select
+                aria-label="Format"
+                value={format}
+                onChange={(e) => setFormat(e.target.value)}
+                className="h-9 rounded-xl border border-border bg-background px-3 text-xs font-medium focus:border-primary focus:outline-none"
+              >
                 <option value="">Auto format</option>
                 {options.formats.map((f) => <option key={f} value={f}>{f}</option>)}
               </select>
               {options.resolutions.length > 0 && (
-                <select aria-label="Resolution" value={resolution} onChange={(e) => setResolution(e.target.value)} className="h-9 rounded-md border bg-background px-2 text-sm">
+                <select
+                  aria-label="Resolution"
+                  value={resolution}
+                  onChange={(e) => setResolution(e.target.value)}
+                  className="h-9 rounded-xl border border-border bg-background px-3 text-xs font-medium focus:border-primary focus:outline-none"
+                >
                   <option value="">Auto (2k)</option>
                   {options.resolutions.map((r) => <option key={r} value={r}>{r}</option>)}
                 </select>
               )}
-              <Button asChild disabled={!selection?.files.length}>
-                <a href={downloadHref}><Download className="size-4" /> Download</a>
+              <Button asChild disabled={!selection?.files.length} className="rounded-xl bg-primary text-white shadow-xs">
+                <a href={downloadHref}><Download className="size-4" /> Download Zip</a>
               </Button>
-              {selection?.totalBytes != null && <span className="text-xs text-muted-foreground">{formatBytes(selection.totalBytes)}</span>}
+              {selection?.totalBytes != null && <span className="text-xs font-mono text-muted-foreground">{formatBytes(selection.totalBytes)}</span>}
             </div>
-            <ul className="space-y-1 text-xs text-muted-foreground">
-              {selError && <li className="text-destructive">{selError}</li>}
-              {!selection && !selError && <li>…</li>}
-              {selection?.files.length === 0 && <li>Nothing matches this combination.</li>}
+
+            <ul className="space-y-1 text-xs text-muted-foreground rounded-lg border border-border/50 bg-background/50 p-2.5">
+              {selError && <li className="text-destructive font-medium">{selError}</li>}
+              {!selection && !selError && <li>Selecting file bundle…</li>}
+              {selection?.files.length === 0 && <li>No files match this combination.</li>}
               {selection?.files.map((f) => (
-                <li key={f.url} className="font-mono">
-                  {f.filename}
-                  {f.resolution ? ` · ${f.resolution}` : ""}
-                  {f.includes?.length ? ` + ${f.includes.length} companion files` : ""}
+                <li key={f.url} className="font-mono text-[11px] flex items-center justify-between">
+                  <span>{f.filename}</span>
+                  <span className="text-muted-foreground/70">
+                    {f.resolution ? `${f.resolution} · ` : ""}
+                    {f.includes?.length ? `+ ${f.includes.length} companion files` : ""}
+                  </span>
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-muted-foreground">Multi-file downloads (e.g. glTF with textures) arrive as one zip.</p>
+            <p className="text-[11px] text-muted-foreground">Multi-file assets (e.g. glTF with PBR textures) are bundled into a single ZIP file.</p>
           </div>
         )}
       </section>

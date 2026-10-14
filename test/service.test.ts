@@ -96,7 +96,11 @@ describe("downloadFiles", () => {
   it("writes main files and companions with relative paths", async () => {
     dir = await mkdtemp(join(tmpdir(), "assets-"));
     const res = await downloadFiles(bytesHttp(), selectFiles(CRATE), dir);
-    expect(res.files.map((f) => f.slice(dir!.length + 1)).sort()).toEqual(["crate_2k.gltf", "textures/crate_diff_2k.jpg"]);
+    expect(
+  res.files
+    .map((f) => f.slice(dir!.length + 1).replace(/\\/g, "/"))
+    .sort(),
+).toEqual(["crate_2k.gltf", "textures/crate_diff_2k.jpg"]);
     expect(await readFile(join(dir, "textures/crate_diff_2k.jpg"), "utf8")).toBe("data:crate_diff_2k.jpg");
   });
 

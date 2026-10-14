@@ -2,18 +2,55 @@
 import Logo from "./Logo.astro";
 import { SITE, SOURCE_COUNT } from "@/lib/site";
 const cols = [
-  { title: "Product", links: [["Search assets", "/search"], ["Asset collections", "/assets"], ["Sources & licences", "/docs/sources"], ["Statistics", "/stats"], ["About", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"]] },
-  { title: "Developers", links: [["Quick start", "/docs"], ["Coding agents & MCP", "/docs/mcp"], ["REST API guide", "/docs/api"], ["API reference", "/docs/api/reference"], ["CLI", "/docs/cli"], ["Self-hosting", "/docs/self-hosting"]] },
-  { title: "For AI agents", links: [["AGENTS.md", "/AGENTS.md"], ["llms.txt", "/llms.txt"], ["llms-full.txt", "/llms-full.txt"], ["OpenAPI 3.1", "/openapi.json"]] },
+  {
+    title: "Platform",
+    links: [
+      ["Explore 3D Assets", "/search"],
+      ["3D Browser Editor", "/editor"],
+      ["Curated Collections", "/assets"],
+      ["Supported Sources", "/docs/sources"],
+      ["Platform Stats", "/stats"],
+      ["About ModelVerse", "/about"],
+      ["Privacy Policy", "/privacy"],
+    ],
+  },
+  {
+    title: "Developers & MCP",
+    links: [
+      ["Quick Start Guide", "/docs"],
+      ["Coding Agents & MCP", "/docs/mcp"],
+      ["REST API Reference", "/docs/api/reference"],
+      ["API Playground", "/docs/api/playground"],
+      ["CLI Tool", "/docs/cli"],
+      ["Self-Hosting", "/docs/self-hosting"],
+    ],
+  },
+  {
+    title: "For AI Agents",
+    links: [
+      ["AGENTS.md", "/AGENTS.md"],
+      ["llms.txt", "/llms.txt"],
+      ["llms-full.txt", "/llms-full.txt"],
+      ["OpenAPI Spec", "/openapi.json"],
+    ],
+  },
 ];
 ---
-<footer class="border-t border-border/60">
-  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_repeat(3,1fr)]">
-    <div class="space-y-3">
-      <a href="/" class="flex items-center gap-2 font-semibold"><Logo class="size-6" id="logo-footer" />{SITE.name}</a>
-      <p class="max-w-xs text-sm text-muted-foreground">
-        One search box for {SOURCE_COUNT} 3D asset sites. Free to use, open source (Apache-2.0), built for people and AI agents.
+<footer class="border-t border-border/70 bg-card/40 transition-colors">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+    <div class="space-y-4">
+      <a href="/" class="flex items-center gap-2.5 font-bold tracking-tight text-lg">
+        <Logo class="size-6" id="logo-footer" />
+        <span>Model<span class="bg-gradient-to-r from-primary to-brand-2 bg-clip-text text-transparent">Verse</span></span>
+      </a>
+      <p class="max-w-xs text-sm text-muted-foreground leading-relaxed">
+        Discover, preview, and customize 3D assets from {SOURCE_COUNT} supported repositories across the web — all in one creative workspace.
       </p>
+      <div class="flex items-center gap-2 pt-1">
+        <a href="/editor" class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary hover:bg-primary/20 transition">
+          Launch 3D Studio →
+        </a>
+      </div>
     </div>
     {cols.map((c) => (
       <div>

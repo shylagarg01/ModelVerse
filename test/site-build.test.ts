@@ -3,6 +3,7 @@
  * site makes to agents. Runs after `npm run build` (as in CI); skipped when
  * the site has not been built.
  */
+import { fileURLToPath } from "node:url";
 import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
@@ -55,10 +56,12 @@ describe.skipIf(!built)("built website", () => {
   });
 
   it("names the product in the homepage title and H1", () => {
-    const home = read("index.html");
-    expect(home).toMatch(/<title>3D Asset Server[^<]*<\/title>/);
-    expect(home.match(/<h1[\s\S]*?<\/h1>/)![0]).toContain("3D Asset Server");
-  });
+  const home = read("index.html");
+  expect(home).toMatch(/<title>ModelVerse[^<]*<\/title>/);
+  expect(home.match(/<h1[\s\S]*?<\/h1>/)![0]).toContain(
+    "Your next 3D creation",
+  );
+});
 
   it("has no duplicate ids and labels every form control", () => {
     for (const page of ["index.html", "search/index.html", "docs/api/reference/index.html", "docs/mcp/index.html"]) {
@@ -133,7 +136,7 @@ describe.skipIf(!built)("built website", () => {
       images.add(image!);
       const file = new URL(`.${new URL(image!).pathname}`, root);
       expect(statSync(file).size, image).toBeGreaterThan(10_000);
-      expect(await sharp(file.pathname).metadata(), image).toMatchObject({ width: 1200, height: 630, format: "png" });
+      expect(await sharp(fileURLToPath(file)).metadata(), image).toMatchObject({ width: 1200, height: 630, format: "png" });
       for (const tag of ['property="og:image:alt"', 'name="twitter:image:alt"', 'property="og:image:type" content="image/png"', 'name="twitter:card" content="summary_large_image"']) {
         expect(html, `${page} ${tag}`).toContain(tag);
       }

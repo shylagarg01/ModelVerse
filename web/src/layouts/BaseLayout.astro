@@ -31,7 +31,7 @@ const modified = new Date().toISOString();
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,9 +82,13 @@ const modified = new Date().toISOString();
     <script type="application/ld+json" set:html={graph(schema, { url: canonical, name: fullTitle, description, image: ogImage, imageAlt: ogImageAlt })} />
 
     <script is:inline>
-      // Theme: dark by default, remembers an explicit choice. Runs before paint.
       try {
-        if (localStorage.getItem("theme") === "light") document.documentElement.classList.remove("dark");
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
       } catch (e) {}
     </script>
   </head>

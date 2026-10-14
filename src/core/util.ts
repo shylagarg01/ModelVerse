@@ -55,23 +55,56 @@ export interface Matchable {
  * Title hits weigh most, then tags/categories, then description.
  * Returns 1 for an empty query so browse results are kept.
  */
+
 export function matchScore(item: Matchable, query: string): number {
   const qTokens = [...new Set(tokenize(query).map(stem))];
   if (qTokens.length === 0) return 1;
+
   const title = new Set(tokenize(item.title).map(stem));
   const tags = new Set(
-    [...(item.tags ?? []), ...(item.categories ?? [])].flatMap((t) => tokenize(t)).map(stem),
+    [...(item.tags ?? []), ...(item.categories ?? [])]
+      .flatMap((t) => tokenize(t))
+      .map(stem),
   );
   const desc = new Set(tokenize(item.description ?? "").map(stem));
+
+  const animalTerms = new Set([
+    "animal", "animals", "animalia", "amphibian", "amphibians",
+    "frog", "frogs", "mammal", "mammals", "bird", "birds",
+    "reptile", "reptiles", "fish", "insect", "insects",
+    "fauna", "wildlife", "pet", "pets", "dog", "dogs",
+    "cat", "cats", "snake", "snakes", "turtle", "turtles",
+  ]);
+
+  const hasAnimalIntent = qTokens.some((token) => animalTerms.has(token));
+  const itemTokens = new Set([...title, ...tags]);
+  const isAnimalAsset = [...itemTokens].some((token) =>
+    animalTerms.has(token),
+  );
+
   let score = 0;
+
   for (const q of qTokens) {
     if (title.has(q)) score += 1;
     else if (tags.has(q)) score += 0.7;
     else if (desc.has(q)) score += 0.35;
-    else if ([...title].some((t) => t.startsWith(q) || (q.length > 3 && t.includes(q)))) score += 0.5;
-    else if ([...tags].some((t) => t.startsWith(q))) score += 0.3;
+    else if (
+      [...title].some((t) => t.startsWith(q) || (q.length > 3 && t.includes(q)))
+    ) {
+      score += 0.5;
+    } else if ([...tags].some((t) => t.startsWith(q))) {
+      score += 0.3;
+    }
   }
-  return Math.min(1, score / qTokens.length);
+
+  const relevance = score / qTokens.length;
+
+  // Avoid ranking animal assets highly for unrelated plant/tree searches.
+  if (isAnimalAsset && !hasAnimalIntent) {
+    return Math.min(1, relevance * 0.25);
+  }
+
+  return Math.min(1, relevance);
 }
 
 /** Filter + rank a local catalogue (used by providers that fetch a full list). */
