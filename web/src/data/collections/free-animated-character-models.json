@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-10T10:47:49.159Z",
+  "updatedAt": "2026-10-15T09:22:52.414Z",
   "assets": [
     {
       "id": "kenney:animated-characters-protagonists",
@@ -348,31 +348,6 @@
       "rigged": true
     },
     {
-      "id": "blenderkit:02dd566b-538d-4ba1-942f-868aa58264d5",
-      "provider": "blenderkit",
-      "title": "Anime Cat Woman (Rigged/Animated)",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/02dd566b-538d-4ba1-942f-868aa58264d5/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/2966465b99144569a7e8a575a20213c7/files/thumbnail_b1d865d7-56f9-4fe2-88d3-d51db8674ca2.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Raymond Gabriel",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "2k",
-      "polyCount": 51218,
-      "animated": true,
-      "rigged": true
-    },
-    {
       "id": "quaternius:knightcharacter",
       "provider": "quaternius",
       "title": "Animated Knight Pack",
@@ -616,6 +591,16 @@
       "type": "model",
       "url": "https://opengameart.org/content/low-poly-animated-character",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/screenshot_2_4.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "opengameart:animated-character-0",
+      "provider": "opengameart",
+      "title": "Animated Character",
+      "type": "model",
+      "url": "https://opengameart.org/content/animated-character-0",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/rotation_360_lowres.gif",
       "downloadable": true,
       "free": true
     }
