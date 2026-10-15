@@ -56,56 +56,136 @@ export interface Matchable {
  * Returns 1 for an empty query so browse results are kept.
  */
 
-export function matchScore(item: Matchable, query: string): number {
-  const qTokens = [...new Set(tokenize(query).map(stem))];
-  if (qTokens.length === 0) return 1;
 
-  const title = new Set(tokenize(item.title).map(stem));
+const SEARCH_STOP_WORDS = new Set([
+  "a", "an", "the", "for", "of", "with", "and", "or",
+  "in", "on", "to", "me", "please", "show", "find",
+  "get", "some", "looking", "want", "need", "give",
+]);
+
+const ANIMAL_TERMS = new Set([
+  "animal", "frog", "mammal", "bird", "reptile",
+  "fish", "insect", "wildlife", "dog", "cat",
+  "snake", "turtle", "amphibian",
+]);
+
+export function matchScore(item: Matchable, query: string): number {
+  const tokens = [...new Set(
+    tokenize(query)
+      .map(stem)
+      .filter((t) => !SEARCH_STOP_WORDS.has(t)),
+  )];
+
+  if (tokens.length === 0) return 1;
+
+  const titleTokens = tokenize(item.title).map(stem);
+  const title = new Set(titleTokens);
+
   const tags = new Set(
     [...(item.tags ?? []), ...(item.categories ?? [])]
       .flatMap((t) => tokenize(t))
       .map(stem),
   );
+
   const desc = new Set(tokenize(item.description ?? "").map(stem));
+  const itemType = (item as Matchable & { type?: AssetType }).type;
 
-  const animalTerms = new Set([
-    "animal", "animals", "animalia", "amphibian", "amphibians",
-    "frog", "frogs", "mammal", "mammals", "bird", "birds",
-    "reptile", "reptiles", "fish", "insect", "insects",
-    "fauna", "wildlife", "pet", "pets", "dog", "dogs",
-    "cat", "cats", "snake", "snakes", "turtle", "turtles",
-  ]);
+  const wantsMaterial = /\b(material|materials|paint|shader|pbr|substance)\b/i.test(query);
 
-  const hasAnimalIntent = qTokens.some((token) => animalTerms.has(token));
-  const itemTokens = new Set([...title, ...tags]);
-  const isAnimalAsset = [...itemTokens].some((token) =>
-    animalTerms.has(token),
-  );
+  const wantsTexture = /\b(texture|textures|decal|seamless)\b/i.test(query);
+
+  const wantsModel = /\b(model|models|3d|mesh|vehicle|vehicles|car|cars|tree|trees|character|characters|prop|props|object|objects|chair|chairs)\b/i.test(query);
+  const hasModelIntent = wantsModel && !wantsMaterial && !wantsTexture;
 
   let score = 0;
 
-  for (const q of qTokens) {
-    if (title.has(q)) score += 1;
-    else if (tags.has(q)) score += 0.7;
-    else if (desc.has(q)) score += 0.35;
+  for (const token of tokens) {
+    if (title.has(token)) score += 1;
+    else if (tags.has(token)) score += 0.7;
+    else if (desc.has(token)) score += 0.25;
     else if (
-      [...title].some((t) => t.startsWith(q) || (q.length > 3 && t.includes(q)))
+      [...title].some(
+        (word) => token.length >= 4 && word.startsWith(token),
+      )
     ) {
-      score += 0.5;
-    } else if ([...tags].some((t) => t.startsWith(q))) {
-      score += 0.3;
+      score += 0.4;
     }
   }
 
-  const relevance = score / qTokens.length;
+  let relevance = score / tokens.length;
 
-  // Avoid ranking animal assets highly for unrelated plant/tree searches.
-  if (isAnimalAsset && !hasAnimalIntent) {
-    return Math.min(1, relevance * 0.25);
+
+ // Give stronger weight to the main subject of the search.
+const wantsCar = /\b(car|cars|vehicle|vehicles|sports car)\b/i.test(query);
+const wantsRed = /\bred\b/i.test(query);
+const wantsLowPoly = /\blow[- ]?poly\b/i.test(query);
+const wantsFree = /\bfree\b/i.test(query);
+const titleText = item.title.toLowerCase();
+const metadataText = [
+  item.title,
+  ...(item.tags ?? []),
+  ...(item.categories ?? []),
+  item.description ?? "",
+].join(" ").toLowerCase();
+
+if (wantsCar) {
+  if (/\b(car|cars|vehicle|vehicles|automobile)\b/i.test(metadataText)) {
+    relevance += 0.2;
+  } else {
+    relevance *= 0.4;
+  }
+}
+
+if (wantsRed) {
+  if (/\bred\b/i.test(metadataText)) relevance += 0.1;
+}
+
+if (wantsLowPoly) {
+  if (/\blow[- ]?poly\b/i.test(metadataText)) {
+    relevance += 0.15;
+  } else {
+    relevance *= 0.8;
+  }
+}
+
+  // Reward exact phrase matches in titles.
+  const normalizedTitle = ` ${titleTokens.join(" ")} `;
+  const normalizedQuery = ` ${tokens.join(" ")} `;
+
+  if (
+    tokens.length > 1 &&
+    normalizedTitle.includes(normalizedQuery)
+  ) {
+    relevance = Math.min(1, relevance + 0.3);
   }
 
-  return Math.min(1, relevance);
+  const itemTokens = new Set([
+    ...title,
+    ...tags,
+  ]);
+
+  const wantsAnimal = tokens.some((t) => ANIMAL_TERMS.has(t));
+  const isAnimal = [...itemTokens].some((t) => ANIMAL_TERMS.has(t));
+
+  // Demote animal assets for unrelated searches like "tree".
+  if (isAnimal && !wantsAnimal) {
+    relevance *= 0.15;
+  }
+  if (itemType) {
+    if (hasModelIntent && itemType === "material") relevance *= 0.2;
+    if (hasModelIntent && itemType === "texture") relevance *= 0.3;
+    if (hasModelIntent && itemType === "hdri") relevance *= 0.2;
+
+    if (wantsMaterial && itemType === "model") relevance *= 0.2;
+    if (wantsMaterial && itemType === "other") relevance *= 0.4;
+
+    if (wantsTexture && itemType === "model") relevance *= 0.2;
 }
+ 
+
+  return Math.max(0, Math.min(1, relevance));
+}
+
 
 /** Filter + rank a local catalogue (used by providers that fetch a full list). */
 export function filterLocal<T extends Matchable & { type: AssetType }>(

@@ -170,6 +170,7 @@ export class AssetService {
  * free / directly downloadable assets, then a diversity penalty so a single
  * large catalogue can't fill the whole first page.
  */
+
 export function rankResults(
   items: { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }[],
   query: string,
@@ -177,24 +178,41 @@ export function rankResults(
   const scored = items.map(({ asset, rank, provider }) => {
     const relevance = matchScore(asset, query);
     const sourceRank = 1 / (1 + rank * 0.15);
+
     const score =
-      0.6 * relevance +
-      0.2 * sourceRank +
-      0.1 * ACCESS_WEIGHT[provider.access] +
-      0.05 * (asset.price?.free ? 1 : 0) +
-      0.05 * (asset.downloadable ? 1 : 0);
-    return { asset, provider: provider.id, score };
+      0.82 * relevance +
+      0.08 * sourceRank +
+      0.04 * ACCESS_WEIGHT[provider.access] +
+      0.03 * (asset.price?.free ? 1 : 0) +
+      0.03 * (asset.downloadable ? 1 : 0);
+
+    return { asset, provider: provider.id, score, relevance };
   });
-  scored.sort((a, b) => b.score - a.score);
+
+  scored.sort((a, b) =>
+    b.score - a.score || b.relevance - a.relevance
+  );
 
   const seenPerProvider = new Map<string, number>();
-  const diversified = scored.map((s) => {
-    const n = seenPerProvider.get(s.provider) ?? 0;
-    seenPerProvider.set(s.provider, n + 1);
-    return { ...s, score: s.score * Math.pow(0.93, n) };
+
+  const diversified = scored.map((result) => {
+    const count = seenPerProvider.get(result.provider) ?? 0;
+    seenPerProvider.set(result.provider, count + 1);
+
+    return {
+      ...result,
+      score: result.score * Math.pow(0.97, count),
+    };
   });
-  diversified.sort((a, b) => b.score - a.score);
-  return diversified.map((s) => ({ ...s.asset, score: round(s.score) }));
+
+  diversified.sort((a, b) =>
+    b.score - a.score || b.relevance - a.relevance
+  );
+
+  return diversified.map(({ asset, score }) => ({
+    ...asset,
+    score: round(score),
+  }));
 }
 
 function round(n: number): number {

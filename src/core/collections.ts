@@ -127,7 +127,24 @@ export function selectAssets(
   const candidates = new Map<string, SnapshotAsset>();
   for (const a of fresh) {
     if (candidates.has(a.id) || excluded(a)) continue;
-    if (matchScore(a, opts.search.q) < MIN_RELEVANCE) continue;
+    const relevance = matchScore(a, opts.search.q);
+
+const queryTokens = opts.search.q
+  .toLowerCase()
+  .trim()
+  .split(/\s+/)
+  .filter(Boolean);
+
+const titleTokens = a.title
+  .toLowerCase()
+  .split(/[^a-z0-9]+/)
+  .filter(Boolean);
+
+const exactTitleTokenMatch =
+  queryTokens.length > 0 &&
+  queryTokens.every((token) => titleTokens.includes(token));
+
+if (relevance < MIN_RELEVANCE && !exactTitleTokenMatch) continue;
     if (opts.search.free && !isFree(a, opts.pricing)) continue;
     if (opts.search.downloadable && !a.downloadable) continue;
     const s = toSnapshotAsset(a);
