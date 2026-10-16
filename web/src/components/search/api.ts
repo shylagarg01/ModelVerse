@@ -76,6 +76,36 @@ export async function api<T>(path: string): Promise<T> {
   return body;
 }
 
+
+export async function apiPost<T>(path: string, data: unknown): Promise<T> {
+  const headers: Record<string, string> = {
+    "x-asset-client": "web",
+    "Content-Type": "application/json",
+  };
+
+  const key = getKey();
+  if (key) headers["x-api-key"] = key;
+
+  const res = await fetch(path, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(data),
+  });
+
+  if (res.status === 401) {
+    throw new UnauthorizedError("This server needs an API key.");
+  }
+
+  const body = (await res.json()) as T & { error?: string };
+
+  if (!res.ok) {
+    throw new Error(body?.error ?? `HTTP ${res.status}`);
+  }
+
+  return body;
+}
+
+
 export function formatBytes(n?: number): string {
   if (n == null) return "";
   const u = ["B", "KB", "MB", "GB"];
