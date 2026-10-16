@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-15T09:22:52.414Z",
+  "updatedAt": "2026-10-16T09:15:24.322Z",
   "assets": [
     {
       "id": "kenney:animated-characters-protagonists",
@@ -258,18 +258,6 @@
       "polyCount": 10350,
       "animated": true,
       "rigged": true
-    },
-    {
-      "id": "itchio:woshi-gang-studio-gaming/lowpoly-dungeon-kit-animated-3d",
-      "provider": "itchio",
-      "title": "Free — Low-Poly Dungeon Kit — Animated 3D Characters & Modular Environment (Woshi)",
-      "type": "model",
-      "url": "https://woshi-gang-studio-gaming.itch.io/lowpoly-dungeon-kit-animated-3d",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4NzY0NjI1LnBuZw==/315x250%23c/WlOydP.png",
-      "downloadable": false,
-      "author": "Woshi Gang Studio Gaming",
-      "free": true,
-      "animated": true
     },
     {
       "id": "quaternius:animatedmen",
@@ -603,6 +591,18 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/rotation_360_lowres.gif",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "itchio:nitin-yydav/3d-animated-monster-character-for-games",
+      "provider": "itchio",
+      "title": "3D Animated Monster Character for Games",
+      "type": "model",
+      "url": "https://nitin-yydav.itch.io/3d-animated-monster-character-for-games",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4NDgzODMxLnBuZw==/315x250%23c/oKuprZ.png",
+      "downloadable": false,
+      "author": "nitin yydav",
+      "free": true,
+      "animated": true
     }
   ]
 }
