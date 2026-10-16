@@ -22,6 +22,7 @@ import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import {
   api,
+  apiPost,
   getKey,
   safeUrl,
   setKey,
@@ -109,48 +110,100 @@ export default function SearchApp() {
   const [searched, setSearched] = useState(false);
   const [selected, setSelected] = useState<Asset | null>(null);
   const offset = useRef(0);
+  const aiQuery = useRef<string | null>(null);
   const firstRun = useRef(true);
   const seen = useRef(new Set<string>());
   const inputRef = useRef<HTMLInputElement>(null);
 
   const providerName = useCallback((id: string) => providers.find((p) => p.id === id)?.name ?? id, [providers]);
 
-  const run = useCallback(async (f: Filters, append: boolean) => {
-    if (!append) {
-      offset.current = 0;
-      seen.current = new Set();
-      setResults([]);
-      setReports([]);
+  
+const run = useCallback(async (f: Filters, append: boolean) => {
+  if (!append) {
+    offset.current = 0;
+    seen.current = new Set();
+    aiQuery.current = null;
+    setResults([]);
+    setReports([]);
+  }
+
+  setLoading(true);
+  setError(undefined);
+  setSearched(true);
+
+  const qs = toParams(f);
+  const shared = new URLSearchParams(window.location.search).get("asset");
+  if (shared) qs.set("asset", shared);
+  window.history.replaceState(null, "", `/search?${qs.toString()}`);
+
+  if (!firstRun.current) {
+    document.title = f.q
+      ? `“${f.q}”: 3D assets · ModelVerse`
+      : "Search free 3D models, textures & HDRIs · ModelVerse";
+  }
+  firstRun.current = false;
+
+  try {
+    // Interpret a new search with AI only once.
+    if (!append && f.q.trim()) {
+      try {
+        const interpreted = await apiPost<{
+          result: {
+            searchQuery: string;
+            keywords: string[];
+            objectType: string;
+            appearance: string[];
+            style: string[];
+          };
+        }>("/v1/interpret", { prompt: f.q });
+
+        const result = interpreted.result;
+        const terms = [
+          result.searchQuery,
+          ...result.keywords,
+          result.objectType,
+          ...result.appearance,
+          ...result.style,
+        ]
+          .filter((term) => typeof term === "string" && term.trim())
+          .map((term) => term.trim());
+
+        aiQuery.current = [...new Set(terms)].join(" ") || f.q;
+      } catch (aiError) {
+        // If AI fails, keep the original search working.
+        console.warn("AI interpretation unavailable; using normal search.", aiError);
+        aiQuery.current = f.q;
+      }
     }
-    setLoading(true);
-    setError(undefined);
-    setSearched(true);
-    const qs = toParams(f);
-    const shared = new URLSearchParams(window.location.search).get("asset");
-    if (shared) qs.set("asset", shared);
-    window.history.replaceState(null, "", `/search?${qs.toString()}`);
-    if (!firstRun.current) {
-      document.title = f.q
-        ? `“${f.q}”: 3D assets · ModelVerse`
-        : "Search free 3D models, textures & HDRIs · ModelVerse";
-    }
-    firstRun.current = false;
-    try {
-      const params = toParams(f, offset.current);
-      params.set("limit", String(PAGE));
-      const res = await api<SearchResponse>(`/v1/search?${params.toString()}`);
-      const fresh = res.results.filter((a) => !seen.current.has(a.id) && seen.current.add(a.id));
-      setResults((prev) => (append ? [...prev, ...fresh] : fresh));
-      setReports(res.providers);
-      setCanMore(fresh.length > 0 && res.providers.some((r) => r.status === "ok" && r.count >= PAGE));
-      offset.current += PAGE;
-    } catch (e) {
-      if (e instanceof UnauthorizedError) setNeedKey(true);
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+
+    const searchFilters = {
+      ...f,
+      q: append ? (aiQuery.current ?? f.q) : (aiQuery.current ?? f.q),
+    };
+
+    const params = toParams(searchFilters, offset.current);
+    params.set("limit", String(PAGE));
+
+    const res = await api<SearchResponse>(`/v1/search?${params.toString()}`);
+    const fresh = res.results.filter(
+      (a) => !seen.current.has(a.id) && seen.current.add(a.id),
+    );
+
+    setResults((prev) => (append ? [...prev, ...fresh] : fresh));
+    setReports(res.providers);
+    setCanMore(
+      fresh.length > 0 &&
+        res.providers.some((r) => r.status === "ok" && r.count >= PAGE),
+    );
+    offset.current += PAGE;
+  } catch (e) {
+    if (e instanceof UnauthorizedError) setNeedKey(true);
+    setError(e instanceof Error ? e.message : String(e));
+  } finally {
+    setLoading(false);
+  }
+}, []);
+
 
   const openAsset = useCallback((a: Asset | null) => {
     setSelected(a);

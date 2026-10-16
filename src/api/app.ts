@@ -1,3 +1,4 @@
+import { interpretPrompt } from "../ai/prompt-interpreter.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { randomBytes } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -293,6 +294,36 @@ export function createApp(service: AssetService, opts: AppOptions = {}): Hono {
   app.get("/openapi.json", (c) => c.json(openApiSpec(opts.publicBaseUrl)));
 
   app.get("/v1/providers", (c) => c.json({ providers: service.listProviders() }));
+  app.post("/v1/interpret", async (c) => {
+  const body = await c.req.json().catch(() => null);
+
+  if (
+    !body ||
+    typeof body.prompt !== "string" ||
+    !body.prompt.trim() ||
+    body.prompt.length > 1000
+  ) {
+    return c.json(
+      { error: "Provide a prompt between 1 and 1000 characters." },
+      400,
+    );
+  }
+
+  try {
+    const result = await interpretPrompt(body.prompt.trim());
+    return c.json({ result });
+  } catch (error) {
+    console.error(
+      "AI prompt interpretation failed:",
+      error instanceof Error ? error.message : "Unknown error",
+    );
+
+    return c.json(
+      { error: "AI interpretation failed. Please try again." },
+      502,
+    );
+  }
+});
 
   // Daily catalog census (scripts/census.mjs), shipped with the website build.
   let catalogBody: string | null | undefined;
