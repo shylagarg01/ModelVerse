@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import "dotenv/config";
 import { serve } from "@hono/node-server";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createApp } from "./api/app.js";
