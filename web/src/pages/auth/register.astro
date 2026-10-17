@@ -1,0 +1,499 @@
+﻿---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Create Account | ModelVerse";
+const description = "Create your ModelVerse account.";
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <main class="register-page">
+    <div class="register-decoration decoration-one"></div>
+    <div class="register-decoration decoration-two"></div>
+
+    <section class="register-card">
+      <a href="/" class="brand" aria-label="ModelVerse home">
+        <span class="brand-icon">◆</span>
+        <span>Model<span class="brand-accent">Verse</span></span>
+      </a>
+
+      <div class="heading">
+        <span class="eyebrow">YOUR CREATIVE SPACE</span>
+        <h1>Create your account<span class="heading-dot">.</span></h1>
+        <p>Discover, explore, and customize 3D assets with ModelVerse.</p>
+      </div>
+
+      <form id="register-form">
+        <div class="form-field">
+          <label for="email">Email address</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">✉</span>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon" aria-hidden="true">▣</span>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Create a strong password"
+              minlength="12"
+              maxlength="128"
+              autocomplete="new-password"
+              required
+            />
+            <button
+              type="button"
+              class="password-toggle"
+              id="toggle-password"
+              aria-label="Show password"
+              aria-pressed="false"
+            >Show</button>
+          </div>
+          <small class="password-hint">
+            <span class="hint-dot"></span>
+            Use at least 12 characters for a stronger password.
+          </small>
+        </div>
+
+        <button type="submit" class="submit-button" id="submit-button">
+          <span id="button-text">Create account</span>
+          <span class="button-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="login-prompt">
+        Already have an account?
+        <a href="/auth/login">Log in <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="card-footer">
+        <span class="footer-dot"></span>
+        Your next creative project starts here.
+      </div>
+    </section>
+
+    <p class="page-caption">
+      MODELVERSE <span>·</span> 3D ASSET DISCOVERY &amp; CREATION
+    </p>
+  </main>
+
+  <style>
+    .register-page {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 690px;
+      padding: 64px 20px 32px;
+      overflow: hidden;
+      background: #f8f9fc;
+      color: #000000;
+    }
+
+    .register-decoration {
+      position: absolute;
+      z-index: -1;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      filter: blur(75px);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .decoration-one {
+      top: 8%;
+      left: -180px;
+      background: #9b8afb;
+    }
+
+    .decoration-two {
+      right: -180px;
+      bottom: 8%;
+      background: #a8c6ff;
+    }
+
+    .register-card {
+      width: 100%;
+      max-width: 460px;
+      box-sizing: border-box;
+      padding: 38px 38px 28px;
+      border: 1px solid #e2e4ed;
+      border-radius: 24px;
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 24px 80px rgba(30, 27, 75, 0.08);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #000000;
+      text-decoration: none;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .brand-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #8b73ff, #5d45e9);
+      color: #ffffff;
+      font-size: 23px;
+      box-shadow: 0 5px 14px rgba(99, 76, 234, 0.24);
+    }
+
+    .brand-accent {
+      color: #7257ed;
+    }
+
+    .heading {
+      margin: 34px 0 28px;
+    }
+
+    .eyebrow {
+      color: #795eea;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .heading h1 {
+      margin: 10px 0;
+      color: #000000;
+      font-size: clamp(28px, 5vw, 34px);
+      line-height: 1.2;
+      letter-spacing: -1.3px;
+      font-weight: 800;
+    }
+
+    .heading-dot {
+      color: #7657f2;
+    }
+
+    .heading p {
+      margin: 0;
+      color: #333333;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    #register-form {
+      display: grid;
+      gap: 21px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 9px;
+    }
+
+    .form-field label {
+      color: #000000;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .input-wrap {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      border: 1px solid #d5d7e2;
+      border-radius: 12px;
+      background: #ffffff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-wrap:focus-within {
+      border-color: #8065f5;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(124, 92, 252, 0.12);
+    }
+
+    .input-icon {
+      padding-left: 15px;
+      color: #795eea;
+      font-size: 17px;
+    }
+
+    .input-wrap input {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+      padding: 14px 12px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #000000;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    .input-wrap input::placeholder {
+      color: #666666;
+      opacity: 1;
+    }
+
+    .password-toggle {
+      margin-right: 8px;
+      padding: 7px 9px;
+      border: 0;
+      border-radius: 7px;
+      background: transparent;
+      color: #6346d8;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .password-toggle:hover {
+      background: #f0edff;
+    }
+
+    .password-hint {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #444444;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .hint-dot,
+    .footer-dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #8063f6;
+    }
+
+    .submit-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      min-height: 49px;
+      margin-top: 2px;
+      padding: 13px 18px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(105deg, #8063f6, #6346e8);
+      color: #ffffff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 7px 18px rgba(103, 77, 232, 0.23);
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 23px rgba(103, 77, 232, 0.3);
+    }
+
+    .submit-button:disabled {
+      opacity: 0.7;
+      cursor: wait;
+      transform: none;
+    }
+
+    .button-arrow {
+      font-size: 20px;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+
+    .submit-button:hover .button-arrow {
+      transform: translateX(3px);
+    }
+
+    .message {
+      margin: -10px 0 0;
+      color: #000000;
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .message:empty {
+      display: none;
+    }
+
+    .message.error {
+      color: #b42318;
+    }
+
+    .message.success {
+      color: #137547;
+    }
+
+    .login-prompt {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 26px;
+      padding-top: 23px;
+      border-top: 1px solid #e5e5eb;
+      color: #333333;
+      font-size: 12px;
+    }
+
+    .login-prompt a {
+      color: #6346d8;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .login-prompt a:hover {
+      text-decoration: underline;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 25px;
+      color: #444444;
+      font-size: 10px;
+    }
+
+    .footer-dot {
+      width: 5px;
+      height: 5px;
+      background: #168454;
+    }
+
+    .page-caption {
+      margin: 25px 0 0;
+      color: #555555;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .page-caption span {
+      padding: 0 5px;
+      color: #8063f6;
+    }
+
+    @media (max-width: 520px) {
+      .register-page {
+        min-height: 0;
+        padding: 38px 15px 25px;
+      }
+
+      .register-card {
+        padding: 28px 22px 24px;
+        border-radius: 19px;
+      }
+
+      .heading {
+        margin-top: 29px;
+      }
+
+      .heading h1 {
+        letter-spacing: -1px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .input-wrap,
+      .submit-button,
+      .button-arrow {
+        transition: none;
+      }
+    }
+  </style>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>("#register-form");
+    const message = document.querySelector<HTMLElement>("#message");
+    const submitButton = document.querySelector<HTMLButtonElement>("#submit-button");
+    const buttonText = document.querySelector<HTMLElement>("#button-text");
+    const passwordInput = document.querySelector<HTMLInputElement>("#password");
+    const togglePassword = document.querySelector<HTMLButtonElement>("#toggle-password");
+
+    togglePassword?.addEventListener("click", () => {
+      if (!passwordInput || !togglePassword) return;
+
+      const showPassword = passwordInput.type === "password";
+      passwordInput.type = showPassword ? "text" : "password";
+      togglePassword.textContent = showPassword ? "Hide" : "Show";
+      togglePassword.setAttribute(
+        "aria-label",
+        showPassword ? "Hide password" : "Show password"
+      );
+      togglePassword.setAttribute("aria-pressed", String(showPassword));
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity() || !message || !submitButton || !buttonText) return;
+
+      message.textContent = "Creating your account…";
+      message.className = "message";
+      submitButton.disabled = true;
+      buttonText.textContent = "Creating account…";
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch("http://localhost:8787/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: data.get("email"),
+            password: data.get("password"),
+          }),
+          credentials: "include",
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          message.textContent = result.error ?? "Registration failed. Please try again.";
+          message.className = "message error";
+          return;
+        }
+
+        message.textContent = "Account created successfully. Redirecting…";
+        message.className = "message success";
+        window.location.href = "/";
+      } catch {
+        message.textContent =
+          "Could not connect to the server. Please make sure the API is running.";
+        message.className = "message error";
+      } finally {
+        submitButton.disabled = false;
+        buttonText.textContent = "Create account";
+      }
+    });
+  </script>
+</BaseLayout>
