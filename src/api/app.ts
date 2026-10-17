@@ -1,3 +1,4 @@
+import { authRouter } from "./auth.js";
 import { interpretPrompt } from "../ai/prompt-interpreter.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { randomBytes } from "node:crypto";
@@ -157,6 +158,14 @@ const SHARE_LOOKUP_MS = 3500;
 
 export function createApp(service: AssetService, opts: AppOptions = {}): Hono {
   const app = new Hono();
+  app.use(
+  "/auth/*",
+  cors({
+    origin: "http://localhost:4321",
+    credentials: true,
+  }),
+);
+  app.route("/auth", authRouter);
   // Every event also feeds the in-process tallies behind /v1/stats.
   const localStats = new LocalStats();
   const analytics = teeAnalytics(opts.analytics ?? noopAnalytics, localStats);

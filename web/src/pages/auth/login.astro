@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Log in | ModelVerse";
+const description = "Log in to your ModelVerse account.";
+---
+
+<BaseLayout title={title} description={description} noindex={true}>
+  <main class="mx-auto max-w-md px-6 py-16">
+    <h1 class="text-3xl font-bold">Welcome back</h1>
+    <p class="mt-2 mb-8">Log in to your ModelVerse account.</p>
+
+    <form id="login-form" class="flex flex-col gap-5">
+      <label class="flex flex-col gap-2">
+        Email
+        <input
+          id="email"
+          type="email"
+          required
+          autocomplete="email"
+          class="rounded-lg border px-4 py-3"
+        />
+      </label>
+
+      <label class="flex flex-col gap-2">
+        Password
+        <input
+          id="password"
+          type="password"
+          required
+          autocomplete="current-password"
+          class="rounded-lg border px-4 py-3"
+        />
+      </label>
+
+      <button
+        type="submit"
+        class="rounded-lg bg-violet-600 px-4 py-3 font-semibold text-white"
+      >
+        Log in
+      </button>
+
+      <p id="login-message" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="mt-6">
+      Don't have an account?
+      <a class="text-violet-600 underline" href="/auth/register">
+        Create an account
+      </a>
+    </p>
+  </main>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>("#login-form");
+    const message = document.querySelector<HTMLParagraphElement>("#login-message");
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const email = (document.querySelector<HTMLInputElement>("#email")?.value ?? "").trim();
+      const password = document.querySelector<HTMLInputElement>("#password")?.value ?? "";
+
+      if (message) message.textContent = "Logging in...";
+
+      try {
+        const response = await fetch("http://localhost:8787/auth/login", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          if (message) message.textContent = result.error ?? "Login failed.";
+          return;
+        }
+
+        window.location.href = "/";
+      } catch {
+        if (message) {
+          message.textContent = "Could not connect to the server. Make sure the API is running.";
+        }
+      }
+    });
+  </script>
+</BaseLayout>
