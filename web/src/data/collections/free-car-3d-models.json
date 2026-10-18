@@ -21,7 +21,7 @@
       "lego"
     ]
   },
-  "updatedAt": "2026-10-13T12:08:56.695Z",
+  "updatedAt": "2026-10-18T09:02:11.977Z",
   "assets": [
     {
       "id": "polyhaven:covered_car",
@@ -136,17 +136,6 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzI0NzQwMzk3LnBuZw==/315x250%23c/23On9Q.png",
       "downloadable": false,
       "author": "GaminglabplayZ",
-      "free": true
-    },
-    {
-      "id": "itchio:kobypierce123/car-3d",
-      "provider": "itchio",
-      "title": "Car 3D",
-      "type": "model",
-      "url": "https://kobypierce123.itch.io/car-3d",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxMjc3OTgucG5n/315x250%23c/4mmSG%2B.png",
-      "downloadable": false,
-      "author": "KobyPierec123",
       "free": true
     },
     {
@@ -582,6 +571,17 @@
       "url": "https://opengameart.org/content/car-kit",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_1375.png",
       "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:pepeeldesarollador/car-3d",
+      "provider": "itchio",
+      "title": "car 3D",
+      "type": "model",
+      "url": "https://pepeeldesarollador.itch.io/car-3d",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxMDAwNDQ3LnBuZw==/315x250%23c/PGpiIU.png",
+      "downloadable": false,
+      "author": "pepeeldesarollador",
       "free": true
     }
   ]
