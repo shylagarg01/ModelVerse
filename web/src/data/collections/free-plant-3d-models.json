@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-07T09:05:40.113Z",
+  "updatedAt": "2026-10-18T09:02:49.374Z",
   "assets": [
     {
       "id": "polyhaven:potted_plant_02",
@@ -531,29 +531,6 @@
       "polyCount": 1606633
     },
     {
-      "id": "blenderkit:cd36347b-acd9-45bf-99bb-c3a27299dc52",
-      "provider": "blenderkit",
-      "title": "Plant indoor",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/cd36347b-acd9-45bf-99bb-c3a27299dc52/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/d1487655593847a4af134201db80f576/files/thumbnail_fce6fcdb-ec66-4602-a1cd-68c397b933bd.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Anh Le",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 15425
-    },
-    {
       "id": "polyhaven:tree_small_02",
       "provider": "polyhaven",
       "title": "Tree Small 02",
@@ -768,6 +745,16 @@
       ],
       "maxResolution": "4k",
       "polyCount": 299359
+    },
+    {
+      "id": "opengameart:tropical-plant-02-0",
+      "provider": "opengameart",
+      "title": "Tropical plant 02",
+      "type": "model",
+      "url": "https://opengameart.org/content/tropical-plant-02-0",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_73.jpg",
+      "downloadable": true,
+      "free": true
     }
   ]
 }
