@@ -1,4 +1,3 @@
-
 ---
 import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -110,10 +109,7 @@ const active = (href: string) => href === current;
           Sign up
         </a>
 
-        <span
-          id="header-user"
-          class="hidden max-w-32 truncate text-sm text-muted-foreground"
-        ></span>
+        <span id="header-user" class="hidden max-w-32 truncate text-sm text-muted-foreground"></span>
 
         <button
           id="header-logout"
@@ -170,24 +166,15 @@ const active = (href: string) => href === current;
             <a href="/search" class="rounded-xl border border-border px-3 py-2.5 text-center text-sm font-medium text-foreground hover:bg-accent">
               Search 3D assets
             </a>
-
             <a href="/editor" class="rounded-xl bg-primary px-3 py-2.5 text-center text-sm font-semibold text-primary-foreground">
               Launch 3D Studio
             </a>
-
-            <a id="mobile-header-login" href="/auth/login" class="rounded-xl px-3 py-2.5 text-center text-sm font-medium text-foreground hover:bg-accent">
+            <a href="/auth/login" class="rounded-xl px-3 py-2.5 text-center text-sm font-medium text-foreground hover:bg-accent">
               Log in
             </a>
-
-            <a id="mobile-header-register" href="/auth/register" class="rounded-xl bg-primary/10 px-3 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/15">
+            <a href="/auth/register" class="rounded-xl bg-primary/10 px-3 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/15">
               Create an account
             </a>
-
-            <span id="mobile-header-user" class="hidden truncate rounded-xl px-3 py-2.5 text-center text-sm text-muted-foreground"></span>
-
-            <button id="mobile-header-logout" type="button" class="hidden rounded-xl border border-border px-3 py-2.5 text-sm font-medium text-foreground hover:bg-accent">
-              Log out
-            </button>
           </div>
         </div>
       </details>
@@ -372,82 +359,49 @@ const active = (href: string) => href === current;
   const userLabel = document.querySelector<HTMLElement>("#header-user");
   const logoutButton = document.querySelector<HTMLButtonElement>("#header-logout");
 
-  const mobileLoginLink = document.querySelector<HTMLAnchorElement>("#mobile-header-login");
-  const mobileRegisterLink = document.querySelector<HTMLAnchorElement>("#mobile-header-register");
-  const mobileUserLabel = document.querySelector<HTMLElement>("#mobile-header-user");
-  const mobileLogoutButton = document.querySelector<HTMLButtonElement>("#mobile-header-logout");
-
-  const AUTH_API = "http://localhost:8787/auth";
-
   async function refreshAuth() {
     try {
-      const response = await fetch(`${AUTH_API}/me`, {
-        credentials: "include",
+      const response = await fetch("/auth/me", {
+        credentials: "same-origin",
       });
 
       if (!response.ok) return;
 
       const result = await response.json();
       const user = result.user;
-      const loggedIn = Boolean(user);
 
-      loginLink?.classList.toggle("hidden", loggedIn);
-      registerLink?.classList.toggle("hidden", loggedIn);
-      userLabel?.classList.toggle("hidden", !loggedIn);
-      logoutButton?.classList.toggle("hidden", !loggedIn);
+      loginLink?.classList.toggle("hidden", Boolean(user));
+      registerLink?.classList.toggle("hidden", Boolean(user));
+      userLabel?.classList.toggle("hidden", !user);
+      logoutButton?.classList.toggle("hidden", !user);
 
-      mobileLoginLink?.classList.toggle("hidden", loggedIn);
-      mobileRegisterLink?.classList.toggle("hidden", loggedIn);
-      mobileUserLabel?.classList.toggle("hidden", !loggedIn);
-      mobileLogoutButton?.classList.toggle("hidden", !loggedIn);
-
-      if (user) {
-        if (userLabel) {
-          userLabel.textContent = user.email;
-          userLabel.title = user.role === "admin" ? "Administrator" : "Signed in";
-        }
-
-        if (mobileUserLabel) {
-          mobileUserLabel.textContent = user.email;
-          mobileUserLabel.title = user.role === "admin" ? "Administrator" : "Signed in";
-        }
+      if (userLabel && user) {
+        userLabel.textContent = user.email;
+        userLabel.title = user.role === "admin" ? "Administrator" : "Signed in";
       }
-    } catch (error) {
-      console.error("Could not check login status:", error);
+    } catch {
+      // Keep login and registration links visible if the API is unavailable.
     }
   }
 
-  async function logout() {
-    const buttons = [logoutButton, mobileLogoutButton].filter(
-      (button): button is HTMLButtonElement => button !== null,
-    );
-
-    buttons.forEach((button) => {
-      button.disabled = true;
-    });
+  logoutButton?.addEventListener("click", async () => {
+    if (logoutButton) logoutButton.disabled = true;
 
     try {
-      const response = await fetch(`${AUTH_API}/logout`, {
+      const response = await fetch("/auth/logout", {
         method: "POST",
-        credentials: "include",
+        credentials: "same-origin",
       });
 
-      if (!response.ok) {
-        throw new Error("Logout failed.");
+      if (response.ok) {
+        window.location.href = "/";
+      } else if (logoutButton) {
+        logoutButton.disabled = false;
       }
-
-      window.location.href = "/";
-    } catch (error) {
-      console.error("Could not log out:", error);
-      buttons.forEach((button) => {
-        button.disabled = false;
-      });
+    } catch {
+      if (logoutButton) logoutButton.disabled = false;
     }
-  }
-
-  logoutButton?.addEventListener("click", logout);
-  mobileLogoutButton?.addEventListener("click", logout);
+  });
 
   void refreshAuth();
 </script>
-
