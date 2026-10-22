@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-11T11:01:07.970Z",
+  "updatedAt": "2026-10-22T09:36:04.126Z",
   "assets": [
     {
       "id": "blenderkit:72fac4cb-901c-4a48-8fc8-84a0baa0bd21",
@@ -26,7 +26,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 82
     },
@@ -264,7 +265,7 @@
         "usdz",
         "obj"
       ],
-      "polyCount": 548
+      "polyCount": 422
     },
     {
       "id": "itchio:divby00/low-poly-tree",
@@ -339,7 +340,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 106
     },
@@ -394,7 +396,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 150
     },
@@ -449,7 +452,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 100
     },
@@ -470,7 +474,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 140
     },
@@ -514,7 +519,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 140
     },
@@ -535,7 +541,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "polyCount": 660
     },
