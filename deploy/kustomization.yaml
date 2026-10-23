@@ -15,4 +15,4 @@ resources:
   - servicemonitor.yaml
 images:
   - name: ghcr.io/shylagarg01/modelverse
-    newTag: sha-561f213c33dc8f3c8fdc9338d23c0c4d74448cfb
+    newTag: sha-62d2d17fb5187d9fde4a4c27088f7f4dba708116
