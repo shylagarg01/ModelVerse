@@ -158,7 +158,7 @@ describe("HTTP API", () => {
     expect(root.headers.get("content-type")).toContain("text/markdown");
     expect(await root.text()).toContain("agent guide");
     const mcp = await app.request("/docs/mcp", { headers: { accept: "text/markdown" } });
-    expect(await mcp.text()).toBe("# MCP setup\n");
+    expect((await mcp.text()).replace(/\r\n/g, "\n")).toBe("# MCP setup\n");
     expect((await app.request("/agents.md")).status).toBe(200);
     expect(await (await app.request("/llms.txt")).text()).toContain("3D Asset Server");
   });

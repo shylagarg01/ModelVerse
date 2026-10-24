@@ -57,10 +57,13 @@ export interface Matchable {
  */
 
 
+import { parsePromptDeterministic, type InterpretedPrompt } from "../ai/prompt-interpreter.js";
+
 const SEARCH_STOP_WORDS = new Set([
   "a", "an", "the", "for", "of", "with", "and", "or",
   "in", "on", "to", "me", "please", "show", "find",
   "get", "some", "looking", "want", "need", "give",
+  "model", "models", "asset", "assets", "3d", "render",
 ]);
 
 const ANIMAL_TERMS = new Set([
@@ -69,122 +72,255 @@ const ANIMAL_TERMS = new Set([
   "snake", "turtle", "amphibian",
 ]);
 
-export function matchScore(item: Matchable, query: string): number {
-  const tokens = [...new Set(
-    tokenize(query)
-      .map(stem)
-      .filter((t) => !SEARCH_STOP_WORDS.has(t)),
-  )];
+const INCOMPATIBLE_CATEGORIES: [Set<string>, Set<string>][] = [
+  // Laptops vs Desktops / Furniture / Chairs / Tables
+  [new Set(["laptop", "notebook"]), new Set(["desktop", "table", "chair", "sofa", "bed", "furniture", "building", "vehicle", "car", "plant", "tree"])],
+  // Chairs vs Tables / Vehicles
+  [new Set(["chair", "seat", "stool", "armchair"]), new Set(["table", "desk", "car", "vehicle", "laptop", "tree"])],
+  // Tables vs Chairs / Vehicles / Computers
+  [new Set(["table", "desk"]), new Set(["chair", "car", "vehicle", "laptop", "tree", "animal"])],
+  // Cars vs Trees / Animals / Furniture / Computers
+  [new Set(["car", "automobile", "vehicle", "supercar"]), new Set(["tree", "plant", "animal", "chair", "table", "laptop", "furniture"])],
+  // Trees vs Animals / Vehicles / Computers / Furniture
+  [new Set(["tree", "plant", "flora", "vegetation"]), new Set(["animal", "frog", "car", "vehicle", "laptop", "table", "chair", "furniture"])],
+];
 
-  if (tokens.length === 0) return 1;
+export function matchScore(item: Matchable, queryOrIntent: string | InterpretedPrompt): number {
+  const isIntent = typeof queryOrIntent === "object" && queryOrIntent !== null && "objectType" in queryOrIntent;
+  const rawQuery = isIntent
+    ? (queryOrIntent as InterpretedPrompt).rawPrompt || (queryOrIntent as InterpretedPrompt).searchQuery || (queryOrIntent as InterpretedPrompt).objectType
+    : (queryOrIntent as string);
+
+  if (!rawQuery.trim() && !isIntent) return 1;
+
+  const intent: InterpretedPrompt = isIntent
+    ? (queryOrIntent as InterpretedPrompt)
+    : parsePromptDeterministic(rawQuery);
+
+  const rawTokens = tokenize(rawQuery)
+    .map(stem)
+    .filter((t) => !SEARCH_STOP_WORDS.has(t));
+
+  const tokens = [...new Set(rawTokens)];
+  if (tokens.length === 0 && !intent.objectType) return 1;
 
   const titleTokens = tokenize(item.title).map(stem);
   const title = new Set(titleTokens);
+  const titleText = item.title.toLowerCase();
 
-  const tags = new Set(
-    [...(item.tags ?? []), ...(item.categories ?? [])]
-      .flatMap((t) => tokenize(t))
-      .map(stem),
-  );
+  const tagTokens = [...(item.tags ?? []), ...(item.categories ?? [])]
+    .flatMap((t) => tokenize(t))
+    .map(stem);
+  const tags = new Set(tagTokens);
 
-  const desc = new Set(tokenize(item.description ?? "").map(stem));
+  const descTokens = tokenize(item.description ?? "").map(stem);
+  const desc = new Set(descTokens);
+
+  const metadataText = [
+    item.title,
+    ...(item.tags ?? []),
+    ...(item.categories ?? []),
+    item.description ?? "",
+  ].join(" ").toLowerCase();
+
+  const itemTokens = new Set([...title, ...tags]);
   const itemType = (item as Matchable & { type?: AssetType }).type;
 
-  const wantsMaterial = /\b(material|materials|paint|shader|pbr|substance)\b/i.test(query);
-
-  const wantsTexture = /\b(texture|textures|decal|seamless)\b/i.test(query);
-
-  const wantsModel = /\b(model|models|3d|mesh|vehicle|vehicles|car|cars|tree|trees|character|characters|prop|props|object|objects|chair|chairs)\b/i.test(query);
-  const hasModelIntent = wantsModel && !wantsMaterial && !wantsTexture;
-
-  let score = 0;
-
-  for (const token of tokens) {
-    if (title.has(token)) score += 1;
-    else if (tags.has(token)) score += 0.7;
-    else if (desc.has(token)) score += 0.25;
-    else if (
-      [...title].some(
-        (word) => token.length >= 4 && word.startsWith(token),
-      )
-    ) {
-      score += 0.4;
+  // 1. Negative conditions / Exclusions check
+  const negConditions = intent.negativeConditions ?? [];
+  for (const neg of negConditions) {
+    const negStemmed = tokenize(neg).map(stem);
+    if (negStemmed.length > 0) {
+      // If all words of a negative condition appear in title or tags
+      const inTitle = negStemmed.every((t) => title.has(t));
+      const inTags = negStemmed.every((t) => tags.has(t));
+      if (inTitle || inTags) {
+        // Severe violation penalty
+        return 0.02;
+      }
     }
   }
 
-  let relevance = score / tokens.length;
-
-
- // Give stronger weight to the main subject of the search.
-const wantsCar = /\b(car|cars|vehicle|vehicles|sports car)\b/i.test(query);
-const wantsRed = /\bred\b/i.test(query);
-const wantsLowPoly = /\blow[- ]?poly\b/i.test(query);
-const wantsFree = /\bfree\b/i.test(query);
-const titleText = item.title.toLowerCase();
-const metadataText = [
-  item.title,
-  ...(item.tags ?? []),
-  ...(item.categories ?? []),
-  item.description ?? "",
-].join(" ").toLowerCase();
-
-if (wantsCar) {
-  if (/\b(car|cars|vehicle|vehicles|automobile)\b/i.test(metadataText)) {
-    relevance += 0.2;
-  } else {
-    relevance *= 0.4;
+  // Demote animal assets for unrelated searches like "tree"
+  const wantsAnimal = tokens.some((t) => ANIMAL_TERMS.has(t)) ||
+    (intent.objectType && ANIMAL_TERMS.has(intent.objectType));
+  const isAnimal = [...itemTokens].some((t) => ANIMAL_TERMS.has(t));
+  if (isAnimal && !wantsAnimal) {
+    if (tokens.includes("tree") || intent.objectType === "tree") {
+      return 0.05;
+    }
   }
-}
 
-if (wantsRed) {
-  if (/\bred\b/i.test(metadataText)) relevance += 0.1;
-}
+  // 2. Primary Object Match
+  const primaryObj = intent.objectType.toLowerCase().trim();
+  const primaryObjTokens = tokenize(primaryObj).map(stem);
+  let primaryScore = 0;
 
-if (wantsLowPoly) {
-  if (/\blow[- ]?poly\b/i.test(metadataText)) {
-    relevance += 0.15;
+  if (primaryObjTokens.length > 0) {
+    // Check exact compound match in title
+    if (primaryObj.length > 2 && titleText.includes(primaryObj)) {
+      primaryScore = 1.0;
+    } else if (primaryObjTokens.every((t) => title.has(t))) {
+      primaryScore = 0.95;
+    } else if (primaryObjTokens.some((t) => title.has(t))) {
+      primaryScore = 0.75;
+    } else if (primaryObjTokens.every((t) => tags.has(t))) {
+      primaryScore = 0.70;
+    } else if (primaryObjTokens.some((t) => tags.has(t))) {
+      primaryScore = 0.50;
+    } else if (primaryObjTokens.some((t) => desc.has(t))) {
+      primaryScore = 0.25;
+    } else {
+      // Check synonyms
+      const syns = intent.keywords.flatMap((k) => tokenize(k)).map(stem);
+      if (syns.some((s) => title.has(s))) {
+        primaryScore = 0.65;
+      } else if (syns.some((s) => tags.has(s))) {
+        primaryScore = 0.40;
+      }
+    }
   } else {
-    relevance *= 0.8;
+    primaryScore = 1.0;
   }
-}
 
-  // Reward exact phrase matches in titles.
+  // Category mismatch check
+  if (primaryScore === 0 && primaryObjTokens.length > 0) {
+    // If the asset doesn't match the primary object at all, check if it's an incompatible category
+    for (const [targetGroup, incompatibleGroup] of INCOMPATIBLE_CATEGORIES) {
+      if (primaryObjTokens.some((t) => targetGroup.has(t))) {
+        if ([...itemTokens].some((t) => incompatibleGroup.has(t))) {
+          return 0; // Hard rejection for clear category contradiction
+        }
+      }
+    }
+  }
+
+  // 3. Token-level baseline overlap
+  let tokenHits = 0;
+  for (const token of tokens) {
+    if (title.has(token)) tokenHits += 1.0;
+    else if (tags.has(token)) tokenHits += 0.7;
+    else if (desc.has(token)) tokenHits += 0.25;
+    else if ([...title].some((w) => token.length >= 4 && w.startsWith(token))) {
+      tokenHits += 0.4;
+    }
+  }
+  const tokenRelevance = tokens.length > 0 ? tokenHits / tokens.length : 1;
+
+  // 4. Attribute Verification (Color, Material, Style, Features)
+  let attrBonus = 0;
+  const colors = intent.attributes?.colors ?? [];
+  const materials = intent.attributes?.materials ?? [];
+  const styles = intent.style ?? [];
+  const features = intent.attributes?.features ?? [];
+
+  // Color check
+  for (const col of colors) {
+    const colStem = stem(col);
+    if (title.has(colStem) || new RegExp(`\\b${col}\\b`, "i").test(titleText)) {
+      attrBonus += 0.25;
+    } else if (tags.has(colStem)) {
+      attrBonus += 0.15;
+    } else if (new RegExp(`\\b${col}\\b`, "i").test(metadataText)) {
+      attrBonus += 0.08;
+    }
+  }
+
+  // Check for confirmed color mismatch on primary object
+  if (colors.length > 0) {
+    const conflictingColors = ["silver", "black", "white", "red", "green", "blue", "yellow", "gold", "orange"].filter((c) => !colors.includes(c));
+    for (const cc of conflictingColors) {
+      if (title.has(stem(cc)) || new RegExp(`\\b${cc}\\b`, "i").test(titleText)) {
+        attrBonus -= 0.15;
+        break;
+      }
+    }
+  }
+
+  // Material check
+  for (const mat of materials) {
+    const matStem = stem(mat);
+    if (title.has(matStem) || new RegExp(`\\b${mat}\\b`, "i").test(titleText)) {
+      attrBonus += 0.25;
+    } else if (tags.has(matStem)) {
+      attrBonus += 0.15;
+    } else if (new RegExp(`\\b${mat}\\b`, "i").test(metadataText)) {
+      attrBonus += 0.08;
+    }
+  }
+
+  // Style check
+  for (const st of styles) {
+    const stTokens = tokenize(st).map(stem);
+    if (stTokens.every((t) => title.has(t)) || new RegExp(`\\b${st.replace(/[- ]/g, "[- ]?")}\\b`, "i").test(titleText)) {
+      attrBonus += 0.20;
+    } else if (stTokens.some((t) => tags.has(t)) || new RegExp(`\\b${st.replace(/[- ]/g, "[- ]?")}\\b`, "i").test(metadataText)) {
+      attrBonus += 0.12;
+    }
+  }
+
+  // Features check
+  for (const feat of features) {
+    const fTokens = tokenize(feat).map(stem).filter((t) => !SEARCH_STOP_WORDS.has(t));
+    if (fTokens.length > 0 && fTokens.every((t) => title.has(t) || tags.has(t))) {
+      attrBonus += 0.18;
+    } else if (fTokens.length > 0 && fTokens.some((t) => tags.has(t) || desc.has(t))) {
+      attrBonus += 0.10;
+    }
+  }
+
+  // 5. Exact Phrase Matching in Title
+  let phraseBonus = 0;
   const normalizedTitle = ` ${titleTokens.join(" ")} `;
   const normalizedQuery = ` ${tokens.join(" ")} `;
-
-  if (
-    tokens.length > 1 &&
-    normalizedTitle.includes(normalizedQuery)
-  ) {
-    relevance = Math.min(1, relevance + 0.3);
+  if (tokens.length > 1 && normalizedTitle.includes(normalizedQuery)) {
+    phraseBonus = 0.30;
+  } else if (primaryObjTokens.length > 1 && normalizedTitle.includes(` ${primaryObjTokens.join(" ")} `)) {
+    phraseBonus = 0.20;
   }
 
-  const itemTokens = new Set([
-    ...title,
-    ...tags,
-  ]);
+  // Combine components:
+  let relevance = 0;
+  if (primaryScore > 0) {
+    // Check if title has a direct color conflict with the requested color (e.g. Silver title when Black requested)
+    const hasColorConflict = colors.length > 0 &&
+      ["silver", "black", "white", "red", "green", "blue", "yellow", "gold", "orange"]
+        .filter((c) => !colors.includes(c))
+        .some((cc) => title.has(stem(cc)) || new RegExp(`\\b${cc}\\b`, "i").test(titleText));
 
-  const wantsAnimal = tokens.some((t) => ANIMAL_TERMS.has(t));
-  const isAnimal = [...itemTokens].some((t) => ANIMAL_TERMS.has(t));
-
-  // Demote animal assets for unrelated searches like "tree".
-  if (isAnimal && !wantsAnimal) {
-    relevance *= 0.15;
+    if (primaryScore >= 0.95 && tokenRelevance >= 0.95 && !hasColorConflict) {
+      // Perfect match on primary object and all requested tokens
+      relevance = 1.0;
+    } else if (tokens.length > 1) {
+      relevance = 0.45 * primaryScore + 0.40 * tokenRelevance + attrBonus + phraseBonus;
+      if (hasColorConflict) {
+        relevance = Math.min(relevance, 0.65);
+      }
+    } else {
+      relevance = primaryScore;
+    }
+  } else {
+    // No primary object match
+    relevance = 0.15 * tokenRelevance;
   }
+
+  // Asset type intent filtering
+  const wantsMaterial = /\b(material|materials|paint|shader|pbr|substance)\b/i.test(rawQuery);
+  const wantsTexture = /\b(texture|textures|decal|seamless)\b/i.test(rawQuery);
+  const wantsModel = /\b(model|models|3d|mesh|vehicle|vehicles|car|cars|tree|trees|character|characters|prop|props|object|objects|chair|chairs|laptop|table)\b/i.test(rawQuery);
+  const hasModelIntent = wantsModel && !wantsMaterial && !wantsTexture;
+
   if (itemType) {
-    if (hasModelIntent && itemType === "material") relevance *= 0.2;
+    if (hasModelIntent && (itemType === "material" || itemType === "hdri")) relevance *= 0.2;
     if (hasModelIntent && itemType === "texture") relevance *= 0.3;
-    if (hasModelIntent && itemType === "hdri") relevance *= 0.2;
-
     if (wantsMaterial && itemType === "model") relevance *= 0.2;
     if (wantsMaterial && itemType === "other") relevance *= 0.4;
-
     if (wantsTexture && itemType === "model") relevance *= 0.2;
-}
- 
+  }
 
   return Math.max(0, Math.min(1, relevance));
 }
+
 
 
 /** Filter + rank a local catalogue (used by providers that fetch a full list). */
