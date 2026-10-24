@@ -9,6 +9,7 @@ import type {
   ProviderInfo,
 } from "./types.js";
 import { matchScore, parseAssetId } from "./util.js";
+import { parsePromptDeterministic, type InterpretedPrompt } from "../ai/prompt-interpreter.js";
 
 export interface SearchRequest {
   query: string;
@@ -97,9 +98,16 @@ export class AssetService {
     const unknown = req.providers?.filter((p) => !this.providers.has(p)) ?? [];
     if (unknown.length) throw new UnknownProviderError(unknown);
 
+    const rawQuery = req.query.trim();
+    const intent = parsePromptDeterministic(rawQuery);
+    // For candidate retrieval: use intent.searchQuery if the prompt specifies negative clauses or complex wording
+    const providerQuery = (intent.negativeConditions && intent.negativeConditions.length > 0 && intent.searchQuery)
+      ? intent.searchQuery
+      : (intent.searchQuery || rawQuery);
+
     // Ask each source for a full page so the merged ranking has enough to choose from.
     const perProvider = Math.min(limit, 50);
-    const q = { query: req.query.trim(), types, freeOnly: req.freeOnly, limit: perProvider, offset: req.offset };
+    const q = { query: providerQuery, types, freeOnly: req.freeOnly, limit: perProvider, offset: req.offset };
 
     const reports: ProviderSearchReport[] = [];
     const ranked: { asset: Asset; rank: number; provider: Provider }[] = [];
@@ -147,10 +155,10 @@ export class AssetService {
       }),
     );
 
-    const results = rankResults(ranked, q.query).slice(0, limit);
+    const results = rankResults(ranked, intent).slice(0, limit);
     const order = [...this.providers.keys()];
     reports.sort((a, b) => order.indexOf(a.provider) - order.indexOf(b.provider));
-    return { query: q.query, types, results, providers: reports };
+    return { query: rawQuery, types, results, providers: reports };
   }
 
   async getAsset(id: string): Promise<AssetDetails | null> {
@@ -165,51 +173,96 @@ export class AssetService {
 }
 
 /**
- * Merge per-provider results into one list.
- * Score = text relevance (dominant) + the source's own ranking + small boosts for
- * free / directly downloadable assets, then a diversity penalty so a single
- * large catalogue can't fill the whole first page.
+ * Deduplicate identical assets returned across multiple providers or mirrors.
  */
+function deduplicateAssets(
+  items: { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }[],
+): { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }[] {
+  const seen = new Map<string, { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }>();
+  for (const item of items) {
+    const normTitle = item.asset.title.toLowerCase().replace(/[^a-z0-9]/g, "");
+    const authorKey = (item.asset.author ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    // Key by URL if available, else content fingerprint
+    const key = item.asset.url && !item.asset.url.includes("search")
+      ? `url:${item.asset.url}`
+      : `content:${item.asset.type}:${normTitle}:${authorKey}`;
 
+    const existing = seen.get(key);
+    if (!existing) {
+      seen.set(key, item);
+    } else {
+      // Prefer directly downloadable or higher access weight
+      if (!existing.asset.downloadable && item.asset.downloadable) {
+        seen.set(key, item);
+      } else if (ACCESS_WEIGHT[item.provider.access] > ACCESS_WEIGHT[existing.provider.access]) {
+        seen.set(key, item);
+      }
+    }
+  }
+  return Array.from(seen.values());
+}
+
+/**
+ * Merge per-provider results into one relevant, deduped, and balanced list.
+ * Relevance score is dominant (0.85) based on semantic prompt intent.
+ * Secondary signals (source rank, direct download, access reliability) act as tie-breakers.
+ * Controlled diversity prevents a single provider from drowning out variety without promoting irrelevant assets.
+ */
 export function rankResults(
   items: { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }[],
-  query: string,
+  queryOrIntent: string | InterpretedPrompt,
 ): Asset[] {
-  const scored = items.map(({ asset, rank, provider }) => {
-    const relevance = matchScore(asset, query);
+  const isIntent = typeof queryOrIntent === "object" && queryOrIntent !== null && "objectType" in queryOrIntent;
+  const intent: InterpretedPrompt = isIntent
+    ? (queryOrIntent as InterpretedPrompt)
+    : parsePromptDeterministic(typeof queryOrIntent === "string" ? queryOrIntent : "");
+
+  const deduped = deduplicateAssets(items);
+
+  const scored = deduped.map(({ asset, rank, provider }) => {
+    const relevance = matchScore(asset, intent);
     const sourceRank = 1 / (1 + rank * 0.15);
 
-    const score =
-      0.82 * relevance +
+    // Relevance is dominant: 0.85 weight
+    // Secondary signals only act as tie-breakers among relevant assets
+    const secondary =
       0.08 * sourceRank +
-      0.04 * ACCESS_WEIGHT[provider.access] +
-      0.03 * (asset.price?.free ? 1 : 0) +
-      0.03 * (asset.downloadable ? 1 : 0);
+      0.03 * ACCESS_WEIGHT[provider.access] +
+      0.02 * (asset.price?.free ? 1 : 0) +
+      0.02 * (asset.downloadable ? 1 : 0);
+
+    // If relevance is 0 or near zero, do not allow secondary signals to make it look relevant
+    const score = relevance > 0.05
+      ? 0.85 * relevance + secondary
+      : relevance * 0.5;
 
     return { asset, provider: provider.id, score, relevance };
   });
 
-  scored.sort((a, b) =>
-    b.score - a.score || b.relevance - a.relevance
-  );
+  // Sort primarily by score, tie-break by relevance
+  scored.sort((a, b) => b.score - a.score || b.relevance - a.relevance);
 
   const seenPerProvider = new Map<string, number>();
-
   const diversified = scored.map((result) => {
     const count = seenPerProvider.get(result.provider) ?? 0;
     seenPerProvider.set(result.provider, count + 1);
 
+    // Controlled diversity penalty (0.99^count) that does NOT overpower primary relevance
     return {
       ...result,
-      score: result.score * Math.pow(0.97, count),
+      score: result.score * Math.pow(0.99, count),
     };
   });
 
-  diversified.sort((a, b) =>
-    b.score - a.score || b.relevance - a.relevance
-  );
+  diversified.sort((a, b) => b.score - a.score || b.relevance - a.relevance);
 
-  return diversified.map(({ asset, score }) => ({
+  // Candidate filtering: if we have relevant results, prune clearly irrelevant noise (relevance < 0.10)
+  const hasStrongHits = diversified.some((r) => r.relevance >= 0.25);
+  const candidates = hasStrongHits
+    ? diversified.filter((r) => r.relevance >= 0.10)
+    : diversified;
+
+  return candidates.map(({ asset, score }) => ({
     ...asset,
     score: round(score),
   }));

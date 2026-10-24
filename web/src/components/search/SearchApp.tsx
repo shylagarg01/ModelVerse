@@ -144,41 +144,10 @@ const run = useCallback(async (f: Filters, append: boolean) => {
   firstRun.current = false;
 
   try {
-    // Interpret a new search with AI only once.
-    if (!append && f.q.trim()) {
-      try {
-        const interpreted = await apiPost<{
-          result: {
-            searchQuery: string;
-            keywords: string[];
-            objectType: string;
-            appearance: string[];
-            style: string[];
-          };
-        }>("/v1/interpret", { prompt: f.q });
-
-        const result = interpreted.result;
-        const terms = [
-          result.searchQuery,
-          ...result.keywords,
-          result.objectType,
-          ...result.appearance,
-          ...result.style,
-        ]
-          .filter((term) => typeof term === "string" && term.trim())
-          .map((term) => term.trim());
-
-        aiQuery.current = [...new Set(terms)].join(" ") || f.q;
-      } catch (aiError) {
-        // If AI fails, keep the original search working.
-        console.warn("AI interpretation unavailable; using normal search.", aiError);
-        aiQuery.current = f.q;
-      }
-    }
-
+    // Preserve the user's complete prompt so backend hybrid retrieval understands full intent
     const searchFilters = {
       ...f,
-      q: append ? (aiQuery.current ?? f.q) : (aiQuery.current ?? f.q),
+      q: f.q.trim(),
     };
 
     const params = toParams(searchFilters, offset.current);
@@ -536,9 +505,9 @@ const run = useCallback(async (f: Filters, append: boolean) => {
           <div className="mx-auto flex size-14 items-center justify-center rounded-2xl bg-muted/60 text-muted-foreground">
             <Filter className="size-7 opacity-60" />
           </div>
-          <h3 className="mt-4 text-lg font-bold text-foreground">No assets found</h3>
+          <h3 className="mt-4 text-lg font-bold text-foreground">No sufficiently relevant results found</h3>
           <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
-            We couldn't find matching assets for your query. Try broadening your keywords or removing some filters.
+            We couldn't verify sufficiently matching assets for your exact prompt. Try broadening your keywords or removing some filters.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {SUGGESTIONS.map((s) => (
