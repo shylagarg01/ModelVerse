@@ -19,7 +19,7 @@
       "Corrugated Iron"
     ]
   },
-  "updatedAt": "2026-10-22T09:36:31.401Z",
+  "updatedAt": "2026-10-25T09:22:25.848Z",
   "assets": [
     {
       "id": "polyhaven:green_metal_rust",
@@ -357,22 +357,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "texturecan:107",
-      "provider": "texturecan",
-      "title": "Punched or Perforated Metal Sheet Texture with Rust",
-      "type": "material",
-      "url": "https://www.texturecan.com/details/107/",
-      "thumbnailUrl": "https://www.texturecan.com/img/textures/metal_0016/metal_0016_sphere_300.png",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "cgbookcase:rusty-painted-metal-01",
       "provider": "cgbookcase",
       "title": "Rusty Painted Metal 01",
@@ -509,27 +493,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "blenderkit:128a962f-05cb-48af-bd73-c92d38846bd5",
-      "provider": "blenderkit",
-      "title": "Iron Rust",
-      "type": "material",
-      "url": "https://www.blendkit.com/asset-gallery-detail/128a962f-05cb-48af-bd73-c92d38846bd5/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/635b5df4480d4e23b745c56c18940cfd/files/thumbnail_98d6fb7a-4da1-4c66-a774-129014321ab3.webp.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Free poly",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "2k"
-    },
-    {
       "id": "ambientcg:Rust004",
       "provider": "ambientcg",
       "title": "Rust 004",
@@ -585,27 +548,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "ambientcg:Metal063",
-      "provider": "ambientcg",
-      "title": "Metal 063",
-      "type": "material",
-      "url": "https://ambientcg.com/a/Metal063",
-      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Metal063.jpg",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "jpg",
-        "png"
-      ],
-      "maxResolution": "8k"
-    },
-    {
       "id": "sharetextures:rusty-metal-2",
       "provider": "sharetextures",
       "title": "Rusty Metal 2",
@@ -639,27 +581,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "blenderkit:8d9363b9-398c-4868-b297-37521f8b659f",
-      "provider": "blenderkit",
-      "title": "Metal Welded Rust",
-      "type": "material",
-      "url": "https://www.blendkit.com/asset-gallery-detail/8d9363b9-398c-4868-b297-37521f8b659f/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/f3a0aa2996524e29835c7ab4eb4515e9/files/thumbnail_f49b0021-2d8f-4381-96e7-bda0ca364e53.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "James Middleton",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k"
-    },
-    {
       "id": "blenderkit:b0da3ff4-6dad-4667-b8c4-c6a6a9cfafa2",
       "provider": "blenderkit",
       "title": "Rust",
@@ -679,6 +600,66 @@
         "blend"
       ],
       "maxResolution": "2k"
+    },
+    {
+      "id": "threedtexel:bumpy-metal-rusty-pbr-material",
+      "provider": "threedtexel",
+      "title": "Bumpy Rusty Metal – PBR Material",
+      "type": "material",
+      "url": "https://3dtexel.com/product/bumpy-metal-rusty-pbr-material/",
+      "thumbnailUrl": "https://3dtexel.com/wp-content/uploads/2025/11/Untitled_Sphere-Camera-53-768x768.webp",
+      "downloadable": false,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "maxResolution": "4k"
+    },
+    {
+      "id": "itchio:tempisq/rust-vol1",
+      "provider": "itchio",
+      "title": "Rusted Metal Vol.1",
+      "type": "texture",
+      "url": "https://tempisq.itch.io/rust-vol1",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4OTI4MjMyLnBuZw==/315x250%23c/DoM14m.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
+    },
+    {
+      "id": "texturecan:611",
+      "provider": "texturecan",
+      "title": "Rusty and Oxidized Metal Plate with Rivets",
+      "type": "material",
+      "url": "https://www.texturecan.com/details/611/",
+      "thumbnailUrl": "https://www.texturecan.com/img/textures/metal_0077/metal_0077_sphere_300.png",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "threedtextures:green-marble-gold-encrusted-001",
+      "provider": "threedtextures",
+      "title": "Green Marble Gold Encrusted 001",
+      "type": "material",
+      "url": "https://3dtextures.me/2026/09/02/green-marble-gold-encrusted-001/",
+      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/09/Material_2002.png?fit=600%2C800&ssl=1",
+      "downloadable": false,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
     }
   ]
 }

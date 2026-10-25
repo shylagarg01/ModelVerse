@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-22T09:36:04.126Z",
+  "updatedAt": "2026-10-25T09:22:01.597Z",
   "assets": [
     {
       "id": "blenderkit:72fac4cb-901c-4a48-8fc8-84a0baa0bd21",
@@ -624,22 +624,22 @@
       "polyCount": 132
     },
     {
-      "id": "opengameart:low-poly-tree",
+      "id": "opengameart:low-poly-tree-1",
       "provider": "opengameart",
-      "title": "Low Poly Tree",
+      "title": "Low-poly Tree",
       "type": "model",
-      "url": "https://opengameart.org/content/low-poly-tree",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/1_7.jpg",
+      "url": "https://opengameart.org/content/low-poly-tree-1",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/tree_ph.png",
       "downloadable": true,
       "free": true
     },
     {
-      "id": "opengameart:palm-tree-v2-low-poly-edition",
+      "id": "opengameart:low-poly-trees-stumps-branches",
       "provider": "opengameart",
-      "title": "Palm tree v2 low poly edition",
+      "title": "Low-poly trees, stumps, branches",
       "type": "model",
-      "url": "https://opengameart.org/content/palm-tree-v2-low-poly-edition",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_low.jpg",
+      "url": "https://opengameart.org/content/low-poly-trees-stumps-branches",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/trees_preview.png",
       "downloadable": true,
       "free": true
     }
