@@ -21,7 +21,7 @@
       "lego"
     ]
   },
-  "updatedAt": "2026-10-18T09:02:11.977Z",
+  "updatedAt": "2026-10-25T09:21:39.387Z",
   "assets": [
     {
       "id": "polyhaven:covered_car",
@@ -193,17 +193,6 @@
       "polyCount": 177940
     },
     {
-      "id": "quaternius:publictransport",
-      "provider": "quaternius",
-      "title": "Public Transport Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/publictransport.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/publictransport.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
-    },
-    {
       "id": "itchio:dani1667/sportscar3dmodel",
       "provider": "itchio",
       "title": "Sports Car 3D Model",
@@ -281,39 +270,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:007bf900-e8c0-42ce-befb-1887bc03fdd6",
-      "provider": "blenderkit",
-      "title": "Apocalypse Police Car",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/007bf900-e8c0-42ce-befb-1887bc03fdd6/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/66d5476a922d47bd883736c72e446baa/files/thumbnail_95a5da25-dfd5-42fa-be88-4094c358308e.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Suzanne studio",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 159244
-    },
-    {
-      "id": "itchio:fball-dev/2025-mclaren-artura-spider-realistic-pbr-sports-car-3d-model",
-      "provider": "itchio",
-      "title": "McLaren Artura Spider Realistic PBR Sports Car 3D Model",
-      "type": "model",
-      "url": "https://fball-dev.itch.io/2025-mclaren-artura-spider-realistic-pbr-sports-car-3d-model",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzIzOTYzNTc1LnBuZw==/315x250%23c/IUz3pW.png",
-      "downloadable": false,
-      "author": "Fball Dev",
-      "free": true
-    },
-    {
       "id": "blenderkit:7701f4be-16c6-4278-a8d2-66998f5c8d8f",
       "provider": "blenderkit",
       "title": "Car 006 - audi rs6 avant 2020",
@@ -334,84 +290,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 368510
-    },
-    {
-      "id": "itchio:nyknck/3d-car",
-      "provider": "itchio",
-      "title": "3D Car",
-      "type": "model",
-      "url": "https://nyknck.itch.io/3d-car",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzE3ODcxNzIucG5n/315x250%23c/7Girna.png",
-      "downloadable": false,
-      "author": "NYKNCK",
-      "free": true
-    },
-    {
-      "id": "itchio:drad0down/3d-car-template",
-      "provider": "itchio",
-      "title": "3D Car Template",
-      "type": "model",
-      "url": "https://drad0down.itch.io/3d-car-template",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4NDA2NjEyLnBuZw==/315x250%23c/ZHxYvb.png",
-      "downloadable": false,
-      "author": "Drad0down",
-      "free": true
-    },
-    {
-      "id": "itchio:aslan-design/low-polly-3d-car",
-      "provider": "itchio",
-      "title": "Low Polly 3D car",
-      "type": "model",
-      "url": "https://aslan-design.itch.io/low-polly-3d-car",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzE5Njk2NzUzLnBuZw==/315x250%23c/gWc%2BrG.png",
-      "downloadable": false,
-      "author": "Aslan",
-      "free": true
-    },
-    {
-      "id": "itchio:dejunes/lowpoly-3d-car-31",
-      "provider": "itchio",
-      "title": "Lowpoly 3D Car 3.1",
-      "type": "model",
-      "url": "https://dejunes.itch.io/lowpoly-3d-car-31",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzEyNjE4OTgxLnBuZw==/315x250%23c/5oGQLB.png",
-      "downloadable": false,
-      "author": "DeJunes",
-      "free": true
-    },
-    {
-      "id": "itchio:dejunes/lowpoly-3d-car-v3",
-      "provider": "itchio",
-      "title": "Lowpoly 3D Car V3",
-      "type": "model",
-      "url": "https://dejunes.itch.io/lowpoly-3d-car-v3",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzEyNjEyNzMyLnBuZw==/315x250%23c/m%2B3zIt.png",
-      "downloadable": false,
-      "author": "DeJunes",
-      "free": true
-    },
-    {
-      "id": "blenderkit:019030bb-74cc-451e-ad66-55ae7dda47ca",
-      "provider": "blenderkit",
-      "title": "Police Sheriff car",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/019030bb-74cc-451e-ad66-55ae7dda47ca/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/1ac542409cb847e18e327645f4052730/files/thumbnail_8cdea5cd-ee10-4a56-b7f3-38eabaee4688.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Suzanne studio",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "2k",
-      "polyCount": 38630,
-      "rigged": true
     },
     {
       "id": "threedassets:stock-car-oval-speedway-stock-car-damaged-6a429ea6",
@@ -509,29 +387,6 @@
       "free": true
     },
     {
-      "id": "sketchfab:5e59f014795748e5b8354d6321eaf082",
-      "provider": "sketchfab",
-      "title": "Catalytic converter, 1982-1983",
-      "type": "model",
-      "url": "https://sketchfab.com/3d-models/none-5e59f014795748e5b8354d6321eaf082",
-      "thumbnailUrl": "https://media.sketchfab.com/models/5e59f014795748e5b8354d6321eaf082/thumbnails/b75bad9c0e1546019cfc9f893ce38054/9f59d22d320e4bdcb278479d8ffd2712.jpeg",
-      "downloadable": false,
-      "author": "Science Museum Group",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "gltf",
-        "usdz"
-      ],
-      "polyCount": 60000
-    },
-    {
       "id": "freestylized:3d_models:car_tire_01_m31",
       "provider": "freestylized",
       "title": "Car Tire 01 M31",
@@ -582,6 +437,201 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzMxMDAwNDQ3LnBuZw==/315x250%23c/PGpiIU.png",
       "downloadable": false,
       "author": "pepeeldesarollador",
+      "free": true
+    },
+    {
+      "id": "polyhaven:jacaranda_tree",
+      "provider": "polyhaven",
+      "title": "Jacaranda Tree",
+      "type": "model",
+      "url": "https://polyhaven.com/a/jacaranda_tree",
+      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/jacaranda_tree.png?width=512&height=512",
+      "downloadable": true,
+      "author": "Rob Tuytel, Rico Cilliers",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "gltf",
+        "blend",
+        "fbx",
+        "usd"
+      ],
+      "maxResolution": "8k",
+      "polyCount": 312356
+    },
+    {
+      "id": "sketchfab:0c121fdfa4f744f9851def9427d372c2",
+      "provider": "sketchfab",
+      "title": "SY Carola",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-0c121fdfa4f744f9851def9427d372c2",
+      "thumbnailUrl": "https://media.sketchfab.com/models/0c121fdfa4f744f9851def9427d372c2/thumbnails/67a377abd6d54000a1216c03a804d790/18a4b79e94054354bc45654fe14d38b0.jpeg",
+      "downloadable": false,
+      "author": "Scottish Maritime Museum",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 501313
+    },
+    {
+      "id": "sketchfab:341500e6ceec44f4aea3db16c4fe000b",
+      "provider": "sketchfab",
+      "title": "Carved lacquer box",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-341500e6ceec44f4aea3db16c4fe000b",
+      "thumbnailUrl": "https://media.sketchfab.com/models/341500e6ceec44f4aea3db16c4fe000b/thumbnails/14548e10d4b642f488cfd0634f35fd79/0af9d125d35e494488fcd32be31cf6dc.jpeg",
+      "downloadable": false,
+      "author": "Virtual Museums of Małopolska",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 273464
+    },
+    {
+      "id": "polyhaven:carved_wooden_elephant",
+      "provider": "polyhaven",
+      "title": "Carved Wooden Elephant",
+      "type": "model",
+      "url": "https://polyhaven.com/a/carved_wooden_elephant",
+      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/carved_wooden_elephant.png?width=512&height=512",
+      "downloadable": true,
+      "author": "Greg Zaal",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "gltf",
+        "blend",
+        "fbx",
+        "usd"
+      ],
+      "maxResolution": "4k",
+      "polyCount": 2752
+    },
+    {
+      "id": "opengameart:rc-car-model",
+      "provider": "opengameart",
+      "title": "RC Car Model",
+      "type": "model",
+      "url": "https://opengameart.org/content/rc-car-model",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/RCCarPreview.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "sketchfab:17bd8188447b48baab75125b9ad20788",
+      "provider": "sketchfab",
+      "title": "SY Carola (point cloud)",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-17bd8188447b48baab75125b9ad20788",
+      "thumbnailUrl": "https://media.sketchfab.com/models/17bd8188447b48baab75125b9ad20788/thumbnails/d45519c1e3e54153850a9ecdcf383a51/ba5b56d9917f4c5584b8862ce9729484.jpeg",
+      "downloadable": false,
+      "author": "Scottish Maritime Museum",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf"
+      ]
+    },
+    {
+      "id": "polyhaven:carrot_cake",
+      "provider": "polyhaven",
+      "title": "Carrot Cake",
+      "type": "model",
+      "url": "https://polyhaven.com/a/carrot_cake",
+      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/carrot_cake.png?width=512&height=512",
+      "downloadable": true,
+      "author": "Greg Zaal, James Ray Cock",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "gltf",
+        "blend",
+        "fbx",
+        "usd"
+      ],
+      "maxResolution": "8k",
+      "polyCount": 13790
+    },
+    {
+      "id": "opengameart:lowpoly-car",
+      "provider": "opengameart",
+      "title": "lowpoly car",
+      "type": "model",
+      "url": "https://opengameart.org/content/lowpoly-car",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/1_69.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "sketchfab:b4f04ee32fce488ea88a1dbf600d4e05",
+      "provider": "sketchfab",
+      "title": "\"Doryphoros\" (carrying a spear)",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-b4f04ee32fce488ea88a1dbf600d4e05",
+      "thumbnailUrl": "https://media.sketchfab.com/models/b4f04ee32fce488ea88a1dbf600d4e05/thumbnails/3d4ec63b749740268ecfc58d5535bd8e/3fe53aaad95a470299e05ae8066b893d.jpeg",
+      "downloadable": false,
+      "author": "Virtual Museums of Małopolska",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 247474
+    },
+    {
+      "id": "opengameart:funky-car",
+      "provider": "opengameart",
+      "title": "Funky car",
+      "type": "model",
+      "url": "https://opengameart.org/content/funky-car",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/untitledcarcar.png",
+      "downloadable": true,
       "free": true
     }
   ]

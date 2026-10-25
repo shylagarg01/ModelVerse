@@ -11,7 +11,7 @@
       "delivery bag"
     ]
   },
-  "updatedAt": "2026-10-23T09:31:51.808Z",
+  "updatedAt": "2026-10-25T09:21:48.828Z",
   "assets": [
     {
       "id": "polyhaven:food_apple_01",
@@ -212,60 +212,6 @@
       ]
     },
     {
-      "id": "ambientcg:3DApple002",
-      "provider": "ambientcg",
-      "title": "3D Apple 002",
-      "type": "model",
-      "url": "https://ambientcg.com/a/3DApple002",
-      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/3DApple002.jpg",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "jpg",
-        "obj",
-        "png"
-      ],
-      "maxResolution": "4k"
-    },
-    {
-      "id": "texturecan:model-311",
-      "provider": "texturecan",
-      "title": "Cookie with Chocolate Chips 3D Model",
-      "type": "model",
-      "url": "https://www.texturecan.com/models/details/311/",
-      "thumbnailUrl": "https://www.texturecan.com/img/models/Cookie_0001/Cookie_0001_300.png",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "sharetextures:banana-1",
-      "provider": "sharetextures",
-      "title": "Banana 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/food/banana-1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/3a30b0c5-1a45-4c1a-83ef-829d3bf54729.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:russian_food_cans_01",
       "provider": "polyhaven",
       "title": "Russian Food Cans 01",
@@ -299,22 +245,6 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzI0OTU2NTMzLmpwZw==/315x250%23c/o768W5.jpg",
       "downloadable": false,
       "author": "Binbun",
-      "free": true
-    },
-    {
-      "id": "texturecan:model-309",
-      "provider": "texturecan",
-      "title": "Blue Cheese 3D Model",
-      "type": "model",
-      "url": "https://www.texturecan.com/models/details/309/",
-      "thumbnailUrl": "https://www.texturecan.com/img/models/Cheese_0002/Cheese_0002_300.png",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
       "free": true
     },
     {
@@ -363,38 +293,6 @@
       ],
       "maxResolution": "2k",
       "polyCount": 30048
-    },
-    {
-      "id": "sharetextures:potatoes_1",
-      "provider": "sharetextures",
-      "title": "Potatoes 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/food/potatoes_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/98e30afe-e688-4573-bf2d-4af10425ac80.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "texturecan:model-308",
-      "provider": "texturecan",
-      "title": "Cheddar Cheese 3D Model",
-      "type": "model",
-      "url": "https://www.texturecan.com/models/details/308/",
-      "thumbnailUrl": "https://www.texturecan.com/img/models/Cheese_0001/Cheese_0001_300.png",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "polyhaven:food_lychee_01",
@@ -455,22 +353,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:pear-1",
-      "provider": "sharetextures",
-      "title": "Pear 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/food/pear-1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/ba77a438-995f-4883-9a39-2eccf3db29d9.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:food_kiwi_01",
       "provider": "polyhaven",
       "title": "Food Kiwi 01",
@@ -504,22 +386,6 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzQ5MjYwNTEucG5n/315x250%23c/fEAkYP.png",
       "downloadable": false,
       "author": "GualtierisGG",
-      "free": true
-    },
-    {
-      "id": "sharetextures:mandarin_1",
-      "provider": "sharetextures",
-      "title": "Mandarin 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/food/mandarin_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/5ac84eb3-243d-421c-ae53-00dbc2b51517.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
       "free": true
     },
     {
@@ -582,22 +448,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:carrot-2",
-      "provider": "sharetextures",
-      "title": "Carrot 2",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/food/carrot-2",
-      "thumbnailUrl": "https://images.sharetextures.com/u/ebbcacc7-74d5-4355-b3be-c855f2e1841d.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:long_life_food",
       "provider": "polyhaven",
       "title": "Long Life Food",
@@ -644,22 +494,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "sharetextures:carrot-1",
-      "provider": "sharetextures",
-      "title": "Carrot 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/food/carrot-1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/ced3dd99-85a1-4f12-89b0-396c41d1990d.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "blenderkit:c81487cc-11c1-48af-94fb-4a4433804452",
       "provider": "blenderkit",
       "title": "Food Kiwi",
@@ -679,6 +513,205 @@
         "blend"
       ],
       "maxResolution": "4k"
+    },
+    {
+      "id": "polyfork:bear-proof-food-locker-9144bb",
+      "provider": "polyfork",
+      "title": "Bear-Proof Food Locker",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/bear-proof-food-locker-9144bb",
+      "thumbnailUrl": "https://polyfork.dev/files/bear-proof-food-locker-9144bb/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 568,
+      "rigged": true
+    },
+    {
+      "id": "threedassets:pets-and-companions-hd-feeding-bowls-f3651043",
+      "provider": "threedassets",
+      "title": "Food And Water Bowls (Pets and Companions HD)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/pets-and-companions-hd-feeding-bowls-f3651043",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/28175/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 2768
+    },
+    {
+      "id": "opengameart:food-pack-0",
+      "provider": "opengameart",
+      "title": "Food Pack",
+      "type": "model",
+      "url": "https://opengameart.org/content/food-pack-0",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/foodPackPreview.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "sketchfab:81983aad41fe4981b06dd2f26d98213c",
+      "provider": "sketchfab",
+      "title": "Gui (Chinese food vessel)",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-81983aad41fe4981b06dd2f26d98213c",
+      "thumbnailUrl": "https://media.sketchfab.com/models/81983aad41fe4981b06dd2f26d98213c/thumbnails/55f69ec0051d44dc9d2de16056c4f231/2e18bfc75dad4e49a464f2f592070288.jpeg",
+      "downloadable": false,
+      "author": "Minneapolis Institute of Art",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 63936
+    },
+    {
+      "id": "threedassets:pixel-modern-supermarket-gondola-run-pet-food-a00cc294",
+      "provider": "threedassets",
+      "title": "Gondola Run Pet Food (Pixel Modern Supermarket)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/pixel-modern-supermarket-gondola-run-pet-food-a00cc294",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/27981/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 1056
+    },
+    {
+      "id": "threedassets:street-food-market-and-food-trucks-food-truck-serving--504d5172",
+      "provider": "threedassets",
+      "title": "Food Truck Serving Open (Street Food Market and Food Trucks)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/street-food-market-and-food-trucks-food-truck-serving--504d5172",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/34278/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 868,
+      "animated": true
+    },
+    {
+      "id": "sketchfab:c3fbe533144e41feb66876ede6118c1d",
+      "provider": "sketchfab",
+      "title": "Ding food vessel, 12th C BCE",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-c3fbe533144e41feb66876ede6118c1d",
+      "thumbnailUrl": "https://media.sketchfab.com/models/c3fbe533144e41feb66876ede6118c1d/thumbnails/876f20fcd2a343b7bb4f801ed5442c4e/dad9ea88a1fc489ca3f7496cb4a45eb7.jpeg",
+      "downloadable": false,
+      "author": "Minneapolis Institute of Art",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 64000
+    },
+    {
+      "id": "opengameart:food-kit",
+      "provider": "opengameart",
+      "title": "Food Kit",
+      "type": "model",
+      "url": "https://opengameart.org/content/food-kit",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_1249.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "threedassets:street-food-market-and-food-trucks-food-truck-yellow-l-8a47eb0f",
+      "provider": "threedassets",
+      "title": "Food Truck Yellow Livery (Street Food Market and Food Trucks)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/street-food-market-and-food-trucks-food-truck-yellow-l-8a47eb0f",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/34276/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 868,
+      "animated": true
+    },
+    {
+      "id": "sketchfab:8f45c5ab58794f4faca0c242f89fdf22",
+      "provider": "sketchfab",
+      "title": "Shengding Food Vessel, around 575 BCE",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-8f45c5ab58794f4faca0c242f89fdf22",
+      "thumbnailUrl": "https://media.sketchfab.com/models/8f45c5ab58794f4faca0c242f89fdf22/thumbnails/b285535261be440c9777bd265857a939/1e6a55aa01584b4e8b3c491df5053bc6.jpeg",
+      "downloadable": false,
+      "author": "Minneapolis Institute of Art",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 64178
     }
   ]
 }

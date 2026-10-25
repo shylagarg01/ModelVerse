@@ -14,7 +14,7 @@
       "visualization"
     ]
   },
-  "updatedAt": "2026-10-24T09:06:03.609Z",
+  "updatedAt": "2026-10-25T09:22:27.705Z",
   "assets": [
     {
       "id": "blenderkit:f856dc91-1475-40de-8aa0-d29cfa48a583",
@@ -107,22 +107,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:lantern_1",
-      "provider": "sharetextures",
-      "title": "Lantern 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/sci-fi/lantern_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/fd53c3ce-c9de-4e44-a5a9-e021af04ddb4.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "quaternius:scifimodularguns",
       "provider": "quaternius",
       "title": "Sci-Fi Modular Gun Pack",
@@ -178,28 +162,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:00de98b1-2397-40ad-a4d6-171772d5c2c4",
-      "provider": "blenderkit",
-      "title": "Sci-fi floor panel",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/00de98b1-2397-40ad-a4d6-171772d5c2c4/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/8dd0a8f6d4434d5e9613317ab17719c6/files/thumbnail_e30d2c23-9624-4f69-9a0c-e0b752da97ba.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Cosmo",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 163472
-    },
-    {
       "id": "quaternius:scifigun",
       "provider": "quaternius",
       "title": "Sci-Fi Gun Pack",
@@ -222,28 +184,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:b180fdbd-668f-4081-ad51-f364e829f11d",
-      "provider": "blenderkit",
-      "title": "Sci-Fi Station",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/b180fdbd-668f-4081-ad51-f364e829f11d/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/83d164c82aa14be4bcebebb4f2cdc280/files/thumbnail_36f9b0b7-9f50-443b-b395-fbf1918c83a5.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Pastean Narcis Dan",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "polyCount": 119303,
-      "animated": true
-    },
-    {
       "id": "itchio:welenwhite/sci-fi-character-blue-wanderer",
       "provider": "itchio",
       "title": "Sci-fi character: Blue Wanderer",
@@ -254,50 +194,6 @@
       "author": "WelenWhite",
       "free": true,
       "animated": true
-    },
-    {
-      "id": "blenderkit:8c43c322-b7ea-4897-b373-af94cae8dfcd",
-      "provider": "blenderkit",
-      "title": "Sci-fi rifle",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/8c43c322-b7ea-4897-b373-af94cae8dfcd/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/d5a0188a7a2c4272b1349484a76a2e0d/files/thumbnail_75a163f9-3571-4e83-9579-fd1d0818def8.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Eleanie",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 33267
-    },
-    {
-      "id": "blenderkit:43a381f3-15e2-4dc7-be82-61770c5fe729",
-      "provider": "blenderkit",
-      "title": "Sci-fi Device PBR",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/43a381f3-15e2-4dc7-be82-61770c5fe729/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/1c1bf75217b848149fc93177d1e95911/files/thumbnail_07dd63b6-c2f2-4ef9-8b96-d61993e90ae3.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Nicolai Prodromov",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 7062
     },
     {
       "id": "quaternius:ultimatespaceships",
@@ -311,85 +207,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:893fca4d-d299-4884-a59b-82c9d61c7104",
-      "provider": "blenderkit",
-      "title": "Sci-Fi Drone 1",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/893fca4d-d299-4884-a59b-82c9d61c7104/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/8c6f5a39c3084949aa3dc3c7a83ef280/files/thumbnail_6075ef05-49cc-434e-bd94-4ee113bb3899.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Pastean Narcis Dan",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "polyCount": 2653
-    },
-    {
-      "id": "blenderkit:4068546c-9a3c-4c31-a1a2-c4f0f84f1f5c",
-      "provider": "blenderkit",
-      "title": "Sci-Fi Drone 2",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/4068546c-9a3c-4c31-a1a2-c4f0f84f1f5c/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/5453c19fa6454ed28dcca78d357b703c/files/thumbnail_1b8181b1-0c4b-4a17-9582-8575d1a57d59.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Pastean Narcis Dan",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "polyCount": 5295
-    },
-    {
-      "id": "quaternius:animatedmech",
-      "provider": "quaternius",
-      "title": "Animated Mech Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/animatedmech.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/animatedmech.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true,
-      "animated": true,
-      "rigged": true
-    },
-    {
-      "id": "blenderkit:fec515f4-1f72-4869-b355-70abb48c6fb3",
-      "provider": "blenderkit",
-      "title": "Sci-Fi Doors for Research Lab",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/fec515f4-1f72-4869-b355-70abb48c6fb3/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/2055df98d2e249ca9a6bef18eb704faa/files/thumbnail_316a75ed-8f77-456e-8b98-8675d8ce9594.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Nobody",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 32278
-    },
-    {
       "id": "quaternius:spaceships",
       "provider": "quaternius",
       "title": "Spaceships Pack",
@@ -399,72 +216,6 @@
       "downloadable": false,
       "author": "Quaternius",
       "free": true
-    },
-    {
-      "id": "blenderkit:ee6a9a80-16fe-4f1e-a1c8-de1c788d49fa",
-      "provider": "blenderkit",
-      "title": "Sci-fi Device PBR White",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/ee6a9a80-16fe-4f1e-a1c8-de1c788d49fa/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/293e1347884b4f61835fc29a579e8ac9/files/thumbnail_4b7d7c2a-e35c-45c1-86e0-9ea7b255e019.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Nicolai Prodromov",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 7062
-    },
-    {
-      "id": "blenderkit:2b7ab5b9-771c-47e4-b5e5-61859ac5303f",
-      "provider": "blenderkit",
-      "title": "Street Lamp Sci-Fi",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/2b7ab5b9-771c-47e4-b5e5-61859ac5303f/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/9d6478054c664cba810eee7b832144f9/files/thumbnail_8f262fc3-e732-40b5-b1c1-0702d291a916.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Klo Works",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "2k",
-      "polyCount": 2362
-    },
-    {
-      "id": "blenderkit:684513ba-95f5-4f76-bda7-b0ff3c149e19",
-      "provider": "blenderkit",
-      "title": "Sci-Fi Wall/Ceiling Turret",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/684513ba-95f5-4f76-bda7-b0ff3c149e19/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/abfbb4280ccd43e891c6985491af4124/files/thumbnail_356d4c56-fde6-44de-97eb-d4682fb2c888.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "OuterSpaceSimon",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 71175
     },
     {
       "id": "blenderkit:eb8d11d2-5ee1-43c6-8a75-5579fecb8f4e",
@@ -656,6 +407,190 @@
         "glb"
       ],
       "polyCount": 1272
+    },
+    {
+      "id": "opengameart:sci-fi-crate-1",
+      "provider": "opengameart",
+      "title": "Sci Fi Crate",
+      "type": "model",
+      "url": "https://opengameart.org/content/sci-fi-crate-1",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Preview_2.PNG",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "opengameart:sci-fi-gun-0",
+      "provider": "opengameart",
+      "title": "Sci Fi Gun",
+      "type": "model",
+      "url": "https://opengameart.org/content/sci-fi-gun-0",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Sci%20fi%20gun%20PV.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:99262205-8089-453b-bed7-e3e5a879600c",
+      "provider": "blenderkit",
+      "title": "Sci Fi DNA container",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/99262205-8089-453b-bed7-e3e5a879600c/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/ba64914b759f401f8b04e3c219f1b1c4/files/thumbnail_73f49bba-de44-47c0-b523-07493d823328.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Avishka Induwara",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "1k",
+      "polyCount": 7356
+    },
+    {
+      "id": "opengameart:low-poly-sci-fi-rifle",
+      "provider": "opengameart",
+      "title": "Low poly sci fi rifle",
+      "type": "model",
+      "url": "https://opengameart.org/content/low-poly-sci-fi-rifle",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_394.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:4a77a2c0-a872-47ac-8df6-01fe556e4e50",
+      "provider": "blenderkit",
+      "title": "Sci Fi Battery",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/4a77a2c0-a872-47ac-8df6-01fe556e4e50/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/bf11a914bd954831b16fdcd2d7db8a1d/files/thumbnail_9101b948-a7c0-403e-9004-9ecfb3d853a7.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Avishka Induwara",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "1k",
+      "polyCount": 4040
+    },
+    {
+      "id": "opengameart:low-poly-sci-fi-soldier",
+      "provider": "opengameart",
+      "title": "Low poly Sci fi Soldier",
+      "type": "model",
+      "url": "https://opengameart.org/content/low-poly-sci-fi-soldier",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/2015-12-20_191449.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:e0a12a7b-52ce-46c0-a939-0b92774da8ff",
+      "provider": "blenderkit",
+      "title": "Sci Fi Room With Animated Door",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/e0a12a7b-52ce-46c0-a939-0b92774da8ff/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/bab3b105d88a40549dd327c1ac33f251/files/thumbnail_69759842-d1bd-47b6-995b-f60866ab06ff.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Avishka Induwara",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "2k",
+      "polyCount": 5474,
+      "animated": true
+    },
+    {
+      "id": "opengameart:sci-fi-prop",
+      "provider": "opengameart",
+      "title": "sci fi prop",
+      "type": "model",
+      "url": "https://opengameart.org/content/sci-fi-prop",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/screenshot1_7.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:7e8ce7fe-855a-4af0-a48a-853b203b90bd",
+      "provider": "blenderkit",
+      "title": "Sci fi Corridor",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/7e8ce7fe-855a-4af0-a48a-853b203b90bd/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/afd8ea415b7047c28bfd1043e41aa9ef/files/thumbnail_eaae2b99-8a3e-4410-ae56-5221004df240.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Yasin Gohary",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "polyCount": 9529
+    },
+    {
+      "id": "opengameart:emg-01a-low-poly-sci-fi-rifle",
+      "provider": "opengameart",
+      "title": "EMG-01A Low poly sci fi rifle",
+      "type": "model",
+      "url": "https://opengameart.org/content/emg-01a-low-poly-sci-fi-rifle",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/egpin1_0.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:5f3da0cf-be43-4d1f-acc5-78a8e2b8c248",
+      "provider": "blenderkit",
+      "title": "Sci fi Table",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/5f3da0cf-be43-4d1f-acc5-78a8e2b8c248/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/968350f6c54348a4b2e95f1f1e754c3b/files/thumbnail_3649a012-87eb-4823-a457-103ac1950fba.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Yasin Gohary",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "1k",
+      "polyCount": 114115
+    },
+    {
+      "id": "opengameart:modular-sci-fi-megakit",
+      "provider": "opengameart",
+      "title": "Modular Sci-Fi MegaKit",
+      "type": "model",
+      "url": "https://opengameart.org/content/modular-sci-fi-megakit",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_3_7.png",
+      "downloadable": true,
+      "free": true
     }
   ]
 }

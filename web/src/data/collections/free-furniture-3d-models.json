@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-17T08:46:52.997Z",
+  "updatedAt": "2026-10-25T09:21:53.827Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -451,17 +451,6 @@
       "polyCount": 8916
     },
     {
-      "id": "quaternius:ultimatehomeinterior",
-      "provider": "quaternius",
-      "title": "Ultimate House Interior Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/ultimatehomeinterior.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/ultimatehouseinterior.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
-    },
-    {
       "id": "blenderkit:375867d4-b002-44ac-ba59-e2764f68b15d",
       "provider": "blenderkit",
       "title": "Sofa Set Furniture",
@@ -492,22 +481,6 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzEzMDM5NDc5LnBuZw==/315x250%23c/70JW5q.png",
       "downloadable": false,
       "author": "Aline",
-      "free": true
-    },
-    {
-      "id": "sharetextures:armchair_1",
-      "provider": "sharetextures",
-      "title": "Armchair 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/furniture/armchair_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/33e439cb-1763-4780-9da1-d7ef51bbfc77.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
       "free": true
     },
     {
@@ -545,47 +518,6 @@
       "downloadable": false,
       "author": "MariaIsMe",
       "free": true
-    },
-    {
-      "id": "sharetextures:chaiselongue_1",
-      "provider": "sharetextures",
-      "title": "Chaise Longue 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/furniture/chaiselongue_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/e62e2222-95be-4e3b-af33-2804e8b619b4.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "polyhaven:round_wooden_table_01",
-      "provider": "polyhaven",
-      "title": "Round Wooden Table 01",
-      "type": "model",
-      "url": "https://polyhaven.com/a/round_wooden_table_01",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/round_wooden_table_01.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Ulan Cabanilla",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 8640
     },
     {
       "id": "blenderkit:2b167922-e1f7-4f05-b28b-4b4cc4862599",
@@ -641,6 +573,70 @@
         "glb"
       ],
       "polyCount": 19980
+    },
+    {
+      "id": "opengameart:furniture-kit",
+      "provider": "opengameart",
+      "title": "Furniture Kit",
+      "type": "model",
+      "url": "https://opengameart.org/content/furniture-kit",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Sample_56.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "threedassets:garden-centre-and-florist-garden-furniture-display-dec-9e5b08fa",
+      "provider": "threedassets",
+      "title": "Garden furniture display deck (Garden Centre and Florist)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/garden-centre-and-florist-garden-furniture-display-dec-9e5b08fa",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/17780/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 1984
+    },
+    {
+      "id": "opengameart:3td-furniture-pack",
+      "provider": "opengameart",
+      "title": "3TD Furniture Pack",
+      "type": "model",
+      "url": "https://opengameart.org/content/3td-furniture-pack",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/FURNITURESTARTERPACK.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "sketchfab:77d6f55157aa472cad0c31a023d8f23c",
+      "provider": "sketchfab",
+      "title": "Nightstand v3 (Phase IV furniture curriculum)",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-77d6f55157aa472cad0c31a023d8f23c",
+      "thumbnailUrl": "https://media.sketchfab.com/models/77d6f55157aa472cad0c31a023d8f23c/thumbnails/2766b29c438640a9bb7222518d55bfd6/3a2a654f52d04136aeb7f980f953c0e1.jpeg",
+      "downloadable": false,
+      "author": "petrus-piv",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 1044
     }
   ]
 }

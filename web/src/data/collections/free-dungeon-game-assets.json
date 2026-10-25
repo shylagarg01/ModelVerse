@@ -12,7 +12,7 @@
       "dungeon and dragons"
     ]
   },
-  "updatedAt": "2026-10-13T12:09:05.051Z",
+  "updatedAt": "2026-10-25T09:21:43.836Z",
   "assets": [
     {
       "id": "blenderkit:bb93c779-bf60-439b-96d2-99167435443d",
@@ -351,29 +351,6 @@
       "polyCount": 6690
     },
     {
-      "id": "polyfork:moss-patch-3ecaf4",
-      "provider": "polyfork",
-      "title": "Moss Patch",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/moss-patch-3ecaf4",
-      "thumbnailUrl": "https://polyfork.dev/files/moss-patch-3ecaf4/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 565
-    },
-    {
       "id": "itchio:stealthix/32-x-32-dungeon-assets",
       "provider": "itchio",
       "title": "Dungeon Assets 32 x 32 px",
@@ -417,145 +394,6 @@
       "downloadable": false,
       "author": "Alex",
       "free": true
-    },
-    {
-      "id": "polyfork:timber-crate-ba0739",
-      "provider": "polyfork",
-      "title": "Timber Crate",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/timber-crate-ba0739",
-      "thumbnailUrl": "https://polyfork.dev/files/timber-crate-ba0739/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 588,
-      "rigged": true
-    },
-    {
-      "id": "polyfork:mushroom-cluster-18dc1d",
-      "provider": "polyfork",
-      "title": "Mushroom Cluster",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/mushroom-cluster-18dc1d",
-      "thumbnailUrl": "https://polyfork.dev/files/mushroom-cluster-18dc1d/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 587
-    },
-    {
-      "id": "polyfork:timber-trestle-table-024d88",
-      "provider": "polyfork",
-      "title": "Timber Trestle Table",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/timber-trestle-table-024d88",
-      "thumbnailUrl": "https://polyfork.dev/files/timber-trestle-table-024d88/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 540
-    },
-    {
-      "id": "polyfork:hand-axe-cee9e7",
-      "provider": "polyfork",
-      "title": "Hand Axe",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/hand-axe-cee9e7",
-      "thumbnailUrl": "https://polyfork.dev/files/hand-axe-cee9e7/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 532
-    },
-    {
-      "id": "polyfork:goblet-87c3ba",
-      "provider": "polyfork",
-      "title": "Goblet",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/goblet-87c3ba",
-      "thumbnailUrl": "https://polyfork.dev/files/goblet-87c3ba/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 528
-    },
-    {
-      "id": "polyfork:flagstone-floor-tile-2a04ea",
-      "provider": "polyfork",
-      "title": "Flagstone Floor Tile",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/flagstone-floor-tile-2a04ea",
-      "thumbnailUrl": "https://polyfork.dev/files/flagstone-floor-tile-2a04ea/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 138
     },
     {
       "id": "threedassets:dungeon-room-builder-three-room-dungeon-f16c3a34-starter-scene",
@@ -648,6 +486,110 @@
       "url": "https://opengameart.org/content/dungeon-assets",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/1_113.png",
       "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "threedassets:dwarven-runeforge-dungeon-dwarven-runeforge-dungeon-gu-eac6202f",
+      "provider": "threedassets",
+      "title": "Anvil guild crest monument (Dwarven Runeforge Dungeon)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/dwarven-runeforge-dungeon-dwarven-runeforge-dungeon-gu-eac6202f",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/28616/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 888
+    },
+    {
+      "id": "opengameart:modular-dungeon-2-3d-models",
+      "provider": "opengameart",
+      "title": "Modular Dungeon 2 - 3D Models",
+      "type": "model",
+      "url": "https://opengameart.org/content/modular-dungeon-2-3d-models",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/dungeon1_0.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "threedassets:dwarven-runeforge-dungeon-dwarven-runeforge-dungeon-sl-6bb40c26",
+      "provider": "threedassets",
+      "title": "Broken furnace slag (Dwarven Runeforge Dungeon)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/dwarven-runeforge-dungeon-dwarven-runeforge-dungeon-sl-6bb40c26",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/28615/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 324
+    },
+    {
+      "id": "opengameart:dungeon-hallway",
+      "provider": "opengameart",
+      "title": "Dungeon hallway",
+      "type": "model",
+      "url": "https://opengameart.org/content/dungeon-hallway",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/dungeon_hallway_render_0.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "threedassets:dungeon-room-builder-bench-59b6b808",
+      "provider": "threedassets",
+      "title": "Bench (Dungeon Room Builder)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/dungeon-room-builder-bench-59b6b808",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/25860/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 60
+    },
+    {
+      "id": "opengameart:dungeon-bend",
+      "provider": "opengameart",
+      "title": "Dungeon bend",
+      "type": "model",
+      "url": "https://opengameart.org/content/dungeon-bend",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/dundeon_turn_render_0.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:kevins-moms-house/dungeonold",
+      "provider": "itchio",
+      "title": "dungeonOld_",
+      "type": "pack",
+      "url": "https://kevins-moms-house.itch.io/dungeonold",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzU2MjIxMzcuZ2lm/315x250%23c/zDI4vy.gif",
+      "downloadable": false,
+      "author": "Kevin's Mom's House",
       "free": true
     }
   ]

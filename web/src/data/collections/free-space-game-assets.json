@@ -13,7 +13,7 @@
       "space black"
     ]
   },
-  "updatedAt": "2026-10-23T09:32:25.037Z",
+  "updatedAt": "2026-10-25T09:22:32.551Z",
   "assets": [
     {
       "id": "polyfork:space-mine-3a1654",
@@ -261,31 +261,6 @@
       "free": true
     },
     {
-      "id": "polyhaven:moon_rock_06",
-      "provider": "polyhaven",
-      "title": "Moon Rock 06",
-      "type": "model",
-      "url": "https://polyhaven.com/a/moon_rock_06",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/moon_rock_06.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Greg Zaal, Jenelle van Heerden, Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "16k",
-      "polyCount": 12974
-    },
-    {
       "id": "polyfork:access-ladder-dcc590",
       "provider": "polyfork",
       "title": "Access Ladder",
@@ -341,55 +316,6 @@
       "polyCount": 1
     },
     {
-      "id": "polyhaven:moon_rock_04",
-      "provider": "polyhaven",
-      "title": "Moon Rock 04",
-      "type": "model",
-      "url": "https://polyhaven.com/a/moon_rock_04",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/moon_rock_04.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Greg Zaal, Rico Cilliers, Jenelle van Heerden",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "16k",
-      "polyCount": 14316
-    },
-    {
-      "id": "polyfork:weather-mast-7d088f",
-      "provider": "polyfork",
-      "title": "Weather Mast",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/weather-mast-7d088f",
-      "thumbnailUrl": "https://polyfork.dev/files/weather-mast-7d088f/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 502,
-      "rigged": true
-    },
-    {
       "id": "itchio:sushmoygamedev/space-moonstar-assets",
       "provider": "itchio",
       "title": "Space MoonStar Assets",
@@ -399,54 +325,6 @@
       "downloadable": false,
       "author": "Hamimur Rahman",
       "free": true
-    },
-    {
-      "id": "polyhaven:moon_rock_02",
-      "provider": "polyhaven",
-      "title": "Moon Rock 02",
-      "type": "model",
-      "url": "https://polyhaven.com/a/moon_rock_02",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/moon_rock_02.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rico Cilliers, Greg Zaal, Jenelle van Heerden",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 6194
-    },
-    {
-      "id": "polyfork:surface-pipe-run-62c4b3",
-      "provider": "polyfork",
-      "title": "Surface Pipe Run",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/surface-pipe-run-62c4b3",
-      "thumbnailUrl": "https://polyfork.dev/files/surface-pipe-run-62c4b3/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 504
     },
     {
       "id": "itchio:ranjeetsingh/space-combat",
@@ -481,54 +359,6 @@
       "polyCount": 12
     },
     {
-      "id": "polyhaven:moon_rock_05",
-      "provider": "polyhaven",
-      "title": "Moon Rock 05",
-      "type": "model",
-      "url": "https://polyhaven.com/a/moon_rock_05",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/moon_rock_05.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Greg Zaal, Rico Cilliers, Jenelle van Heerden",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "16k",
-      "polyCount": 18466
-    },
-    {
-      "id": "polyfork:rover-tracks-decal-865580",
-      "provider": "polyfork",
-      "title": "Rover Tracks Decal",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/rover-tracks-decal-865580",
-      "thumbnailUrl": "https://polyfork.dev/files/rover-tracks-decal-865580/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 544
-    },
-    {
       "id": "blenderkit:dae5eb46-e7ee-43c5-8607-11db2a804f5c",
       "provider": "blenderkit",
       "title": "Red and Green Nebula Deep Space",
@@ -559,55 +389,6 @@
       "downloadable": false,
       "author": "Wenrexa",
       "free": true
-    },
-    {
-      "id": "polyhaven:moon_rock_07",
-      "provider": "polyhaven",
-      "title": "Moon Rock 07",
-      "type": "model",
-      "url": "https://polyhaven.com/a/moon_rock_07",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/moon_rock_07.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Greg Zaal, Rico Cilliers, Jenelle van Heerden",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "16k",
-      "polyCount": 12786
-    },
-    {
-      "id": "polyfork:survey-flag-fa500f",
-      "provider": "polyfork",
-      "title": "Survey Flag",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/survey-flag-fa500f",
-      "thumbnailUrl": "https://polyfork.dev/files/survey-flag-fa500f/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 308,
-      "rigged": true
     },
     {
       "id": "blenderkit:20eb8a2b-d6ba-4555-9a2a-1d8e2eacec28",
@@ -668,29 +449,6 @@
       "polyCount": 13279
     },
     {
-      "id": "polyfork:solar-array-rack-789c93",
-      "provider": "polyfork",
-      "title": "Solar Array Rack",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/solar-array-rack-789c93",
-      "thumbnailUrl": "https://polyfork.dev/files/solar-array-rack-789c93/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 510
-    },
-    {
       "id": "blenderkit:d0dcde95-bb25-4a0a-b0fe-850f988e44ce",
       "provider": "blenderkit",
       "title": "Realistic Volumetric Deep Space Nebula",
@@ -710,6 +468,177 @@
         "blend"
       ],
       "polyCount": 19
+    },
+    {
+      "id": "threedassets:interstellar-fleet-modular-starships-space-mine-4cafd369",
+      "provider": "threedassets",
+      "title": "Space mine (Modular Spaceships and Space Fleet)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/interstellar-fleet-modular-starships-space-mine-4cafd369",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/19217/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 1136
+    },
+    {
+      "id": "opengameart:space-kit",
+      "provider": "opengameart",
+      "title": "Space Kit",
+      "type": "model",
+      "url": "https://opengameart.org/content/space-kit",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Preview_184.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "sketchfab:5f7176a2ae284d6b99fc970c9d265c04",
+      "provider": "sketchfab",
+      "title": "Orbiter Space Shuttle OV-103 Discovery",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-5f7176a2ae284d6b99fc970c9d265c04",
+      "thumbnailUrl": "https://media.sketchfab.com/models/5f7176a2ae284d6b99fc970c9d265c04/thumbnails/df091ab7da794d23bb5340ca74db8a50/67eae1f5830749cbbe4062bdbf7cdd25.jpeg",
+      "downloadable": false,
+      "author": "The Smithsonian Institution",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 150000
+    },
+    {
+      "id": "threedassets:tabletop-game-components-score-track-2cba7038",
+      "provider": "threedassets",
+      "title": "Twenty space score track (Board Game Pieces, Dice and Tokens)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/tabletop-game-components-score-track-2cba7038",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/20890/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 252
+    },
+    {
+      "id": "opengameart:5-space-ships",
+      "provider": "opengameart",
+      "title": "5 space ships",
+      "type": "model",
+      "url": "https://opengameart.org/content/5-space-ships",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/f01_0.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "threedassets:university-lecture-hall-and-campus-accessible-space-ti-f06659f4",
+      "provider": "threedassets",
+      "title": "Accessible Space Marking Tile (University Lecture Hall and Campus)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/university-lecture-hall-and-campus-accessible-space-ti-f06659f4",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/34745/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 608
+    },
+    {
+      "id": "opengameart:space-fighters",
+      "provider": "opengameart",
+      "title": "Space Fighters",
+      "type": "model",
+      "url": "https://opengameart.org/content/space-fighters",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/raiderShipsPreview.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "quaternius:ultimatespaceships",
+      "provider": "quaternius",
+      "title": "Ultimate Spaceships Pack",
+      "type": "model",
+      "url": "https://quaternius.com/packs/ultimatespaceships.html",
+      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/ultimatespaceships.jpg",
+      "downloadable": false,
+      "author": "Quaternius",
+      "free": true
+    },
+    {
+      "id": "threedassets:cinema-multiplex-and-foyer-wheelchair-space-tile-a6a67a60",
+      "provider": "threedassets",
+      "title": "Wheelchair Space Marking Tile (Cinema Multiplex and Foyer)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/cinema-multiplex-and-foyer-wheelchair-space-tile-a6a67a60",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/34657/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 544
+    },
+    {
+      "id": "sketchfab:601fbbed8c844d12af0515db6e25249b",
+      "provider": "sketchfab",
+      "title": "Space Stone",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-601fbbed8c844d12af0515db6e25249b",
+      "thumbnailUrl": "https://media.sketchfab.com/models/601fbbed8c844d12af0515db6e25249b/thumbnails/9611f44955da4ca194132bbf4ec95087/d0ae0f0a708a4478b09de6b6f668e016.jpeg",
+      "downloadable": false,
+      "author": "Northern Heritage Network",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 3810977
     }
   ]
 }

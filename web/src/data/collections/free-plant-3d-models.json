@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-21T09:35:04.527Z",
+  "updatedAt": "2026-10-25T09:22:19.016Z",
   "assets": [
     {
       "id": "polyhaven:potted_plant_02",
@@ -483,81 +483,6 @@
       "polyCount": 2936
     },
     {
-      "id": "polyhaven:grass_medium_01",
-      "provider": "polyhaven",
-      "title": "Grass Medium 01",
-      "type": "model",
-      "url": "https://polyhaven.com/a/grass_medium_01",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/grass_medium_01.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rob Tuytel, Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 1606633
-    },
-    {
-      "id": "polyhaven:tree_small_02",
-      "provider": "polyhaven",
-      "title": "Tree Small 02",
-      "type": "model",
-      "url": "https://polyhaven.com/a/tree_small_02",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/tree_small_02.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 4652585
-    },
-    {
-      "id": "polyhaven:jacaranda_tree",
-      "provider": "polyhaven",
-      "title": "Jacaranda Tree",
-      "type": "model",
-      "url": "https://polyhaven.com/a/jacaranda_tree",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/jacaranda_tree.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rob Tuytel, Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 312356
-    },
-    {
       "id": "blenderkit:68330ea8-024e-4c7e-b007-aa456a564e0d",
       "provider": "blenderkit",
       "title": "Large Tropical Indoor Plant with Pot",
@@ -579,31 +504,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 38114
-    },
-    {
-      "id": "polyhaven:grass_bermuda_01",
-      "provider": "polyhaven",
-      "title": "Grass Bermuda 01",
-      "type": "model",
-      "url": "https://polyhaven.com/a/grass_bermuda_01",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/grass_bermuda_01.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 223596
     },
     {
       "id": "blenderkit:d11e10fa-85c3-4833-8e21-27cee860d17b",
@@ -628,31 +528,6 @@
       "polyCount": 104404
     },
     {
-      "id": "polyhaven:island_tree_02",
-      "provider": "polyhaven",
-      "title": "Island Tree 02",
-      "type": "model",
-      "url": "https://polyhaven.com/a/island_tree_02",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/island_tree_02.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rob Tuytel, Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 1762064
-    },
-    {
       "id": "blenderkit:fafdbaf8-70f0-4965-a76d-5f096a22b7d5",
       "provider": "blenderkit",
       "title": "Indoor Plant  - Cuban Cigar",
@@ -674,31 +549,6 @@
       ],
       "maxResolution": "2k",
       "polyCount": 16907
-    },
-    {
-      "id": "polyhaven:fern_02",
-      "provider": "polyhaven",
-      "title": "Fern 02",
-      "type": "model",
-      "url": "https://polyhaven.com/a/fern_02",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/fern_02.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Rob Tuytel, Rico Cilliers",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 6232
     },
     {
       "id": "blenderkit:251bbac9-0546-4215-b0f5-67df9498d8f2",
@@ -742,6 +592,138 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview01_4.jpg",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "polyfork:white-clover-plant-6ed185",
+      "provider": "polyfork",
+      "title": "White Clover Plant",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/white-clover-plant-6ed185",
+      "thumbnailUrl": "https://polyfork.dev/files/white-clover-plant-6ed185/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 539
+    },
+    {
+      "id": "threedassets:demolition-and-site-clearance-demolition-and-site-clea-b69533ae",
+      "provider": "threedassets",
+      "title": "Tracked screening plant (Demolition and Site Clearance)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/demolition-and-site-clearance-demolition-and-site-clea-b69533ae",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/35696/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 2444
+    },
+    {
+      "id": "polyfork:meadow-grass-plant-7085e0",
+      "provider": "polyfork",
+      "title": "Meadow Grass Plant",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/meadow-grass-plant-7085e0",
+      "thumbnailUrl": "https://polyfork.dev/files/meadow-grass-plant-7085e0/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 520
+    },
+    {
+      "id": "threedassets:alien-biosphere-brush-head-fb434803",
+      "provider": "threedassets",
+      "title": "Brush head plant (Alien Planet Plants and Terrain)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/alien-biosphere-brush-head-fb434803",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/22710/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 1060
+    },
+    {
+      "id": "threedassets:alien-biosphere-shield-leaf-85a58a7e",
+      "provider": "threedassets",
+      "title": "Shield leaf plant (Alien Planet Plants and Terrain)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/alien-biosphere-shield-leaf-85a58a7e",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/22711/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 868
+    },
+    {
+      "id": "sketchfab:0c16db638e0a45f2b4cbcb87fe455e6a",
+      "provider": "sketchfab",
+      "title": "A twin capital with decoration of plant motifs",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-0c16db638e0a45f2b4cbcb87fe455e6a",
+      "thumbnailUrl": "https://media.sketchfab.com/models/0c16db638e0a45f2b4cbcb87fe455e6a/thumbnails/634e64f97de7451c9cb618023b567c5d/00784916adac49ea8f8aea6b8f616acb.jpeg",
+      "downloadable": false,
+      "author": "Virtual Museums of Małopolska",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 268992
     }
   ]
 }
