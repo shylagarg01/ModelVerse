@@ -13,7 +13,7 @@
       "space black"
     ]
   },
-  "updatedAt": "2026-10-25T09:22:32.551Z",
+  "updatedAt": "2026-10-26T10:28:36.199Z",
   "assets": [
     {
       "id": "polyfork:space-mine-3a1654",
@@ -93,7 +93,7 @@
       "title": "KayKit : Space Base Bits",
       "type": "model",
       "url": "https://kaylousberg.itch.io/space-base-bits",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4MzY3MzgzLmpwZw==/315x250%23c/zF8GIp.jpg",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxMzUyMjY1LnBuZw==/315x250%23c/B1PflE.png",
       "downloadable": false,
       "author": "Kay Lousberg",
       "free": true
@@ -227,29 +227,6 @@
       "polyCount": 10492
     },
     {
-      "id": "polyfork:safety-railing-run-ba0603",
-      "provider": "polyfork",
-      "title": "Safety Railing Run",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/safety-railing-run-ba0603",
-      "thumbnailUrl": "https://polyfork.dev/files/safety-railing-run-ba0603/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 420
-    },
-    {
       "id": "itchio:jestan/space-station-ada",
       "provider": "itchio",
       "title": "Space Station Ada",
@@ -259,29 +236,6 @@
       "downloadable": false,
       "author": "Jestan",
       "free": true
-    },
-    {
-      "id": "polyfork:access-ladder-dcc590",
-      "provider": "polyfork",
-      "title": "Access Ladder",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/access-ladder-dcc590",
-      "thumbnailUrl": "https://polyfork.dev/files/access-ladder-dcc590/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 424
     },
     {
       "id": "itchio:modernmodron/space-madness",
@@ -639,6 +593,39 @@
         "usdz"
       ],
       "polyCount": 3810977
+    },
+    {
+      "id": "polyfork:space-base-terrain-9fab7d",
+      "provider": "polyfork",
+      "title": "Space Base Terrain",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/space-base-terrain-9fab7d",
+      "thumbnailUrl": "https://polyfork.dev/files/space-base-terrain-9fab7d/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 25328
+    },
+    {
+      "id": "opengameart:space-ship-3d2d",
+      "provider": "opengameart",
+      "title": "space ship 3d&2d",
+      "type": "model",
+      "url": "https://opengameart.org/content/space-ship-3d2d",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/sblender.jpg",
+      "downloadable": true,
+      "free": true
     }
   ]
 }

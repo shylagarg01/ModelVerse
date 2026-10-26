@@ -12,7 +12,7 @@
       "dungeon and dragons"
     ]
   },
-  "updatedAt": "2026-10-25T09:21:43.836Z",
+  "updatedAt": "2026-10-26T10:27:57.226Z",
   "assets": [
     {
       "id": "blenderkit:bb93c779-bf60-439b-96d2-99167435443d",
@@ -157,29 +157,6 @@
       "polyCount": 1
     },
     {
-      "id": "polyfork:loose-faceted-gem-d88a5b",
-      "provider": "polyfork",
-      "title": "Loose Faceted Gem",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/loose-faceted-gem-d88a5b",
-      "thumbnailUrl": "https://polyfork.dev/files/loose-faceted-gem-d88a5b/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 254
-    },
-    {
       "id": "quaternius:medievaldungeon",
       "provider": "quaternius",
       "title": "Modular Dungeon Pack",
@@ -200,29 +177,6 @@
       "downloadable": false,
       "author": "S13Games",
       "free": true
-    },
-    {
-      "id": "polyfork:stone-water-trough-aeabaa",
-      "provider": "polyfork",
-      "title": "Stone Water Trough",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/stone-water-trough-aeabaa",
-      "thumbnailUrl": "https://polyfork.dev/files/stone-water-trough-aeabaa/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 550
     },
     {
       "id": "itchio:kevins-moms-house/dungeon",
@@ -268,53 +222,6 @@
       ],
       "maxResolution": "2k",
       "polyCount": 6679
-    },
-    {
-      "id": "polyfork:standing-water-pool-daafcb",
-      "provider": "polyfork",
-      "title": "Standing Water Pool",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/standing-water-pool-daafcb",
-      "thumbnailUrl": "https://polyfork.dev/files/standing-water-pool-daafcb/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 379
-    },
-    {
-      "id": "polyfork:hooded-lantern-b60021",
-      "provider": "polyfork",
-      "title": "Hooded Lantern",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/hooded-lantern-b60021",
-      "thumbnailUrl": "https://polyfork.dev/files/hooded-lantern-b60021/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 597,
-      "rigged": true
     },
     {
       "id": "itchio:bigbuckbunny/dungeon-assets-pack",
@@ -590,6 +497,84 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzU2MjIxMzcuZ2lm/315x250%23c/zDI4vy.gif",
       "downloadable": false,
       "author": "Kevin's Mom's House",
+      "free": true
+    },
+    {
+      "id": "polyfork:dungeon-rat-cbb03c",
+      "provider": "polyfork",
+      "title": "Dungeon Rat",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/dungeon-rat-cbb03c",
+      "thumbnailUrl": "https://polyfork.dev/files/dungeon-rat-cbb03c/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 2304,
+      "rigged": true
+    },
+    {
+      "id": "polyfork:dungeon-wall-module-a537b3",
+      "provider": "polyfork",
+      "title": "Dungeon Wall Module",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/dungeon-wall-module-a537b3",
+      "thumbnailUrl": "https://polyfork.dev/files/dungeon-wall-module-a537b3/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 958
+    },
+    {
+      "id": "threedassets:dungeon-room-builder-door-iron-3c2d55e9",
+      "provider": "threedassets",
+      "title": "Door Iron (Dungeon Room Builder)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/dungeon-room-builder-door-iron-3c2d55e9",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/25807/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 108
+    },
+    {
+      "id": "opengameart:dungeon-t-junction",
+      "provider": "opengameart",
+      "title": "Dungeon T-junction",
+      "type": "model",
+      "url": "https://opengameart.org/content/dungeon-t-junction",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/dungeon_t-junction_render.png",
+      "downloadable": true,
       "free": true
     }
   ]
