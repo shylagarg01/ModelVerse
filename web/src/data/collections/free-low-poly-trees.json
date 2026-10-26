@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-25T09:22:01.597Z",
+  "updatedAt": "2026-10-26T10:28:13.348Z",
   "assets": [
     {
       "id": "blenderkit:72fac4cb-901c-4a48-8fc8-84a0baa0bd21",
@@ -172,7 +172,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "maxResolution": "2k",
       "polyCount": 480
@@ -301,29 +302,6 @@
       "polyCount": 36000
     },
     {
-      "id": "polyfork:tree-stump-ec3f48",
-      "provider": "polyfork",
-      "title": "Tree Stump",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/tree-stump-ec3f48",
-      "thumbnailUrl": "https://polyfork.dev/files/tree-stump-ec3f48/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 505
-    },
-    {
       "id": "blenderkit:addb6dad-d860-4a29-8f5b-8dee4539268e",
       "provider": "blenderkit",
       "title": "Low Poly Pine Tree",
@@ -402,29 +380,6 @@
       "polyCount": 150
     },
     {
-      "id": "polyfork:dead-tree-6795fa",
-      "provider": "polyfork",
-      "title": "Dead Tree",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/dead-tree-6795fa",
-      "thumbnailUrl": "https://polyfork.dev/files/dead-tree-6795fa/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 536
-    },
-    {
       "id": "itchio:josephriches/low-poly-tree",
       "provider": "itchio",
       "title": "Low Poly Tree",
@@ -480,29 +435,6 @@
       "polyCount": 140
     },
     {
-      "id": "polyfork:street-tree-0d33f3",
-      "provider": "polyfork",
-      "title": "Street Tree",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/street-tree-0d33f3",
-      "thumbnailUrl": "https://polyfork.dev/files/street-tree-0d33f3/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 272
-    },
-    {
       "id": "blenderkit:e1757b38-4bb3-4e92-a0ec-d2d45f9653fd",
       "provider": "blenderkit",
       "title": "Low Poly Mango Tree",
@@ -545,29 +477,6 @@
         "glb"
       ],
       "polyCount": 660
-    },
-    {
-      "id": "polyfork:pine-tree-3ea075",
-      "provider": "polyfork",
-      "title": "Pine Tree",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/pine-tree-3ea075",
-      "thumbnailUrl": "https://polyfork.dev/files/pine-tree-3ea075/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 70
     },
     {
       "id": "itchio:qwerxia/low-poly-trees-nature-props",
@@ -640,6 +549,59 @@
       "type": "model",
       "url": "https://opengameart.org/content/low-poly-trees-stumps-branches",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/trees_preview.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "opengameart:low-poly-palm-tree",
+      "provider": "opengameart",
+      "title": "Low-Poly Palm Tree",
+      "type": "model",
+      "url": "https://opengameart.org/content/low-poly-palm-tree",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/tree_preview.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "polyfork:orchard-apple-tree-b21f85",
+      "provider": "polyfork",
+      "title": "Orchard Apple Tree",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/orchard-apple-tree-b21f85",
+      "thumbnailUrl": "https://polyfork.dev/files/orchard-apple-tree-b21f85/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 736
+    },
+    {
+      "id": "opengameart:low-poly-tree-pack",
+      "provider": "opengameart",
+      "title": "[Low Poly] Tree pack",
+      "type": "model",
+      "url": "https://opengameart.org/content/low-poly-tree-pack",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/trees_6.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "opengameart:textured-low-poly-palm-tree",
+      "provider": "opengameart",
+      "title": "Textured Low Poly Palm Tree",
+      "type": "model",
+      "url": "https://opengameart.org/content/textured-low-poly-palm-tree",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/lowpolypalmrender.png",
       "downloadable": true,
       "free": true
     }

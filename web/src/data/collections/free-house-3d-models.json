@@ -27,7 +27,7 @@
       "Wood Plant"
     ]
   },
-  "updatedAt": "2026-10-25T09:21:59.494Z",
+  "updatedAt": "2026-10-26T10:28:11.413Z",
   "assets": [
     {
       "id": "blenderkit:264b47f4-a1ee-4c31-9ee9-4c0e8dc1a98b",
@@ -579,12 +579,12 @@
       "polyCount": 58560
     },
     {
-      "id": "polyfork:teahouse-bench-6b34e1",
+      "id": "polyfork:matchbox-house-2d2689",
       "provider": "polyfork",
-      "title": "Teahouse Bench",
+      "title": "Matchbox House",
       "type": "model",
-      "url": "https://polyfork.dev/asset/teahouse-bench-6b34e1",
-      "thumbnailUrl": "https://polyfork.dev/files/teahouse-bench-6b34e1/renders/hero.png",
+      "url": "https://polyfork.dev/asset/matchbox-house-2d2689",
+      "thumbnailUrl": "https://polyfork.dev/files/matchbox-house-2d2689/renders/hero.png",
       "downloadable": true,
       "license": {
         "name": "Royalty Free",
@@ -599,7 +599,8 @@
         "usdz",
         "obj"
       ],
-      "polyCount": 492
+      "polyCount": 1548,
+      "rigged": true
     }
   ]
 }

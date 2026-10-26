@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-25T09:21:53.827Z",
+  "updatedAt": "2026-10-26T10:28:05.647Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -318,7 +318,7 @@
       "title": "KayKit : Furniture Bits",
       "type": "model",
       "url": "https://kaylousberg.itch.io/furniture-bits",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4MzY3MzU1LmpwZw==/315x250%23c/0jTPYa.jpg",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxMzUyMjE2LnBuZw==/315x250%23c/ntDZ5E.png",
       "downloadable": false,
       "author": "Kay Lousberg",
       "free": true
@@ -484,31 +484,6 @@
       "free": true
     },
     {
-      "id": "polyhaven:Sofa_01",
-      "provider": "polyhaven",
-      "title": "Sofa 01",
-      "type": "model",
-      "url": "https://polyhaven.com/a/Sofa_01",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/Sofa_01.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Kirill Sannikov",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 4101
-    },
-    {
       "id": "itchio:mariaisme/3d-voxel-furniture",
       "provider": "itchio",
       "title": "3D Voxel Interior Furniture",
@@ -637,6 +612,27 @@
         "usdz"
       ],
       "polyCount": 1044
+    },
+    {
+      "id": "threedassets:bedroom-and-living-room-furniture-flat-floor-4m-b976c6d1",
+      "provider": "threedassets",
+      "title": "Flat Floor 4 m (Bedroom and Living Room Furniture)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/bedroom-and-living-room-furniture-flat-floor-4m-b976c6d1",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/38764/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 320
     }
   ]
 }
