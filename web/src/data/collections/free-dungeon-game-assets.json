@@ -12,7 +12,7 @@
       "dungeon and dragons"
     ]
   },
-  "updatedAt": "2026-10-26T10:27:57.226Z",
+  "updatedAt": "2026-10-27T10:00:57.167Z",
   "assets": [
     {
       "id": "blenderkit:bb93c779-bf60-439b-96d2-99167435443d",
@@ -201,29 +201,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:8ec57911-21dd-422c-95ef-e072961ac5e9",
-      "provider": "blenderkit",
-      "title": "Cultist Victim",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/8ec57911-21dd-422c-95ef-e072961ac5e9/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/f84df3f6d26a42a9bc4a50392746a0ff/files/thumbnail_0ca880e8-23ec-4749-9217-7c7edc297410.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Hesoyam 3dart",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "2k",
-      "polyCount": 6679
-    },
-    {
       "id": "itchio:bigbuckbunny/dungeon-assets-pack",
       "provider": "itchio",
       "title": "Dungeon assets pack",
@@ -235,29 +212,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:ca86168c-64d6-4334-847f-3d7f8c101db7",
-      "provider": "blenderkit",
-      "title": "Fallen Victim",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/ca86168c-64d6-4334-847f-3d7f8c101db7/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/e5706cb7175a480089bd720e6105e7a0/files/thumbnail_4542a5b0-3e20-486a-a074-4b6c0525b06d.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Hesoyam 3dart",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "2k",
-      "polyCount": 6690
-    },
-    {
       "id": "itchio:stealthix/32-x-32-dungeon-assets",
       "provider": "itchio",
       "title": "Dungeon Assets 32 x 32 px",
@@ -267,29 +221,6 @@
       "downloadable": false,
       "author": "Stealthix",
       "free": true
-    },
-    {
-      "id": "blenderkit:17607113-73aa-4822-bb7d-1aa6546e25f7",
-      "provider": "blenderkit",
-      "title": "10 dice",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/17607113-73aa-4822-bb7d-1aa6546e25f7/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/747a887243b7474d888a15d903b34a19/files/thumbnail_b22ce3d9-8af5-4ac8-9b06-7fe733c386a8.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Nicolas Prigent",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "2k",
-      "polyCount": 180
     },
     {
       "id": "itchio:prominent/8x8-dungeon",
@@ -576,6 +507,65 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/dungeon_t-junction_render.png",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "sketchfab:f68491091d6e494a852458e433a2c8d4",
+      "provider": "sketchfab",
+      "title": "Dungeon Skull - Low Poly Medieval, CC0",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-f68491091d6e494a852458e433a2c8d4",
+      "thumbnailUrl": "https://media.sketchfab.com/models/f68491091d6e494a852458e433a2c8d4/thumbnails/21c37889b76148f59b46b318d2dbd47e/fc3983da84a34ed298d6029f7eef6c03.jpeg",
+      "downloadable": false,
+      "author": "Avramania",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 339
+    },
+    {
+      "id": "cgtrader:dungeon-castle-assets-pack",
+      "provider": "cgtrader",
+      "title": "Dungeon Castle Assets Pack",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/interior/other/dungeon-castle-assets-pack",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/31EGKw5UxRButSgver855VcR/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/prevA.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "fbx"
+      ]
+    },
+    {
+      "id": "sketchfab:0c3c9c048e58492384ed9dcdd91ddccd",
+      "provider": "sketchfab",
+      "title": "Dungeon Wall - Low Poly Medieval, CC0",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-0c3c9c048e58492384ed9dcdd91ddccd",
+      "thumbnailUrl": "https://media.sketchfab.com/models/0c3c9c048e58492384ed9dcdd91ddccd/thumbnails/8da2478d64a74c0cb8d1a618b6d36ab2/c2700c7f390b408696a640acf0d9e42d.jpeg",
+      "downloadable": false,
+      "author": "Avramania",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 464
     }
   ]
 }
