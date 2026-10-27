@@ -14,29 +14,8 @@
       "visualization"
     ]
   },
-  "updatedAt": "2026-10-25T09:22:27.705Z",
+  "updatedAt": "2026-10-27T10:02:00.047Z",
   "assets": [
-    {
-      "id": "blenderkit:f856dc91-1475-40de-8aa0-d29cfa48a583",
-      "provider": "blenderkit",
-      "title": "Large scale sci-fi environment",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/f856dc91-1475-40de-8aa0-d29cfa48a583/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/180a32b2400f4834b7b6d630fbfe7e36/files/thumbnail_449a88d2-9d30-4762-86ae-77665852b032.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Matteo Pascale",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "polyCount": 1
-    },
     {
       "id": "quaternius:scifiessentialskit",
       "provider": "quaternius",
@@ -194,28 +173,6 @@
       "author": "WelenWhite",
       "free": true,
       "animated": true
-    },
-    {
-      "id": "quaternius:ultimatespaceships",
-      "provider": "quaternius",
-      "title": "Ultimate Spaceships Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/ultimatespaceships.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/ultimatespaceships.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
-    },
-    {
-      "id": "quaternius:spaceships",
-      "provider": "quaternius",
-      "title": "Spaceships Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/spaceships.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/spaceships.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
     },
     {
       "id": "blenderkit:eb8d11d2-5ee1-43c6-8a75-5579fecb8f4e",
@@ -591,6 +548,58 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_3_7.png",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "cgtrader:scifi-asset-pack",
+      "provider": "cgtrader",
+      "title": "Sci-fi asset pack",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/space/other/scifi-asset-pack",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/KNwsAy422baZjF3xYb6X4mo7/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/asset_pack_presentation.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "blend",
+        "fbx",
+        "png",
+        "obj",
+        "gltf"
+      ]
+    },
+    {
+      "id": "cgtrader:sci-fi-bedroom-79647903-765e-4dc0-8502-6e3947156e8d",
+      "provider": "cgtrader",
+      "title": "Sci Fi Bedroom - Blender - FBX - USD",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/space/spaceship/sci-fi-bedroom-79647903-765e-4dc0-8502-6e3947156e8d",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/lbgugon55y6aamaaufxcrxy092aq/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/EndlessJourney_CamC_04_T.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "blend",
+        "png",
+        "psd",
+        "svg",
+        "fbx"
+      ]
+    },
+    {
+      "id": "cgtrader:sci-fi-kit-free-09-vent-pipe",
+      "provider": "cgtrader",
+      "title": "Sci-Fi Kit Free 09 vent pipe",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/exterior/sci-fi-exterior/sci-fi-kit-free-09-vent-pipe",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/p80rhntu5sxc7gupflt0flv7gzmd/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/sci-fi-kit-free-09-vent-pipe-3d-model-647617a5ba.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "exr",
+        "jpg",
+        "blend",
+        "fbx",
+        "obj",
+        "max"
+      ]
     }
   ]
 }

@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-26T10:28:05.647Z",
+  "updatedAt": "2026-10-27T10:01:05.847Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -365,17 +365,6 @@
       "polyCount": 8004
     },
     {
-      "id": "quaternius:fantasypropsmegakit",
-      "provider": "quaternius",
-      "title": "Fantasy Props MegaKit",
-      "type": "model",
-      "url": "https://quaternius.com/packs/fantasypropsmegakit.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/fantasypropsmegakit.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
-    },
-    {
       "id": "itchio:mst-creator/furniture-pack-1",
       "provider": "itchio",
       "title": "Furniture Pack 1",
@@ -408,22 +397,6 @@
       ],
       "maxResolution": "2k",
       "polyCount": 70321
-    },
-    {
-      "id": "sharetextures:sofa_3",
-      "provider": "sharetextures",
-      "title": "Sofa 3",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/furniture/sofa_3",
-      "thumbnailUrl": "https://images.sharetextures.com/u/12f7f47d-5da8-4eaf-ad24-890af3ca70c2.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "polyhaven:modern_arm_chair_01",
@@ -633,6 +606,44 @@
         "glb"
       ],
       "polyCount": 320
+    },
+    {
+      "id": "cgtrader:furniture-pack-cba87a3a-5ebb-4e38-9bab-0336368ab284",
+      "provider": "cgtrader",
+      "title": "Furniture Pack",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/interior/other/furniture-pack-cba87a3a-5ebb-4e38-9bab-0336368ab284",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/C93FVwP3FpZZ7UZqeXZz75hd/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/untitle312312312231d.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "obj",
+        "fbx",
+        "stl"
+      ]
+    },
+    {
+      "id": "blenderkit:c698e635-51b6-46e6-99bc-9105286ed060",
+      "provider": "blenderkit",
+      "title": "Office Desk | Table Furniture",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/c698e635-51b6-46e6-99bc-9105286ed060/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/3787f1446e5c442191a98781380d022c/files/thumbnail_02eca1ac-8749-4623-8a15-9c420757b5f0.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Wondie A.",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "2k",
+      "polyCount": 3742
     }
   ]
 }
