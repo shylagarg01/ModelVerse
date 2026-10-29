@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-26T10:28:26.274Z",
+  "updatedAt": "2026-10-29T11:08:06.900Z",
   "assets": [
     {
       "id": "polyhaven:potted_plant_02",
@@ -387,7 +387,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "maxResolution": "4k",
       "polyCount": 32970
@@ -477,7 +478,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "maxResolution": "0.5k",
       "polyCount": 2936
@@ -549,29 +551,6 @@
       ],
       "maxResolution": "2k",
       "polyCount": 16907
-    },
-    {
-      "id": "blenderkit:251bbac9-0546-4215-b0f5-67df9498d8f2",
-      "provider": "blenderkit",
-      "title": "Plant set",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/251bbac9-0546-4215-b0f5-67df9498d8f2/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/091846804ca34e368178afa23ad1b00e/files/thumbnail_b7ff3bf7-9a5e-4dee-b740-271dc418cda6.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Arsha Flora",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 299359
     },
     {
       "id": "opengameart:tropical-plant-02-0",
@@ -724,6 +703,29 @@
         "usdz"
       ],
       "polyCount": 268992
+    },
+    {
+      "id": "polyfork:ti-plant-a7ad06",
+      "provider": "polyfork",
+      "title": "Ti Plant",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/ti-plant-a7ad06",
+      "thumbnailUrl": "https://polyfork.dev/files/ti-plant-a7ad06/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 782
     }
   ]
 }
