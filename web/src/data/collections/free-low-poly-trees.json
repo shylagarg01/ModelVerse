@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-27T10:01:14.287Z",
+  "updatedAt": "2026-10-29T11:06:56.909Z",
   "assets": [
     {
       "id": "blenderkit:72fac4cb-901c-4a48-8fc8-84a0baa0bd21",
@@ -386,17 +386,6 @@
       "free": true
     },
     {
-      "id": "itchio:shop-dream/low-poly-tree-pack-starter-kit",
-      "provider": "itchio",
-      "title": "Low Poly Tree pack Starter Kit",
-      "type": "model",
-      "url": "https://shop-dream.itch.io/low-poly-tree-pack-starter-kit",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI2NTgwOTk4LnBuZw==/315x250%23c/mY5ynN.png",
-      "downloadable": false,
-      "author": "shop dream",
-      "free": true
-    },
-    {
       "id": "threedassets:wipe-day-survival-island-pine-tree-dfc88d2b",
       "provider": "threedassets",
       "title": "Pine Tree (Wipe Day Survival Island)",
@@ -569,6 +558,29 @@
         "obj",
         "fbx"
       ]
+    },
+    {
+      "id": "sketchfab:0fa93c551d8449808cc1f85c4238bf93",
+      "provider": "sketchfab",
+      "title": "Apple Tree - Low Poly Medieval, CC0",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-0fa93c551d8449808cc1f85c4238bf93",
+      "thumbnailUrl": "https://media.sketchfab.com/models/0fa93c551d8449808cc1f85c4238bf93/thumbnails/81e2bfb83f0d4e28827346982d48c73c/e029abda5f24421bb188ad70a49a9416.jpeg",
+      "downloadable": false,
+      "author": "Avramania",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 1044
     }
   ]
 }
