@@ -14,7 +14,7 @@
       "visualization"
     ]
   },
-  "updatedAt": "2026-10-29T11:08:54.775Z",
+  "updatedAt": "2026-10-30T11:00:55.306Z",
   "assets": [
     {
       "id": "quaternius:scifiessentialskit",
@@ -471,7 +471,7 @@
         "blend",
         "glb"
       ],
-      "maxResolution": "2k",
+      "maxResolution": "1k",
       "polyCount": 5474,
       "animated": true
     },

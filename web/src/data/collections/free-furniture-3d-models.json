@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-27T10:01:05.847Z",
+  "updatedAt": "2026-10-30T11:00:19.536Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -399,31 +399,6 @@
       "polyCount": 70321
     },
     {
-      "id": "polyhaven:modern_arm_chair_01",
-      "provider": "polyhaven",
-      "title": "Modern Arm Chair 01",
-      "type": "model",
-      "url": "https://polyhaven.com/a/modern_arm_chair_01",
-      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/modern_arm_chair_01.png?width=512&height=512",
-      "downloadable": true,
-      "author": "Vibrant Nordic",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "gltf",
-        "blend",
-        "fbx",
-        "usd"
-      ],
-      "maxResolution": "8k",
-      "polyCount": 8916
-    },
-    {
       "id": "blenderkit:375867d4-b002-44ac-ba59-e2764f68b15d",
       "provider": "blenderkit",
       "title": "Sofa Set Furniture",
@@ -644,6 +619,16 @@
       ],
       "maxResolution": "2k",
       "polyCount": 3742
+    },
+    {
+      "id": "opengameart:low-poly-furniture",
+      "provider": "opengameart",
+      "title": "Low poly furniture",
+      "type": "model",
+      "url": "https://opengameart.org/content/low-poly-furniture",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/bench_prev.jpg",
+      "downloadable": true,
+      "free": true
     }
   ]
 }
