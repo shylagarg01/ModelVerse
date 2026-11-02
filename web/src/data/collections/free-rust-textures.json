@@ -19,7 +19,7 @@
       "Corrugated Iron"
     ]
   },
-  "updatedAt": "2026-10-25T09:22:25.848Z",
+  "updatedAt": "2026-11-02T12:50:43.554Z",
   "assets": [
     {
       "id": "polyhaven:green_metal_rust",
@@ -91,17 +91,6 @@
       "url": "https://opengameart.org/content/45-high-res-metal-and-rust-texture-photos",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/metal.zip.preview.jpg",
       "downloadable": true,
-      "free": true
-    },
-    {
-      "id": "itchio:stickyteethgames/rust-textures",
-      "provider": "itchio",
-      "title": "Rust Textures",
-      "type": "texture",
-      "url": "https://stickyteethgames.itch.io/rust-textures",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI1MjUzOTg4LnBuZw==/315x250%23c/nSvdJH.png",
-      "downloadable": false,
-      "author": "StickyTeethGames",
       "free": true
     },
     {
@@ -656,6 +645,22 @@
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "freestylized:material:rusted_metal_paint_02",
+      "provider": "freestylized",
+      "title": "Rusted Metal Paint 02",
+      "type": "material",
+      "url": "https://freestylized.com/material/rusted_metal_paint_02/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2025/12/rusted_metal_paint_02_preview_hex151515_thumbnail.webp",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
         "commercialUse": true,
         "attributionRequired": false
       },
