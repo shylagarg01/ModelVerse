@@ -15,7 +15,7 @@
       "preview for"
     ]
   },
-  "updatedAt": "2026-10-26T10:28:28.326Z",
+  "updatedAt": "2026-11-03T12:18:10.209Z",
   "assets": [
     {
       "id": "polyhaven:rock_moss_set_02",
@@ -121,29 +121,6 @@
       ],
       "maxResolution": "8k",
       "polyCount": 63127
-    },
-    {
-      "id": "polyfork:rock-cave-ledge-2a9532",
-      "provider": "polyfork",
-      "title": "Rock Cave Ledge",
-      "type": "model",
-      "url": "https://polyfork.dev/asset/rock-cave-ledge-2a9532",
-      "thumbnailUrl": "https://polyfork.dev/files/rock-cave-ledge-2a9532/renders/hero.png",
-      "downloadable": true,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://polyfork.dev/licensing",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "glb",
-        "fbx",
-        "usdz",
-        "obj"
-      ],
-      "polyCount": 558
     },
     {
       "id": "blenderkit:505d1690-43a2-4dc3-8a26-a7da9485105e",
@@ -721,6 +698,29 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/rock_preview.png",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "polyfork:obsidian-fang-rock-67e326",
+      "provider": "polyfork",
+      "title": "Obsidian Fang Rock",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/obsidian-fang-rock-67e326",
+      "thumbnailUrl": "https://polyfork.dev/files/obsidian-fang-rock-67e326/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 320
     }
   ]
 }
