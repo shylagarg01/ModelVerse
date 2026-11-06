@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-25T09:21:33.264Z",
+  "updatedAt": "2026-11-06T12:25:15.787Z",
   "assets": [
     {
       "id": "kenney:animated-characters-protagonists",
@@ -431,7 +431,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "maxResolution": "2k",
       "polyCount": 2458,
