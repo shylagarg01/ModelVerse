@@ -27,7 +27,7 @@
       "Wood Plant"
     ]
   },
-  "updatedAt": "2026-11-06T12:26:08.271Z",
+  "updatedAt": "2026-11-07T11:18:13.205Z",
   "assets": [
     {
       "id": "blenderkit:264b47f4-a1ee-4c31-9ee9-4c0e8dc1a98b",
@@ -447,29 +447,6 @@
       "free": true
     },
     {
-      "id": "blenderkit:141b8a53-a0f1-447c-9e9c-ea2ea3b77e29",
-      "provider": "blenderkit",
-      "title": "Small House",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/141b8a53-a0f1-447c-9e9c-ea2ea3b77e29/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/f9c97f9ffa2f4cd490e2b1affb6e99c6/files/thumbnail_35a6b17a-d719-4f67-a3ce-8400da05fd9c.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Dal Roron",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "maxResolution": "4k",
-      "polyCount": 43184
-    },
-    {
       "id": "sketchfab:6c4ec0df32f147dcb8e7ebcc6925d0c6",
       "provider": "sketchfab",
       "title": "Kilnagappagh - Booley House",
@@ -603,6 +580,30 @@
         "obj"
       ],
       "polyCount": 3996,
+      "rigged": true
+    },
+    {
+      "id": "polyfork:brownstone-row-house-1b84fd",
+      "provider": "polyfork",
+      "title": "Brownstone Row House",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/brownstone-row-house-1b84fd",
+      "thumbnailUrl": "https://polyfork.dev/files/brownstone-row-house-1b84fd/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 3050,
       "rigged": true
     }
   ]
