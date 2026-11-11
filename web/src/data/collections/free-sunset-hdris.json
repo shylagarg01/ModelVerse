@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-25T09:22:38.344Z",
+  "updatedAt": "2026-11-11T12:07:31.471Z",
   "assets": [
     {
       "id": "polyhaven:belfast_sunset_puresky",
@@ -585,26 +585,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "ambientcg:EveningSkyHDRI026B",
-      "provider": "ambientcg",
-      "title": "Evening Sky HDRI 026 B",
-      "type": "hdri",
-      "url": "https://ambientcg.com/a/EveningSkyHDRI026B",
-      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/EveningSkyHDRI026B.jpg",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "exr"
-      ],
-      "maxResolution": "16k"
-    },
-    {
       "id": "polyhaven:industrial_sunset_02",
       "provider": "polyhaven",
       "title": "Industrial Sunset 02",
@@ -622,26 +602,6 @@
       "free": true,
       "formats": [
         "hdr",
-        "exr"
-      ],
-      "maxResolution": "16k"
-    },
-    {
-      "id": "ambientcg:EveningSkyHDRI037A",
-      "provider": "ambientcg",
-      "title": "Evening Sky HDRI 037 A",
-      "type": "hdri",
-      "url": "https://ambientcg.com/a/EveningSkyHDRI037A",
-      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/EveningSkyHDRI037A.jpg",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
         "exr"
       ],
       "maxResolution": "16k"
@@ -738,6 +698,46 @@
       "type": "hdri",
       "url": "https://hdrmaps.com/freebies/egg-hill-clear-sky-sunset/",
       "thumbnailUrl": "https://hdrmaps.com/wp-content/uploads/2024/10/free_hdr_170_clear_sky_sunset-560x280.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://hdrmaps.com/terms-of-use/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "10k"
+    },
+    {
+      "id": "hdrmaps:turnberg-sunset",
+      "provider": "hdrmaps",
+      "title": "Turnberg sunset",
+      "type": "hdri",
+      "url": "https://hdrmaps.com/freebies/turnberg-sunset/",
+      "thumbnailUrl": "https://hdrmaps.com/wp-content/uploads/2024/09/free_hdr_167_turnberg_sunset_view_owl_mountains-560x280.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://hdrmaps.com/terms-of-use/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "10k"
+    },
+    {
+      "id": "hdrmaps:sunset-sky-dome",
+      "provider": "hdrmaps",
+      "title": "Sunset sky dome",
+      "type": "hdri",
+      "url": "https://hdrmaps.com/freebies/sunset-sky-dome/",
+      "thumbnailUrl": "https://hdrmaps.com/wp-content/uploads/2020/06/free_hdr_101_sky_dome_mountain-560x280.jpg",
       "downloadable": true,
       "license": {
         "name": "Royalty Free",
