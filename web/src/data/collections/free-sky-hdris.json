@@ -17,7 +17,7 @@
       "moon"
     ]
   },
-  "updatedAt": "2026-11-13T12:34:09.079Z",
+  "updatedAt": "2026-11-14T11:44:13.342Z",
   "assets": [
     {
       "id": "polyhaven:kloofendal_48d_partly_cloudy_puresky",
@@ -665,27 +665,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "blenderkit:b7011c43-286c-4a59-b04a-121cd65915fa",
-      "provider": "blenderkit",
-      "title": "Aerial Cloudy Sky Landscape",
-      "type": "hdri",
-      "url": "https://www.blendkit.com/asset-gallery-detail/b7011c43-286c-4a59-b04a-121cd65915fa/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/b03c618ba9a34427af79971b4db65df6/files/thumbnail_76fdda67-77c4-4a3e-954c-13c01226c2aa.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "EB Adventure Photoscans",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "exr"
-      ],
-      "maxResolution": "8k"
-    },
-    {
       "id": "hdrmaps:turnberg-sky-3",
       "provider": "hdrmaps",
       "title": "Turnberg Sky 3",
@@ -733,6 +712,26 @@
       "type": "hdri",
       "url": "https://ambientcg.com/a/DaySkyHDRI072B",
       "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/DaySkyHDRI072B.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "16k"
+    },
+    {
+      "id": "ambientcg:DaySkyHDRI072A",
+      "provider": "ambientcg",
+      "title": "Day Sky HDRI 072 A",
+      "type": "hdri",
+      "url": "https://ambientcg.com/a/DaySkyHDRI072A",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/DaySkyHDRI072A.jpg",
       "downloadable": true,
       "license": {
         "name": "CC0",
