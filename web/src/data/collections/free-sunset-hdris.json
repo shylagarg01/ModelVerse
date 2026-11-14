@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-11T12:07:31.471Z",
+  "updatedAt": "2026-11-14T11:44:18.425Z",
   "assets": [
     {
       "id": "polyhaven:belfast_sunset_puresky",
@@ -501,26 +501,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "ambientcg:EveningSkyHDRI044A",
-      "provider": "ambientcg",
-      "title": "Evening Sky HDRI 044 A",
-      "type": "hdri",
-      "url": "https://ambientcg.com/a/EveningSkyHDRI044A",
-      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/EveningSkyHDRI044A.jpg",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "exr"
-      ],
-      "maxResolution": "16k"
-    },
-    {
       "id": "polyhaven:bambanani_sunset",
       "provider": "polyhaven",
       "title": "Bambanani Sunset",
@@ -538,26 +518,6 @@
       "free": true,
       "formats": [
         "hdr",
-        "exr"
-      ],
-      "maxResolution": "16k"
-    },
-    {
-      "id": "ambientcg:EveningSkyHDRI005B",
-      "provider": "ambientcg",
-      "title": "Evening Sky HDRI 005 B",
-      "type": "hdri",
-      "url": "https://ambientcg.com/a/EveningSkyHDRI005B",
-      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/EveningSkyHDRI005B.jpg",
-      "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
         "exr"
       ],
       "maxResolution": "16k"
@@ -750,6 +710,47 @@
         "exr"
       ],
       "maxResolution": "10k"
+    },
+    {
+      "id": "hdrmaps:sunset-at-the-beach",
+      "provider": "hdrmaps",
+      "title": "Sunset at the beach",
+      "type": "hdri",
+      "url": "https://hdrmaps.com/freebies/sunset-at-the-beach/",
+      "thumbnailUrl": "https://hdrmaps.com/wp-content/uploads/2020/06/free_hdr_100_sunset_hdri_map-560x280.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://hdrmaps.com/terms-of-use/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "10k"
+    },
+    {
+      "id": "blenderkit:602514b0-7e38-458a-8c5c-4921c34bfdb0",
+      "provider": "blenderkit",
+      "title": "Dramatic Cloudy Sunset Landscape",
+      "type": "hdri",
+      "url": "https://www.blendkit.com/asset-gallery-detail/602514b0-7e38-458a-8c5c-4921c34bfdb0/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/816f8571a80e4ca2915c23a45362f6b4/files/thumbnail_0cba8bf5-f9c4-44d5-85a9-0bf275412201.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "EB Adventure Photoscans",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "8k"
     }
   ]
 }
