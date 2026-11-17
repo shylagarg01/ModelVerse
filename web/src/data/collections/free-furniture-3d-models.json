@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-09T13:18:08.441Z",
+  "updatedAt": "2026-11-17T13:48:09.490Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -401,28 +401,6 @@
       "polyCount": 70321
     },
     {
-      "id": "blenderkit:375867d4-b002-44ac-ba59-e2764f68b15d",
-      "provider": "blenderkit",
-      "title": "Sofa Set Furniture",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/375867d4-b002-44ac-ba59-e2764f68b15d/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/cf6f3bf349734652923a33e48f617b44/files/thumbnail_c3ded1ce-7c81-4f1f-8fa5-d004dd90e512.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Wondie A.",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "polyCount": 10192
-    },
-    {
       "id": "itchio:ladoncha/furniture-asset-pack",
       "provider": "itchio",
       "title": "Furniture Asset Pack 3D - Free",
@@ -631,6 +609,27 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/bench_prev.jpg",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "blenderkit:08da45c2-84c0-45b1-8ad3-9637d85ba01b",
+      "provider": "blenderkit",
+      "title": "Semi Furnitured  Apartment",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/08da45c2-84c0-45b1-8ad3-9637d85ba01b/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/eeff76a6690d42e7a0f8f31917c9000f/files/thumbnail_63624fdb-4e33-46e9-9c27-18856cd8a9e7.jpg.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Nobody",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "polyCount": 1
     }
   ]
 }
