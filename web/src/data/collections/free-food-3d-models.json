@@ -11,7 +11,7 @@
       "delivery bag"
     ]
   },
-  "updatedAt": "2026-11-17T13:47:56.639Z",
+  "updatedAt": "2026-11-19T13:49:48.764Z",
   "assets": [
     {
       "id": "polyhaven:food_apple_01",
@@ -311,28 +311,6 @@
       ],
       "maxResolution": "8k",
       "polyCount": 6783
-    },
-    {
-      "id": "blenderkit:a2e7a90f-c7c9-4b07-be9a-d674bb4da25d",
-      "provider": "blenderkit",
-      "title": "Food Container",
-      "type": "model",
-      "url": "https://www.blendkit.com/asset-gallery-detail/a2e7a90f-c7c9-4b07-be9a-d674bb4da25d/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/b73d26dec90d41faad49578892466497/files/thumbnail_cf4792e4-b884-4242-a08f-0f57025bdd92.png.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Rex Hans",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend",
-        "glb"
-      ],
-      "polyCount": 4488
     },
     {
       "id": "itchio:stxrberries/japanese-food",
@@ -714,6 +692,24 @@
       "downloadable": false,
       "author": "godzillanaynay",
       "free": true
+    },
+    {
+      "id": "cgtrader:free-stylized-food-pack-20-low-poly-foods",
+      "provider": "cgtrader",
+      "title": "Free Stylized Food Pack - 20 Low Poly Foods",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/food/miscellaneous/free-stylized-food-pack-20-low-poly-foods",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/3h5u2w1j3hx4ldcp1t7myh31y2d9/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/BuildByBit.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "blend",
+        "png",
+        "fbx",
+        "obj",
+        "unitypackage",
+        "uasset"
+      ]
     }
   ]
 }
