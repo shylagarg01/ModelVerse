@@ -21,7 +21,7 @@
       "lego"
     ]
   },
-  "updatedAt": "2026-11-10T12:56:40.938Z",
+  "updatedAt": "2026-11-21T12:57:49.910Z",
   "assets": [
     {
       "id": "polyhaven:covered_car",
@@ -222,7 +222,8 @@
       },
       "free": true,
       "formats": [
-        "blend"
+        "blend",
+        "glb"
       ],
       "maxResolution": "4k",
       "polyCount": 69531
