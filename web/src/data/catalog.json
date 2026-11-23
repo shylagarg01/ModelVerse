@@ -1,20 +1,20 @@
 {
-  "countedAt": "2026-11-22T12:49:24.391Z",
+  "countedAt": "2026-11-23T15:15:49.912Z",
   "totals": {
     "listings": {
-      "count": 3130457,
+      "count": 3137648,
       "atLeast": true
     },
     "free": {
-      "count": 318078,
+      "count": 318318,
       "atLeast": true
     },
     "cc0": {
-      "count": 40817,
+      "count": 40819,
       "atLeast": true
     },
     "directDownload": {
-      "count": 84455,
+      "count": 84494,
       "atLeast": true
     },
     "addedLast30Days": 22,
@@ -23,29 +23,29 @@
   },
   "byType": {
     "model": {
-      "count": 2853681,
+      "count": 2860225,
       "atLeast": true
     },
     "pack": {
-      "count": 159172
+      "count": 159790
     },
     "texture": {
-      "count": 59677
+      "count": 59679
     },
     "hdri": {
-      "count": 13076,
+      "count": 13077,
       "atLeast": true
     },
     "material": {
-      "count": 19086,
+      "count": 19087,
       "atLeast": true
     },
     "other": {
-      "count": 9070,
+      "count": 9094,
       "atLeast": true
     },
     "sprite": {
-      "count": 16460
+      "count": 16461
     },
     "ui": {
       "count": 18
@@ -58,9 +58,9 @@
     }
   },
   "byLicense": {
-    "CC0": 40817,
-    "Royalty Free": 4786,
-    "CC0 (ShareTextures custom terms)": 2263,
+    "CC0": 40819,
+    "Royalty Free": 4810,
+    "CC0 (ShareTextures custom terms)": 2264,
     "FreeStylized Royalty Free (custom CC0)": 609,
     "3DTexel License": 239
   },
@@ -71,13 +71,13 @@
       "homepage": "https://www.cgtrader.com",
       "pricing": "freemium",
       "supportsDownload": false,
-      "total": 2795833,
-      "free": 149349,
+      "total": 2802329,
+      "free": 149376,
       "byType": {
-        "model": 2795833
+        "model": 2802329
       },
       "method": "CGTrader listing: totalCount for all and free models",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "itchio",
@@ -85,22 +85,22 @@
       "homepage": "https://itch.io/game-assets",
       "pricing": "freemium",
       "supportsDownload": false,
-      "total": 159098,
-      "free": 69332,
+      "total": 159716,
+      "free": 69505,
       "byType": {
-        "pack": 159098
+        "pack": 159716
       },
       "categories": {
-        "3D": 26112,
-        "2D": 58359,
-        "Textures": 3787,
-        "UI / GUI": 5640,
-        "Audio": 5172,
-        "Fonts": 2481
+        "3D": 26284,
+        "2D": 58564,
+        "Textures": 3793,
+        "UI / GUI": 5673,
+        "Audio": 5183,
+        "Fonts": 2484
       },
       "unit": "packs",
       "method": "itch.io game-assets browse pages: result counts",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "texturescom",
@@ -129,7 +129,7 @@
         "Windows": 2156
       },
       "method": "Category tree: photo sets per top-level category",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "blenderkit",
@@ -137,27 +137,27 @@
       "homepage": "https://www.blendkit.com",
       "pricing": "freemium",
       "supportsDownload": true,
-      "total": 43996,
+      "total": 44042,
       "atLeast": true,
-      "free": 28117,
+      "free": 28126,
       "byType": {
-        "model": 15174,
+        "model": 15196,
         "material": 10000,
         "hdri": 10000,
-        "other": 8822
+        "other": 8846
       },
       "categories": {
         "model": 10000,
-        "printable": 355,
-        "scene": 4819,
+        "printable": 357,
+        "scene": 4839,
         "material": 10000,
         "hdr": 10000,
         "brush": 7298,
         "nodegroup": 377,
-        "addon": 1147
+        "addon": 1171
       },
       "method": "BlenderKit search API: count per asset type, free and all (capped at 10,000 each)",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "opengameart",
@@ -165,15 +165,15 @@
       "homepage": "https://opengameart.org",
       "pricing": "free",
       "supportsDownload": true,
-      "total": 23561,
-      "free": 23561,
+      "total": 23565,
+      "free": 23565,
       "byType": {
-        "model": 4971,
-        "texture": 2258,
-        "sprite": 16332
+        "model": 4973,
+        "texture": 2259,
+        "sprite": 16333
       },
       "method": "Result counts of the 3D Art, Texture and 2D Art listings (\"Displaying 1 - 24 of N\")",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "threedassets",
@@ -202,7 +202,7 @@
         "Effects & Primitives": 112
       },
       "method": "3DAssets.dev API: total and per-category counts (/api/v1/assets)",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "sketchfab",
@@ -218,7 +218,7 @@
         "model": 8024
       },
       "method": "Sketchfab Data API: CC0 model search probed past 8,000 hits (the API reports no total), so a lower bound",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "polyfork",
@@ -227,16 +227,16 @@
       "license": "Royalty Free",
       "pricing": "freemium",
       "supportsDownload": true,
-      "total": 3505,
-      "free": 3505,
+      "total": 3529,
+      "free": 3529,
       "byType": {
-        "model": 3505
+        "model": 3529
       },
       "categories": {
-        "prop": 2183,
-        "building": 461,
-        "animal": 275,
-        "vehicle": 222,
+        "prop": 2200,
+        "building": 465,
+        "animal": 277,
+        "vehicle": 223,
         "character": 206,
         "ultra": 86,
         "attachment": 48,
@@ -244,7 +244,7 @@
         "hand": 2
       },
       "method": "Polyfork API: total, free and per-class counts (/api/assets)",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "ambientcg",
@@ -273,17 +273,17 @@
         "terrain": 5,
         "hdri-element": 4
       },
-      "addedLast30Days": 16,
+      "addedLast30Days": 15,
       "highlights": [
         {
           "label": "Most downloaded this month",
-          "title": "Concrete 049",
-          "url": "https://ambientcg.com/a/Concrete049",
-          "value": 29803
+          "title": "Wood 099",
+          "url": "https://ambientcg.com/a/Wood099",
+          "value": 1022
         }
       ],
       "method": "ambientCG API v3: totalResults per asset type",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "polyhaven",
@@ -292,51 +292,51 @@
       "license": "CC0",
       "pricing": "free",
       "supportsDownload": true,
-      "total": 2391,
-      "free": 2391,
+      "total": 2392,
+      "free": 2392,
       "byType": {
         "model": 522,
-        "hdri": 998,
+        "hdri": 999,
         "material": 871
       },
       "categories": {
-        "outdoor": 1214,
-        "natural light": 823,
-        "nature": 643,
+        "outdoor": 1215,
+        "natural light": 824,
+        "nature": 644,
         "urban": 499,
         "man made": 437,
         "indoor": 377,
-        "low contrast": 369,
+        "low contrast": 370,
         "high contrast": 360,
         "morning-afternoon": 331,
-        "partly cloudy": 325,
+        "partly cloudy": 326,
         "skies": 300,
         "medium contrast": 279
       },
-      "addedLast30Days": 4,
-      "downloads": 126288904,
+      "addedLast30Days": 5,
+      "downloads": 126342029,
       "highlights": [
         {
           "label": "Most downloaded HDRI",
           "title": "Kloofendal 48d Partly Cloudy (Pure Sky)",
           "url": "https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky",
-          "value": 896579
+          "value": 897040
         },
         {
           "label": "Most downloaded texture",
           "title": "Plywood",
           "url": "https://polyhaven.com/a/plywood",
-          "value": 734411
+          "value": 734468
         },
         {
           "label": "Most downloaded model",
           "title": "Grass Medium 01",
           "url": "https://polyhaven.com/a/grass_medium_01",
-          "value": 254099
+          "value": 254396
         }
       ],
       "method": "Poly Haven API: every asset (/assets)",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "sharetextures",
@@ -345,16 +345,16 @@
       "license": "CC0 (ShareTextures custom terms)",
       "pricing": "free",
       "supportsDownload": false,
-      "total": 2263,
-      "free": 2236,
+      "total": 2264,
+      "free": 2237,
       "byType": {
-        "material": 1786,
+        "material": 1787,
         "model": 387,
         "texture": 63,
         "pack": 27
       },
       "categories": {
-        "textures": 1786,
+        "textures": 1787,
         "models": 387,
         "atlases": 63,
         "products": 27
@@ -364,11 +364,11 @@
           "label": "Most downloaded",
           "title": "Velvet 2",
           "url": "https://www.sharetextures.com/textures/fabric/velvet_2",
-          "value": 23911
+          "value": 23920
         }
       ],
       "method": "ShareTextures API: totalCount per item type",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "threedtexel",
@@ -404,7 +404,7 @@
         "Concrete": 24
       },
       "method": "3DTexel public API: /types counts of the free library (AI community assets excluded)",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "threedtextures",
@@ -420,7 +420,7 @@
       },
       "addedLast30Days": 2,
       "method": "WordPress REST API: X-WP-Total of material posts (excluding showcase posts)",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "hdrmaps",
@@ -448,7 +448,7 @@
         "Freebies": 214
       },
       "method": "WooCommerce Store API: X-WP-Total per shop category",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "texturecan",
@@ -464,7 +464,7 @@
         "model": 8
       },
       "method": "Listing pages: full pages × 20 + the last page, plus the models page",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "freestylized",
@@ -482,7 +482,7 @@
         "pack": 21
       },
       "method": "WordPress REST API: X-WP-Total of the 3d_models, material, skybox and asset_pack post types",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "cgbookcase",
@@ -513,7 +513,7 @@
       },
       "addedLast30Days": 0,
       "method": "Every listing in the source's catalogue",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "hdrihub",
@@ -550,12 +550,12 @@
       "license": "CC0",
       "pricing": "free",
       "supportsDownload": true,
-      "total": 218,
-      "free": 218,
+      "total": 219,
+      "free": 219,
       "byType": {
+        "texture": 11,
         "sprite": 128,
         "model": 50,
-        "texture": 10,
         "ui": 18,
         "audio": 10,
         "other": 1,
@@ -565,8 +565,8 @@
         "2D": 147,
         "3D": 50,
         "Platformer Pack": 12,
+        "Textures": 11,
         "Audio": 10,
-        "Textures": 10,
         "Mini": 7,
         "Tiny": 7,
         "Board Games": 5,
@@ -577,7 +577,7 @@
       },
       "unit": "packs",
       "method": "Every listing in the source's catalogue",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     },
     {
       "id": "quaternius",
@@ -592,7 +592,7 @@
       },
       "unit": "packs",
       "method": "Every listing in the source's catalogue",
-      "countedAt": "2026-11-22T12:49:24.391Z"
+      "countedAt": "2026-11-23T15:15:49.912Z"
     }
   ],
   "linked": [

@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-07T09:05:44.796Z",
+  "updatedAt": "2026-11-23T15:17:23.898Z",
   "assets": [
     {
       "id": "polyhaven:floor_tiles_06",
@@ -338,27 +338,6 @@
       "maxResolution": "8k"
     },
     {
-      "id": "blenderkit:2e0a00f1-75a6-4c22-89a9-338453f4b638",
-      "provider": "blenderkit",
-      "title": "Concrete tiles",
-      "type": "material",
-      "url": "https://www.blendkit.com/asset-gallery-detail/2e0a00f1-75a6-4c22-89a9-338453f4b638/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/1be6b977a7fb40f594a1fd5a050acf00/files/thumbnail_0adb2505-d06f-4ebe-81c4-86527be50ddc.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "ydd 3D",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k"
-    },
-    {
       "id": "sharetextures:tiles-9",
       "provider": "sharetextures",
       "title": "Tiles 9",
@@ -686,6 +665,16 @@
         "commercialUse": true,
         "attributionRequired": false
       },
+      "free": true
+    },
+    {
+      "id": "opengameart:wood-texture-tiles",
+      "provider": "opengameart",
+      "title": "Wood Texture Tiles",
+      "type": "texture",
+      "url": "https://opengameart.org/content/wood-texture-tiles",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/wood1.jpg",
+      "downloadable": true,
       "free": true
     }
   ]

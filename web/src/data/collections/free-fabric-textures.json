@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-21T09:34:37.049Z",
+  "updatedAt": "2026-11-23T15:16:15.684Z",
   "assets": [
     {
       "id": "polyhaven:fabric_pattern_07",
@@ -178,27 +178,6 @@
         "gltf"
       ],
       "maxResolution": "8k"
-    },
-    {
-      "id": "blenderkit:7e4f9354-073c-4d06-b2bc-0d0e287a6a4b",
-      "provider": "blenderkit",
-      "title": "Black fabric",
-      "type": "material",
-      "url": "https://www.blendkit.com/asset-gallery-detail/7e4f9354-073c-4d06-b2bc-0d0e287a6a4b/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/80c29f61d9dc4515881417db07df2c33/files/thumbnail_5db9ddcc-8d32-47c1-b8ac-a359331970e7.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "ydd 3D",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "4k"
     },
     {
       "id": "sharetextures:fabric-51",
@@ -636,6 +615,27 @@
       "type": "material",
       "url": "https://ambientcg.com/a/Fabric085",
       "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Fabric085.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "jpg",
+        "png"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "ambientcg:Fabric086",
+      "provider": "ambientcg",
+      "title": "Fabric 086",
+      "type": "material",
+      "url": "https://ambientcg.com/a/Fabric086",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Fabric086.jpg",
       "downloadable": true,
       "license": {
         "name": "CC0",
