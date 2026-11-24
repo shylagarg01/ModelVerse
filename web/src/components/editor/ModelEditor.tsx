@@ -43,7 +43,7 @@ function createGeometricPrism(): THREE.Group {
 
   const geom = new THREE.OctahedronGeometry(1.6, 0);
   const mat = new THREE.MeshStandardMaterial({
-    color: "#6366f1",
+    color: "#547A24",
     roughness: 0.25,
     metalness: 0.8,
     flatShading: true,
@@ -55,7 +55,7 @@ function createGeometricPrism(): THREE.Group {
 
   const ringGeom = new THREE.TorusGeometry(2.3, 0.08, 16, 64);
   const ringMat = new THREE.MeshStandardMaterial({
-    color: "#06b6d4",
+    color: "#C5F467",
     roughness: 0.2,
     metalness: 0.9,
   });
@@ -74,7 +74,7 @@ function createModernChair(): THREE.Group {
   // Seat
   const seatGeom = new THREE.BoxGeometry(2, 0.35, 2);
   const fabricMat = new THREE.MeshStandardMaterial({
-    color: "#7c3aed",
+    color: "#547A24",
     roughness: 0.7,
     metalness: 0.1,
   });
@@ -179,7 +179,7 @@ function createSciFiCrate(): THREE.Group {
   // Accent band
   const bandGeom = new THREE.BoxGeometry(2.05, 0.3, 2.05);
   const bandMat = new THREE.MeshStandardMaterial({
-    color: "#06b6d4",
+    color: "#C5F467",
     roughness: 0.2,
     metalness: 0.85,
   });
@@ -199,16 +199,16 @@ const PRESETS: PresetModel[] = [
 ];
 
 const COLOR_SWATCHES = [
-  "#6366f1", // Indigo
-  "#7c3aed", // Violet
-  "#06b6d4", // Cyan
-  "#3b82f6", // Blue
-  "#10b981", // Emerald
-  "#f59e0b", // Amber
-  "#ef4444", // Rose/Red
-  "#ec4899", // Pink
-  "#f8fafc", // White/Slate
-  "#0f172a", // Dark Charcoal
+  "#547A24", // Forest Primary
+  "#6F9140", // Forest Secondary
+  "#C5F467", // Acid Lime / Accent
+  "#E8EEDC", // Pale Sage Accent
+  "#1E3A1A", // Deep Pine
+  "#A66B16", // Warm Ochre / Wood
+  "#C86446", // Terracotta
+  "#222720", // Deep Charcoal Surface
+  "#FFFFFF", // Pure White
+  "#171916", // Dark Forest Background
 ];
 
 export default function ModelEditor() {
@@ -236,7 +236,7 @@ export default function ModelEditor() {
   // Mesh List & Materials
   const [meshes, setMeshes] = useState<MeshEntry[]>([]);
   const [selectedMeshId, setSelectedMeshId] = useState<string>("all");
-  const [currentColor, setCurrentColor] = useState("#6366f1");
+  const [currentColor, setCurrentColor] = useState("#547A24");
   const [roughness, setRoughness] = useState(0.3);
   const [metalness, setMetalness] = useState(0.6);
   const [isWireframe, setIsWireframe] = useState(false);
@@ -266,7 +266,7 @@ export default function ModelEditor() {
     // Create Scene
     const scene = new THREE.Scene();
     sceneRef.current = scene;
-    scene.background = new THREE.Color("#f8fafc");
+    scene.background = new THREE.Color("#F5F6F0");
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -309,7 +309,7 @@ export default function ModelEditor() {
     scene.add(dirLight2);
 
     // Ground Grid Helper
-    const grid = new THREE.GridHelper(16, 16, 0x6366f1, 0xe2e8f0);
+    const grid = new THREE.GridHelper(16, 16, 0x547A24, 0xE1E5D9);
     grid.position.y = 0;
     gridHelperRef.current = grid;
     scene.add(grid);
@@ -411,7 +411,7 @@ export default function ModelEditor() {
           }
         }
 
-        let origColor = "#6366f1";
+        let origColor = "#547A24";
         if (m.material) {
           const mat = (Array.isArray(m.material) ? m.material[0] : m.material) as any;
           if (mat && mat.color && typeof mat.color.getHexString === "function") {
@@ -647,12 +647,12 @@ export default function ModelEditor() {
     setViewportBg(mode);
     if (!sceneRef.current) return;
     if (mode === "light") {
-      sceneRef.current.background = new THREE.Color("#f8fafc");
+      sceneRef.current.background = new THREE.Color("#F5F6F0");
       if (gridHelperRef.current) gridHelperRef.current.visible = showGrid;
     } else if (mode === "studio") {
-      sceneRef.current.background = new THREE.Color("#1e1b4b");
+      sceneRef.current.background = new THREE.Color("#222720");
     } else {
-      sceneRef.current.background = new THREE.Color("#09090b");
+      sceneRef.current.background = new THREE.Color("#171916");
     }
   };
 
@@ -779,8 +779,8 @@ export default function ModelEditor() {
             onClick={exportAsGLB}
             disabled={exporting || loading}
             className={cn(
-              "inline-flex h-8 items-center gap-1.5 rounded-lg px-3.5 text-xs font-semibold text-white transition shadow-sm",
-              exportSuccess ? "bg-emerald-600 hover:bg-emerald-700" : "bg-primary hover:bg-primary/90"
+              "inline-flex h-8 items-center gap-1.5 rounded-lg px-3.5 text-xs font-semibold text-primary-foreground transition shadow-sm",
+              exportSuccess ? "bg-primary hover:opacity-90" : "bg-primary hover:opacity-90"
             )}
           >
             {exportSuccess ? <Check className="size-3.5" /> : <Download className="size-3.5" />}
@@ -836,9 +836,9 @@ export default function ModelEditor() {
                 "flex size-8 items-center justify-center rounded-lg text-xs font-medium transition",
                 viewportBg === "studio" ? "bg-primary/15 text-primary font-bold" : "text-muted-foreground hover:bg-accent"
               )}
-              title="Indigo Creative Studio Background"
+              title="Forest Studio Background"
             >
-              🎨
+              🌲
             </button>
             <button
               type="button"
@@ -984,7 +984,7 @@ export default function ModelEditor() {
                     }
                   }}
                   className="h-8 flex-1 rounded-lg border border-border bg-background px-2.5 font-mono text-xs focus:border-primary focus:outline-none"
-                  placeholder="#6366f1"
+                  placeholder="#547a24"
                 />
               </div>
             </div>

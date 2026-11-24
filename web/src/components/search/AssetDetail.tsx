@@ -96,7 +96,7 @@ export function AssetDetail({ asset, providerName }: { asset: Asset; providerNam
           {is3DModel && (
             <a
               href={editorUrl}
-              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 text-xs font-semibold text-white shadow-lg backdrop-blur-sm transition hover:opacity-95 hover:scale-105"
+              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground shadow-lg backdrop-blur-sm transition hover:opacity-95 hover:scale-105"
             >
               <FileBox className="size-4" />
               <span>Open in 3D Studio</span>
@@ -108,7 +108,7 @@ export function AssetDetail({ asset, providerName }: { asset: Asset; providerNam
       {/* Main Action Bar */}
       <div className="flex flex-wrap items-center gap-2">
         {is3DModel && (
-          <Button asChild className="rounded-xl bg-primary text-white shadow-sm hover:opacity-95">
+          <Button asChild className="rounded-xl bg-primary text-primary-foreground shadow-sm hover:opacity-95">
             <a href={editorUrl}>
               <FileBox className="size-4" />
               <span>Open in 3D Editor</span>

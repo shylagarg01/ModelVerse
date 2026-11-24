@@ -36,18 +36,21 @@ const cols = [
   },
 ];
 ---
-<footer class="border-t border-border/70 bg-card/40 transition-colors">
+<footer class="border-t border-border bg-card/50 transition-colors">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-[1.4fr_repeat(3,1fr)]">
     <div class="space-y-4">
-      <a href="/" class="flex items-center gap-2.5 font-bold tracking-tight text-lg">
-        <Logo class="size-6" id="logo-footer" />
-        <span>Model<span class="bg-gradient-to-r from-primary to-brand-2 bg-clip-text text-transparent">Verse</span></span>
+      <a href="/" class="group inline-flex items-center gap-2.5 text-foreground transition-opacity hover:opacity-95" aria-label="ModelVerse home">
+        <Logo class="h-8.5 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105" id="logo-footer" variant="icon" />
+        <Logo variant="wordmark" class="text-[21px]" />
       </a>
+      <p class="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+        Search · Explore · Download
+      </p>
       <p class="max-w-xs text-sm text-muted-foreground leading-relaxed">
         Discover, preview, and customize 3D assets from {SOURCE_COUNT} supported repositories across the web — all in one creative workspace.
       </p>
       <div class="flex items-center gap-2 pt-1">
-        <a href="/editor" class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary hover:bg-primary/20 transition">
+        <a href="/editor" class="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-xs font-semibold text-primary hover:bg-primary/20 transition">
           Launch 3D Studio →
         </a>
       </div>

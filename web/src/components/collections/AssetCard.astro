@@ -13,7 +13,7 @@ const { asset: a, eager = false } = Astro.props;
 const source = providerName(a.provider);
 const details = [a.maxResolution?.toUpperCase(), a.formats?.slice(0, 3).join(", ").toUpperCase(), a.animated ? "Animated" : a.rigged ? "Rigged" : undefined].filter(Boolean).join(" · ");
 ---
-<li class="group flex flex-col overflow-hidden rounded-xl border bg-card/50 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
+<li class="group flex flex-col overflow-hidden rounded-2xl border border-border/80 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
   <a href={`/search?asset=${encodeURIComponent(a.id)}`} class="flex flex-1 flex-col focus-visible:outline-2 focus-visible:outline-ring">
     <div class="relative aspect-[4/3] w-full overflow-hidden bg-muted">
       <img

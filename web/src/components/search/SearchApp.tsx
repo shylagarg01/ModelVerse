@@ -369,7 +369,7 @@ const run = useCallback(async (f: Filters, append: boolean) => {
                         />
                         <span className="flex-1 font-medium">{p.name}</span>
                         {p.supportsDownload && (
-                          <span className="rounded bg-emerald-500/10 px-1 py-0.2 text-[9px] font-bold text-emerald-600 dark:text-emerald-400">
+                          <span className="rounded bg-primary/10 px-1 py-0.2 text-[9px] font-bold text-primary">
                             Direct
                           </span>
                         )}
@@ -632,7 +632,7 @@ function ResultCard({
         </div>
 
         {a.downloadable && (
-          <span className="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-md bg-emerald-600/90 px-1.5 py-0.5 text-[9px] font-bold text-white shadow-xs backdrop-blur-sm">
+          <span className="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-md bg-primary px-1.5 py-0.5 text-[9px] font-bold text-primary-foreground shadow-xs backdrop-blur-sm">
             <Download className="size-2.5" /> Direct
           </span>
         )}
@@ -643,7 +643,7 @@ function ResultCard({
             <a
               href={editorUrl}
               onClick={(e) => e.stopPropagation()}
-              className="rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-white shadow-md hover:bg-primary/90 transition flex items-center gap-1"
+              className="rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-md hover:opacity-90 transition flex items-center gap-1"
             >
               <Box className="size-3.5" />
               <span>3D Studio</span>
@@ -652,7 +652,7 @@ function ResultCard({
           <button
             type="button"
             onClick={onOpen}
-            className="rounded-xl bg-white px-3 py-1.5 text-xs font-semibold text-zinc-900 shadow-md hover:bg-zinc-100 transition"
+            className="rounded-xl bg-card px-3 py-1.5 text-xs font-semibold text-foreground shadow-md hover:bg-accent transition"
           >
             Inspect
           </button>
@@ -677,8 +677,8 @@ function ResultCard({
               className={cn(
                 "rounded px-1.5 py-0.2 font-semibold",
                 a.price.free
-                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                  : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                  ? "bg-primary/10 text-primary"
+                  : "bg-warning/10 text-warning"
               )}
             >
               {a.price.free ? "Free" : "Paid"}
