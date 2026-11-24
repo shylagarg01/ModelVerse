@@ -36,7 +36,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     // `npm run dev` here talks to a server started with `npm start` (port 8787).
     server: {
-      proxy: Object.fromEntries(["/v1", "/mcp", "/openapi.json"].map((p) => [p, "http://localhost:8787"])),
+      proxy: Object.fromEntries(["/v1", "/mcp", "/openapi.json", "/auth", "/marketplace-api"].map((p) => [p, "http://localhost:8787"])),
     },
   },
   markdown: { shikiConfig: { theme: "github-dark-default" } },

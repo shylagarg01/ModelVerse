@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import UserDashboardApp from "@/components/dashboard/UserDashboardApp";
+---
+
+<BaseLayout
+  title="My Dashboard | ModelVerse"
+  description="Manage your ModelVerse account, track 3D asset purchases, and apply for creator privileges."
+  noindex={true}
+>
+  <main class="min-h-screen bg-background text-foreground">
+    <UserDashboardApp client:load />
+  </main>
+</BaseLayout>

@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SellerDashboardApp from "@/components/dashboard/SellerDashboardApp";
+---
+
+<BaseLayout
+  title="Seller Studio & Dashboard | ModelVerse"
+  description="Manage your 3D asset catalog, edit listings, inspect recorded sales and store metrics."
+  noindex={true}
+>
+  <main class="min-h-screen bg-background text-foreground">
+    <SellerDashboardApp client:load />
+  </main>
+</BaseLayout>

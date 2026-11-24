@@ -1,4 +1,5 @@
 import { authRouter } from "./auth.js";
+import { marketplaceRouter } from "./marketplace.js";
 import { interpretPrompt } from "../ai/prompt-interpreter.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { randomBytes } from "node:crypto";
@@ -166,6 +167,7 @@ export function createApp(service: AssetService, opts: AppOptions = {}): Hono {
   }),
 );
   app.route("/auth", authRouter);
+  app.route("/marketplace-api", marketplaceRouter);
   // Every event also feeds the in-process tallies behind /v1/stats.
   const localStats = new LocalStats();
   const analytics = teeAnalytics(opts.analytics ?? noopAnalytics, localStats);
