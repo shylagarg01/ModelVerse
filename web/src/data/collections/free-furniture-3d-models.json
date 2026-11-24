@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-17T13:48:09.490Z",
+  "updatedAt": "2026-11-24T15:13:23.732Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -446,17 +446,6 @@
       "polyCount": 606
     },
     {
-      "id": "itchio:eclair-assets/furniture-kit-glb-pack-140-free-cc0-3d-models",
-      "provider": "itchio",
-      "title": "Furniture Kit GLB Pack - 140 Free CC0 3D Models",
-      "type": "model",
-      "url": "https://eclair-assets.itch.io/furniture-kit-glb-pack-140-free-cc0-3d-models",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI3MTQzNjU4LnBuZw==/315x250%23c/vicOjl.png",
-      "downloadable": false,
-      "author": "Eclair Assets",
-      "free": true
-    },
-    {
       "id": "threedassets:printing-press-and-newspaper-office-furniture-rack-d252c708",
       "provider": "threedassets",
       "title": "Furniture Rack (Printing Press and Newspaper Office)",
@@ -630,6 +619,17 @@
         "blend"
       ],
       "polyCount": 1
+    },
+    {
+      "id": "itchio:zedv/bedroom-furniture-3d-asset-pack",
+      "provider": "itchio",
+      "title": "Realistic 3D Furniture Asset Pack",
+      "type": "model",
+      "url": "https://zedv.itch.io/bedroom-furniture-3d-asset-pack",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxMjY2MjQyLmpwZWc=/315x250%23c/TOPTJa.jpeg",
+      "downloadable": false,
+      "author": "ZedV",
+      "free": true
     }
   ]
 }
