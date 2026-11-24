@@ -6,54 +6,81 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ModelVerse Canva-inspired design tokens: warm neutral base, violet/indigo accent, cyan/blue highlights */
+/* ModelVerse — Forest Theme Design System */
+
 :root {
-  --radius: 1rem;
-  --background: oklch(0.985 0.003 260);
-  --foreground: oklch(0.18 0.02 265);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.02 265);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.02 265);
-  --primary: oklch(0.55 0.22 280);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.01 265);
-  --secondary-foreground: oklch(0.22 0.02 265);
-  --muted: oklch(0.96 0.008 265);
-  --muted-foreground: oklch(0.48 0.02 265);
-  --accent: oklch(0.94 0.03 280);
-  --accent-foreground: oklch(0.35 0.15 280);
-  --destructive: oklch(0.58 0.22 27);
-  --success: oklch(0.55 0.14 160);
-  --warning: oklch(0.65 0.15 70);
-  --border: oklch(0.91 0.008 265);
-  --input: oklch(0.91 0.008 265);
-  --ring: oklch(0.55 0.22 280);
-  --brand-2: oklch(0.70 0.16 215);
+  color-scheme: light;
+  --radius: 0.75rem;
+
+  /* Surfaces */
+  --background: #F5F6F0;
+  --foreground: #20251D;
+  --card: #FFFFFF;
+  --card-foreground: #20251D;
+  --card-elevated: #FFFFFF;
+  --popover: #FFFFFF;
+  --popover-foreground: #20251D;
+
+  /* Brand Forest Palette */
+  --primary: #547A24;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8EEDC;
+  --secondary-foreground: #20251D;
+  --muted: #E8EEDC;
+  --muted-foreground: #68715F;
+  --muted-subtle: #929B88;
+  --accent: #E8EEDC;
+  --accent-foreground: #20251D;
+
+  /* Status */
+  --destructive: #C84646;
+  --success: #547A24;
+  --warning: #A66B16;
+
+  /* Borders and focus */
+  --border: #E1E5D9;
+  --input: #E1E5D9;
+  --ring: #547A24;
+
+  /* Secondary Forest Green */
+  --brand-2: #6F9140;
 }
 
 .dark {
-  --background: oklch(0.12 0.012 275);
-  --foreground: oklch(0.98 0.004 270);
-  --card: oklch(0.16 0.015 275);
-  --card-foreground: oklch(0.98 0.004 270);
-  --popover: oklch(0.16 0.015 275);
-  --popover-foreground: oklch(0.98 0.004 270);
-  --primary: oklch(0.68 0.20 280);
-  --primary-foreground: oklch(0.12 0.012 275);
-  --secondary: oklch(0.22 0.015 275);
-  --secondary-foreground: oklch(0.98 0.004 270);
-  --muted: oklch(0.22 0.015 275);
-  --muted-foreground: oklch(0.68 0.02 270);
-  --accent: oklch(0.25 0.05 280);
-  --accent-foreground: oklch(0.95 0.03 280);
-  --destructive: oklch(0.66 0.2 25);
-  --success: oklch(0.74 0.14 160);
-  --warning: oklch(0.8 0.14 75);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.68 0.20 280);
-  --brand-2: oklch(0.78 0.14 215);
+  color-scheme: dark;
+
+  /* Surfaces */
+  --background: #171916;
+  --foreground: #F2F3ED;
+  --card: #222720;
+  --card-foreground: #F2F3ED;
+  --card-elevated: #292F25;
+  --popover: #222720;
+  --popover-foreground: #F2F3ED;
+
+  /* Brand Forest Palette */
+  --primary: #C5F467;
+  --primary-foreground: #171916;
+  --secondary: #292F25;
+  --secondary-foreground: #F2F3ED;
+  --muted: #292F25;
+  --muted-foreground: #A3AA9A;
+  --muted-subtle: #A3AA9A;
+  --accent: #292F25;
+  --accent-foreground: #C5F467;
+
+  /* Status */
+  --destructive: #F17878;
+  --success: #78C995;
+  --warning: #E8B65D;
+
+  /* Borders and focus */
+  --border: #343B31;
+  --input: #343B31;
+  --ring: #C5F467;
+
+  /* Secondary Forest Green */
+  --brand-2: #91B94B;
 }
 
 @theme inline {
@@ -67,6 +94,7 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-card-elevated: var(--card-elevated);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
@@ -75,6 +103,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-muted-subtle: var(--muted-subtle);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -89,38 +118,38 @@
   --animate-shiny-text: shiny-text 8s infinite;
   --animate-shine: shine var(--duration) infinite linear;
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
   @keyframes shiny-text {
-  0%, 90%, 100% {
-    background-position: calc(-100% - var(--shiny-width)) 0;
+    0%, 90%, 100% {
+      background-position: calc(-100% - var(--shiny-width)) 0;
     }
-  30%, 60% {
-    background-position: calc(100% + var(--shiny-width)) 0;
+    30%, 60% {
+      background-position: calc(100% + var(--shiny-width)) 0;
     }
   }
   @keyframes shine {
-  0% {
-    background-position: 0% 0%;
+    0% {
+      background-position: 0% 0%;
     }
-  50% {
-    background-position: 100% 100%;
+    50% {
+      background-position: 100% 100%;
     }
-  to {
-    background-position: 0% 0%;
+    to {
+      background-position: 0% 0%;
     }
   }
 }
@@ -137,7 +166,7 @@
     font-feature-settings: "ss01", "cv11";
   }
   ::selection {
-    @apply bg-primary/30;
+    @apply bg-primary/25 text-foreground;
   }
 }
 
@@ -148,7 +177,7 @@
     prose-a:text-primary prose-a:underline prose-a:decoration-primary/40 prose-a:underline-offset-2 hover:prose-a:decoration-primary
     prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
     prose-code:rounded prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.85em] prose-code:font-normal
-    prose-pre:border prose-pre:bg-[#0d0d12] prose-pre:text-[0.82rem] prose-pre:leading-relaxed
+    prose-pre:border prose-pre:border-border prose-pre:bg-[#121511] prose-pre:text-[0.82rem] prose-pre:leading-relaxed
     prose-table:text-sm prose-th:text-left;
 }
 .prose-docs pre code {

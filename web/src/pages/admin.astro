@@ -1,0 +1,14 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AdminDashboardApp from "@/components/dashboard/AdminDashboardApp";
+---
+
+<BaseLayout
+  title="Admin Control Center | ModelVerse"
+  description="ModelVerse platform administration, seller approval gateway, user governance and marketplace moderation."
+  noindex={true}
+>
+  <main class="min-h-screen bg-background text-foreground">
+    <AdminDashboardApp client:load />
+  </main>
+</BaseLayout>

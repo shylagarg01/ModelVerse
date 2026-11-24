@@ -1,72 +1,355 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Logo from "../../components/Logo.astro";
 
 const title = "Log in | ModelVerse";
 const description = "Log in to your ModelVerse account.";
 ---
 
 <BaseLayout title={title} description={description} noindex={true}>
-  <main class="mx-auto max-w-md px-6 py-16">
-    <h1 class="text-3xl font-bold">Welcome back</h1>
-    <p class="mt-2 mb-8">Log in to your ModelVerse account.</p>
-
-    <form id="login-form" class="flex flex-col gap-5">
-      <label class="flex flex-col gap-2">
-        Email
-        <input
-          id="email"
-          type="email"
-          required
-          autocomplete="email"
-          class="rounded-lg border px-4 py-3"
-        />
-      </label>
-
-      <label class="flex flex-col gap-2">
-        Password
-        <input
-          id="password"
-          type="password"
-          required
-          autocomplete="current-password"
-          class="rounded-lg border px-4 py-3"
-        />
-      </label>
-
-      <button
-        type="submit"
-        class="rounded-lg bg-violet-600 px-4 py-3 font-semibold text-white"
-      >
-        Log in
-      </button>
-
-      <p id="login-message" role="status" aria-live="polite"></p>
-    </form>
-
-    <p class="mt-6">
-      Don't have an account?
-      <a class="text-violet-600 underline" href="/auth/register">
-        Create an account
+  <main class="auth-login-page">
+    <div class="auth-ambient-blur"></div>
+    <section class="auth-login-card">
+      <a href="/" class="auth-brand group" aria-label="ModelVerse home">
+        <Logo class="h-9 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105" id="login-logo" variant="icon" />
+        <Logo variant="wordmark" class="text-2xl" />
       </a>
-    </p>
+
+      <div class="auth-heading">
+        <span class="auth-eyebrow">YOUR CREATIVE SPACE</span>
+        <h1>Welcome back<span>.</span></h1>
+        <p>Log in to your ModelVerse account and continue creating.</p>
+      </div>
+
+      <form id="login-form">
+        <label class="auth-field">
+          <span>Email address</span>
+          <input
+            id="email"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+          />
+        </label>
+
+        <label class="auth-field">
+          <span>Password</span>
+          <input
+            id="password"
+            type="password"
+            required
+            autocomplete="current-password"
+            placeholder="Enter your password"
+          />
+        </label>
+
+        <button type="submit" id="login-button">
+          <span id="login-button-text">Log in</span>
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <p id="login-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="auth-register-prompt">
+        Don't have an account?
+        <a href="/auth/register">Create an account →</a>
+      </p>
+
+      <p class="auth-footer">MODELVERSE · 3D ASSET DISCOVERY &amp; CREATION</p>
+    </section>
   </main>
+
+  <style>
+    .auth-login-page {
+      position: relative;
+      isolation: isolate;
+      min-height: calc(100vh - 150px);
+      padding: 64px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F5F6F0;
+      color: #20251D;
+    }
+
+    .auth-ambient-blur {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(84, 122, 36, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(40px);
+    }
+
+    .auth-login-card {
+      width: 100%;
+      max-width: 460px;
+      padding: 38px;
+      border: 1px solid #E1E5D9;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(32, 37, 29, 0.06);
+    }
+
+    .auth-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #20251D;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .auth-eyebrow,
+    .auth-heading h1 span {
+      color: #547A24;
+    }
+
+    .auth-heading {
+      margin: 30px 0 26px;
+    }
+
+    .auth-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .auth-heading h1 {
+      margin: 8px 0;
+      font-size: clamp(26px, 5vw, 32px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      color: #20251D;
+    }
+
+    .auth-heading p {
+      color: #68715F;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    #login-form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .auth-field {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #20251D;
+    }
+
+    .auth-field input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 14px;
+      border: 1px solid #E1E5D9;
+      border-radius: 12px;
+      background: #FFFFFF;
+      color: #20251D;
+      font: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .auth-field input:focus {
+      border-color: #547A24;
+      box-shadow: 0 0 0 3px rgba(84, 122, 36, 0.16);
+    }
+
+    .auth-field input::placeholder {
+      color: #929B88;
+    }
+
+    #login-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 48px;
+      margin-top: 4px;
+      border: 0;
+      border-radius: 12px;
+      background: #547A24;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(84, 122, 36, 0.22);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    #login-button:hover {
+      opacity: 0.94;
+      transform: translateY(-1px);
+    }
+
+    #login-button:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
+    }
+
+    #login-message {
+      margin: 0;
+      overflow-wrap: anywhere;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    #login-message:empty {
+      display: none;
+    }
+
+    .auth-register-prompt {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #E1E5D9;
+      color: #68715F;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .auth-register-prompt a {
+      color: #547A24;
+      font-weight: 700;
+      text-decoration: none;
+      margin-left: 4px;
+    }
+
+    .auth-register-prompt a:hover {
+      text-decoration: underline;
+    }
+
+    .auth-footer {
+      margin-top: 24px;
+      color: #929B88;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    /* Dark Mode */
+    :global(.dark) .auth-login-page {
+      background: #171916;
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .auth-ambient-blur {
+      background: radial-gradient(circle, rgba(197, 244, 103, 0.08) 0%, transparent 70%);
+    }
+
+    :global(.dark) .auth-login-card {
+      background: #222720;
+      border-color: #343B31;
+      color: #F2F3ED;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    :global(.dark) .auth-brand {
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .auth-eyebrow,
+    :global(.dark) .auth-heading h1 span {
+      color: #C5F467;
+    }
+
+    :global(.dark) .auth-heading h1 {
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .auth-heading p,
+    :global(.dark) .auth-register-prompt,
+    :global(.dark) .auth-footer {
+      color: #A3AA9A;
+    }
+
+    :global(.dark) .auth-field {
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .auth-field input {
+      background: #171916;
+      border-color: #343B31;
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .auth-field input::placeholder {
+      color: #68715F;
+    }
+
+    :global(.dark) .auth-field input:focus {
+      border-color: #C5F467;
+      box-shadow: 0 0 0 3px rgba(197, 244, 103, 0.2);
+    }
+
+    :global(.dark) .auth-register-prompt {
+      border-color: #343B31;
+    }
+
+    :global(.dark) .auth-register-prompt a {
+      color: #C5F467;
+    }
+
+    :global(.dark) #login-button {
+      background: #C5F467;
+      color: #171916;
+      box-shadow: 0 4px 14px rgba(197, 244, 103, 0.2);
+    }
+
+    @media (max-width: 520px) {
+      .auth-login-page {
+        min-height: 0;
+        padding: 36px 16px;
+      }
+
+      .auth-login-card {
+        padding: 26px 20px;
+        border-radius: 20px;
+      }
+    }
+  </style>
 
   <script>
     const form = document.querySelector<HTMLFormElement>("#login-form");
     const message = document.querySelector<HTMLParagraphElement>("#login-message");
+    const submitButton = document.querySelector<HTMLButtonElement>("#login-button");
+    const buttonText = document.querySelector<HTMLElement>("#login-button-text");
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      if (!form.reportValidity()) return;
+      if (!form.reportValidity() || !message || !submitButton || !buttonText) return;
 
-      const email = (document.querySelector<HTMLInputElement>("#email")?.value ?? "").trim();
-      const password = document.querySelector<HTMLInputElement>("#password")?.value ?? "";
+      const email = (
+        document.querySelector<HTMLInputElement>("#email")?.value ?? ""
+      ).trim();
 
-      if (message) message.textContent = "Logging in...";
+      const password =
+        document.querySelector<HTMLInputElement>("#password")?.value ?? "";
+
+      message.textContent = "Logging in...";
+      message.style.color = "inherit";
+      submitButton.disabled = true;
+      buttonText.textContent = "Logging in...";
 
       try {
-        const response = await fetch("http://localhost:8787/auth/login", {
+        const response = await fetch("/auth/login", {
           method: "POST",
           credentials: "include",
           headers: { "Content-Type": "application/json" },
@@ -76,15 +359,39 @@ const description = "Log in to your ModelVerse account.";
         const result = await response.json();
 
         if (!response.ok) {
-          if (message) message.textContent = result.error ?? "Login failed.";
+          message.textContent = result.error ?? "Login failed.";
+          message.style.color = "#C84646";
           return;
         }
 
-        window.location.href = "/";
-      } catch {
-        if (message) {
-          message.textContent = "Could not connect to the server. Make sure the API is running.";
+        const role = result.user?.role;
+        const redirectParam = new URLSearchParams(window.location.search).get("redirect");
+
+        let target = "/dashboard";
+        if (role === "admin") {
+          target = "/admin";
+        } else if (role === "seller") {
+          target = "/seller/dashboard";
         }
+
+        if (redirectParam && redirectParam.startsWith("/")) {
+          if (redirectParam.startsWith("/admin") && role !== "admin") {
+            // normal user or seller cannot enter admin dashboard
+          } else if (redirectParam.startsWith("/seller") && role !== "seller" && role !== "admin") {
+            // standard user cannot enter seller dashboard directly
+          } else {
+            target = redirectParam;
+          }
+        }
+
+        window.location.href = target;
+      } catch {
+        message.textContent =
+          "Could not connect to the server. Make sure the API is running.";
+        message.style.color = "#C84646";
+      } finally {
+        submitButton.disabled = false;
+        buttonText.textContent = "Log in";
       }
     });
   </script>

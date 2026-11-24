@@ -1,5 +1,6 @@
-﻿---
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Logo from "../../components/Logo.astro";
 
 const title = "Create Account | ModelVerse";
 const description = "Create your ModelVerse account.";
@@ -7,13 +8,12 @@ const description = "Create your ModelVerse account.";
 
 <BaseLayout title={title} description={description} noindex={true}>
   <main class="register-page">
-    <div class="register-decoration decoration-one"></div>
-    <div class="register-decoration decoration-two"></div>
+    <div class="register-ambient-blur"></div>
 
     <section class="register-card">
-      <a href="/" class="brand" aria-label="ModelVerse home">
-        <span class="brand-icon">◆</span>
-        <span>Model<span class="brand-accent">Verse</span></span>
+      <a href="/" class="brand group" aria-label="ModelVerse home">
+        <Logo class="h-9 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105" id="register-logo" variant="icon" />
+        <Logo variant="wordmark" class="text-2xl" />
       </a>
 
       <div class="heading">
@@ -25,23 +25,19 @@ const description = "Create your ModelVerse account.";
       <form id="register-form">
         <div class="form-field">
           <label for="email">Email address</label>
-          <div class="input-wrap">
-            <span class="input-icon" aria-hidden="true">✉</span>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="you@example.com"
-              autocomplete="email"
-              required
-            />
-          </div>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          />
         </div>
 
         <div class="form-field">
           <label for="password">Password</label>
           <div class="input-wrap">
-            <span class="input-icon" aria-hidden="true">▣</span>
             <input
               id="password"
               name="password"
@@ -98,183 +94,180 @@ const description = "Create your ModelVerse account.";
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 690px;
+      min-height: calc(100vh - 150px);
       padding: 64px 20px 32px;
       overflow: hidden;
-      background: #f8f9fc;
-      color: #000000;
+      background: #F5F6F0;
+      color: #20251D;
     }
 
-    .register-decoration {
+    .register-ambient-blur {
       position: absolute;
-      z-index: -1;
-      width: 300px;
-      height: 300px;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 440px;
+      height: 360px;
       border-radius: 50%;
-      filter: blur(75px);
-      opacity: 0.18;
+      background: radial-gradient(circle, rgba(84, 122, 36, 0.12) 0%, transparent 70%);
       pointer-events: none;
-    }
-
-    .decoration-one {
-      top: 8%;
-      left: -180px;
-      background: #9b8afb;
-    }
-
-    .decoration-two {
-      right: -180px;
-      bottom: 8%;
-      background: #a8c6ff;
+      z-index: -1;
+      filter: blur(40px);
     }
 
     .register-card {
       width: 100%;
       max-width: 460px;
       box-sizing: border-box;
-      padding: 38px 38px 28px;
-      border: 1px solid #e2e4ed;
+      padding: 38px 38px 30px;
+      border: 1px solid #E1E5D9;
       border-radius: 24px;
-      background: #ffffff;
-      color: #000000;
-      box-shadow: 0 24px 80px rgba(30, 27, 75, 0.08);
+      background: #FFFFFF;
+      color: #20251D;
+      box-shadow: 0 20px 60px rgba(32, 37, 29, 0.06);
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: #000000;
+      color: #20251D;
       text-decoration: none;
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.8px;
-    }
-
-    .brand-icon {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #8b73ff, #5d45e9);
-      color: #ffffff;
-      font-size: 23px;
-      box-shadow: 0 5px 14px rgba(99, 76, 234, 0.24);
-    }
-
-    .brand-accent {
-      color: #7257ed;
+      line-height: 1;
     }
 
     .heading {
-      margin: 34px 0 28px;
+      margin: 28px 0 24px;
     }
 
     .eyebrow {
-      color: #795eea;
-      font-size: 10px;
+      display: inline-block;
+      color: #547A24;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 2px;
+      background: none;
     }
 
     .heading h1 {
-      margin: 10px 0;
-      color: #000000;
-      font-size: clamp(28px, 5vw, 34px);
+      margin: 8px 0 6px;
+      color: #20251D;
+      font-size: clamp(26px, 5vw, 32px);
       line-height: 1.2;
-      letter-spacing: -1.3px;
+      letter-spacing: -1.2px;
       font-weight: 800;
     }
 
     .heading-dot {
-      color: #7657f2;
+      color: #547A24;
+      background: none;
     }
 
     .heading p {
       margin: 0;
-      color: #333333;
+      color: #68715F;
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     #register-form {
       display: grid;
-      gap: 21px;
+      gap: 20px;
     }
 
     .form-field {
       display: grid;
-      gap: 9px;
+      gap: 8px;
     }
 
     .form-field label {
-      color: #000000;
+      color: #20251D;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 600;
+    }
+
+    .form-field > input {
+      width: 100%;
+      box-sizing: border-box;
+      height: 48px;
+      padding: 0 14px;
+      border: 1px solid #E1E5D9;
+      border-radius: 12px;
+      background: #FFFFFF;
+      color: #20251D;
+      font: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-field > input:focus {
+      border-color: #547A24;
+      box-shadow: 0 0 0 3px rgba(84, 122, 36, 0.16);
+    }
+
+    .form-field > input::placeholder {
+      color: #929B88;
     }
 
     .input-wrap {
       display: flex;
       align-items: center;
-      min-width: 0;
-      border: 1px solid #d5d7e2;
+      width: 100%;
+      box-sizing: border-box;
+      height: 48px;
+      border: 1px solid #E1E5D9;
       border-radius: 12px;
-      background: #ffffff;
+      background: #FFFFFF;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     .input-wrap:focus-within {
-      border-color: #8065f5;
-      background: #ffffff;
-      box-shadow: 0 0 0 4px rgba(124, 92, 252, 0.12);
-    }
-
-    .input-icon {
-      padding-left: 15px;
-      color: #795eea;
-      font-size: 17px;
+      border-color: #547A24;
+      box-shadow: 0 0 0 3px rgba(84, 122, 36, 0.16);
     }
 
     .input-wrap input {
       flex: 1;
       min-width: 0;
-      width: 100%;
-      padding: 14px 12px;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 0 12px 0 14px;
       border: 0;
       outline: 0;
       background: transparent;
-      color: #000000;
+      color: #20251D;
       font: inherit;
       font-size: 13px;
     }
 
     .input-wrap input::placeholder {
-      color: #666666;
-      opacity: 1;
+      color: #929B88;
     }
 
     .password-toggle {
+      flex-shrink: 0;
       margin-right: 8px;
-      padding: 7px 9px;
+      padding: 6px 12px;
       border: 0;
-      border-radius: 7px;
+      border-radius: 8px;
       background: transparent;
-      color: #6346d8;
+      color: #547A24;
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
+      transition: background-color 0.15s;
     }
 
     .password-toggle:hover {
-      background: #f0edff;
+      background: #E8EEDC;
     }
 
     .password-hint {
       display: flex;
       align-items: center;
       gap: 7px;
-      color: #444444;
+      color: #68715F;
       font-size: 11px;
       line-height: 1.5;
     }
@@ -285,43 +278,43 @@ const description = "Create your ModelVerse account.";
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #8063f6;
+      background: #547A24;
     }
 
     .submit-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
-      min-height: 49px;
-      margin-top: 2px;
-      padding: 13px 18px;
+      height: 48px;
+      margin-top: 4px;
+      padding: 0 18px;
       border: 0;
       border-radius: 12px;
-      background: linear-gradient(105deg, #8063f6, #6346e8);
-      color: #ffffff;
+      background: #547A24;
+      color: #FFFFFF;
       font: inherit;
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 7px 18px rgba(103, 77, 232, 0.23);
-      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 4px 14px rgba(84, 122, 36, 0.22);
+      transition: transform 0.2s, opacity 0.2s;
     }
 
     .submit-button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 23px rgba(103, 77, 232, 0.3);
+      opacity: 0.94;
     }
 
     .submit-button:disabled {
-      opacity: 0.7;
+      opacity: 0.65;
       cursor: wait;
       transform: none;
     }
 
     .button-arrow {
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
       transition: transform 0.2s;
     }
@@ -331,8 +324,8 @@ const description = "Create your ModelVerse account.";
     }
 
     .message {
-      margin: -10px 0 0;
-      color: #000000;
+      margin: -6px 0 0;
+      color: #20251D;
       font-size: 12px;
       line-height: 1.6;
       overflow-wrap: anywhere;
@@ -343,11 +336,11 @@ const description = "Create your ModelVerse account.";
     }
 
     .message.error {
-      color: #b42318;
+      color: #C84646;
     }
 
     .message.success {
-      color: #137547;
+      color: #547A24;
     }
 
     .login-prompt {
@@ -355,16 +348,16 @@ const description = "Create your ModelVerse account.";
       flex-wrap: wrap;
       justify-content: center;
       gap: 5px;
-      margin-top: 26px;
-      padding-top: 23px;
-      border-top: 1px solid #e5e5eb;
-      color: #333333;
-      font-size: 12px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #E1E5D9;
+      color: #68715F;
+      font-size: 13px;
     }
 
     .login-prompt a {
-      color: #6346d8;
-      font-weight: 750;
+      color: #547A24;
+      font-weight: 700;
       text-decoration: none;
     }
 
@@ -377,56 +370,133 @@ const description = "Create your ModelVerse account.";
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 25px;
-      color: #444444;
-      font-size: 10px;
-    }
-
-    .footer-dot {
-      width: 5px;
-      height: 5px;
-      background: #168454;
+      margin-top: 22px;
+      color: #929B88;
+      font-size: 11px;
     }
 
     .page-caption {
-      margin: 25px 0 0;
-      color: #555555;
-      font-size: 9px;
+      margin: 24px 0 0;
+      color: #929B88;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
       text-align: center;
+      background: none;
     }
 
     .page-caption span {
-      padding: 0 5px;
-      color: #8063f6;
+      padding: 0 4px;
+      color: #547A24;
+      background: none;
+    }
+
+    /* Dark Mode */
+    :global(.dark) .register-page {
+      background: #171916;
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .register-ambient-blur {
+      background: radial-gradient(circle, rgba(197, 244, 103, 0.08) 0%, transparent 70%);
+    }
+
+    :global(.dark) .register-card {
+      background: #222720;
+      border-color: #343B31;
+      color: #F2F3ED;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    :global(.dark) .brand,
+    :global(.dark) .heading h1,
+    :global(.dark) .form-field label {
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .eyebrow,
+    :global(.dark) .heading-dot,
+    :global(.dark) .page-caption span {
+      color: #C5F467;
+      background: none;
+    }
+
+    :global(.dark) .hint-dot,
+    :global(.dark) .footer-dot {
+      background: #C5F467;
+    }
+
+    :global(.dark) .heading p,
+    :global(.dark) .password-hint,
+    :global(.dark) .login-prompt,
+    :global(.dark) .card-footer,
+    :global(.dark) .page-caption {
+      color: #A3AA9A;
+    }
+
+    :global(.dark) .form-field > input,
+    :global(.dark) .input-wrap {
+      background: #171916;
+      border-color: #343B31;
+    }
+
+    :global(.dark) .form-field > input:focus,
+    :global(.dark) .input-wrap:focus-within {
+      background: #171916;
+      border-color: #C5F467;
+      box-shadow: 0 0 0 3px rgba(197, 244, 103, 0.2);
+    }
+
+    :global(.dark) .form-field > input,
+    :global(.dark) .input-wrap input {
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .form-field > input::placeholder,
+    :global(.dark) .input-wrap input::placeholder {
+      color: #68715F;
+    }
+
+    :global(.dark) .password-toggle,
+    :global(.dark) .login-prompt a {
+      color: #C5F467;
+    }
+
+    :global(.dark) .password-toggle:hover {
+      background: #292F25;
+    }
+
+    :global(.dark) .login-prompt {
+      border-color: #343B31;
+    }
+
+    :global(.dark) .message {
+      color: #F2F3ED;
+    }
+
+    :global(.dark) .message.error {
+      color: #F17878;
+    }
+
+    :global(.dark) .message.success {
+      color: #78C995;
+    }
+
+    :global(.dark) .submit-button {
+      background: #C5F467;
+      color: #171916;
+      box-shadow: 0 4px 14px rgba(197, 244, 103, 0.2);
     }
 
     @media (max-width: 520px) {
       .register-page {
         min-height: 0;
-        padding: 38px 15px 25px;
+        padding: 36px 16px 24px;
       }
 
       .register-card {
-        padding: 28px 22px 24px;
-        border-radius: 19px;
-      }
-
-      .heading {
-        margin-top: 29px;
-      }
-
-      .heading h1 {
-        letter-spacing: -1px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .input-wrap,
-      .submit-button,
-      .button-arrow {
-        transition: none;
+        padding: 26px 20px 22px;
+        border-radius: 20px;
       }
     }
   </style>
@@ -465,7 +535,7 @@ const description = "Create your ModelVerse account.";
       const data = new FormData(form);
 
       try {
-        const response = await fetch("http://localhost:8787/auth/register", {
+        const response = await fetch("/auth/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -485,7 +555,14 @@ const description = "Create your ModelVerse account.";
 
         message.textContent = "Account created successfully. Redirecting…";
         message.className = "message success";
-        window.location.href = "/";
+
+        const redirectParam = new URLSearchParams(window.location.search).get("redirect");
+        let target = "/dashboard";
+        if (redirectParam && redirectParam.startsWith("/") && !redirectParam.startsWith("/admin") && !redirectParam.startsWith("/seller")) {
+          target = redirectParam;
+        }
+
+        window.location.href = target;
       } catch {
         message.textContent =
           "Could not connect to the server. Please make sure the API is running.";

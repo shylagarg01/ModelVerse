@@ -3,8 +3,10 @@ import Logo from "./Logo.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { NAV } from "@/lib/site";
 
+const navItems = NAV.filter((item) => item.href !== "/editor");
+
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const matches = NAV.filter((i) =>
+const matches = navItems.filter((i) =>
   i.href === "/docs"
     ? path === "/docs"
     : path === i.href || path.startsWith(i.href + "/")
@@ -18,43 +20,30 @@ const active = (href: string) => href === current;
     <!-- Brand -->
     <a
       href="/"
-      class="brand-link group flex shrink-0 items-center gap-3 font-bold tracking-tight text-foreground"
+      class="brand-link group flex shrink-0 items-center gap-2.5 font-bold tracking-tight text-foreground transition-opacity hover:opacity-95"
       aria-label="ModelVerse home"
     >
-      <span class="brand-icon flex size-10 items-center justify-center rounded-xl bg-gradient-to-tr from-primary/15 via-primary/5 to-brand-2/15 transition group-hover:scale-105">
-        <Logo class="size-7" id="header-logo" />
-      </span>
-
-      <span class="flex items-center text-[21px] font-black tracking-tight">
-        <span>Model</span>
-        <span class="bg-gradient-to-r from-primary via-indigo-600 to-brand-2 bg-clip-text text-transparent">Verse</span>
-      </span>
+      <Logo class="h-9 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105" id="header-logo" variant="icon" />
+      <Logo variant="wordmark" class="text-[21px] sm:text-[22px]" />
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="desktop-nav hidden items-center text-sm font-medium xl:flex" aria-label="Main navigation">
-      {NAV.map((item) => {
+    <nav class="desktop-nav hidden items-center text-sm font-medium lg:flex" aria-label="Main navigation">
+      {navItems.map((item) => {
         const isCurrent = active(item.href);
-        const isEditor = item.href === "/editor";
 
         return (
           <a
             href={item.href}
             aria-current={isCurrent ? "page" : undefined}
             class:list={[
-              "nav-link relative inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full px-3 py-2 transition-colors duration-200",
+              "nav-link relative inline-flex shrink-0 items-center justify-center rounded-full px-3.5 py-2 transition-colors duration-200",
               isCurrent
                 ? "bg-primary/10 font-semibold text-primary"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground",
             ]}
           >
             <span>{item.label}</span>
-
-            {isEditor && (
-              <span class="rounded-full bg-gradient-to-r from-primary to-brand-2 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
-                New
-              </span>
-            )}
           </a>
         );
       })}
@@ -62,20 +51,6 @@ const active = (href: string) => href === current;
 
     <!-- Header Actions -->
     <div class="header-actions ml-auto flex shrink-0 items-center">
-      <!-- Search -->
-      <a
-        href="/search"
-        class="search-link hidden items-center gap-2 rounded-full border border-border bg-background px-3.5 py-2 text-xs text-muted-foreground transition hover:border-primary/50 hover:bg-accent hover:text-foreground 2xl:inline-flex"
-        aria-label="Search 3D assets"
-      >
-        <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" />
-          <path d="m20 20-3.5-3.5" />
-        </svg>
-        <span>Search assets...</span>
-        <kbd class="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">⌘K</kbd>
-      </a>
-
       <!-- 3D Studio -->
       <a
         href="/editor"
@@ -107,6 +82,14 @@ const active = (href: string) => href === current;
           Sign up
         </a>
 
+        <a
+          id="header-dashboard"
+          href="/dashboard"
+          class="hidden items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/20"
+        >
+          <span id="header-dashboard-text">Dashboard</span>
+        </a>
+
         <span id="header-user" class="hidden max-w-32 truncate text-sm text-muted-foreground"></span>
 
         <button
@@ -124,7 +107,7 @@ const active = (href: string) => href === current;
       </div>
 
       <!-- Mobile Navigation -->
-      <details class="mobile-menu relative xl:hidden">
+      <details class="mobile-menu relative lg:hidden">
         <summary
           class="flex size-10 cursor-pointer list-none items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground [&::-webkit-details-marker]:hidden"
           aria-label="Open navigation menu"
@@ -137,11 +120,11 @@ const active = (href: string) => href === current;
         <div class="mobile-panel absolute right-0 top-[calc(100%+12px)] z-50 w-[min(320px,calc(100vw-32px))] rounded-2xl border border-border bg-background p-4 shadow-2xl">
           <div class="mb-3 flex items-center justify-between border-b border-border/70 px-1 pb-3">
             <span class="text-sm font-semibold text-foreground">Navigation</span>
-            <span class="text-xs font-semibold text-primary">ModelVerse</span>
+            <span class="text-xs font-semibold text-[#547A24] dark:text-[#C5F467]">ModelVerse</span>
           </div>
 
           <nav class="space-y-1" aria-label="Mobile navigation">
-            {NAV.map((item) => (
+            {navItems.map((item) => (
               <a
                 href={item.href}
                 aria-current={active(item.href) ? "page" : undefined}
@@ -153,17 +136,11 @@ const active = (href: string) => href === current;
                 ]}
               >
                 <span>{item.label}</span>
-                {item.href === "/editor" && (
-                  <span class="rounded-full bg-primary/10 px-2 py-1 text-[10px] font-semibold text-primary">New</span>
-                )}
               </a>
             ))}
           </nav>
 
           <div class="mt-3 grid gap-2 border-t border-border/70 pt-3">
-            <a href="/search" class="rounded-xl border border-border px-3 py-2.5 text-center text-sm font-medium text-foreground hover:bg-accent">
-              Search 3D assets
-            </a>
             <a href="/editor" class="rounded-xl bg-primary px-3 py-2.5 text-center text-sm font-semibold text-primary-foreground">
               Launch 3D Studio
             </a>
@@ -182,15 +159,15 @@ const active = (href: string) => href === current;
 
 <style>
   .header-inner {
-    gap: clamp(24px, 3vw, 52px);
+    gap: clamp(20px, 2.5vw, 44px);
   }
 
   .brand-link {
-    margin-right: clamp(8px, 1.2vw, 20px);
+    margin-right: clamp(6px, 1vw, 16px);
   }
 
   .desktop-nav {
-    gap: clamp(5px, 0.6vw, 12px);
+    gap: clamp(4px, 0.5vw, 10px);
     flex: 1;
     min-width: 0;
   }
@@ -200,27 +177,26 @@ const active = (href: string) => href === current;
   }
 
   .header-actions {
-    gap: clamp(12px, 1.5vw, 24px);
+    gap: clamp(10px, 1.2vw, 20px);
   }
 
   .auth-actions {
-    gap: 10px;
+    gap: 8px;
   }
 
   .theme-control {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -4px;
   }
 
   .mobile-menu {
     margin-left: 2px;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .header-inner {
-      gap: 24px;
+      gap: 20px;
     }
 
     .brand-link {
@@ -245,13 +221,17 @@ const active = (href: string) => href === current;
     }
   }
 
-  @media (min-width: 1536px) {
+  @media (min-width: 1280px) {
     .header-inner {
-      gap: 32px;
+      gap: 24px;
+    }
+
+    .brand-link {
+      margin-right: 0;
     }
 
     .desktop-nav {
-      gap: 8px;
+      gap: 6px;
     }
 
     .nav-link {
@@ -260,11 +240,34 @@ const active = (href: string) => href === current;
     }
 
     .header-actions {
-      gap: 16px;
+      gap: 14px;
     }
 
     .auth-actions {
       gap: 8px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .header-inner {
+      gap: 32px;
+    }
+
+    .desktop-nav {
+      gap: 10px;
+    }
+
+    .nav-link {
+      padding-right: 14px;
+      padding-left: 14px;
+    }
+
+    .header-actions {
+      gap: 18px;
+    }
+
+    .auth-actions {
+      gap: 10px;
     }
   }
 
@@ -282,30 +285,21 @@ const active = (href: string) => href === current;
     .header-inner {
       height: 64px;
       gap: 10px;
-      padding-right: 12px;
-      padding-left: 12px;
+      padding-right: 14px;
+      padding-left: 14px;
     }
 
     .brand-link {
       gap: 8px;
     }
 
-    .brand-icon {
-      width: 34px;
-      height: 34px;
-    }
-
-    .brand-link > span:last-child {
-      font-size: 18px;
-    }
-
     .header-actions {
-      gap: 6px;
+      gap: 8px;
     }
 
     .auth-actions {
-      gap: 2px;
-      font-size: 12px;
+      gap: 4px;
+      font-size: 13px;
     }
 
     .login-link {
@@ -314,26 +308,13 @@ const active = (href: string) => href === current;
     }
 
     .register-link {
-      padding: 9px 11px;
-    }
-
-    .theme-control {
-      margin-left: 0;
+      padding: 8px 12px;
     }
   }
 
   @media (max-width: 390px) {
-    .brand-link > span:last-child {
-      font-size: 16px;
-    }
-
-    .brand-icon {
-      width: 30px;
-      height: 30px;
-    }
-
     .auth-actions {
-      gap: 0;
+      gap: 2px;
     }
 
     .login-link {
@@ -342,7 +323,7 @@ const active = (href: string) => href === current;
     }
 
     .register-link {
-      padding: 8px 9px;
+      padding: 7px 10px;
     }
 
     .header-actions {
@@ -355,20 +336,22 @@ const active = (href: string) => href === current;
   const loginLink = document.querySelector<HTMLAnchorElement>("#header-login");
   const registerLink = document.querySelector<HTMLAnchorElement>("#header-register");
   const userLabel = document.querySelector<HTMLElement>("#header-user");
+  const dashboardLink = document.querySelector<HTMLAnchorElement>("#header-dashboard");
+  const dashboardText = document.querySelector<HTMLElement>("#header-dashboard-text");
   const logoutButton = document.querySelector<HTMLButtonElement>("#header-logout");
-
-  const authApi = "http://localhost:8787";
 
   function showLoggedOutState() {
     loginLink?.classList.remove("hidden");
     registerLink?.classList.remove("hidden");
     userLabel?.classList.add("hidden");
+    dashboardLink?.classList.add("hidden");
+    dashboardLink?.classList.remove("inline-flex");
     logoutButton?.classList.add("hidden");
   }
 
   async function refreshAuth() {
     try {
-      const response = await fetch(`${authApi}/auth/me`, {
+      const response = await fetch("/auth/me", {
         method: "GET",
         credentials: "include",
       });
@@ -391,9 +374,28 @@ const active = (href: string) => href === current;
       userLabel?.classList.remove("hidden");
       logoutButton?.classList.remove("hidden");
 
+      let dest = "/dashboard";
+      let label = "Dashboard";
+      if (user.role === "admin") {
+        dest = "/admin";
+        label = "Admin Panel";
+      } else if (user.role === "seller") {
+        dest = "/seller/dashboard";
+        label = "Seller Studio";
+      }
+
+      if (dashboardLink) {
+        dashboardLink.href = dest;
+        dashboardLink.classList.remove("hidden");
+        dashboardLink.classList.add("inline-flex");
+      }
+      if (dashboardText) {
+        dashboardText.textContent = label;
+      }
+
       if (userLabel) {
         userLabel.textContent = user.email || user.id || "Logged in";
-        userLabel.title = user.role === "admin" ? "Administrator" : "Signed in";
+        userLabel.title = `Signed in as ${user.role} (${user.email})`;
       }
     } catch (error) {
       console.error("Unable to check login status:", error);
@@ -405,7 +407,7 @@ const active = (href: string) => href === current;
     if (logoutButton) logoutButton.disabled = true;
 
     try {
-      const response = await fetch(`${authApi}/auth/logout`, {
+      const response = await fetch("/auth/logout", {
         method: "POST",
         credentials: "include",
       });

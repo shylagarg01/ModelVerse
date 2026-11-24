@@ -8,7 +8,7 @@ interface Props {
 const { collection: c } = Astro.props;
 const thumbs = c.assets.slice(0, 4);
 ---
-<li class="group overflow-hidden rounded-xl border bg-card/50 transition hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
+<li class="group overflow-hidden rounded-2xl border border-border/80 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5">
   <a href={c.path} class="flex h-full flex-col focus-visible:outline-2 focus-visible:outline-ring">
     <div class="grid aspect-[2/1] grid-cols-4 gap-px overflow-hidden bg-muted" aria-hidden="true">
       {thumbs.map((a) => <img src={a.thumbnailUrl} alt="" width="160" height="160" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="size-full object-cover" />)}

@@ -44,14 +44,12 @@ export function ogImagePath(route: string): string {
 export const MCP_URL = `${SITE.url}/mcp`;
 
 export const NAV = [
-  { href: "/search", label: "Explore Assets" },
+  { href: "/search", label: "Explore Free Assets" },
   { href: "/editor", label: "3D Editor" },
-  { href: "/docs/sources", label: "Sources" },
-  { href: "/docs", label: "Documentation" },
   { href: "/assets", label: "Collections" },
-  { href: "/stats", label: "Stats" },
+  { href: "/docs", label: "Docs" },
+  { href: "/marketplace", label: "Marketplace" },
 ];
-
 export const DOCS_NAV = [
   {
     title: "Get started",

@@ -40,8 +40,8 @@ const modified = new Date().toISOString();
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, follow" />}
     {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
-    <meta name="theme-color" content="#16141f" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#fcfcfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#171916" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F5F6F0" media="(prefers-color-scheme: light)" />
     <meta name="color-scheme" content="dark light" />
     <meta name="generator" content={Astro.generator} />
 
@@ -82,15 +82,17 @@ const modified = new Date().toISOString();
     <script type="application/ld+json" set:html={graph(schema, { url: canonical, name: fullTitle, description, image: ogImage, imageAlt: ogImageAlt })} />
 
     <script is:inline>
-      try {
-        const theme = localStorage.getItem("theme");
-        if (theme === "dark") {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-      } catch (e) {}
-    </script>
+  try {
+    const theme = localStorage.getItem("theme");
+    if (theme !== "light") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  } catch (e) {
+    document.documentElement.classList.add("dark");
+  }
+</script>
   </head>
   <body class="min-h-dvh flex flex-col font-sans">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">Skip to content</a>
