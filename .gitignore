@@ -157,3 +157,5 @@ downloads/
 collection-ideas.json
 review-input.json
 review.json
+
+data/modelverse-auth.sqlite

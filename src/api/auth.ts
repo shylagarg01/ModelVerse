@@ -148,8 +148,10 @@ function validEmail(email: string): boolean {
 
 export const authRouter = new Hono();
 
+
 authRouter.post("/register", async (c) => {
   let body: unknown;
+
   try {
     body = await c.req.json();
   } catch {
@@ -161,31 +163,77 @@ authRouter.post("/register", async (c) => {
   }
 
   const input = body as Record<string, unknown>;
-  const email = typeof input.email === "string" ? input.email.trim().toLowerCase() : "";
-  const password = typeof input.password === "string" ? input.password : "";
 
-  if (!validEmail(email)) return c.json({ error: "Enter a valid email address." }, 400);
+  const email =
+    typeof input.email === "string"
+      ? input.email.trim().toLowerCase()
+      : "";
+
+  const password =
+    typeof input.password === "string"
+      ? input.password
+      : "";
+
+  // Accept only User or Seller during public registration.
+  const role = input.role === undefined ? "user" : input.role;
+
+  if (role !== "user" && role !== "seller") {
+    return c.json({
+      error: "Account type must be either user or seller."
+    }, 400);
+  }
+
+  if (!validEmail(email)) {
+    return c.json({ error: "Enter a valid email address." }, 400);
+  }
+
   if (password.length < 12 || password.length > 128) {
-    return c.json({ error: "Password must be between 12 and 128 characters." }, 400);
+    return c.json({
+      error: "Password must be between 12 and 128 characters."
+    }, 400);
   }
 
   try {
     const passwordHash = await argon2.hash(password);
-    const result = db.prepare(
-      "INSERT INTO users (email, password_hash, role, created_at) VALUES (?, ?, 'user', ?)"
-    ).run(email, passwordHash, Math.floor(Date.now() / 1000));
+
+    const result = db.prepare(`
+      INSERT INTO users (email, password_hash, role, created_at)
+      VALUES (?, ?, ?, ?)
+    `).run(
+      email,
+      passwordHash,
+      role,
+      Math.floor(Date.now() / 1000)
+    );
 
     const userId = Number(result.lastInsertRowid);
+
     const token = issueSession(userId);
+
     c.header("Set-Cookie", cookie(token, SESSION_LIFETIME_SECONDS));
-    return c.json({ user: { id: userId, email, role: "user" } }, 201);
+
+    return c.json({
+      user: {
+        id: userId,
+        email,
+        role
+      }
+    }, 201);
+
   } catch (error) {
-    if (error instanceof Error && /UNIQUE constraint failed: users.email/.test(error.message)) {
-      return c.json({ error: "An account with that email already exists." }, 409);
+    if (
+      error instanceof Error &&
+      /UNIQUE constraint failed: users.email/.test(error.message)
+    ) {
+      return c.json({
+        error: "An account with that email already exists."
+      }, 409);
     }
+
     throw error;
   }
 });
+
 
 authRouter.post("/login", async (c) => {
   let body: unknown;

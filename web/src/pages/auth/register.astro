@@ -1,3 +1,4 @@
+
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Logo from "../../components/Logo.astro";
@@ -33,6 +34,15 @@ const description = "Create your ModelVerse account.";
             autocomplete="email"
             required
           />
+        </div>
+
+        <!-- NEW: Account type selection -->
+        <div class="form-field">
+          <label for="role">Choose account type</label>
+          <select id="role" name="role" required>
+            <option value="user" selected>User</option>
+            <option value="seller">Seller</option>
+          </select>
         </div>
 
         <div class="form-field">
@@ -186,7 +196,8 @@ const description = "Create your ModelVerse account.";
       font-weight: 600;
     }
 
-    .form-field > input {
+    .form-field > input,
+    .form-field > select {
       width: 100%;
       box-sizing: border-box;
       height: 48px;
@@ -201,7 +212,8 @@ const description = "Create your ModelVerse account.";
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .form-field > input:focus {
+    .form-field > input:focus,
+    .form-field > select:focus {
       border-color: #547A24;
       box-shadow: 0 0 0 3px rgba(84, 122, 36, 0.16);
     }
@@ -435,12 +447,14 @@ const description = "Create your ModelVerse account.";
     }
 
     :global(.dark) .form-field > input,
+    :global(.dark) .form-field > select,
     :global(.dark) .input-wrap {
       background: #171916;
       border-color: #343B31;
     }
 
     :global(.dark) .form-field > input:focus,
+    :global(.dark) .form-field > select:focus,
     :global(.dark) .input-wrap:focus-within {
       background: #171916;
       border-color: #C5F467;
@@ -448,6 +462,7 @@ const description = "Create your ModelVerse account.";
     }
 
     :global(.dark) .form-field > input,
+    :global(.dark) .form-field > select,
     :global(.dark) .input-wrap input {
       color: #F2F3ED;
     }
@@ -541,6 +556,7 @@ const description = "Create your ModelVerse account.";
           body: JSON.stringify({
             email: data.get("email"),
             password: data.get("password"),
+            role: data.get("role"),
           }),
           credentials: "include",
         });
@@ -558,7 +574,12 @@ const description = "Create your ModelVerse account.";
 
         const redirectParam = new URLSearchParams(window.location.search).get("redirect");
         let target = "/dashboard";
-        if (redirectParam && redirectParam.startsWith("/") && !redirectParam.startsWith("/admin") && !redirectParam.startsWith("/seller")) {
+
+        if (result.user?.role === "seller") {
+          target = "/seller/dashboard";
+        } else if (redirectParam && redirectParam.startsWith("/") &&
+          !redirectParam.startsWith("/admin") &&
+          !redirectParam.startsWith("/seller")) {
           target = redirectParam;
         }
 
