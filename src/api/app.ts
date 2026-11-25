@@ -1,6 +1,6 @@
-import { authRouter } from "./auth.js";
+import { authRouter, getUserFromCookieHeader, recordDownload } from "./auth.js";
 import { marketplaceRouter } from "./marketplace.js";
-import { interpretPrompt } from "../ai/prompt-interpreter.js";
+import { interpretPrompt, analyzeImage } from "../ai/prompt-interpreter.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { randomBytes } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -18,6 +18,7 @@ import {
   UnsupportedError,
   errorMessage,
 } from "../core/service.js";
+import { resolveAssetPreview, isAllowedPreviewUrl } from "../core/preview-resolver.js";
 import { LocalStats, PrometheusStats, cachedStats, teeAnalytics, type StatsSource } from "../core/stats.js";
 import { ASSET_TYPES, type AssetType } from "../core/types.js";
 import type { NetworkClassifier } from "../core/network.js";
@@ -78,10 +79,11 @@ const WEB_CLIENT_HEADER = "x-asset-client";
 
 /** Bounded route label for metrics (never the raw path). */
 function routeLabel(path: string): string {
-  if (path === "/v1/search" || path === "/v1/providers" || path === "/v1/stats" || path === "/v1/catalog" || path === "/mcp" || path === "/openapi.json" || path === "/health") {
+  if (path === "/v1/search" || path === "/v1/providers" || path === "/v1/stats" || path === "/v1/catalog" || path === "/mcp" || path === "/openapi.json" || path === "/health" || path === "/v1/preview/proxy") {
     return path;
   }
   if (path.startsWith("/v1/assets/")) {
+    if (path.endsWith("/preview")) return "/v1/assets/:id/preview";
     if (path.endsWith("/download")) return "/v1/assets/:id/download";
     if (path.endsWith("/files")) return "/v1/assets/:id/files";
     return "/v1/assets/:id";
@@ -387,6 +389,60 @@ export function createApp(service: AssetService, opts: AppOptions = {}): Hono {
     return c.json(res);
   });
 
+  /**
+   * Multimodal Image Search:
+   * Accepts image file via multipart form or base64 JSON payload.
+   * Compresses via Sharp, extracts structured attributes with Gemini, and searches.
+   */
+  app.post("/v1/search/image", async (c) => {
+    let buffer: Buffer | null = null;
+    let mimeType = "image/jpeg";
+
+    const contentType = c.req.header("content-type") || "";
+    if (contentType.includes("multipart/form-data")) {
+      const body = await c.req.parseBody();
+      const file = body["image"] || body["file"];
+      if (file && typeof file === "object" && "arrayBuffer" in file) {
+        const ab = await (file as any).arrayBuffer();
+        buffer = Buffer.from(ab);
+        if ("type" in file && (file as any).type) mimeType = (file as any).type;
+      }
+    } else if (contentType.includes("application/json")) {
+      const json = await c.req.json().catch(() => null);
+      if (json?.image && typeof json.image === "string") {
+        const b64 = json.image.replace(/^data:image\/\w+;base64,/, "");
+        buffer = Buffer.from(b64, "base64");
+        if (json.mimeType) mimeType = json.mimeType;
+      }
+    }
+
+    if (!buffer || buffer.length === 0) {
+      return c.json({ error: "Please provide an image file or base64 image data." }, 400);
+    }
+
+    try {
+      const analysis = await analyzeImage(buffer, mimeType);
+      const searchRes = await service.search({
+        query: analysis.searchQuery,
+        types: analysis.assetType ? [analysis.assetType as AssetType] : undefined,
+      });
+
+      return c.json({
+        analysis,
+        ...searchRes,
+      });
+    } catch (err) {
+      return c.json({ error: errorMessage(err) }, 500);
+    }
+  });
+
+  /**
+   * Provider Reliability & Circuit Breaker Health Report
+   */
+  app.get("/v1/search/health", (c) => {
+    return c.json({ providers: service.circuitBreaker.getHealthReports() });
+  });
+
   app.get("/v1/assets/:id", async (c) => {
     const id = c.req.param("id");
     const asset = await service.getAsset(id);
@@ -402,6 +458,77 @@ export function createApp(service: AssetService, opts: AppOptions = {}): Hono {
     if (!asset) return c.json({ error: "not found" }, 404);
     const files = selectFiles(asset, { format: p.format, resolution: p.resolution, mapTypes: p.maps, all: p.all });
     return c.json({ id: asset.id, license: asset.license, totalBytes: totalBytes(files), files });
+  });
+
+  /**
+   * Universal 3D Model Preview descriptor endpoint.
+   * Resolves direct model URL, archive URL, dependencies, or structured reason if restricted.
+   */
+  app.get("/v1/assets/:id/preview", async (c) => {
+    const id = c.req.param("id");
+    try {
+      const descriptor = await resolveAssetPreview(service, id);
+      if (descriptor.errorCode === "FILE_NOT_FOUND") {
+        return c.json(descriptor, 404);
+      }
+      return c.json(descriptor);
+    } catch (err: any) {
+      if (err instanceof UnknownProviderError || err instanceof InvalidAssetIdError) {
+        return c.json({ error: "not found" }, 404);
+      }
+      return c.json({ error: err?.message || "Failed to resolve preview" }, 500);
+    }
+  });
+
+  /**
+   * CORS-proxy for external model assets, textures, and archives.
+   * Validates target URL against public provider domain whitelists and SSRF guards.
+   */
+  app.get("/v1/preview/proxy", async (c) => {
+    const targetUrl = c.req.query("url");
+    if (!targetUrl) {
+      return c.json({ error: "Missing 'url' query parameter" }, 400);
+    }
+    if (!isAllowedPreviewUrl(targetUrl)) {
+      return c.json({ error: "URL is not allowed for proxying" }, 403);
+    }
+    try {
+      const upstream = await service.http.raw(targetUrl, {
+        headers: {
+          accept: "*/*",
+          "user-agent": "ModelVerse-PreviewProxy/1.0",
+        },
+      });
+      if (!upstream.ok) {
+        return c.json({ error: `Upstream error: ${upstream.status} ${upstream.statusText}` }, upstream.status as any);
+      }
+      const contentType = upstream.headers.get("content-type") || "application/octet-stream";
+      const headers = new Headers();
+      headers.set("content-type", contentType);
+      const contentLength = upstream.headers.get("content-length");
+      if (contentLength) headers.set("content-length", contentLength);
+      headers.set("access-control-allow-origin", "*");
+      headers.set("access-control-allow-methods", "GET, HEAD, OPTIONS");
+      headers.set("cache-control", "public, max-age=86400");
+      return new Response(upstream.body, {
+        status: 200,
+        headers,
+      });
+    } catch (err: any) {
+      return c.json({ error: `Proxy fetch failed: ${err?.message || "Unknown error"}` }, 502);
+    }
+  });
+
+  app.options("/v1/preview/proxy", (c) => {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET, HEAD, OPTIONS",
+        "access-control-allow-headers": "*",
+        "cache-control": "public, max-age=86400",
+      },
+    });
   });
 
   /**
@@ -425,6 +552,69 @@ export function createApp(service: AssetService, opts: AppOptions = {}): Hono {
     }
     analytics.download({ ...who(c), provider: asset.provider, kind: "zip" });
     const folder = assetFolderName(asset);
+    return new Response(zipStream(service.http, files, folder), {
+      headers: {
+        "content-type": "application/zip",
+        "content-disposition": `attachment; filename="${folder}.zip"`,
+      },
+    });
+  });
+
+  /**
+   * Login-protected download endpoint for the ModelVerse website.
+   * Requires a valid session cookie. Records download activity.
+   * The original /v1/assets/:id/download remains open for API/MCP integrations.
+   */
+  app.get("/v1/assets/:id/download/web", async (c) => {
+    // Check session from cookie (server-side auth, not a frontend-only header)
+    const user = getUserFromCookieHeader(c.req.header("cookie"));
+    if (!user) {
+      return c.json({ error: "Login required to download assets.", requiresAuth: true }, 401);
+    }
+
+    const p = fileParams.parse(c.req.query());
+    const asset = await service.getAsset(c.req.param("id"));
+    if (!asset) return c.json({ error: "not found" }, 404);
+    if (!asset.files.length) {
+      return c.json({ error: "This asset has no direct downloads; get it from the source page.", url: asset.url }, 409);
+    }
+    const files = selectFiles(asset, { format: p.format, resolution: p.resolution, mapTypes: p.maps, all: p.all });
+    if (!files.length) return c.json({ error: "No files match the requested format/resolution." }, 404);
+
+    const only = files[0]!;
+    if (files.length === 1 && !only.includes?.length) {
+      assertPublicUrl(only.url);
+      analytics.download({ ...who(c), provider: asset.provider, kind: "redirect" });
+      // Record download before redirect (redirect is initiated, not guaranteed complete)
+      recordDownload({
+        userId: user.id,
+        assetId: asset.id,
+        assetTitle: asset.title,
+        provider: asset.provider,
+        assetType: asset.type,
+        format: p.format ?? files[0]?.format,
+        resolution: p.resolution ?? files[0]?.resolution,
+        downloadType: "redirect",
+      });
+      return c.redirect(only.url, 302);
+    }
+
+    analytics.download({ ...who(c), provider: asset.provider, kind: "zip" });
+    const folder = assetFolderName(asset);
+
+    // Record before streaming; if streaming fails the client gets a broken zip,
+    // but the initiation was legitimate (user clicked download for a valid asset).
+    recordDownload({
+      userId: user.id,
+      assetId: asset.id,
+      assetTitle: asset.title,
+      provider: asset.provider,
+      assetType: asset.type,
+      format: p.format ?? files[0]?.format,
+      resolution: p.resolution ?? files[0]?.resolution,
+      downloadType: "zip",
+    });
+
     return new Response(zipStream(service.http, files, folder), {
       headers: {
         "content-type": "application/zip",

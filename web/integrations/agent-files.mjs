@@ -13,10 +13,10 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const read = (p) => readFileSync(join(root, p), "utf8");
 
 function stripFrontmatter(md) {
-  const m = md.match(/^---\n([\s\S]*?)\n---\n/);
+  const m = md.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
   if (!m) return { meta: {}, body: md };
   const meta = Object.fromEntries(
-    m[1].split("\n").map((l) => l.match(/^(\w+):\s*(.*)$/)).filter(Boolean).map((x) => [x[1], x[2]]),
+    m[1].split(/\r?\n/).map((l) => l.match(/^(\w+):\s*(.*)$/)).filter(Boolean).map((x) => [x[1], x[2]]),
   );
   return { meta, body: md.slice(m[0].length) };
 }

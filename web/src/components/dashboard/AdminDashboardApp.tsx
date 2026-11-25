@@ -12,6 +12,10 @@ import {
   Trash2,
   DollarSign,
   ArrowRight,
+  Download,
+  FileArchive,
+  ExternalLink,
+  AlertCircle,
 } from "lucide-react";
 
 interface AdminUser {
@@ -68,6 +72,19 @@ interface AdminPurchase {
   seller_email: string;
 }
 
+interface AdminDownload {
+  id: number;
+  asset_id: string;
+  asset_title: string;
+  provider: string | null;
+  asset_type: string | null;
+  format: string | null;
+  resolution: string | null;
+  download_type: "redirect" | "zip";
+  created_at: number;
+  user_email: string;
+}
+
 const money = (paise: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -79,13 +96,19 @@ export default function AdminDashboardApp() {
   const [currentUser, setCurrentUser] = useState<AdminUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<PlatformStats | null>(null);
-  const [activeTab, setActiveTab] = useState<"applications" | "users" | "listings" | "purchases">("applications");
+  const [activeTab, setActiveTab] = useState<"applications" | "users" | "listings" | "purchases" | "downloads">("applications");
 
   // Data sets
   const [applications, setApplications] = useState<SellerApplication[]>([]);
   const [users, setUsers] = useState<AdminUser[]>([]);
   const [listings, setListings] = useState<AdminListing[]>([]);
   const [purchases, setPurchases] = useState<AdminPurchase[]>([]);
+  const [adminDownloads, setAdminDownloads] = useState<AdminDownload[]>([]);
+  const [downloadsTotal, setDownloadsTotal] = useState(0);
+  const [downloadsLoading, setDownloadsLoading] = useState(false);
+  const [downloadsError, setDownloadsError] = useState<string | null>(null);
+  const [downloadSearch, setDownloadSearch] = useState("");
+  const [downloadProvider, setDownloadProvider] = useState("");
 
   // Search & Filter
   const [userSearch, setUserSearch] = useState("");
@@ -151,9 +174,35 @@ export default function AdminDashboardApp() {
     }
   }
 
+  async function loadAdminDownloads(q = downloadSearch, provider = downloadProvider) {
+    setDownloadsLoading(true);
+    setDownloadsError(null);
+    try {
+      const params = new URLSearchParams({ limit: "100" });
+      if (q) params.set("q", q);
+      if (provider) params.set("provider", provider);
+      const res = await fetch(`/auth/admin/downloads?${params.toString()}`, { credentials: "include" });
+      if (!res.ok) throw new Error("Failed to load download activity.");
+      const data = await res.json();
+      setAdminDownloads(data.downloads ?? []);
+      setDownloadsTotal(data.total ?? 0);
+    } catch (err) {
+      setDownloadsError(err instanceof Error ? err.message : "Failed to load download activity.");
+    } finally {
+      setDownloadsLoading(false);
+    }
+  }
+
   useEffect(() => {
     checkAuthAndLoadData();
   }, []);
+
+  // Load downloads lazily when that tab is first opened
+  useEffect(() => {
+    if (activeTab === "downloads" && adminDownloads.length === 0 && !downloadsLoading && !downloadsError) {
+      void loadAdminDownloads();
+    }
+  }, [activeTab]);
 
   // Review Application
   async function handleReviewApplication(appId: number, status: "approved" | "rejected") {
@@ -452,6 +501,23 @@ export default function AdminDashboardApp() {
           <span className="rounded-full bg-primary-foreground/20 px-2 py-0.5 text-[10px]">
             {purchases.length}
           </span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab("downloads")}
+          className={`flex items-center gap-2 shrink-0 rounded-xl px-4 py-2.5 text-xs font-bold transition ${
+            activeTab === "downloads"
+              ? "bg-primary text-primary-foreground shadow-xs"
+              : "text-muted-foreground hover:bg-accent hover:text-foreground"
+          }`}
+        >
+          <Download size={15} />
+          <span>Download Activity</span>
+          {downloadsTotal > 0 && (
+            <span className="rounded-full bg-primary-foreground/20 px-2 py-0.5 text-[10px]">
+              {downloadsTotal}
+            </span>
+          )}
         </button>
       </div>
 
@@ -760,6 +826,137 @@ export default function AdminDashboardApp() {
           )}
         </div>
       )}
+      {/* Tab 5: Download Activity */}
+      {activeTab === "downloads" && (
+        <div className="space-y-4">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+            <div>
+              <h2 className="text-base font-bold text-foreground">Platform Download Activity</h2>
+              <p className="text-xs text-muted-foreground">
+                All asset downloads initiated through ModelVerse.{downloadsTotal > 0 && ` ${downloadsTotal} total records.`}
+              </p>
+            </div>
+            <button
+              onClick={() => loadAdminDownloads()}
+              disabled={downloadsLoading}
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-xs font-semibold text-foreground shadow-2xs transition hover:bg-accent disabled:opacity-50"
+            >
+              <RefreshCw size={14} className={downloadsLoading ? "animate-spin" : ""} />
+              <span>Refresh</span>
+            </button>
+          </div>
+
+          {/* Search & Filter */}
+          <div className="flex flex-wrap gap-2">
+            <div className="relative flex-1 min-w-[200px]">
+              <Search size={14} className="absolute left-3 top-3 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search by user email or asset name..."
+                value={downloadSearch}
+                onChange={(e) => setDownloadSearch(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") void loadAdminDownloads(downloadSearch, downloadProvider); }}
+                className="w-full rounded-xl border border-border bg-background py-2 pl-9 pr-3 text-xs text-foreground outline-none focus:border-primary"
+              />
+            </div>
+            <input
+              type="text"
+              placeholder="Filter by provider..."
+              value={downloadProvider}
+              onChange={(e) => setDownloadProvider(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter") void loadAdminDownloads(downloadSearch, downloadProvider); }}
+              className="rounded-xl border border-border bg-background py-2 px-3 text-xs text-foreground outline-none focus:border-primary w-40"
+            />
+            <button
+              onClick={() => void loadAdminDownloads(downloadSearch, downloadProvider)}
+              className="rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:opacity-95 transition"
+            >
+              Search
+            </button>
+          </div>
+
+          {/* Loading */}
+          {downloadsLoading && (
+            <div className="flex items-center justify-center rounded-2xl border border-border bg-card p-12">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-8 animate-spin rounded-full border-3 border-primary border-t-transparent"></div>
+                <p className="text-sm text-muted-foreground">Loading download activity…</p>
+              </div>
+            </div>
+          )}
+
+          {/* Error */}
+          {downloadsError && !downloadsLoading && (
+            <div className="rounded-2xl border border-destructive/30 bg-destructive/10 p-6 text-center">
+              <AlertCircle size={32} className="mx-auto text-destructive" />
+              <h3 className="mt-2 text-sm font-bold text-foreground">Failed to load download activity</h3>
+              <p className="mt-1 text-xs text-muted-foreground">{downloadsError}</p>
+            </div>
+          )}
+
+          {/* Empty */}
+          {!downloadsLoading && !downloadsError && adminDownloads.length === 0 && (
+            <div className="rounded-3xl border border-dashed border-border bg-card p-12 text-center">
+              <Download size={36} className="mx-auto text-muted-foreground/60" />
+              <h3 className="mt-3 text-base font-bold text-foreground">No download records found</h3>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Downloads initiated by users on ModelVerse will appear here.
+              </p>
+            </div>
+          )}
+
+          {/* Table */}
+          {!downloadsLoading && !downloadsError && adminDownloads.length > 0 && (
+            <div className="overflow-hidden rounded-2xl border border-border/80 bg-card">
+              <table className="w-full text-left text-xs">
+                <thead className="border-b border-border bg-muted/40 font-bold uppercase tracking-wider text-muted-foreground">
+                  <tr>
+                    <th className="p-3.5">ID</th>
+                    <th className="p-3.5">User Email</th>
+                    <th className="p-3.5">Asset</th>
+                    <th className="p-3.5">Provider</th>
+                    <th className="p-3.5">Type</th>
+                    <th className="p-3.5">Format</th>
+                    <th className="p-3.5">Resolution</th>
+                    <th className="p-3.5">Kind</th>
+                    <th className="p-3.5">Date</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/60">
+                  {adminDownloads.map((d) => (
+                    <tr key={d.id} className="hover:bg-accent/40 transition">
+                      <td className="p-3.5 font-mono text-[11px] text-muted-foreground">#{d.id}</td>
+                      <td className="p-3.5 text-muted-foreground">{d.user_email}</td>
+                      <td className="p-3.5">
+                        <span className="font-semibold text-foreground line-clamp-1">{d.asset_title}</span>
+                        <span className="block font-mono text-[10px] text-muted-foreground">{d.asset_id}</span>
+                      </td>
+                      <td className="p-3.5 text-muted-foreground capitalize">{d.provider ?? "—"}</td>
+                      <td className="p-3.5 text-muted-foreground capitalize">{d.asset_type ?? "—"}</td>
+                      <td className="p-3.5 text-muted-foreground font-mono">{d.format ?? "auto"}</td>
+                      <td className="p-3.5 text-muted-foreground font-mono">{d.resolution ?? "auto"}</td>
+                      <td className="p-3.5">
+                        <span className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[10px] font-bold ${
+                          d.download_type === "zip"
+                            ? "bg-primary/10 text-primary"
+                            : "bg-muted text-muted-foreground"
+                        }`}>
+                          {d.download_type === "zip" ? <FileArchive size={10} /> : <ExternalLink size={10} />}
+                          {d.download_type === "zip" ? "ZIP" : "Redirect"}
+                        </span>
+                      </td>
+                      <td className="p-3.5 text-muted-foreground">
+                        {new Date(d.created_at * 1000).toLocaleDateString()}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
+
     </div>
   );
 }

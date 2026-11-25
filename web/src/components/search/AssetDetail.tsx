@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Bot, Check, Download, FileBox, Loader2, Share2, Terminal } from "lucide-react";
+import { ArrowUpRight, Bot, Check, Download, FileBox, Loader2, LogIn, Share2, Terminal } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CopyButton } from "@/components/home/AgentSetup";
-import { api, formatBytes, getKey, safeUrl, type Asset, type AssetDetails, type FileSelection } from "./api";
+import { api, formatBytes, safeUrl, type Asset, type AssetDetails, type FileSelection } from "./api";
 
 export function AssetDetail({ asset, providerName }: { asset: Asset; providerName: string }) {
   const [full, setFull] = useState<AssetDetails | null>(null);
@@ -13,6 +13,17 @@ export function AssetDetail({ asset, providerName }: { asset: Asset; providerNam
   const [resolution, setResolution] = useState("");
   const [selection, setSelection] = useState<FileSelection | null>(null);
   const [selError, setSelError] = useState<string>();
+  const [authChecked, setAuthChecked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check auth status once on mount
+  useEffect(() => {
+    fetch("/auth/me", { credentials: "include" })
+      .then((r) => r.json())
+      .then((d) => setIsLoggedIn(Boolean(d?.user)))
+      .catch(() => setIsLoggedIn(false))
+      .finally(() => setAuthChecked(true));
+  }, []);
 
   useEffect(() => {
     setFull(null);
@@ -53,11 +64,18 @@ export function AssetDetail({ asset, providerName }: { asset: Asset; providerNam
   const a = full ?? asset;
   const hero = safeUrl(a.thumbnailUrl);
   const source = safeUrl(a.url);
-  const key = getKey();
-  const downloadHref = `${base}/download${qs}${key ? `${qs ? "&" : "?"}api_key=${encodeURIComponent(key)}` : ""}`;
+  // The protected web download endpoint (requires login)
+  const webDownloadHref = `${base}/download/web${qs}`;
   const origin = typeof window !== "undefined" ? window.location.origin : "";
   const curl = `curl -L -o "${asset.id.replace(/[^a-z0-9]+/gi, "-")}.zip" "${origin}${base}/download${qs}"`;
   const agentPrompt = `Use the 3d-assets MCP server: get_asset("${asset.id}")${format ? ` with format ${format}` : ""}${resolution ? ` at ${resolution}` : ""}, download it into ./assets and tell me the licence.`;
+
+  // Build the redirect URL with return destination
+  const getLoginRedirect = () => {
+    if (typeof window === "undefined") return "/auth/login";
+    const returnTo = encodeURIComponent(`/search?asset=${encodeURIComponent(asset.id)}`);
+    return `/auth/login?redirect=${returnTo}`;
+  };
 
   const rows: [string, React.ReactNode][] = [
     ["Price", a.price ? (a.price.free ? "Free" : a.price.amount != null ? `${a.price.amount} ${a.price.currency ?? ""}` : "Paid") : "Unknown"],
@@ -217,11 +235,38 @@ export function AssetDetail({ asset, providerName }: { asset: Asset; providerNam
                   {options.resolutions.map((r) => <option key={r} value={r}>{r}</option>)}
                 </select>
               )}
-              <Button asChild disabled={!selection?.files.length} className="rounded-xl bg-primary text-white shadow-xs">
-                <a href={downloadHref}><Download className="size-4" /> Download Zip</a>
-              </Button>
+
+              {/* Show download button or login prompt based on auth state */}
+              {!authChecked ? (
+                <Button disabled className="rounded-xl bg-primary text-white shadow-xs">
+                  <Loader2 className="size-4 animate-spin" /> Checking…
+                </Button>
+              ) : isLoggedIn ? (
+                <Button asChild disabled={!selection?.files.length} className="rounded-xl bg-primary text-white shadow-xs">
+                  <a href={webDownloadHref}><Download className="size-4" /> Download</a>
+                </Button>
+              ) : (
+                <Button asChild className="rounded-xl bg-primary text-white shadow-xs">
+                  <a href={getLoginRedirect()}>
+                    <LogIn className="size-4" /> Log in to Download
+                  </a>
+                </Button>
+              )}
+
               {selection?.totalBytes != null && <span className="text-xs font-mono text-muted-foreground">{formatBytes(selection.totalBytes)}</span>}
             </div>
+
+            {/* Login notice for unauthenticated users */}
+            {authChecked && !isLoggedIn && (
+              <p className="text-[11px] text-muted-foreground rounded-lg border border-border/50 bg-background/50 px-3 py-2">
+                <LogIn className="inline size-3 mr-1" />
+                A ModelVerse account is required to download assets.{" "}
+                <a href={getLoginRedirect()} className="font-semibold text-primary hover:underline">Log in</a>
+                {" "}or{" "}
+                <a href="/auth/register" className="font-semibold text-primary hover:underline">create an account</a>
+                {" "}— it's free!
+              </p>
+            )}
 
             <ul className="space-y-1 text-xs text-muted-foreground rounded-lg border border-border/50 bg-background/50 p-2.5">
               {selError && <li className="text-destructive font-medium">{selError}</li>}

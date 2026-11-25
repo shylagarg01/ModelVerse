@@ -64,12 +64,12 @@ export function setKey(k: string): void {
   }
 }
 
-export async function api<T>(path: string): Promise<T> {
+export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   // x-asset-client lets the server's analytics tell website traffic from other API users.
-  const headers: Record<string, string> = { "x-asset-client": "web" };
+  const headers: Record<string, string> = { "x-asset-client": "web", ...(init?.headers as Record<string, string>) };
   const key = getKey();
   if (key) headers["x-api-key"] = key;
-  const res = await fetch(path, { headers });
+  const res = await fetch(path, { ...init, headers });
   if (res.status === 401) throw new UnauthorizedError("This server needs an API key.");
   const body = (await res.json()) as T & { error?: string };
   if (!res.ok) throw new Error(body?.error ?? `HTTP ${res.status}`);

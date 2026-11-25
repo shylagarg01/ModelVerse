@@ -81,6 +81,26 @@ db.exec(`
   ON seller_applications(status);
 `);
 
+// Asset download history
+db.exec(`
+  CREATE TABLE IF NOT EXISTS asset_downloads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    asset_id TEXT NOT NULL,
+    asset_title TEXT NOT NULL,
+    provider TEXT,
+    asset_type TEXT,
+    format TEXT,
+    resolution TEXT,
+    download_type TEXT,
+    created_at INTEGER NOT NULL
+  );
+
+  CREATE INDEX IF NOT EXISTS asset_downloads_user_id ON asset_downloads(user_id);
+  CREATE INDEX IF NOT EXISTS asset_downloads_created_at ON asset_downloads(created_at);
+  CREATE INDEX IF NOT EXISTS asset_downloads_asset_id ON asset_downloads(asset_id);
+`);
+
 
 const SESSION_COOKIE = "modelverse_session";
 const SESSION_LIFETIME_SECONDS = 60 * 60 * 24 * 7;
@@ -543,3 +563,99 @@ export function requireSeller(token: string | undefined): User | null {
   const user = findUserForToken(token);
   return user?.role === "seller" || user?.role === "admin" ? user : null;
 }
+
+export interface DownloadRecord {
+  userId: number;
+  assetId: string;
+  assetTitle: string;
+  provider?: string;
+  assetType?: string;
+  format?: string;
+  resolution?: string;
+  downloadType: "redirect" | "zip";
+}
+
+/** Insert a download record and return its id. */
+export function recordDownload(rec: DownloadRecord): number {
+  const result = db.prepare(`
+    INSERT INTO asset_downloads
+      (user_id, asset_id, asset_title, provider, asset_type, format, resolution, download_type, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).run(
+    rec.userId,
+    rec.assetId,
+    rec.assetTitle,
+    rec.provider ?? null,
+    rec.assetType ?? null,
+    rec.format ?? null,
+    rec.resolution ?? null,
+    rec.downloadType,
+    Math.floor(Date.now() / 1000),
+  );
+  return Number(result.lastInsertRowid);
+}
+
+// User: get own download history
+authRouter.get("/my-downloads", (c) => {
+  const user = findUserForToken(readCookie(c.req.header("cookie")));
+  if (!user) return c.json({ error: "Please log in first." }, 401);
+
+  const limit = Math.min(Number(c.req.query("limit") ?? 50), 200);
+  const offset = Math.max(Number(c.req.query("offset") ?? 0), 0);
+
+  const downloads = db.prepare(`
+    SELECT id, asset_id, asset_title, provider, asset_type, format, resolution, download_type, created_at
+    FROM asset_downloads
+    WHERE user_id = ?
+    ORDER BY created_at DESC
+    LIMIT ? OFFSET ?
+  `).all(user.id, limit, offset);
+
+  const total = (db.prepare("SELECT COUNT(*) AS count FROM asset_downloads WHERE user_id = ?")
+    .get(user.id) as { count: number }).count;
+
+  return c.json({ downloads, total, limit, offset });
+});
+
+// Admin: get all download records across all users
+authRouter.get("/admin/downloads", (c) => {
+  const user = findUserForToken(readCookie(c.req.header("cookie")));
+  if (!user || user.role !== "admin") {
+    return c.json({ error: "Admin access required." }, 403);
+  }
+
+  const limit = Math.min(Number(c.req.query("limit") ?? 100), 500);
+  const offset = Math.max(Number(c.req.query("offset") ?? 0), 0);
+  const q = c.req.query("q")?.trim() ?? "";
+  const provider = c.req.query("provider")?.trim() ?? "";
+
+  const downloads = db.prepare(`
+    SELECT
+      asset_downloads.id,
+      asset_downloads.asset_id,
+      asset_downloads.asset_title,
+      asset_downloads.provider,
+      asset_downloads.asset_type,
+      asset_downloads.format,
+      asset_downloads.resolution,
+      asset_downloads.download_type,
+      asset_downloads.created_at,
+      users.email AS user_email
+    FROM asset_downloads
+    JOIN users ON users.id = asset_downloads.user_id
+    WHERE (? = '' OR users.email LIKE ? OR asset_downloads.asset_title LIKE ?)
+      AND (? = '' OR asset_downloads.provider = ?)
+    ORDER BY asset_downloads.created_at DESC
+    LIMIT ? OFFSET ?
+  `).all(q, `%${q}%`, `%${q}%`, provider, provider, limit, offset);
+
+  const total = (db.prepare(`
+    SELECT COUNT(*) AS count
+    FROM asset_downloads
+    JOIN users ON users.id = asset_downloads.user_id
+    WHERE (? = '' OR users.email LIKE ? OR asset_downloads.asset_title LIKE ?)
+      AND (? = '' OR asset_downloads.provider = ?)
+  `).get(q, `%${q}%`, `%${q}%`, provider, provider) as { count: number }).count;
+
+  return c.json({ downloads, total, limit, offset });
+});

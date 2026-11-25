@@ -13,6 +13,9 @@ import {
   Box,
   Compass,
   ArrowUpRight,
+  Download,
+  FileArchive,
+  RefreshCw,
 } from "lucide-react";
 
 interface UserProfile {
@@ -43,6 +46,18 @@ interface SellerApplication {
   reviewed_at?: number | null;
 }
 
+interface DownloadRecord {
+  id: number;
+  asset_id: string;
+  asset_title: string;
+  provider: string | null;
+  asset_type: string | null;
+  format: string | null;
+  resolution: string | null;
+  download_type: "redirect" | "zip";
+  created_at: number;
+}
+
 const money = (paise: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -55,7 +70,32 @@ export default function UserDashboardApp() {
   const [loading, setLoading] = useState(true);
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [application, setApplication] = useState<SellerApplication | null>(null);
-  const [activeTab, setActiveTab] = useState<"overview" | "purchases" | "seller_app">("overview");
+  const [downloads, setDownloads] = useState<DownloadRecord[]>([]);
+  const [downloadsTotal, setDownloadsTotal] = useState(0);
+  const [downloadsLoading, setDownloadsLoading] = useState(false);
+  const [downloadsError, setDownloadsError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"overview" | "purchases" | "downloads" | "seller_app">(() => {
+    if (typeof window !== "undefined") {
+      const tab = new URLSearchParams(window.location.search).get("tab");
+      if (tab === "seller_app" || tab === "downloads" || tab === "purchases" || tab === "overview") {
+        return tab;
+      }
+    }
+    return "overview";
+  });
+
+  function switchTab(tab: "overview" | "purchases" | "downloads" | "seller_app") {
+    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (tab === "overview") {
+        url.searchParams.delete("tab");
+      } else {
+        url.searchParams.set("tab", tab);
+      }
+      window.history.replaceState({}, "", url.toString());
+    }
+  }
 
   // Seller application form state
   const [businessName, setBusinessName] = useState("");
@@ -104,9 +144,44 @@ export default function UserDashboardApp() {
     }
   }
 
+  async function loadDownloads() {
+    setDownloadsLoading(true);
+    setDownloadsError(null);
+    try {
+      const res = await fetch("/auth/my-downloads?limit=50", { credentials: "include" });
+      if (!res.ok) throw new Error("Failed to load download history.");
+      const data = await res.json();
+      setDownloads(data.downloads ?? []);
+      setDownloadsTotal(data.total ?? 0);
+    } catch (err) {
+      setDownloadsError(err instanceof Error ? err.message : "Failed to load download history.");
+    } finally {
+      setDownloadsLoading(false);
+    }
+  }
+
   useEffect(() => {
     checkAuthAndLoadData();
+
+    const handleUrlChange = () => {
+      if (typeof window !== "undefined") {
+        const tab = new URLSearchParams(window.location.search).get("tab");
+        if (tab === "seller_app" || tab === "downloads" || tab === "purchases" || tab === "overview") {
+          setActiveTab(tab);
+        }
+      }
+    };
+
+    window.addEventListener("popstate", handleUrlChange);
+    return () => window.removeEventListener("popstate", handleUrlChange);
   }, []);
+
+  // Load downloads when tab is first activated
+  useEffect(() => {
+    if (activeTab === "downloads" && downloads.length === 0 && !downloadsLoading && !downloadsError) {
+      loadDownloads();
+    }
+  }, [activeTab]);
 
   async function handleApplySeller(e: React.FormEvent) {
     e.preventDefault();
@@ -276,10 +351,10 @@ export default function UserDashboardApp() {
       </div>
 
       {/* Tabs */}
-      <div className="mb-6 flex gap-2 border-b border-border/80 pb-2">
+      <div className="mb-6 flex gap-2 border-b border-border/80 pb-2 overflow-x-auto">
         <button
-          onClick={() => setActiveTab("overview")}
-          className={`rounded-xl px-4 py-2.5 text-xs font-bold transition ${
+          onClick={() => switchTab("overview")}
+          className={`rounded-xl px-4 py-2.5 text-xs font-bold transition shrink-0 ${
             activeTab === "overview"
               ? "bg-primary text-primary-foreground shadow-xs"
               : "text-muted-foreground hover:bg-accent hover:text-foreground"
@@ -289,8 +364,8 @@ export default function UserDashboardApp() {
         </button>
 
         <button
-          onClick={() => setActiveTab("purchases")}
-          className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition ${
+          onClick={() => switchTab("purchases")}
+          className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition shrink-0 ${
             activeTab === "purchases"
               ? "bg-primary text-primary-foreground shadow-xs"
               : "text-muted-foreground hover:bg-accent hover:text-foreground"
@@ -305,8 +380,25 @@ export default function UserDashboardApp() {
         </button>
 
         <button
-          onClick={() => setActiveTab("seller_app")}
-          className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition ${
+          onClick={() => switchTab("downloads")}
+          className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition shrink-0 ${
+            activeTab === "downloads"
+              ? "bg-primary text-primary-foreground shadow-xs"
+              : "text-muted-foreground hover:bg-accent hover:text-foreground"
+          }`}
+        >
+          <Download size={14} />
+          <span>My Downloads</span>
+          {downloadsTotal > 0 && (
+            <span className="rounded-full bg-primary-foreground/20 px-2 py-0.5 text-[10px]">
+              {downloadsTotal}
+            </span>
+          )}
+        </button>
+
+        <button
+          onClick={() => switchTab("seller_app")}
+          className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition shrink-0 ${
             activeTab === "seller_app"
               ? "bg-primary text-primary-foreground shadow-xs"
               : "text-muted-foreground hover:bg-accent hover:text-foreground"
@@ -512,7 +604,139 @@ export default function UserDashboardApp() {
         </div>
       )}
 
-      {/* Tab 3: Seller Application */}
+      {/* Tab 3: My Downloads */}
+      {activeTab === "downloads" && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-lg font-bold text-foreground">My Download History</h2>
+              <p className="text-xs text-muted-foreground">
+                All assets you have downloaded through ModelVerse. {downloadsTotal > 0 && `${downloadsTotal} total records.`}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="/search"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground shadow-xs transition hover:opacity-95"
+              >
+                <Compass size={14} />
+                <span>Find More Assets</span>
+              </a>
+              <button
+                onClick={loadDownloads}
+                disabled={downloadsLoading}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-semibold text-foreground shadow-xs transition hover:bg-accent disabled:opacity-50"
+              >
+                <RefreshCw size={14} className={downloadsLoading ? "animate-spin" : ""} />
+                <span>Refresh</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Loading state */}
+          {downloadsLoading && (
+            <div className="flex items-center justify-center rounded-2xl border border-border bg-card p-12">
+              <div className="flex flex-col items-center gap-3">
+                <div className="size-8 animate-spin rounded-full border-3 border-primary border-t-transparent"></div>
+                <p className="text-sm text-muted-foreground">Loading download historyâ€¦</p>
+              </div>
+            </div>
+          )}
+
+          {/* Error state */}
+          {downloadsError && !downloadsLoading && (
+            <div className="rounded-2xl border border-destructive/30 bg-destructive/10 p-6 text-center">
+              <AlertCircle size={32} className="mx-auto text-destructive" />
+              <h3 className="mt-2 text-sm font-bold text-foreground">Failed to load download history</h3>
+              <p className="mt-1 text-xs text-muted-foreground">{downloadsError}</p>
+              <button
+                onClick={loadDownloads}
+                className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:opacity-95 transition"
+              >
+                <RefreshCw size={14} /> Try Again
+              </button>
+            </div>
+          )}
+
+          {/* Empty state */}
+          {!downloadsLoading && !downloadsError && downloads.length === 0 && (
+            <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+              <Download size={36} className="mx-auto text-muted-foreground/60" />
+              <h3 className="mt-3 text-base font-bold text-foreground">No downloads yet</h3>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Assets you download through ModelVerse will appear here.
+              </p>
+              <a
+                href="/search"
+                className="mt-4 inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-xs transition hover:opacity-95"
+              >
+                <span>Explore Free 3D Assets</span>
+                <ArrowRight size={14} />
+              </a>
+            </div>
+          )}
+
+          {/* Download records */}
+          {!downloadsLoading && !downloadsError && downloads.length > 0 && (
+            <div className="overflow-hidden rounded-2xl border border-border/80 bg-card">
+              <table className="w-full text-left text-xs">
+                <thead className="border-b border-border bg-muted/40 font-bold uppercase tracking-wider text-muted-foreground">
+                  <tr>
+                    <th className="p-3.5">Asset</th>
+                    <th className="p-3.5">Provider</th>
+                    <th className="p-3.5">Type</th>
+                    <th className="p-3.5">Format</th>
+                    <th className="p-3.5">Resolution</th>
+                    <th className="p-3.5">Kind</th>
+                    <th className="p-3.5">Date</th>
+                    <th className="p-3.5 text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/60">
+                  {downloads.map((d) => (
+                    <tr key={d.id} className="hover:bg-accent/40 transition">
+                      <td className="p-3.5">
+                        <span className="font-semibold text-foreground line-clamp-1" title={d.asset_title}>
+                          {d.asset_title}
+                        </span>
+                        <span className="block font-mono text-[10px] text-muted-foreground">{d.asset_id}</span>
+                      </td>
+                      <td className="p-3.5 text-muted-foreground capitalize">{d.provider ?? "â€”"}</td>
+                      <td className="p-3.5 text-muted-foreground capitalize">{d.asset_type ?? "â€”"}</td>
+                      <td className="p-3.5 text-muted-foreground font-mono">{d.format ?? "auto"}</td>
+                      <td className="p-3.5 text-muted-foreground font-mono">{d.resolution ?? "auto"}</td>
+                      <td className="p-3.5">
+                        <span className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[10px] font-bold ${
+                          d.download_type === "zip"
+                            ? "bg-primary/10 text-primary"
+                            : "bg-muted text-muted-foreground"
+                        }`}>
+                          {d.download_type === "zip" ? <FileArchive size={10} /> : <ExternalLink size={10} />}
+                          {d.download_type === "zip" ? "ZIP" : "Redirect"}
+                        </span>
+                      </td>
+                      <td className="p-3.5 text-muted-foreground">
+                        {new Date(d.created_at * 1000).toLocaleDateString()}
+                      </td>
+                      <td className="p-3.5 text-right">
+                        <a
+                          href={`/search?asset=${encodeURIComponent(d.asset_id)}`}
+                          className="inline-flex items-center gap-1 rounded-lg bg-primary/10 border border-primary/20 px-2.5 py-1.5 text-[11px] font-bold text-primary hover:bg-primary/20 transition"
+                        >
+                          <Download size={11} />
+                          Download Again
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Tab 4: Seller Application */}
       {activeTab === "seller_app" && (
         <div className="mx-auto max-w-2xl">
           {user.role === "seller" || user.role === "admin" ? (

@@ -1,4 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
+import { LRUCache } from "lru-cache";
+import sharp from "sharp";
+import { createHash } from "node:crypto";
 
 export interface InterpretedPrompt {
   rawPrompt?: string;
@@ -18,8 +21,24 @@ export interface InterpretedPrompt {
     shapes?: string[];
   };
   assetType?: string;
+  category?: string;
+  useCase?: string;
   confidence?: number;
-  source?: "deterministic" | "gemini" | "hybrid";
+  source?: "deterministic" | "gemini" | "hybrid" | "cached";
+}
+
+export interface ImageAnalysisResult {
+  mainObject: string;
+  category: string;
+  style: string;
+  dominantColors: string[];
+  materialCharacteristics: string;
+  environmentUseCase: string;
+  descriptiveKeywords: string[];
+  searchQuery: string;
+  assetType: string;
+  confidence: number;
+  source: "gemini" | "fallback" | "cached";
 }
 
 // Predefined taxonomies for 3D asset prompt understanding
@@ -302,6 +321,43 @@ export function parsePromptDeterministic(rawPrompt: string): InterpretedPrompt {
   };
 }
 
+// Application-level in-memory LRU caches
+export const promptInterpretationCache = new LRUCache<string, InterpretedPrompt>({
+  max: 500,
+  ttl: 1000 * 60 * 60, // 1 hour TTL
+});
+
+export const imageAnalysisCache = new LRUCache<string, ImageAnalysisResult>({
+  max: 200,
+  ttl: 1000 * 60 * 60 * 2, // 2 hours TTL
+});
+
+const inFlightPrompts = new Map<string, Promise<InterpretedPrompt>>();
+const inFlightImages = new Map<string, Promise<ImageAnalysisResult>>();
+
+export function clearAiCaches(): void {
+  promptInterpretationCache.clear();
+  imageAnalysisCache.clear();
+  inFlightPrompts.clear();
+  inFlightImages.clear();
+}
+
+/**
+ * Identify straightforward keyword searches that don't need Gemini round-trips.
+ * (e.g. "chair", "pine tree", "sofa", "oak wood")
+ */
+export function isSimpleKeywordQuery(prompt: string): boolean {
+  const trimmed = prompt.trim();
+  if (!trimmed) return true;
+  const words = trimmed.split(/\s+/);
+  // Multi-word conversational prompts or prompts with operators/questions require AI
+  if (words.length > 3) return false;
+  if (/\b(?:not|without|except|no|need|want|for|with|like|looking|please|find|show|give|exclude|excluding|search)\b/i.test(trimmed)) {
+    return false;
+  }
+  return true;
+}
+
 function getAIClient(): GoogleGenAI | null {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || apiKey.trim() === "") {
@@ -310,106 +366,361 @@ function getAIClient(): GoogleGenAI | null {
   return new GoogleGenAI({ apiKey });
 }
 
+const PRIMARY_GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.1-flash-lite";
+const FALLBACK_GEMINI_MODEL = "gemini-3.8-flash";
+
 /**
  * Interpret user prompt using hybrid understanding:
  * 1. Fast deterministic parsing as reliable foundation.
- * 2. Optional Gemini enrichment if configured, with graceful fallback on ANY failure.
+ * 2. Caching & in-flight deduplication.
+ * 3. Gemini enrichment if configured, with graceful fallback on ANY failure.
  */
 export async function interpretPrompt(prompt: string): Promise<InterpretedPrompt> {
-  const base = parsePromptDeterministic(prompt);
+  const raw = prompt.trim();
+  if (!raw) return parsePromptDeterministic(raw);
 
-  // If no Gemini client is available, return the high-precision deterministic result immediately
-  const client = getAIClient();
-  if (!client) {
-    return base;
+  const cacheKey = raw.toLowerCase().replace(/\s+/g, " ");
+
+  // 1. Check interpretation cache
+  const cached = promptInterpretationCache.get(cacheKey);
+  if (cached) {
+    return { ...cached, source: "cached" };
   }
 
-  try {
-    // Timeout Gemini call after 2500ms so search is never blocked
-    const geminiPromise = client.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: [
-        {
-          role: "user",
-          parts: [
-            {
-              text: `Understand this 3D asset search request.
-Return ONLY a JSON object with these fields:
-- searchQuery: concise search query (1-3 words) for a 3D asset library
-- keywords: an array of useful synonyms and search terms
-- objectType: the main object being requested
-- appearance: an array of visual requirements (colors, materials)
-- style: an array of style requirements
-- negativeConditions: an array of terms the user explicitly wants to exclude
+  // 2. In-flight request deduplication
+  const inFlight = inFlightPrompts.get(cacheKey);
+  if (inFlight) {
+    return inFlight;
+  }
 
-User request: ${prompt}`,
-            },
-          ],
-        },
-      ],
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: "OBJECT",
-          properties: {
-            searchQuery: { type: "STRING" },
-            keywords: {
-              type: "ARRAY",
-              items: { type: "STRING" },
-            },
-            objectType: { type: "STRING" },
-            appearance: {
-              type: "ARRAY",
-              items: { type: "STRING" },
-            },
-            style: {
-              type: "ARRAY",
-              items: { type: "STRING" },
-            },
-            negativeConditions: {
-              type: "ARRAY",
-              items: { type: "STRING" },
-            },
-          },
-          required: [
-            "searchQuery",
-            "keywords",
-            "objectType",
-            "appearance",
-            "style",
-          ],
-        },
-      },
-    });
+  const execution = (async (): Promise<InterpretedPrompt> => {
+    const base = parsePromptDeterministic(raw);
 
-    const timeoutPromise = new Promise<never>((_, reject) =>
-      setTimeout(() => reject(new Error("Gemini interpretation timeout")), 2500),
-    );
-
-    const response = await Promise.race([geminiPromise, timeoutPromise]);
-    const text = response.text;
-    if (!text) {
+    // 3. Skip Gemini for straightforward keyword queries (0ms latency optimization)
+    if (isSimpleKeywordQuery(raw)) {
+      promptInterpretationCache.set(cacheKey, base);
       return base;
     }
 
-    const parsed = JSON.parse(text) as Partial<InterpretedPrompt>;
+    // If no Gemini client is available, return deterministic result
+    const client = getAIClient();
+    if (!client) {
+      promptInterpretationCache.set(cacheKey, base);
+      return base;
+    }
 
-    // Merge Gemini insights with deterministic foundation
-    return {
-      searchQuery: parsed.searchQuery?.trim() || base.searchQuery,
-      keywords: Array.from(new Set([...(parsed.keywords ?? []), ...base.keywords])),
-      objectType: parsed.objectType?.toLowerCase().trim() || base.objectType,
-      appearance: Array.from(new Set([...(parsed.appearance ?? []), ...base.appearance])),
-      style: Array.from(new Set([...(parsed.style ?? []), ...base.style])),
-      requiredConditions: base.requiredConditions,
-      preferredConditions: Array.from(new Set([...base.preferredConditions ?? [], ...(parsed.appearance ?? [])])),
-      negativeConditions: Array.from(new Set([...(parsed.negativeConditions ?? []), ...(base.negativeConditions ?? [])])),
-      attributes: base.attributes,
-      confidence: 0.98,
-      source: "hybrid",
-    };
-  } catch (error) {
-    // Graceful fallback to deterministic parsing: do not fail search when external service has an issue
-    return base;
+    try {
+      const callModel = async (modelName: string) => {
+        return client.models.generateContent({
+          model: modelName,
+          contents: [
+            {
+              role: "user",
+              parts: [
+                {
+                  text: `Analyze this 3D asset search request.
+Return ONLY a JSON object with:
+- assetType: "3d-model" | "material" | "texture" | "hdri" | "game-asset"
+- category: general category (e.g. "nature", "furniture", "architecture", "vehicle", "character", "environment")
+- searchQuery: concise search phrase (1-3 words) for asset providers
+- keywords: array of relevant synonyms and search terms
+- objectType: the primary subject
+- appearance: array of visual attributes (colors, materials)
+- style: array of styles (e.g. "low-poly", "realistic", "pbr", "stylized")
+- colors: array of colors
+- useCase: brief target application or context
+- negativeConditions: terms user explicitly wants to exclude
+
+User request: ${raw}`,
+                },
+              ],
+            },
+          ],
+          config: {
+            responseMimeType: "application/json",
+            responseSchema: {
+              type: "OBJECT",
+              properties: {
+                assetType: { type: "STRING" },
+                category: { type: "STRING" },
+                searchQuery: { type: "STRING" },
+                keywords: { type: "ARRAY", items: { type: "STRING" } },
+                objectType: { type: "STRING" },
+                appearance: { type: "ARRAY", items: { type: "STRING" } },
+                style: { type: "ARRAY", items: { type: "STRING" } },
+                colors: { type: "ARRAY", items: { type: "STRING" } },
+                useCase: { type: "STRING" },
+                negativeConditions: { type: "ARRAY", items: { type: "STRING" } },
+              },
+              required: [
+                "searchQuery",
+                "keywords",
+                "objectType",
+                "appearance",
+                "style",
+              ],
+            },
+          },
+        });
+      };
+
+      const callWithTimeout = async (modelName: string, ms = 3000) => {
+        let timeoutId: any;
+        const timeoutPromise = new Promise<never>((_, reject) => {
+          timeoutId = setTimeout(() => reject(new Error(`Gemini timeout for ${modelName}`)), ms);
+        });
+        try {
+          return await Promise.race([callModel(modelName), timeoutPromise]);
+        } finally {
+          clearTimeout(timeoutId);
+        }
+      };
+
+      let response;
+      try {
+        response = await callWithTimeout(PRIMARY_GEMINI_MODEL, 3000);
+      } catch {
+        try {
+          response = await callWithTimeout(FALLBACK_GEMINI_MODEL, 3000);
+        } catch {
+          promptInterpretationCache.set(cacheKey, base);
+          return base;
+        }
+      }
+
+      const text = response.text;
+      if (!text) {
+        promptInterpretationCache.set(cacheKey, base);
+        return base;
+      }
+
+      const parsed = JSON.parse(text) as Record<string, any>;
+
+      const mergedColors = Array.from(new Set([...(parsed.colors ?? []), ...(base.attributes?.colors ?? [])]));
+      const mergedMaterials = base.attributes?.materials ?? [];
+      const mergedFeatures = base.attributes?.features ?? [];
+
+      const result: InterpretedPrompt = {
+        rawPrompt: raw,
+        searchQuery: parsed.searchQuery?.trim() || base.searchQuery,
+        keywords: Array.from(new Set([...(parsed.keywords ?? []), ...base.keywords])),
+        objectType: parsed.objectType?.toLowerCase().trim() || base.objectType,
+        appearance: Array.from(new Set([...(parsed.appearance ?? []), ...base.appearance])),
+        style: Array.from(new Set([...(parsed.style ?? []), ...base.style])),
+        requiredConditions: base.requiredConditions,
+        preferredConditions: Array.from(new Set([...(base.preferredConditions ?? []), ...(parsed.appearance ?? [])])),
+        negativeConditions: Array.from(new Set([...(parsed.negativeConditions ?? []), ...(base.negativeConditions ?? [])])),
+        attributes: {
+          colors: mergedColors,
+          materials: mergedMaterials,
+          features: mergedFeatures,
+        },
+        assetType: parsed.assetType,
+        category: parsed.category,
+        useCase: parsed.useCase,
+        confidence: 0.98,
+        source: "hybrid",
+      };
+
+      promptInterpretationCache.set(cacheKey, result);
+      return result;
+    } catch {
+      // Graceful fallback to deterministic parsing: do not fail search when external service has an issue
+      promptInterpretationCache.set(cacheKey, base);
+      return base;
+    } finally {
+      inFlightPrompts.delete(cacheKey);
+    }
+  })();
+
+  inFlightPrompts.set(cacheKey, execution);
+  return execution;
+}
+
+/**
+ * Optimize image-based search using Gemini multimodal analysis:
+ * 1. Validates and compresses/resizes image with Sharp (max 512x512 JPEG).
+ * 2. Caches classification by image fingerprint.
+ * 3. Extracts structured keywords, category, colors, and search terms.
+ */
+export async function analyzeImage(
+  imageBuffer: Buffer,
+  mimeType: string = "image/jpeg",
+): Promise<ImageAnalysisResult> {
+  if (!imageBuffer || imageBuffer.length === 0) {
+    throw new Error("Invalid or empty image buffer");
   }
+
+  // 1. Resize and compress image to max 512x512 JPEG to minimize payload and latency
+  let optimizedBuffer: Buffer;
+  try {
+    optimizedBuffer = await sharp(imageBuffer)
+      .resize(512, 512, { fit: "inside", withoutEnlargement: true })
+      .jpeg({ quality: 80 })
+      .toBuffer();
+  } catch (err) {
+    throw new Error(`Unsupported or corrupted image file: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
+  // 2. Compute image fingerprint for caching
+  const imageHash = createHash("sha256").update(optimizedBuffer).digest("hex");
+  const cached = imageAnalysisCache.get(imageHash);
+  if (cached) {
+    return { ...cached, source: "cached" };
+  }
+
+  const inFlight = inFlightImages.get(imageHash);
+  if (inFlight) {
+    return inFlight;
+  }
+
+  const execution = (async (): Promise<ImageAnalysisResult> => {
+    const client = getAIClient();
+    if (!client) {
+      // Fallback if no Gemini key available
+      const fallbackResult: ImageAnalysisResult = {
+        mainObject: "3d-asset",
+        category: "general",
+        style: "realistic",
+        dominantColors: [],
+        materialCharacteristics: "standard",
+        environmentUseCase: "general 3d scene",
+        descriptiveKeywords: ["3d model", "asset"],
+        searchQuery: "3d model",
+        assetType: "model",
+        confidence: 0.5,
+        source: "fallback",
+      };
+      imageAnalysisCache.set(imageHash, fallbackResult);
+      return fallbackResult;
+    }
+
+    try {
+      const base64Data = optimizedBuffer.toString("base64");
+      const callImageModel = async (modelName: string) => {
+        return client.models.generateContent({
+          model: modelName,
+          contents: [
+            {
+              role: "user",
+              parts: [
+                {
+                  inlineData: {
+                    mimeType: "image/jpeg",
+                    data: base64Data,
+                  },
+                },
+                {
+                  text: `Analyze this image for searching 3D digital assets (models, textures, materials, HDRIs).
+Return ONLY a JSON object with:
+- mainObject: primary subject depicted (e.g. "pine tree", "wooden chair", "concrete wall")
+- category: asset category (e.g. "nature", "furniture", "architecture", "vehicle", "material", "environment")
+- style: visual style (e.g. "low-poly", "photorealistic", "stylized", "pbr", "cartoon")
+- dominantColors: array of primary colors
+- materialCharacteristics: description of surface / texture / materials
+- environmentUseCase: context or use-case (e.g. "game environment", "architectural visualization", "lighting")
+- descriptiveKeywords: array of 4-8 search terms for asset repositories
+- searchQuery: concise search query (1-3 words) for 3D asset libraries
+- assetType: inferred type ("model" | "material" | "texture" | "hdri")`,
+                },
+              ],
+            },
+          ],
+          config: {
+            responseMimeType: "application/json",
+            responseSchema: {
+              type: "OBJECT",
+              properties: {
+                mainObject: { type: "STRING" },
+                category: { type: "STRING" },
+                style: { type: "STRING" },
+                dominantColors: { type: "ARRAY", items: { type: "STRING" } },
+                materialCharacteristics: { type: "STRING" },
+                environmentUseCase: { type: "STRING" },
+                descriptiveKeywords: { type: "ARRAY", items: { type: "STRING" } },
+                searchQuery: { type: "STRING" },
+                assetType: { type: "STRING" },
+              },
+              required: [
+                "mainObject",
+                "category",
+                "style",
+                "descriptiveKeywords",
+                "searchQuery",
+                "assetType",
+              ],
+            },
+          },
+        });
+      };
+
+      const callWithTimeout = async (modelName: string, ms = 4000) => {
+        let timeoutId: any;
+        const timeoutPromise = new Promise<never>((_, reject) => {
+          timeoutId = setTimeout(() => reject(new Error(`Gemini timeout for ${modelName}`)), ms);
+        });
+        try {
+          return await Promise.race([callImageModel(modelName), timeoutPromise]);
+        } finally {
+          clearTimeout(timeoutId);
+        }
+      };
+
+      let response;
+      try {
+        response = await callWithTimeout(PRIMARY_GEMINI_MODEL, 4000);
+      } catch {
+        try {
+          response = await callWithTimeout(FALLBACK_GEMINI_MODEL, 4000);
+        } catch {
+          throw new Error("Both vision models failed");
+        }
+      }
+
+      const text = response.text;
+      if (!text) {
+        throw new Error("Empty response from Gemini vision model");
+      }
+
+      const parsed = JSON.parse(text) as Record<string, any>;
+      const result: ImageAnalysisResult = {
+        mainObject: parsed.mainObject || "3d asset",
+        category: parsed.category || "general",
+        style: parsed.style || "realistic",
+        dominantColors: Array.isArray(parsed.dominantColors) ? parsed.dominantColors : [],
+        materialCharacteristics: parsed.materialCharacteristics || "",
+        environmentUseCase: parsed.environmentUseCase || "",
+        descriptiveKeywords: Array.isArray(parsed.descriptiveKeywords) ? parsed.descriptiveKeywords : [parsed.mainObject],
+        searchQuery: parsed.searchQuery || parsed.mainObject || "3d model",
+        assetType: parsed.assetType || "model",
+        confidence: 0.95,
+        source: "gemini",
+      };
+
+      imageAnalysisCache.set(imageHash, result);
+      return result;
+    } catch {
+      // Safe fallback if vision API fails
+      const fallbackResult: ImageAnalysisResult = {
+        mainObject: "3d-asset",
+        category: "general",
+        style: "realistic",
+        dominantColors: [],
+        materialCharacteristics: "standard",
+        environmentUseCase: "game asset",
+        descriptiveKeywords: ["3d model", "asset"],
+        searchQuery: "3d model",
+        assetType: "model",
+        confidence: 0.5,
+        source: "fallback",
+      };
+      imageAnalysisCache.set(imageHash, fallbackResult);
+      return fallbackResult;
+    } finally {
+      inFlightImages.delete(imageHash);
+    }
+  })();
+
+  inFlightImages.set(imageHash, execution);
+  return execution;
 }

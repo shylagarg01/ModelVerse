@@ -66,6 +66,7 @@ const active = (href: string) => href === current;
 
       <!-- Authentication -->
       <div class="auth-actions flex shrink-0 items-center text-sm font-semibold">
+        <!-- Logged-out options -->
         <a
           id="header-login"
           href="/auth/login"
@@ -82,23 +83,99 @@ const active = (href: string) => href === current;
           Sign up
         </a>
 
-        <a
-          id="header-dashboard"
-          href="/dashboard"
-          class="hidden items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/20"
-        >
-          <span id="header-dashboard-text">Dashboard</span>
-        </a>
+        <!-- Logged-in Profile Dropdown -->
+        <div id="header-profile-menu" class="relative hidden">
+          <button
+            id="profile-dropdown-btn"
+            type="button"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="profile-dropdown-panel"
+            aria-label="Account menu"
+            class="group flex size-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-all duration-200 hover:border-primary/60 hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-primary active:scale-95"
+          >
+            <!-- User / Profile Icon -->
+            <svg class="size-5 text-muted-foreground transition-colors group-hover:text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </button>
 
-        <span id="header-user" class="hidden max-w-32 truncate text-sm text-muted-foreground"></span>
+          <!-- Dropdown Menu Panel -->
+          <div
+            id="profile-dropdown-panel"
+            role="menu"
+            aria-orientation="vertical"
+            tabindex="-1"
+            class="invisible absolute right-0 top-[calc(100%+12px)] z-50 w-64 origin-top-right rounded-2xl border border-border bg-card p-2 text-foreground opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-200 ease-out scale-95 pointer-events-none"
+          >
+            <!-- 1. Username (Display only) -->
+            <div class="border-b border-border/70 px-3.5 py-3 select-none">
+              <div class="text-[10px] font-extrabold uppercase tracking-widest text-[#547A24] dark:text-[#C5F467]">Signed in as</div>
+              <div id="dropdown-username" class="truncate text-sm font-black text-foreground mt-0.5" title=""></div>
+              <div class="mt-1 flex items-center gap-1.5">
+                <span id="dropdown-role-badge" class="inline-flex items-center rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary"></span>
+                <span id="dropdown-email" class="truncate text-[11px] text-muted-foreground"></span>
+              </div>
+            </div>
 
-        <button
-          id="header-logout"
-          type="button"
-          class="hidden rounded-full border border-border px-3.5 py-2.5 text-sm transition hover:bg-accent"
-        >
-          Log out
-        </button>
+            <!-- Menu Options -->
+            <div class="py-1.5 space-y-1" role="none">
+              <!-- 2. Dashboard -->
+              <a
+                id="dropdown-dashboard-link"
+                href="/dashboard"
+                role="menuitem"
+                tabindex="-1"
+                class="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-foreground transition hover:bg-accent hover:text-primary focus:bg-accent focus:text-primary focus:outline-none"
+              >
+                <svg class="size-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="7" height="9" x="3" y="3" rx="1" />
+                  <rect width="7" height="5" x="14" y="3" rx="1" />
+                  <rect width="7" height="9" x="14" y="12" rx="1" />
+                  <rect width="7" height="5" x="3" y="16" rx="1" />
+                </svg>
+                <span id="dropdown-dashboard-text">Dashboard</span>
+              </a>
+
+              <!-- 3. Become a Seller (Only for role = "user") -->
+              <a
+                id="dropdown-seller-link"
+                href="/dashboard?tab=seller_app"
+                role="menuitem"
+                tabindex="-1"
+                class="hidden items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-foreground transition hover:bg-accent hover:text-primary focus:bg-accent focus:text-primary focus:outline-none"
+              >
+                <svg class="size-4 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7" />
+                  <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+                  <path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4" />
+                  <path d="M2 7h20" />
+                </svg>
+                <span>Become a Seller</span>
+              </a>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-border/70 my-1" role="none"></div>
+
+            <!-- 4. Logout -->
+            <button
+              id="dropdown-logout-btn"
+              type="button"
+              role="menuitem"
+              tabindex="-1"
+              class="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-xs font-semibold text-destructive hover:bg-destructive/10 transition focus:bg-destructive/10 focus:outline-none"
+            >
+              <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                <polyline points="16 17 21 12 16 7" />
+                <line x1="21" x2="9" y1="12" y2="12" />
+              </svg>
+              <span>Log out</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Theme Toggle -->
@@ -144,12 +221,40 @@ const active = (href: string) => href === current;
             <a href="/editor" class="rounded-xl bg-primary px-3 py-2.5 text-center text-sm font-semibold text-primary-foreground">
               Launch 3D Studio
             </a>
-            <a href="/auth/login" class="rounded-xl px-3 py-2.5 text-center text-sm font-medium text-foreground hover:bg-accent">
-              Log in
-            </a>
-            <a href="/auth/register" class="rounded-xl bg-primary/10 px-3 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/15">
-              Create an account
-            </a>
+
+            <!-- Mobile Logged Out -->
+            <div id="mobile-auth-logged-out" class="grid gap-2">
+              <a href="/auth/login" class="rounded-xl px-3 py-2.5 text-center text-sm font-medium text-foreground hover:bg-accent">
+                Log in
+              </a>
+              <a href="/auth/register" class="rounded-xl bg-primary/10 px-3 py-2.5 text-center text-sm font-semibold text-primary hover:bg-primary/15">
+                Create an account
+              </a>
+            </div>
+
+            <!-- Mobile Logged In -->
+            <div id="mobile-auth-logged-in" class="hidden grid gap-2">
+              <div class="rounded-xl border border-border/70 bg-card p-3 text-xs">
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-[#547A24] dark:text-[#C5F467]">Signed in as</div>
+                <div id="mobile-username" class="truncate text-sm font-bold text-foreground mt-0.5"></div>
+                <div class="mt-1 flex items-center gap-1.5">
+                  <span id="mobile-role-badge" class="inline-flex items-center rounded-md bg-primary/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary"></span>
+                  <span id="mobile-email" class="truncate text-[11px] text-muted-foreground"></span>
+                </div>
+              </div>
+
+              <a id="mobile-dashboard-link" href="/dashboard" class="rounded-xl border border-border px-3 py-2 text-center text-sm font-semibold text-foreground hover:bg-accent">
+                Dashboard
+              </a>
+
+              <a id="mobile-seller-link" href="/dashboard?tab=seller_app" class="hidden rounded-xl border border-primary/30 bg-primary/10 px-3 py-2 text-center text-sm font-semibold text-primary hover:bg-primary/15">
+                Become a Seller
+              </a>
+
+              <button id="mobile-logout-btn" type="button" class="rounded-xl border border-destructive/30 px-3 py-2 text-center text-sm font-semibold text-destructive hover:bg-destructive/10">
+                Log out
+              </button>
+            </div>
           </div>
         </div>
       </details>
@@ -335,19 +440,119 @@ const active = (href: string) => href === current;
 <script>
   const loginLink = document.querySelector<HTMLAnchorElement>("#header-login");
   const registerLink = document.querySelector<HTMLAnchorElement>("#header-register");
-  const userLabel = document.querySelector<HTMLElement>("#header-user");
-  const dashboardLink = document.querySelector<HTMLAnchorElement>("#header-dashboard");
-  const dashboardText = document.querySelector<HTMLElement>("#header-dashboard-text");
-  const logoutButton = document.querySelector<HTMLButtonElement>("#header-logout");
+
+  const profileMenu = document.querySelector<HTMLElement>("#header-profile-menu");
+  const profileDropdownBtn = document.querySelector<HTMLButtonElement>("#profile-dropdown-btn");
+  const profileDropdownPanel = document.querySelector<HTMLElement>("#profile-dropdown-panel");
+  const dropdownUsername = document.querySelector<HTMLElement>("#dropdown-username");
+  const dropdownEmail = document.querySelector<HTMLElement>("#dropdown-email");
+  const dropdownRoleBadge = document.querySelector<HTMLElement>("#dropdown-role-badge");
+  const dropdownDashboardLink = document.querySelector<HTMLAnchorElement>("#dropdown-dashboard-link");
+  const dropdownSellerLink = document.querySelector<HTMLAnchorElement>("#dropdown-seller-link");
+  const dropdownLogoutBtn = document.querySelector<HTMLButtonElement>("#dropdown-logout-btn");
+
+  const mobileAuthLoggedOut = document.querySelector<HTMLElement>("#mobile-auth-logged-out");
+  const mobileAuthLoggedIn = document.querySelector<HTMLElement>("#mobile-auth-logged-in");
+  const mobileUsername = document.querySelector<HTMLElement>("#mobile-username");
+  const mobileEmail = document.querySelector<HTMLElement>("#mobile-email");
+  const mobileRoleBadge = document.querySelector<HTMLElement>("#mobile-role-badge");
+  const mobileDashboardLink = document.querySelector<HTMLAnchorElement>("#mobile-dashboard-link");
+  const mobileSellerLink = document.querySelector<HTMLAnchorElement>("#mobile-seller-link");
+  const mobileLogoutBtn = document.querySelector<HTMLButtonElement>("#mobile-logout-btn");
+
+  let isDropdownOpen = false;
+
+  function openDropdown() {
+    isDropdownOpen = true;
+    profileDropdownBtn?.setAttribute("aria-expanded", "true");
+    profileDropdownPanel?.classList.remove("invisible", "opacity-0", "scale-95", "pointer-events-none");
+    profileDropdownPanel?.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+  }
+
+  function closeDropdown() {
+    isDropdownOpen = false;
+    profileDropdownBtn?.setAttribute("aria-expanded", "false");
+    profileDropdownPanel?.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+    profileDropdownPanel?.classList.add("opacity-0", "scale-95", "pointer-events-none");
+    setTimeout(() => {
+      if (!isDropdownOpen) {
+        profileDropdownPanel?.classList.add("invisible");
+      }
+    }, 200);
+  }
+
+  function toggleDropdown() {
+    if (isDropdownOpen) {
+      closeDropdown();
+    } else {
+      openDropdown();
+    }
+  }
+
+  profileDropdownBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown();
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (isDropdownOpen && profileMenu && !profileMenu.contains(e.target as Node)) {
+      closeDropdown();
+    }
+  });
+
+  // Close on Escape key press
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isDropdownOpen) {
+      closeDropdown();
+      profileDropdownBtn?.focus();
+    }
+  });
+
+  // Close dropdown when selecting any option
+  profileDropdownPanel?.querySelectorAll("a, button").forEach((el) => {
+    el.addEventListener("click", () => {
+      closeDropdown();
+    });
+  });
 
   function showLoggedOutState() {
     loginLink?.classList.remove("hidden");
     registerLink?.classList.remove("hidden");
-    userLabel?.classList.add("hidden");
-    dashboardLink?.classList.add("hidden");
-    dashboardLink?.classList.remove("inline-flex");
-    logoutButton?.classList.add("hidden");
+    profileMenu?.classList.add("hidden");
+    closeDropdown();
+
+    mobileAuthLoggedOut?.classList.remove("hidden");
+    mobileAuthLoggedIn?.classList.add("hidden");
   }
+
+  async function handleLogout() {
+    if (dropdownLogoutBtn) dropdownLogoutBtn.disabled = true;
+    if (mobileLogoutBtn) mobileLogoutBtn.disabled = true;
+
+    try {
+      const response = await fetch("/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        showLoggedOutState();
+        window.location.href = "/";
+      } else {
+        if (dropdownLogoutBtn) dropdownLogoutBtn.disabled = false;
+        if (mobileLogoutBtn) mobileLogoutBtn.disabled = false;
+      }
+    } catch (error) {
+      console.error("Unable to log out:", error);
+      if (dropdownLogoutBtn) dropdownLogoutBtn.disabled = false;
+      if (mobileLogoutBtn) mobileLogoutBtn.disabled = false;
+      window.location.href = "/";
+    }
+  }
+
+  dropdownLogoutBtn?.addEventListener("click", handleLogout);
+  mobileLogoutBtn?.addEventListener("click", handleLogout);
 
   async function refreshAuth() {
     try {
@@ -369,60 +574,71 @@ const active = (href: string) => href === current;
         return;
       }
 
+      // Hide login/signup and show profile dropdown
       loginLink?.classList.add("hidden");
       registerLink?.classList.add("hidden");
-      userLabel?.classList.remove("hidden");
-      logoutButton?.classList.remove("hidden");
+      profileMenu?.classList.remove("hidden");
 
-      let dest = "/dashboard";
-      let label = "Dashboard";
-      if (user.role === "admin") {
-        dest = "/admin";
-        label = "Admin Panel";
-      } else if (user.role === "seller") {
-        dest = "/seller/dashboard";
-        label = "Seller Studio";
+      // Mobile sync
+      mobileAuthLoggedOut?.classList.add("hidden");
+      mobileAuthLoggedIn?.classList.remove("hidden");
+
+      // Extract username from email or ID
+      const email = user.email || "";
+      const username = (email.split("@")[0] || `user-${user.id}`) || "User";
+      const role = user.role || "user";
+
+      if (dropdownUsername) {
+        dropdownUsername.textContent = username;
+        dropdownUsername.title = email;
+      }
+      if (dropdownEmail) {
+        dropdownEmail.textContent = email;
+      }
+      if (dropdownRoleBadge) {
+        dropdownRoleBadge.textContent = role;
       }
 
-      if (dashboardLink) {
-        dashboardLink.href = dest;
-        dashboardLink.classList.remove("hidden");
-        dashboardLink.classList.add("inline-flex");
+      if (mobileUsername) {
+        mobileUsername.textContent = username;
+        mobileUsername.title = email;
       }
-      if (dashboardText) {
-        dashboardText.textContent = label;
+      if (mobileEmail) {
+        mobileEmail.textContent = email;
+      }
+      if (mobileRoleBadge) {
+        mobileRoleBadge.textContent = role;
       }
 
-      if (userLabel) {
-        userLabel.textContent = user.email || user.id || "Logged in";
-        userLabel.title = `Signed in as ${user.role} (${user.email})`;
+      let dashboardDest = "/dashboard";
+      if (role === "admin") {
+        dashboardDest = "/admin";
+      } else if (role === "seller") {
+        dashboardDest = "/seller/dashboard";
+      }
+
+      if (dropdownDashboardLink) {
+        dropdownDashboardLink.href = dashboardDest;
+      }
+      if (mobileDashboardLink) {
+        mobileDashboardLink.href = dashboardDest;
+      }
+
+      // Become a Seller option: ONLY for normal user (role === "user")
+      if (role === "user") {
+        dropdownSellerLink?.classList.remove("hidden");
+        dropdownSellerLink?.classList.add("flex");
+        mobileSellerLink?.classList.remove("hidden");
+      } else {
+        dropdownSellerLink?.classList.add("hidden");
+        dropdownSellerLink?.classList.remove("flex");
+        mobileSellerLink?.classList.add("hidden");
       }
     } catch (error) {
       console.error("Unable to check login status:", error);
       showLoggedOutState();
     }
   }
-
-  logoutButton?.addEventListener("click", async () => {
-    if (logoutButton) logoutButton.disabled = true;
-
-    try {
-      const response = await fetch("/auth/logout", {
-        method: "POST",
-        credentials: "include",
-      });
-
-      if (response.ok) {
-        showLoggedOutState();
-        window.location.href = "/";
-      } else if (logoutButton) {
-        logoutButton.disabled = false;
-      }
-    } catch (error) {
-      console.error("Unable to log out:", error);
-      if (logoutButton) logoutButton.disabled = false;
-    }
-  });
 
   void refreshAuth();
 </script>

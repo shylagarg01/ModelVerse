@@ -11,6 +11,7 @@ import {
   X,
   Box,
   RotateCcw,
+  Image as ImageIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -109,69 +110,143 @@ export default function SearchApp() {
   const [canMore, setCanMore] = useState(false);
   const [searched, setSearched] = useState(false);
   const [selected, setSelected] = useState<Asset | null>(null);
+  const [imageSearching, setImageSearching] = useState(false);
   const offset = useRef(0);
   const aiQuery = useRef<string | null>(null);
   const firstRun = useRef(true);
   const seen = useRef(new Set<string>());
   const inputRef = useRef<HTMLInputElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const activeRequestIdRef = useRef(0);
 
   const providerName = useCallback((id: string) => providers.find((p) => p.id === id)?.name ?? id, [providers]);
 
-  
-const run = useCallback(async (f: Filters, append: boolean) => {
-  if (!append) {
-    offset.current = 0;
-    seen.current = new Set();
-    aiQuery.current = null;
-    setResults([]);
-    setReports([]);
-  }
+  const run = useCallback(async (f: Filters, append: boolean) => {
+    if (!append) {
+      offset.current = 0;
+      seen.current = new Set();
+      aiQuery.current = null;
+      setResults([]);
+      setReports([]);
+    }
 
-  setLoading(true);
-  setError(undefined);
-  setSearched(true);
+    // Cancel obsolete in-flight request to prevent race conditions
+    if (!append && abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+    const reqId = ++activeRequestIdRef.current;
 
-  const qs = toParams(f);
-  const shared = new URLSearchParams(window.location.search).get("asset");
-  if (shared) qs.set("asset", shared);
-  window.history.replaceState(null, "", `/search?${qs.toString()}`);
+    setLoading(true);
+    setError(undefined);
+    setSearched(true);
 
-  if (!firstRun.current) {
-    document.title = f.q
-      ? `“${f.q}”: 3D assets · ModelVerse`
-      : "Search free 3D models, textures & HDRIs · ModelVerse";
-  }
-  firstRun.current = false;
+    const qs = toParams(f);
+    const shared = new URLSearchParams(window.location.search).get("asset");
+    if (shared) qs.set("asset", shared);
+    window.history.replaceState(null, "", `/search?${qs.toString()}`);
 
-  try {
-    // Preserve the user's complete prompt so backend hybrid retrieval understands full intent
-    const searchFilters = {
-      ...f,
-      q: f.q.trim(),
-    };
+    if (!firstRun.current) {
+      document.title = f.q
+        ? `“${f.q}”: 3D assets · ModelVerse`
+        : "Search free 3D models, textures & HDRIs · ModelVerse";
+    }
+    firstRun.current = false;
 
-    const params = toParams(searchFilters, offset.current);
-    params.set("limit", String(PAGE));
+    try {
+      const searchFilters = {
+        ...f,
+        q: f.q.trim(),
+      };
 
-    const res = await api<SearchResponse>(`/v1/search?${params.toString()}`);
-    const fresh = res.results.filter(
-      (a) => !seen.current.has(a.id) && seen.current.add(a.id),
-    );
+      const params = toParams(searchFilters, offset.current);
+      params.set("limit", String(PAGE));
 
-    setResults((prev) => (append ? [...prev, ...fresh] : fresh));
-    setReports(res.providers);
-    setCanMore(
-      fresh.length > 0 &&
-        res.providers.some((r) => r.status === "ok" && r.count >= PAGE),
-    );
-    offset.current += PAGE;
-  } catch (e) {
-    if (e instanceof UnauthorizedError) setNeedKey(true);
-    setError(e instanceof Error ? e.message : String(e));
-  } finally {
-    setLoading(false);
-  }
-}, []);
+      const res = await api<SearchResponse>(`/v1/search?${params.toString()}`, {
+        signal: controller.signal,
+      });
+
+      // Discard results if a newer search request has already been issued
+      if (reqId !== activeRequestIdRef.current) {
+        return;
+      }
+
+      const fresh = res.results.filter(
+        (a) => !seen.current.has(a.id) && seen.current.add(a.id),
+      );
+
+      setResults((prev) => (append ? [...prev, ...fresh] : fresh));
+      setReports(res.providers);
+      setCanMore(
+        fresh.length > 0 &&
+          res.providers.some((r) => r.status === "ok" && r.count >= PAGE),
+      );
+      offset.current += PAGE;
+    } catch (e: any) {
+      if (e?.name === "AbortError") {
+        return;
+      }
+      if (reqId !== activeRequestIdRef.current) {
+        return;
+      }
+      if (e instanceof UnauthorizedError) setNeedKey(true);
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      if (reqId === activeRequestIdRef.current) {
+        setLoading(false);
+      }
+    }
+  }, []);
+
+  const handleImageFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setImageSearching(true);
+    setError(undefined);
+    setLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const res = await fetch("/v1/search/image", {
+        method: "POST",
+        headers: {
+          "x-asset-client": "web",
+          ...(getKey() ? { "x-api-key": getKey() } : {}),
+        },
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? `Image search failed: HTTP ${res.status}`);
+      }
+
+      const data = await res.json();
+      const extractedQuery = data.analysis?.searchQuery || data.query || file.name.replace(/\.[^/.]+$/, "");
+
+      setDraft(extractedQuery);
+      setFilters((prev) => ({
+        ...prev,
+        q: extractedQuery,
+      }));
+      setResults(data.results || []);
+      setReports(data.providers || []);
+      setSearched(true);
+      setCanMore(false);
+      seen.current = new Set((data.results || []).map((a: Asset) => a.id));
+    } catch (err: any) {
+      setError(err?.message ?? "Image search failed");
+    } finally {
+      setImageSearching(false);
+      setLoading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
 
 
   const openAsset = useCallback((a: Asset | null) => {
@@ -243,21 +318,44 @@ const run = useCallback(async (f: Filters, append: boolean) => {
               onChange={(e) => setDraft(e.target.value)}
               placeholder="Search 3D models, textures, materials, HDRIs..."
               aria-label="Search 3D assets"
-              className="h-12 rounded-2xl border-2 border-border/80 bg-card pl-11 pr-10 text-base shadow-xs focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 transition-all"
+              className="h-12 rounded-2xl border-2 border-border/80 bg-card pl-11 pr-20 text-base shadow-xs focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 transition-all"
             />
-            {draft && (
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleImageFile}
+            />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
               <button
                 type="button"
-                onClick={() => {
-                  setDraft("");
-                  inputRef.current?.focus();
-                }}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
-                aria-label="Clear search input"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={imageSearching}
+                className="rounded-full p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition"
+                title="Search with image (multimodal)"
+                aria-label="Search with image"
               >
-                <X className="size-4" />
+                {imageSearching ? (
+                  <Loader2 className="size-4 animate-spin text-primary" />
+                ) : (
+                  <ImageIcon className="size-4" />
+                )}
               </button>
-            )}
+              {draft && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setDraft("");
+                    inputRef.current?.focus();
+                  }}
+                  className="rounded-full p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+                  aria-label="Clear search input"
+                >
+                  <X className="size-4" />
+                </button>
+              )}
+            </div>
           </div>
           <Button
             type="submit"
@@ -602,7 +700,7 @@ function ResultCard({
 }) {
   const [broken, setBroken] = useState(false);
   const src = safeUrl(a.thumbnailUrl);
-  const isModel = a.type === "model";
+  const isModel = a.type === "model" || a.formats?.some((f) => /gltf|glb|obj|fbx|stl|ply|dae|3mf|usdz|blend/i.test(f));
   const editorUrl = `/editor?asset=${encodeURIComponent(a.id)}&title=${encodeURIComponent(a.title)}`;
 
   return (
@@ -646,7 +744,7 @@ function ResultCard({
               className="rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-md hover:opacity-90 transition flex items-center gap-1"
             >
               <Box className="size-3.5" />
-              <span>3D Studio</span>
+              <span>Open in Studio</span>
             </a>
           )}
           <button

@@ -10,6 +10,9 @@ import type {
 } from "./types.js";
 import { matchScore, parseAssetId } from "./util.js";
 import { parsePromptDeterministic, type InterpretedPrompt } from "../ai/prompt-interpreter.js";
+import { ProviderCircuitBreaker } from "./circuit-breaker.js";
+import { routeProviders, DEFAULT_TIMEOUTS, FAST_PROVIDER_IDS, type ProviderTimeouts } from "./router.js";
+import { SearchResultCache } from "./cache.js";
 
 export interface SearchRequest {
   query: string;
@@ -25,6 +28,8 @@ export interface SearchRequest {
   offset?: number;
   /** Per-provider timeout. */
   timeoutMs?: number;
+  /** Skip cache check if true */
+  noCache?: boolean;
 }
 
 export type ProviderStatus = "ok" | "error" | "timeout" | "skipped" | "link";
@@ -45,12 +50,16 @@ export interface SearchResponse {
   types?: AssetType[];
   results: Asset[];
   providers: ProviderSearchReport[];
+  cached?: boolean;
 }
 
 export interface AssetServiceOptions {
   providers: Provider[];
   http?: HttpClient;
   defaultTimeoutMs?: number;
+  timeouts?: Partial<ProviderTimeouts>;
+  cache?: SearchResultCache;
+  circuitBreaker?: ProviderCircuitBreaker;
 }
 
 const DEFAULT_LIMIT = 24;
@@ -63,10 +72,19 @@ export class AssetService {
   readonly http: HttpClient;
   private readonly providers = new Map<string, Provider>();
   private readonly defaultTimeoutMs: number;
+  private readonly timeouts: ProviderTimeouts;
+  readonly cache: SearchResultCache;
+  readonly circuitBreaker: ProviderCircuitBreaker;
 
   constructor(opts: AssetServiceOptions) {
     this.http = opts.http ?? createHttpClient();
     this.defaultTimeoutMs = opts.defaultTimeoutMs ?? Number(process.env.ASSET_SERVER_PROVIDER_TIMEOUT_MS ?? 12_000);
+    this.timeouts = {
+      fastMs: opts.timeouts?.fastMs ?? DEFAULT_TIMEOUTS.fastMs,
+      slowMs: opts.timeouts?.slowMs ?? DEFAULT_TIMEOUTS.slowMs,
+    };
+    this.cache = opts.cache ?? new SearchResultCache();
+    this.circuitBreaker = opts.circuitBreaker ?? new ProviderCircuitBreaker();
     for (const p of opts.providers) this.providers.set(p.id, p);
   }
 
@@ -91,10 +109,35 @@ export class AssetService {
   }
 
   async search(req: SearchRequest): Promise<SearchResponse> {
+    const rawQuery = req.query.trim();
+
+    // 1. Check Search Results Cache (unless bypassed)
+    const cacheKey = this.cache.generateKey(req);
+    if (!req.noCache) {
+      const cached = this.cache.get(cacheKey);
+      if (cached) {
+        return { ...cached, cached: true };
+      }
+
+      // In-flight request deduplication
+      const pending = this.cache.getInFlight(cacheKey);
+      if (pending) {
+        return pending;
+      }
+    }
+
+    const execution = this.executeSearch(req, cacheKey);
+    this.cache.setInFlight(cacheKey, execution);
+    try {
+      return await execution;
+    } finally {
+      this.cache.deleteInFlight(cacheKey);
+    }
+  }
+
+  private async executeSearch(req: SearchRequest, cacheKey: string): Promise<SearchResponse> {
     const limit = Math.min(Math.max(req.limit ?? DEFAULT_LIMIT, 1), MAX_LIMIT);
-    const timeoutMs = req.timeoutMs ?? this.defaultTimeoutMs;
     const types = req.types?.length ? req.types : undefined;
-    const wanted = req.providers?.length ? new Set(req.providers) : undefined;
     const unknown = req.providers?.filter((p) => !this.providers.has(p)) ?? [];
     if (unknown.length) throw new UnknownProviderError(unknown);
 
@@ -105,25 +148,55 @@ export class AssetService {
       ? intent.searchQuery
       : (intent.searchQuery || rawQuery);
 
-    // Ask each source for a full page so the merged ranking has enough to choose from.
+    // Ask each source for a page so the merged ranking has enough to choose from.
     const perProvider = Math.min(limit, 50);
     const q = { query: providerQuery, types, freeOnly: req.freeOnly, limit: perProvider, offset: req.offset };
 
+    // 2. Intelligent Provider Routing
+    const allProvidersList = [...this.providers.values()];
+    const routePlan = routeProviders(allProvidersList, {
+      query: rawQuery,
+      intent,
+      explicitTypes: types,
+      explicitProviders: req.providers,
+      freeOnly: req.freeOnly,
+      downloadableOnly: req.downloadableOnly,
+    });
+
+    const wanted = req.providers?.length ? new Set(req.providers) : undefined;
+    const activeSet = new Set(routePlan.all.map((p) => p.id));
     const reports: ProviderSearchReport[] = [];
     const ranked: { asset: Asset; rank: number; provider: Provider }[] = [];
 
+    // Query active providers in parallel with separate timeouts for fast vs slow providers
     await Promise.all(
-      [...this.providers.values()].map(async (p) => {
+      allProvidersList.map(async (p) => {
+        if (wanted && !wanted.has(p.id)) return;
+
         const started = Date.now();
         const base = { provider: p.id, name: p.name, count: 0 };
         const skip = (reason: string): void => {
           reports.push({ ...base, status: "skipped", error: reason, tookMs: 0 });
         };
-        if (wanted && !wanted.has(p.id)) return;
+
+        // If not selected by intelligent routing, skip cleanly
+        if (!activeSet.has(p.id)) {
+          return skip("not targeted for query category");
+        }
+
         if (p.isEnabled && !p.isEnabled()) return skip(`disabled (set ${p.apiKeyEnv ?? "its API key"})`);
         if (types && !types.some((t) => p.assetTypes.includes(t))) return skip("does not carry the requested types");
         if (req.downloadableOnly && !p.supportsDownload) return skip("no direct downloads");
         if (req.freeOnly && p.pricing === "paid") return skip("paid only");
+
+        // 3. Provider Circuit Breaker check
+        const circuitCheck = this.circuitBreaker.canExecute(p.id);
+        if (!circuitCheck.allowed) {
+          return skip(circuitCheck.reason ?? "circuit breaker open");
+        }
+
+        const isFast = FAST_PROVIDER_IDS.has(p.id);
+        const timeoutMs = req.timeoutMs ?? (isFast ? this.timeouts.fastMs : this.timeouts.slowMs);
 
         const searchUrl = p.buildSearchUrl(q);
         const signal = AbortSignal.timeout(timeoutMs);
@@ -134,22 +207,27 @@ export class AssetService {
           if (req.downloadableOnly) assets = assets.filter((a) => a.downloadable);
           if (req.freeOnly) assets = assets.filter((a) => a.price?.free !== false);
           assets.forEach((asset, rank) => ranked.push({ asset, rank, provider: p }));
+
+          const took = Date.now() - started;
+          this.circuitBreaker.recordSuccess(p.id, took, assets.length);
           reports.push({
             ...base,
             status: p.access === "link" ? "link" : "ok",
             count: assets.length,
             total: res.total,
             searchUrl: res.searchUrl ?? searchUrl,
-            tookMs: Date.now() - started,
+            tookMs: took,
           });
         } catch (e) {
+          const took = Date.now() - started;
           const timedOut = signal.aborted || e instanceof TimeoutError;
+          this.circuitBreaker.recordFailure(p.id, took, timedOut, errorMessage(e));
           reports.push({
             ...base,
             status: timedOut ? "timeout" : "error",
             error: timedOut ? `timed out after ${timeoutMs}ms` : errorMessage(e),
             searchUrl,
-            tookMs: Date.now() - started,
+            tookMs: took,
           });
         }
       }),
@@ -158,7 +236,14 @@ export class AssetService {
     const results = rankResults(ranked, intent).slice(0, limit);
     const order = [...this.providers.keys()];
     reports.sort((a, b) => order.indexOf(a.provider) - order.indexOf(b.provider));
-    return { query: rawQuery, types, results, providers: reports };
+    const response: SearchResponse = { query: rawQuery, types, results, providers: reports };
+
+    // 4. Save to Search Results Cache
+    if (!req.noCache) {
+      this.cache.set(cacheKey, response);
+    }
+
+    return response;
   }
 
   async getAsset(id: string): Promise<AssetDetails | null> {
@@ -174,7 +259,22 @@ export class AssetService {
 
 /**
  * Deduplicate identical assets returned across multiple providers or mirrors.
+ * Merges incomplete metadata so no valid fields are discarded.
  */
+function mergeAssetMetadata(target: Asset, source: Asset): Asset {
+  return {
+    ...target,
+    thumbnailUrl: target.thumbnailUrl || source.thumbnailUrl,
+    description: target.description || source.description,
+    author: target.author || source.author,
+    license: target.license || source.license,
+    formats: target.formats?.length ? target.formats : source.formats,
+    resolutions: target.resolutions?.length ? target.resolutions : source.resolutions,
+    polyCount: target.polyCount ?? source.polyCount,
+    tags: Array.from(new Set([...target.tags, ...(source.tags || [])])),
+  };
+}
+
 function deduplicateAssets(
   items: { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }[],
 ): { asset: Asset; rank: number; provider: Pick<Provider, "id" | "access"> }[] {
@@ -182,20 +282,31 @@ function deduplicateAssets(
   for (const item of items) {
     const normTitle = item.asset.title.toLowerCase().replace(/[^a-z0-9]/g, "");
     const authorKey = (item.asset.author ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
-    // Key by URL if available, else content fingerprint
-    const key = item.asset.url && !item.asset.url.includes("search")
-      ? `url:${item.asset.url}`
-      : `content:${item.asset.type}:${normTitle}:${authorKey}`;
+
+    // Cross-provider content fingerprint:
+    // When title has meaningful length, deduplicate across mirrors even if one mirror omits author.
+    const key = normTitle.length >= 5
+      ? `content:${item.asset.type}:${normTitle}`
+      : item.asset.url && !item.asset.url.includes("search")
+        ? `url:${item.asset.url}`
+        : `id:${item.asset.id}`;
 
     const existing = seen.get(key);
     if (!existing) {
       seen.set(key, item);
     } else {
       // Prefer directly downloadable or higher access weight
-      if (!existing.asset.downloadable && item.asset.downloadable) {
-        seen.set(key, item);
-      } else if (ACCESS_WEIGHT[item.provider.access] > ACCESS_WEIGHT[existing.provider.access]) {
-        seen.set(key, item);
+      const preferIncoming =
+        (!existing.asset.downloadable && item.asset.downloadable) ||
+        (ACCESS_WEIGHT[item.provider.access] > ACCESS_WEIGHT[existing.provider.access]);
+
+      if (preferIncoming) {
+        seen.set(key, {
+          ...item,
+          asset: mergeAssetMetadata(item.asset, existing.asset),
+        });
+      } else {
+        existing.asset = mergeAssetMetadata(existing.asset, item.asset);
       }
     }
   }

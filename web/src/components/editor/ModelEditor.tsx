@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
 import {
   ArrowLeft,
@@ -19,8 +17,16 @@ import {
   Box,
   Check,
   AlertCircle,
+  ExternalLink,
+  X,
+  ShieldAlert,
 } from "lucide-react";
-import { api, type Asset, type AssetFile } from "../search/api";
+import { api, type Asset } from "../search/api";
+import {
+  universalLoader,
+  type PreviewDescriptor,
+  type PreviewDependency,
+} from "../../lib/loaders/universal-model-loader";
 
 interface MeshEntry {
   id: string;
@@ -220,6 +226,7 @@ export default function ModelEditor() {
   const currentModelGroup = useRef<THREE.Group | null>(null);
   const gridHelperRef = useRef<THREE.GridHelper | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   // State
   const [modelName, setModelName] = useState("Geometric Prism");
@@ -228,6 +235,26 @@ export default function ModelEditor() {
   const [loadingMessage, setLoadingMessage] = useState("Loading model...");
   const [error, setError] = useState<string | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Informative popup modal for restricted or inaccessible models
+  const [previewModal, setPreviewModal] = useState<{
+    isOpen: boolean;
+    code?: string;
+    title: string;
+    description: string;
+    canDownload: boolean;
+    downloadUrl?: string;
+    externalUrl?: string;
+    actionLabel?: string;
+    actionUrl?: string;
+    assetTitle?: string;
+    provider?: string;
+  }>({
+    isOpen: false,
+    title: "",
+    description: "",
+    canDownload: false,
+  });
 
   // Viewport Settings
   const [showGrid, setShowGrid] = useState(true);
@@ -469,35 +496,27 @@ export default function ModelEditor() {
     [setupModelInScene]
   );
 
-  // 4. Load GLB/GLTF from URL or Blob
-  const loadGLBFromUrl = useCallback(
-    (url: string, name: string) => {
+  // 4. Universal Loader: Load 3D model (GLB, glTF, OBJ, FBX, STL, PLY, DAE, 3MF, USDZ, ZIP) from URL
+  const loadModelFromUrl = useCallback(
+    async (url: string, name: string, dependencies?: PreviewDependency[]) => {
       setLoading(true);
       setLoadingMessage(`Loading ${name}...`);
       setError(null);
 
-      const dracoLoader = new DRACOLoader();
-      dracoLoader.setDecoderPath("https://www.gstatic.com/draco/versioned/decoders/1.5.7/");
-      const loader = new GLTFLoader();
-      loader.setDRACOLoader(dracoLoader);
-      loader.load(
-        url,
-        (gltf) => {
-          setupModelInScene(gltf.scene, name);
-          setLoading(false);
-        },
-        (xhr) => {
-          if (xhr.total > 0) {
-            const percent = Math.round((xhr.loaded / xhr.total) * 100);
-            setLoadingMessage(`Downloading: ${percent}%`);
-          }
-        },
-        (err) => {
-          console.error("Error loading 3D model:", err);
-          setError("Failed to load the 3D model. It may require cross-origin access or direct download.");
-          setLoading(false);
-        }
-      );
+      try {
+        const result = await universalLoader.loadFromUrl(url, undefined, {
+          dependencies,
+          onProgress: (_pct, msg) => setLoadingMessage(msg),
+        });
+        cleanupRef.current?.();
+        cleanupRef.current = result.cleanup;
+        setupModelInScene(result.scene, name);
+        setLoading(false);
+      } catch (err: any) {
+        console.error("Error loading 3D model:", err);
+        setError(err?.message || "Failed to load the 3D model. It may require cross-origin access or direct download.");
+        setLoading(false);
+      }
     },
     [setupModelInScene]
   );
@@ -510,58 +529,146 @@ export default function ModelEditor() {
     const titleParam = params.get("title");
 
     if (modelUrl) {
-      loadGLBFromUrl(modelUrl, titleParam || "Custom Model");
+      loadModelFromUrl(modelUrl, titleParam || "Custom Model");
       return;
     }
 
     if (assetId) {
       setLoading(true);
-      setLoadingMessage("Fetching asset details...");
-      api<Asset>(`/v1/assets/${encodeURIComponent(assetId)}`)
-        .then(async (asset) => {
-          const title = titleParam || asset.title;
+      setLoadingMessage("Resolving 3D model preview...");
+      setError(null);
+
+      // Call the Universal Preview Descriptor endpoint
+      api<PreviewDescriptor>(`/v1/assets/${encodeURIComponent(assetId)}/preview`)
+        .then(async (descriptor) => {
+          const title = titleParam || descriptor.title || "3D Model";
           setModelName(title);
 
-          // Attempt to find direct GLB or glTF file
-          try {
-            const fileData = await api<{ files: AssetFile[] }>(
-              `/v1/assets/${encodeURIComponent(assetId)}/files?format=glb`
-            );
-            const glbFile = fileData.files.find((f) => f.format === "glb" || f.filename?.endsWith(".glb"));
-            if (glbFile && glbFile.url) {
-              loadGLBFromUrl(glbFile.url, title);
-              return;
-            }
-          } catch {
-            // fallback
+          if (descriptor.previewMode === "restricted") {
+            setLoading(false);
+            setPreviewModal({
+              isOpen: true,
+              code: descriptor.restrictedReason?.code,
+              title: descriptor.restrictedReason?.title || "Direct 3D Preview Unavailable",
+              description:
+                descriptor.restrictedReason?.description ||
+                "This model cannot be displayed directly in the browser editor.",
+              canDownload: descriptor.canDownload,
+              downloadUrl: descriptor.downloadUrl,
+              externalUrl: descriptor.externalUrl,
+              actionLabel: descriptor.restrictedReason?.actionLabel,
+              actionUrl: descriptor.restrictedReason?.actionUrl,
+              assetTitle: title,
+              provider: descriptor.provider,
+            });
+            return;
           }
 
-          // Use download endpoint
-          const directUrl = `/v1/assets/${encodeURIComponent(assetId)}/download?format=glb`;
-          loadGLBFromUrl(directUrl, title);
+          // Direct or Archive mode
+          try {
+            setLoadingMessage(`Loading ${descriptor.format.toUpperCase()} model...`);
+            const result = await universalLoader.loadFromDescriptor(descriptor, {
+              onProgress: (_pct, msg) => setLoadingMessage(msg),
+            });
+            cleanupRef.current?.();
+            cleanupRef.current = result.cleanup;
+            setupModelInScene(result.scene, title);
+            setLoading(false);
+          } catch (loadErr: any) {
+            console.error("Direct descriptor load failed, trying download fallback:", loadErr);
+            // If direct loading failed, check if asset has a direct download URL to try
+            if (descriptor.canDownload && descriptor.downloadUrl) {
+              try {
+                const fallbackResult = await universalLoader.loadFromUrl(descriptor.downloadUrl, descriptor.format, {
+                  dependencies: descriptor.dependencies,
+                  onProgress: (_pct, msg) => setLoadingMessage(msg),
+                });
+                cleanupRef.current?.();
+                cleanupRef.current = fallbackResult.cleanup;
+                setupModelInScene(fallbackResult.scene, title);
+                setLoading(false);
+                return;
+              } catch (fallbackErr) {
+                console.error("Fallback download load failed:", fallbackErr);
+              }
+            }
+
+            // Show informative modal for loading error
+            setLoading(false);
+            setPreviewModal({
+              isOpen: true,
+              code: "UNSUPPORTED_FORMAT",
+              title: "Model Failed to Display",
+              description: `The 3D model files from ${descriptor.provider} could not be parsed for live WebGL editing (${loadErr?.message || "format error"}). You can still download the original files or view them on the source provider.`,
+              canDownload: descriptor.canDownload,
+              downloadUrl: descriptor.downloadUrl,
+              externalUrl: descriptor.externalUrl,
+              assetTitle: title,
+              provider: descriptor.provider,
+            });
+          }
         })
-        .catch((e) => {
-          console.error(e);
-          setError("Could not retrieve model files for this asset. Loading default 3D prism.");
-          setLoading(false);
-          loadPreset("prism");
+        .catch(async (e) => {
+          console.error("Failed to fetch asset preview descriptor:", e);
+          // Try fetching asset details as fallback
+          try {
+            const asset = await api<Asset>(`/v1/assets/${encodeURIComponent(assetId)}`);
+            const title = titleParam || asset.title;
+            setModelName(title);
+
+            // Try download endpoint
+            const fallbackUrl = `/v1/assets/${encodeURIComponent(assetId)}/download`;
+            const result = await universalLoader.loadFromUrl(fallbackUrl, undefined, {
+              onProgress: (_pct, msg) => setLoadingMessage(msg),
+            });
+            cleanupRef.current?.();
+            cleanupRef.current = result.cleanup;
+            setupModelInScene(result.scene, title);
+            setLoading(false);
+          } catch (fallbackError: any) {
+            setLoading(false);
+            setPreviewModal({
+              isOpen: true,
+              code: "PROVIDER_UNAVAILABLE",
+              title: "Could Not Retrieve Asset",
+              description: "The 3D model could not be loaded from the provider. You can load a sample model to explore the 3D Studio.",
+              canDownload: false,
+              assetTitle: titleParam || "Requested Model",
+              provider: assetId.split(":")[0] || "Unknown",
+            });
+          }
         });
       return;
     }
 
     // Default preset
     loadPreset("prism");
-  }, [loadGLBFromUrl, loadPreset]);
+  }, [loadModelFromUrl, loadPreset]);
 
-  // 6. Handle local file upload (drag & drop or button)
-  const handleFileUpload = (file: File) => {
-    if (!file.name.match(/\.(glb|gltf)$/i)) {
-      setError("Please select a .glb or .gltf file.");
+  // 6. Handle local file upload (drag & drop or button) - supports GLB, GLTF, OBJ, FBX, STL, PLY, DAE, 3MF, USDZ, ZIP
+  const handleFileUpload = async (file: File) => {
+    const validExts = /\.(glb|gltf|obj|fbx|stl|ply|dae|3mf|usdz|zip)$/i;
+    if (!file.name.match(validExts)) {
+      setError("Please select a supported 3D file (.glb, .gltf, .obj, .fbx, .stl, .ply, .dae, .3mf, .usdz, .zip).");
       return;
     }
-    const blobUrl = URL.createObjectURL(file);
-    const cleanName = file.name.replace(/\.[^/.]+$/, "");
-    loadGLBFromUrl(blobUrl, cleanName);
+    setLoading(true);
+    setLoadingMessage(`Loading ${file.name}...`);
+    setError(null);
+    try {
+      const result = await universalLoader.loadFromFile(file, {
+        onProgress: (_pct, msg) => setLoadingMessage(msg),
+      });
+      cleanupRef.current?.();
+      cleanupRef.current = result.cleanup;
+      const cleanName = file.name.replace(/\.[^/.]+$/, "");
+      setupModelInScene(result.scene, cleanName);
+      setLoading(false);
+    } catch (err: any) {
+      console.error("Failed to load file:", err);
+      setError(err?.message || "Failed to load the uploaded 3D file.");
+      setLoading(false);
+    }
   };
 
   // 7. Update Material Color, Roughness, Metalness & Wireframe
@@ -699,11 +806,11 @@ export default function ModelEditor() {
 
   return (
     <div className={cn("flex flex-col bg-background text-foreground", isFullscreen ? "fixed inset-0 z-50 h-screen" : "min-h-[calc(100vh-3.5rem)]")}>
-      {/* Hidden File Input for .glb/.gltf */}
+      {/* Hidden File Input for 3D models (GLB, glTF, OBJ, FBX, STL, PLY, DAE, 3MF, USDZ, ZIP) */}
       <input
         type="file"
         ref={fileInputRef}
-        accept=".glb,.gltf"
+        accept=".glb,.gltf,.obj,.fbx,.stl,.ply,.dae,.3mf,.usdz,.zip"
         className="hidden"
         onChange={(e) => {
           const file = e.target.files?.[0];
@@ -756,7 +863,7 @@ export default function ModelEditor() {
             type="button"
             onClick={() => fileInputRef.current?.click()}
             className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-border px-2.5 text-xs font-medium text-foreground transition hover:bg-accent"
-            title="Upload local .glb or .gltf file"
+            title="Upload local 3D model (GLB, glTF, OBJ, FBX, STL, PLY, DAE, 3MF, USDZ, ZIP)"
           >
             <Upload className="size-3.5 text-primary" />
             <span className="hidden sm:inline">Upload 3D File</span>
@@ -864,7 +971,7 @@ export default function ModelEditor() {
 
           {/* Quick Help Toast on bottom left of viewport */}
           <div className="pointer-events-none absolute bottom-4 left-4 hidden rounded-lg border border-border/60 bg-background/80 px-3 py-1.5 text-[11px] text-muted-foreground backdrop-blur-sm sm:block">
-            Left click + drag to rotate · Right click to pan · Scroll to zoom · Drop .GLB file to load
+            Left click + drag to rotate · Right click to pan · Scroll to zoom · Drop 3D model or ZIP file to load
           </div>
 
           {/* Loading Indicator */}
@@ -888,6 +995,95 @@ export default function ModelEditor() {
                 >
                   Dismiss
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* Informative Preview Modal for Restricted or Inaccessible Models */}
+          {previewModal.isOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200">
+              <div className="relative w-full max-w-lg rounded-2xl border border-border bg-card p-6 shadow-2xl">
+                {/* Close button */}
+                <button
+                  type="button"
+                  onClick={() => setPreviewModal((prev) => ({ ...prev, isOpen: false }))}
+                  className="absolute right-4 top-4 rounded-lg p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition"
+                  aria-label="Close dialog"
+                >
+                  <X className="size-5" />
+                </button>
+
+                {/* Header */}
+                <div className="flex items-start gap-4">
+                  <div className="rounded-xl border border-amber-500/20 bg-amber-500/10 p-3 text-amber-500">
+                    <ShieldAlert className="size-6" />
+                  </div>
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
+                      {previewModal.provider ? `${previewModal.provider.toUpperCase()} ASSET` : "MODEL NOTICE"}
+                    </span>
+                    <h2 className="mt-1 text-lg font-bold text-foreground">{previewModal.title}</h2>
+                    {previewModal.assetTitle && (
+                      <p className="text-xs text-muted-foreground line-clamp-1">{previewModal.assetTitle}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Description */}
+                <div className="mt-4 rounded-xl border border-border/80 bg-background/60 p-4">
+                  <p className="text-sm leading-relaxed text-foreground/90">{previewModal.description}</p>
+                </div>
+
+                {/* Action buttons */}
+                <div className="mt-6 flex flex-col sm:flex-row gap-2.5">
+                  {previewModal.canDownload && previewModal.downloadUrl && (
+                    <a
+                      href={previewModal.downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground shadow transition hover:opacity-95"
+                    >
+                      <Download className="size-4" />
+                      Download Original File
+                    </a>
+                  )}
+
+                  {previewModal.actionUrl && (
+                    <a
+                      href={previewModal.actionUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/30 bg-primary/10 px-4 py-2.5 text-xs font-semibold text-primary hover:bg-primary/20 transition"
+                    >
+                      <ExternalLink className="size-4" />
+                      {previewModal.actionLabel || "Open Provider Page"}
+                    </a>
+                  )}
+
+                  {previewModal.externalUrl && !previewModal.actionUrl && (
+                    <a
+                      href={previewModal.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-xs font-semibold text-foreground hover:bg-accent transition"
+                    >
+                      <ExternalLink className="size-4" />
+                      View Source Page
+                    </a>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setPreviewModal((prev) => ({ ...prev, isOpen: false }));
+                      loadPreset("prism");
+                    }}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-xs font-semibold text-foreground hover:bg-accent transition"
+                  >
+                    <Box className="size-4 text-primary" />
+                    Load Sample Model
+                  </button>
+                </div>
               </div>
             </div>
           )}
