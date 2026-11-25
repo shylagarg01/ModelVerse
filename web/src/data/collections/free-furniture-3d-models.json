@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-24T15:13:23.732Z",
+  "updatedAt": "2026-11-25T14:53:11.158Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -326,22 +326,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:chair_21",
-      "provider": "sharetextures",
-      "title": "Chair 21",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/furniture/chair_21",
-      "thumbnailUrl": "https://images.sharetextures.com/u/f86e8ddc-a3e1-41df-89c1-11762a2a649f.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:sofa_03",
       "provider": "polyhaven",
       "title": "Sofa 03",
@@ -630,6 +614,27 @@
       "downloadable": false,
       "author": "ZedV",
       "free": true
+    },
+    {
+      "id": "threedassets:bedroom-and-living-room-furniture-guest-studio-and-sec-409292ee",
+      "provider": "threedassets",
+      "title": "Guest Studio and Second Bedroom (Bedroom and Living Room Furniture)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/bedroom-and-living-room-furniture-guest-studio-and-sec-409292ee",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/38819/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 22004
     }
   ]
 }

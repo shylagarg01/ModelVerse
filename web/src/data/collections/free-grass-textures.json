@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-25T09:21:57.161Z",
+  "updatedAt": "2026-11-25T14:53:14.353Z",
   "assets": [
     {
       "id": "polyhaven:aerial_grass_rock",
@@ -664,17 +664,6 @@
       "free": true
     },
     {
-      "id": "itchio:tempisq/grass-ai-vol1",
-      "provider": "itchio",
-      "title": "Grass Grounds Vol.1",
-      "type": "texture",
-      "url": "https://tempisq.itch.io/grass-ai-vol1",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4OTI3OTc2LnBuZw==/315x250%23c/WK88RK.png",
-      "downloadable": false,
-      "author": "tempisq",
-      "free": true
-    },
-    {
       "id": "blenderkit:d9bb4c54-f406-484f-90e1-78179b301687",
       "provider": "blenderkit",
       "title": "Low Poly Grass",
@@ -694,6 +683,17 @@
         "blend"
       ],
       "maxResolution": "2k"
+    },
+    {
+      "id": "itchio:uheartbeast/grass-and-dirt-pixel-art-textures",
+      "provider": "itchio",
+      "title": "Grass and Dirt Pixel Art Textures",
+      "type": "texture",
+      "url": "https://uheartbeast.itch.io/grass-and-dirt-pixel-art-textures",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNTQ5MDQzLnBuZw==/315x250%23c/DQ0SbG.png",
+      "downloadable": false,
+      "author": "Heartbeast",
+      "free": true
     }
   ]
 }
