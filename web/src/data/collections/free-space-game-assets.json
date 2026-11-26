@@ -13,7 +13,7 @@
       "space black"
     ]
   },
-  "updatedAt": "2026-11-09T13:18:47.285Z",
+  "updatedAt": "2026-11-26T14:21:35.970Z",
   "assets": [
     {
       "id": "polyfork:space-mine-3a1654",
@@ -113,17 +113,6 @@
         "commercialUse": true,
         "attributionRequired": false
       },
-      "free": true
-    },
-    {
-      "id": "itchio:kenney-assets/space-kit",
-      "provider": "itchio",
-      "title": "Space Kit",
-      "type": "model",
-      "url": "https://kenney-assets.itch.io/space-kit",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzY3ODAzMzAucG5n/315x250%23c/i3iwZw.png",
-      "downloadable": false,
-      "author": "Kenney (Assets)",
       "free": true
     },
     {
@@ -396,16 +385,6 @@
       "polyCount": 1136
     },
     {
-      "id": "opengameart:space-kit",
-      "provider": "opengameart",
-      "title": "Space Kit",
-      "type": "model",
-      "url": "https://opengameart.org/content/space-kit",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Preview_184.png",
-      "downloadable": true,
-      "free": true
-    },
-    {
       "id": "sketchfab:5f7176a2ae284d6b99fc970c9d265c04",
       "provider": "sketchfab",
       "title": "Orbiter Space Shuttle OV-103 Discovery",
@@ -603,6 +582,42 @@
       "downloadable": false,
       "author": "Quaternius",
       "free": true
+    },
+    {
+      "id": "cgtrader:360-degree-16k-hdri-space-background-sn-3810-e8e94ce3-f51b-43b7-a6d2-d698668a24be",
+      "provider": "cgtrader",
+      "title": "360 degree 16k HDRI space background SN-3810",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/space/other/360-degree-16k-hdri-space-background-sn-3810-e8e94ce3-f51b-43b7-a6d2-d698668a24be",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/3y8dyf5jqh2zz4j7s6brh167fjvk/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/a-0.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "exr",
+        "jpg"
+      ]
+    },
+    {
+      "id": "threedassets:care-home-and-day-room-tilt-in-space-chair-01a6b3ce",
+      "provider": "threedassets",
+      "title": "Tilt In Space Chair (Care Home and Day Room)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/care-home-and-day-room-tilt-in-space-chair-01a6b3ce",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/35732/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 3052,
+      "animated": true
     }
   ]
 }

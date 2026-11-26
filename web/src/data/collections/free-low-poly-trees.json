@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-19T13:50:01.077Z",
+  "updatedAt": "2026-11-26T14:21:09.552Z",
   "assets": [
     {
       "id": "blenderkit:72fac4cb-901c-4a48-8fc8-84a0baa0bd21",
@@ -30,17 +30,6 @@
         "glb"
       ],
       "polyCount": 82
-    },
-    {
-      "id": "itchio:brokenvector/low-poly-tree-pack",
-      "provider": "itchio",
-      "title": "Low Poly Tree Pack",
-      "type": "model",
-      "url": "https://brokenvector.itch.io/low-poly-tree-pack",
-      "thumbnailUrl": "https://img.itch.zone/aW1hZ2UvOTAxMTIvNDIyOTQxLmpwZw==/315x250%23c/5TGejw.jpg",
-      "downloadable": false,
-      "author": "Broken Vector",
-      "free": true
     },
     {
       "id": "itchio:mark-auman/low-poly-trees-asset-pack",
@@ -121,17 +110,6 @@
       "free": true
     },
     {
-      "id": "itchio:godgoldfear/low-poly-trees",
-      "provider": "itchio",
-      "title": "Low Poly trees",
-      "type": "model",
-      "url": "https://godgoldfear.itch.io/low-poly-trees",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4MzAxMTcucG5n/315x250%23c/QwLuXr.png",
-      "downloadable": false,
-      "author": "godgoldfear",
-      "free": true
-    },
-    {
       "id": "itchio:divby00/low-poly-tree",
       "provider": "itchio",
       "title": "Low Poly Forest - Trees / Stones",
@@ -207,17 +185,6 @@
         "glb"
       ],
       "polyCount": 150
-    },
-    {
-      "id": "itchio:josephriches/low-poly-tree",
-      "provider": "itchio",
-      "title": "Low Poly Tree",
-      "type": "model",
-      "url": "https://josephriches.itch.io/low-poly-tree",
-      "thumbnailUrl": "https://img.itch.zone/aW1hZ2UvNjc2NzIvMzA3NTI5LnBuZw==/315x250%23c/fvOsju.png",
-      "downloadable": false,
-      "author": "Joseph Riches",
-      "free": true
     },
     {
       "id": "blenderkit:6ed9d45f-ba80-4bfe-8598-eb3a8dae86c2",
@@ -319,17 +286,6 @@
       "free": true
     },
     {
-      "id": "itchio:fonsoul/low-poly-tree-pack",
-      "provider": "itchio",
-      "title": "Low-Poly Tree Pack",
-      "type": "model",
-      "url": "https://fonsoul.itch.io/low-poly-tree-pack",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI2NjE5NTM1LnBuZw==/315x250%23c/rpVGBr.png",
-      "downloadable": false,
-      "author": "FonSoul",
-      "free": true
-    },
-    {
       "id": "threedassets:wipe-day-survival-island-pine-tree-dfc88d2b",
       "provider": "threedassets",
       "title": "Pine Tree (Wipe Day Survival Island)",
@@ -349,16 +305,6 @@
         "glb"
       ],
       "polyCount": 132
-    },
-    {
-      "id": "opengameart:low-poly-tree-1",
-      "provider": "opengameart",
-      "title": "Low-poly Tree",
-      "type": "model",
-      "url": "https://opengameart.org/content/low-poly-tree-1",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/tree_ph.png",
-      "downloadable": true,
-      "free": true
     },
     {
       "id": "opengameart:low-poly-trees-stumps-branches",
@@ -411,7 +357,16 @@
       "url": "https://opengameart.org/content/low-poly-tree-pack",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/trees_6.png",
       "downloadable": true,
-      "free": true
+      "author": "Broken Vector",
+      "free": true,
+      "formats": [
+        "blend",
+        "obj",
+        "stl",
+        "fbx",
+        "ply",
+        "dae"
+      ]
     },
     {
       "id": "opengameart:textured-low-poly-palm-tree",
@@ -438,24 +393,6 @@
         "fbx",
         "obj",
         "dae"
-      ]
-    },
-    {
-      "id": "cgtrader:low-poly-tree-8cad1884-f4c6-4410-baad-ea72d5669a67",
-      "provider": "cgtrader",
-      "title": "low poly tree",
-      "type": "model",
-      "url": "https://www.cgtrader.com/free-3d-models/plant/other/low-poly-tree-8cad1884-f4c6-4410-baad-ea72d5669a67",
-      "thumbnailUrl": "https://media.cgtrader.com/variants/fobwvm84r1o2bfd1ee0aewn0y69c/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/image%201.jpg",
-      "downloadable": false,
-      "free": true,
-      "formats": [
-        "ma",
-        "abc",
-        "ply",
-        "fbx",
-        "gltf",
-        "usd"
       ]
     },
     {
@@ -564,18 +501,110 @@
       ]
     },
     {
-      "id": "cgtrader:low-poly-tree-5ee239b0-9001-4b0c-a8d9-62f3381f9f23",
-      "provider": "cgtrader",
-      "title": "Low-poly tree",
+      "id": "opengameart:giant-baobab-low-poly-tree-model",
+      "provider": "opengameart",
+      "title": "Giant Baobab Low Poly Tree Model",
       "type": "model",
-      "url": "https://www.cgtrader.com/free-3d-models/plant/other/low-poly-tree-5ee239b0-9001-4b0c-a8d9-62f3381f9f23",
-      "thumbnailUrl": "https://media.cgtrader.com/variants/ovmfxm1ect6lck2gc85knmz1t7ko/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/Untitled.jpg",
+      "url": "https://opengameart.org/content/giant-baobab-low-poly-tree-model",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/renderbaobab2.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "cgtrader:low-poly-tree-pack-sakura-and-palm",
+      "provider": "cgtrader",
+      "title": "Low-Poly Tree Pack Sakura and Palm",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/plant/other/low-poly-tree-pack-sakura-and-palm",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/5hwkrghemv0804mlrwdlzh5gwy8j/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/Low%20poly%20tree%20%233.jpg",
       "downloadable": false,
       "free": true,
       "formats": [
+        "fbx",
+        "obj"
+      ]
+    },
+    {
+      "id": "threedassets:wipe-day-survival-island-dead-tree-c66812b4",
+      "provider": "threedassets",
+      "title": "Dead Tree (Wipe Day Survival Island)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/wipe-day-survival-island-dead-tree-c66812b4",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/27431/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 300
+    },
+    {
+      "id": "itchio:riclmbr/low-poly-trees-pack",
+      "provider": "itchio",
+      "title": "Low Poly Trees Pack",
+      "type": "model",
+      "url": "https://riclmbr.itch.io/low-poly-trees-pack",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMwMzkxMzk0LnBuZw==/315x250%23c/OFipVg.png",
+      "downloadable": false,
+      "author": "Riclmbr",
+      "free": true
+    },
+    {
+      "id": "opengameart:low-poly-strange-palm-trees",
+      "provider": "opengameart",
+      "title": "Low Poly Strange Palm Trees",
+      "type": "model",
+      "url": "https://opengameart.org/content/low-poly-strange-palm-trees",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/strangepalmvisualisation.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:2b9f7207-f3c5-45a6-9da0-047d40c17296",
+      "provider": "blenderkit",
+      "title": "Low Poly Pixel Styled Birch Tree",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/2b9f7207-f3c5-45a6-9da0-047d40c17296/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/139d6d2f6705455d8eb79b34eb69c038/files/thumbnail_81cac1dd-41f3-4d83-9994-62fe441951a3.jpg.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Kyle Metz",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
         "blend",
+        "glb"
+      ],
+      "maxResolution": "1k",
+      "polyCount": 1740
+    },
+    {
+      "id": "cgtrader:low-poly-tree-series-12-blender-3d-model",
+      "provider": "cgtrader",
+      "title": "Low Poly Tree Series 12 Blender 3D Model",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/plant/other/low-poly-tree-series-12-blender-3d-model",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/xqpdi7mlkkvuy71we7i7hgc8zp7z/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/TL12Front0001.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "abc",
+        "fbx",
+        "gltf",
         "obj",
-        "fbx"
+        "usd",
+        "ply"
       ]
     }
   ]

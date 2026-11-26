@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-23T15:16:15.684Z",
+  "updatedAt": "2026-11-26T14:20:55.661Z",
   "assets": [
     {
       "id": "polyhaven:fabric_pattern_07",
@@ -180,22 +180,6 @@
       "maxResolution": "8k"
     },
     {
-      "id": "sharetextures:fabric-51",
-      "provider": "sharetextures",
-      "title": "Fabric 51",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/fabric/fabric-51",
-      "thumbnailUrl": "https://images.sharetextures.com/u/fabric_51-1-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "ambientcg:Fabric061",
       "provider": "ambientcg",
       "title": "Fabric 061",
@@ -291,22 +275,6 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzI5MDM3MjU5LmpwZw==/315x250%23c/faLq%2F1.jpg",
       "downloadable": false,
       "author": "JulioVII",
-      "free": true
-    },
-    {
-      "id": "sharetextures:fabric-188",
-      "provider": "sharetextures",
-      "title": "Fabric 188",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/fabric/fabric-188",
-      "thumbnailUrl": "https://images.sharetextures.com/u/27d62699-5ed1-4ca4-a34a-f761a719ae07.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
       "free": true
     },
     {
@@ -454,22 +422,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:fabric-167",
-      "provider": "sharetextures",
-      "title": "Fabric 167",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/fabric/fabric-167",
-      "thumbnailUrl": "https://images.sharetextures.com/u/18b3835f-810e-4b88-a910-78ab277dd702.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:fabric_leather_02",
       "provider": "polyhaven",
       "title": "Fabric Leather 02",
@@ -593,22 +545,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:fabric_135",
-      "provider": "sharetextures",
-      "title": "Fabric 135",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/fabric/fabric_135",
-      "thumbnailUrl": "https://images.sharetextures.com/u/ffc5dac1-c298-4a90-b301-022c13802aee.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "ambientcg:Fabric085",
       "provider": "ambientcg",
       "title": "Fabric 085",
@@ -649,6 +585,68 @@
         "png"
       ],
       "maxResolution": "8k"
+    },
+    {
+      "id": "ambientcg:Fabric087",
+      "provider": "ambientcg",
+      "title": "Fabric 087",
+      "type": "material",
+      "url": "https://ambientcg.com/a/Fabric087",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Fabric087.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "jpg",
+        "png"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "opengameart:steampunk-coordinates-fabric",
+      "provider": "opengameart",
+      "title": "Steampunk Coordinates Fabric",
+      "type": "texture",
+      "url": "https://opengameart.org/content/steampunk-coordinates-fabric",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/steampunkcoordinates_1.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "opengameart:fabric-leather-seamless-texture-with-normalmap",
+      "provider": "opengameart",
+      "title": "Fabric - Leather - Seamless Texture With Normalmap",
+      "type": "texture",
+      "url": "https://opengameart.org/content/fabric-leather-seamless-texture-with-normalmap",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Leather_T.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:6d5a8d14-4cd5-42bd-9a7a-bd6110b5f79d",
+      "provider": "blenderkit",
+      "title": "White linen fabric",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/6d5a8d14-4cd5-42bd-9a7a-bd6110b5f79d/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/f5c755c96bbe416098e2c8c1320ba322/files/thumbnail_3f31e43c-5af7-4eb2-a3eb-c87731d15b7a.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "antoine f",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "2k"
     }
   ]
 }

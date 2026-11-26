@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-25T14:53:14.353Z",
+  "updatedAt": "2026-11-26T14:21:05.574Z",
   "assets": [
     {
       "id": "polyhaven:aerial_grass_rock",
@@ -111,22 +111,6 @@
       "maxResolution": "2k"
     },
     {
-      "id": "sharetextures:grass_1",
-      "provider": "sharetextures",
-      "title": "Grass 1",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/ground/grass_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/grass_1-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:paving-stones-pbr-material-3",
       "provider": "threedtexel",
       "title": "Grey Paving Stones With Grass – PBR Material",
@@ -142,23 +126,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "texturescom:132474",
-      "provider": "texturescom",
-      "title": "Grass",
-      "type": "texture",
-      "url": "https://www.textures.com/download/3d-scanned-grass-atlas-12/132474",
-      "thumbnailUrl": "https://www.textures.com/system/gallery/photos/Nature/114636-Grass/ps132474/132474_thumbnail_small.jpg",
-      "downloadable": false,
-      "license": {
-        "name": "Textures.com License",
-        "url": "https://www.textures.com/about/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "8K"
     },
     {
       "id": "polyhaven:leafy_grass",
@@ -360,23 +327,6 @@
         "png"
       ],
       "maxResolution": "8k"
-    },
-    {
-      "id": "threedtextures:grass-005",
-      "provider": "threedtextures",
-      "title": "Grass 005",
-      "type": "material",
-      "url": "https://3dtextures.me/2020/08/28/grass-005/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2020/08/Material_1617.jpg?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
     },
     {
       "id": "texturecan:287",
@@ -693,6 +643,49 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNTQ5MDQzLnBuZw==/315x250%23c/DQ0SbG.png",
       "downloadable": false,
       "author": "Heartbeast",
+      "free": true
+    },
+    {
+      "id": "opengameart:grass-1",
+      "provider": "opengameart",
+      "title": "grass",
+      "type": "texture",
+      "url": "https://opengameart.org/content/grass-1",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/grass_17.png",
+      "downloadable": true,
+      "license": {
+        "name": "Textures.com License",
+        "url": "https://www.textures.com/about/license",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "maxResolution": "8K"
+    },
+    {
+      "id": "freestylized:material:ice_with_grass_01",
+      "provider": "freestylized",
+      "title": "ice with grass 01",
+      "type": "material",
+      "url": "https://freestylized.com/material/ice_with_grass_01/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/ice_with_grass_01_preview_hex151515.png",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "opengameart:10-seamless-grass-textures-that-are-2048-x-2048",
+      "provider": "opengameart",
+      "title": "10 Seamless, Grass textures that are 2048 x 2048!",
+      "type": "texture",
+      "url": "https://opengameart.org/content/10-seamless-grass-textures-that-are-2048-x-2048",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Grass%2010.png",
+      "downloadable": true,
       "free": true
     }
   ]

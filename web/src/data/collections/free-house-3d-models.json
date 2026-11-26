@@ -27,7 +27,7 @@
       "Wood Plant"
     ]
   },
-  "updatedAt": "2026-11-22T12:50:02.186Z",
+  "updatedAt": "2026-11-26T14:21:07.414Z",
   "assets": [
     {
       "id": "blenderkit:264b47f4-a1ee-4c31-9ee9-4c0e8dc1a98b",
@@ -194,16 +194,6 @@
       "animated": true
     },
     {
-      "id": "opengameart:medieval-house",
-      "provider": "opengameart",
-      "title": "Medieval house",
-      "type": "model",
-      "url": "https://opengameart.org/content/medieval-house",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/House%208%20print_1.png",
-      "downloadable": true,
-      "free": true
-    },
-    {
       "id": "itchio:free-game-assets/free-elf-house-3d-low-poly-pack",
       "provider": "itchio",
       "title": "Free Elf House 3D Low Poly Pack",
@@ -311,17 +301,6 @@
       "free": true
     },
     {
-      "id": "itchio:modosa-kun/house",
-      "provider": "itchio",
-      "title": "House",
-      "type": "model",
-      "url": "https://modosa-kun.itch.io/house",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzExOTg3MjgyLnBuZw==/315x250%23c/yvBGaI.png",
-      "downloadable": false,
-      "author": "Modo",
-      "free": true
-    },
-    {
       "id": "opengameart:modular-medieval-house-pack-05",
       "provider": "opengameart",
       "title": "Modular Medieval House Pack 05",
@@ -351,17 +330,6 @@
         "glb"
       ],
       "polyCount": 924
-    },
-    {
-      "id": "itchio:majadroid/3d-house-construction-site",
-      "provider": "itchio",
-      "title": "3D House Construction Site (LowPoly, CC0)",
-      "type": "model",
-      "url": "https://majadroid.itch.io/3d-house-construction-site",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzUxNzEzNDUucG5n/315x250%23c/Hh15SI.png",
-      "downloadable": false,
-      "author": "Majadroid",
-      "free": true
     },
     {
       "id": "opengameart:simple-house",
@@ -619,6 +587,71 @@
       ],
       "polyCount": 4278,
       "rigged": true
+    },
+    {
+      "id": "polyfork:fountain-house-cbda2f",
+      "provider": "polyfork",
+      "title": "Fountain House",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/fountain-house-cbda2f",
+      "thumbnailUrl": "https://polyfork.dev/files/fountain-house-cbda2f/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 2796
+    },
+    {
+      "id": "polyfork:modern-cube-house-453bc4",
+      "provider": "polyfork",
+      "title": "Modern Cube House",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/modern-cube-house-453bc4",
+      "thumbnailUrl": "https://polyfork.dev/files/modern-cube-house-453bc4/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 935,
+      "rigged": true
+    },
+    {
+      "id": "cgtrader:modern-house-5-38935020-2410-474e-9f8c-047ceb667f9e",
+      "provider": "cgtrader",
+      "title": "Modern House 5",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/exterior/house/modern-house-5-38935020-2410-474e-9f8c-047ceb667f9e",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/ThfyNm9XKgfMYFATCkGQjDj1/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/modern-house-5-3d-model-low-poly-max-obj-3ds-fbx-c4d-ma-mb.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "max",
+        "3ds",
+        "blend",
+        "c4d",
+        "fbx",
+        "obj"
+      ]
     }
   ]
 }

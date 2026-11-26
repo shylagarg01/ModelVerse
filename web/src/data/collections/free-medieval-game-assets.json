@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-21T12:58:11.160Z",
+  "updatedAt": "2026-11-26T14:21:12.884Z",
   "assets": [
     {
       "id": "polyhaven:ornate_medieval_dagger",
@@ -136,17 +136,6 @@
       "free": true
     },
     {
-      "id": "itchio:quaternius/medieval-village-megakit",
-      "provider": "itchio",
-      "title": "Medieval Village MegaKit",
-      "type": "model",
-      "url": "https://quaternius.itch.io/medieval-village-megakit",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzI0MzM2NTQyLmpwZw==/315x250%23c/Hxsajx.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
-    },
-    {
       "id": "blenderkit:2f102e63-d493-45a7-8880-8795c336167a",
       "provider": "blenderkit",
       "title": "Medieval door",
@@ -168,17 +157,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 19362
-    },
-    {
-      "id": "quaternius:modularmedievalbuildings",
-      "provider": "quaternius",
-      "title": "Modular Medieval Building Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/modularmedievalbuildings.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/medievalbuildings.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
     },
     {
       "id": "itchio:alstrainfinite/medieval-swords",
@@ -280,17 +258,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 3324
-    },
-    {
-      "id": "itchio:studiosetoril/medieval-weapons",
-      "provider": "itchio",
-      "title": "Medieval Weapons",
-      "type": "model",
-      "url": "https://studiosetoril.itch.io/medieval-weapons",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzk5NTY1MTYucG5n/315x250%23c/LGWNUp.png",
-      "downloadable": false,
-      "author": "Studio Setoril",
-      "free": true
     },
     {
       "id": "opengameart:medieval-containers",
@@ -606,6 +573,65 @@
       "formats": [
         "blend",
         "png"
+      ]
+    },
+    {
+      "id": "blenderkit:0ce7e508-55ea-44f2-9ee4-368f37351bfa",
+      "provider": "blenderkit",
+      "title": "Medieval house",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/0ce7e508-55ea-44f2-9ee4-368f37351bfa/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/0173772270ca45bab14c22dcf0e96383/files/thumbnail_e273de97-9387-4bb6-acce-b6510ca99624.png.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Nana Nurzhau",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "2k",
+      "polyCount": 13859
+    },
+    {
+      "id": "blenderkit:e7e2bf30-861c-42ef-9139-faec210335ad",
+      "provider": "blenderkit",
+      "title": "Decorative Medieval Chest Prop",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/e7e2bf30-861c-42ef-9139-faec210335ad/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/5e8480f601754b5a8457013b02b5d2e8/files/thumbnail_f383ef7b-d5cb-427e-bdcb-12fbbf27a996.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Adam McAnderson",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "4k",
+      "polyCount": 31266
+    },
+    {
+      "id": "cgtrader:medieval-51-item-pack-detailed",
+      "provider": "cgtrader",
+      "title": "Medieval 51 Item Pack Detailed",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/various/various-models/medieval-51-item-pack-detailed",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/D7Jg6UeXRsoeB9GUNWUP6c73/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/Preview1.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "blend"
       ]
     }
   ]

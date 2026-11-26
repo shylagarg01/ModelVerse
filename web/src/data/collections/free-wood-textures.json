@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-18T13:24:19.331Z",
+  "updatedAt": "2026-11-26T14:21:43.445Z",
   "assets": [
     {
       "id": "polyhaven:wood_table_001",
@@ -131,22 +131,6 @@
       "thumbnailUrl": "https://img.itch.zone/aW1nLzUzODUxNDMuanBn/315x250%23c/EkB5%2B0.jpg",
       "downloadable": false,
       "author": "JulioVII",
-      "free": true
-    },
-    {
-      "id": "sharetextures:wood-parquet-13",
-      "provider": "sharetextures",
-      "title": "Wood Parquet 13",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/wood/wood-parquet-13",
-      "thumbnailUrl": "https://images.sharetextures.com/u/wood_plank_13-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
       "free": true
     },
     {
@@ -273,22 +257,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:woodparquet_83",
-      "provider": "sharetextures",
-      "title": "Wood Parquet 83",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/woodparquet_83",
-      "thumbnailUrl": "https://images.sharetextures.com/u/ce80f64f-f224-47cc-a84f-44b2f776c020.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:wood_floor",
       "provider": "polyhaven",
       "title": "Wood Floor",
@@ -395,22 +363,6 @@
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "sharetextures:wood-plank-15",
-      "provider": "sharetextures",
-      "title": "Wood Plank 15",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/wood/wood-plank-15",
-      "thumbnailUrl": "https://images.sharetextures.com/u/5eb6ed6d-11b7-49da-8392-885b1f72313c.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
         "commercialUse": true,
         "attributionRequired": false
       },
@@ -550,22 +502,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:fine-wood-27",
-      "provider": "sharetextures",
-      "title": "Fine Wood 27",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/wood/fine-wood-27",
-      "thumbnailUrl": "https://images.sharetextures.com/u/3d4eafe4-514a-4a31-b950-ac549e1e33d2.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:rough_wood",
       "provider": "polyhaven",
       "title": "Rough Wood",
@@ -665,6 +601,81 @@
       "url": "https://opengameart.org/content/wall-grass-rock-stone-wood-and-dirt-480",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/all_3.jpg",
       "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:6e7e0719-cc22-441d-b392-48a0c3e26762",
+      "provider": "blenderkit",
+      "title": "Warm Oak Wood",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/6e7e0719-cc22-441d-b392-48a0c3e26762/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/8c17be7ce5d94cbd817687a1392f0bb9/files/thumbnail_c3355a70-1fb3-45aa-89f4-9cffc8525f7c.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "yossif kh",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "2k"
+    },
+    {
+      "id": "ambientcg:Wood099",
+      "provider": "ambientcg",
+      "title": "Wood 099",
+      "type": "material",
+      "url": "https://ambientcg.com/a/Wood099",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Wood099.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "jpg",
+        "png"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "cgbookcase:wooden-plates-floor-01",
+      "provider": "cgbookcase",
+      "title": "Wooden Plates Floor 01",
+      "type": "material",
+      "url": "https://www.cgbookcase.com/textures/wooden-plates-floor-01",
+      "thumbnailUrl": "https://cdn.cgbookcase.cloud/file/cgbookcase/textures/renders/bg_white/480w/Wooden_plates_floor_01_default.jpg",
+      "downloadable": false,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "maxResolution": "4k"
+    },
+    {
+      "id": "threedtextures:wood-base-walnut-001",
+      "provider": "threedtextures",
+      "title": "Wood Base Walnut 001",
+      "type": "material",
+      "url": "https://3dtextures.me/2026/11/02/wood-base-walnut-001/",
+      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/11/Material_2005.png?fit=600%2C800&ssl=1",
+      "downloadable": false,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
       "free": true
     }
   ]

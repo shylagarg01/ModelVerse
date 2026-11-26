@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-23T15:16:38.589Z",
+  "updatedAt": "2026-11-26T14:21:14.783Z",
   "assets": [
     {
       "id": "polyhaven:metal_plate",
@@ -190,22 +190,6 @@
       "maxResolution": "8k"
     },
     {
-      "id": "sharetextures:metal-9",
-      "provider": "sharetextures",
-      "title": "Metal 9",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/metal/metal-9",
-      "thumbnailUrl": "https://images.sharetextures.com/u/6fdd4e96-8eb9-406e-9e5c-d00a941c2a4a.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "texturecan:648",
       "provider": "texturecan",
       "title": "Woven Steel Metal",
@@ -312,22 +296,6 @@
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "sharetextures:metal-roof",
-      "provider": "sharetextures",
-      "title": "Metal Roof",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/metal/metal-roof",
-      "thumbnailUrl": "https://images.sharetextures.com/u/metal_roof_1-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
         "commercialUse": true,
         "attributionRequired": false
       },
@@ -467,22 +435,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:black-metal-3",
-      "provider": "sharetextures",
-      "title": "Black Metal",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/metal/black-metal-3",
-      "thumbnailUrl": "https://images.sharetextures.com/u/Metal_5-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "cgbookcase:brushed-metal-tiles-01",
       "provider": "cgbookcase",
       "title": "Brushed Metal Tiles 01",
@@ -579,22 +531,6 @@
       "maxResolution": "8k"
     },
     {
-      "id": "sharetextures:metal-11",
-      "provider": "sharetextures",
-      "title": "Metal 11",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/metal/metal-11",
-      "thumbnailUrl": "https://images.sharetextures.com/u/b0ea68c9-0928-450e-a014-86aa93813943.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "texturecan:628",
       "provider": "texturecan",
       "title": "Hexagonal Metal Frames with Concave Rubber",
@@ -677,6 +613,65 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/tex-res-prev_2.JPG",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "itchio:tempisq/metalgrate-vol1",
+      "provider": "itchio",
+      "title": "Metal Grates Vol.1",
+      "type": "texture",
+      "url": "https://tempisq.itch.io/metalgrate-vol1",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4OTI4MDk0LnBuZw==/315x250%23c/8kVVMA.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
+    },
+    {
+      "id": "opengameart:50-2k-metal-textures",
+      "provider": "opengameart",
+      "title": "50 2k metal textures",
+      "type": "texture",
+      "url": "https://opengameart.org/content/50-2k-metal-textures",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/metal_tex_prev.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:5a932113-9a23-422e-8dc9-5466576fe601",
+      "provider": "blenderkit",
+      "title": "Gold metal (gold)",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/5a932113-9a23-422e-8dc9-5466576fe601/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/c8b09f5b229d401bb50c7efede71810c/files/thumbnail_01f149c6-5cc4-4fdf-b311-8dda6af1ebfc.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "yossif kh",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "2k"
+    },
+    {
+      "id": "threedtexel:bumpy-metal-pbr-material-3",
+      "provider": "threedtexel",
+      "title": "Bumpy Metallic Surface – PBR Material",
+      "type": "material",
+      "url": "https://3dtexel.com/product/bumpy-metal-pbr-material-3/",
+      "thumbnailUrl": "https://3dtexel.com/wp-content/uploads/2025/11/Untitled_Sphere-Camera-54-768x768.webp",
+      "downloadable": false,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "maxResolution": "4k"
     }
   ]
 }

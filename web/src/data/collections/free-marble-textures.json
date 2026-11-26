@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-10-17T08:47:00.614Z",
+  "updatedAt": "2026-11-26T14:21:11.193Z",
   "assets": [
     {
       "id": "polyhaven:marble_01",
@@ -127,22 +127,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:statuari_marble_2",
-      "provider": "sharetextures",
-      "title": "Statuari Marble 2",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/statuari_marble_2",
-      "thumbnailUrl": "https://images.sharetextures.com/u/statuari_marble_2-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:marble-surface-pbr-material-7",
       "provider": "threedtexel",
       "title": "White Marble Surface – PBR Material",
@@ -249,22 +233,6 @@
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "sharetextures:king-white-marble",
-      "provider": "sharetextures",
-      "title": "King White Marble",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/king-white-marble",
-      "thumbnailUrl": "https://images.sharetextures.com/u/KING-WHITE-POLISHED-MARBLE-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
         "commercialUse": true,
         "attributionRequired": false
       },
@@ -384,22 +352,6 @@
       "maxResolution": "1k"
     },
     {
-      "id": "sharetextures:grey-vision-marble-2",
-      "provider": "sharetextures",
-      "title": "Grey Vision Marble-2",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/grey-vision-marble-2",
-      "thumbnailUrl": "https://images.sharetextures.com/u/GREY-VISION-2.SELECTION-POLISHED-MARBLE-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:marble_cliff_03",
       "provider": "polyhaven",
       "title": "Marble Cliff 03",
@@ -515,22 +467,6 @@
       },
       "free": true,
       "maxResolution": "1k"
-    },
-    {
-      "id": "sharetextures:marble_36",
-      "provider": "sharetextures",
-      "title": "Marble 36",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/marble_36",
-      "thumbnailUrl": "https://images.sharetextures.com/u/cd14d86c-b490-4a3f-ac86-fcd832f449a3.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:marble-surface-pbr-material-4",
@@ -673,6 +609,58 @@
       "type": "texture",
       "url": "https://opengameart.org/content/real-marble-textures-collection-set-1",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Marble%20Set-1-Free%20by%20sharetextures_1.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:68992d83-977c-4b60-ae4f-37ecd497b3cb",
+      "provider": "blenderkit",
+      "title": "Marble",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/68992d83-977c-4b60-ae4f-37ecd497b3cb/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/5c27b4e415774fec8a76a1cfb639ef9f/files/thumbnail_136c1bd3-f5d4-4121-aa5e-32130d9d1d84.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Steffen",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "2k"
+    },
+    {
+      "id": "itchio:tempisq/marble-palace-winter-pbr",
+      "provider": "itchio",
+      "title": "Marble Palace Winter PBR Materials",
+      "type": "material",
+      "url": "https://tempisq.itch.io/marble-palace-winter-pbr",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNjIyOTMzLnBuZw==/315x250%23c/XYHTsf.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
+    },
+    {
+      "id": "opengameart:real-marble-textures-collection-set-3-part-1",
+      "provider": "opengameart",
+      "title": "Real Marble Textures Collection - Set 3 Part-1",
+      "type": "texture",
+      "url": "https://opengameart.org/content/real-marble-textures-collection-set-3-part-1",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Real%20marble%20set%203%20sharetextures%20free%20textures-1_2.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "opengameart:real-marble-textures-collection-set-3-part-2",
+      "provider": "opengameart",
+      "title": "Real Marble Textures Collection-Set 3 Part 2",
+      "type": "texture",
+      "url": "https://opengameart.org/content/real-marble-textures-collection-set-3-part-2",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Real%20marble%20set%203%20sharetextures%20free%20textures-2_0.jpg",
       "downloadable": true,
       "free": true
     }

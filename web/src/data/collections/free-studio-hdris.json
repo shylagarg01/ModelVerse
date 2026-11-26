@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-19T13:50:27.413Z",
+  "updatedAt": "2026-11-26T14:21:36.936Z",
   "assets": [
     {
       "id": "polyhaven:studio_small_09",
@@ -247,27 +247,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "blenderkit:4b6bed11-0025-4eb4-8491-6ffc1b25fb07",
-      "provider": "blenderkit",
-      "title": "Studio Small 09",
-      "type": "hdri",
-      "url": "https://www.blendkit.com/asset-gallery-detail/4b6bed11-0025-4eb4-8491-6ffc1b25fb07/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/d1907945064a4125abe4e9248ec078fc/files/thumbnail_fb7e2aea-4f57-4681-8555-acf90bde33de.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Poly Haven",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "exr"
-      ],
-      "maxResolution": "8k"
-    },
-    {
       "id": "polyhaven:photo_studio_loft_hall",
       "provider": "polyhaven",
       "title": "Photo Studio Loft Hall",
@@ -463,28 +442,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "blenderkit:42f3a72c-2532-4f2f-9336-48bb703152cb",
-      "provider": "blenderkit",
-      "title": "Studio Small 03",
-      "type": "hdri",
-      "url": "https://www.blendkit.com/asset-gallery-detail/42f3a72c-2532-4f2f-9336-48bb703152cb/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/1531fa9d5afd4add8a22d4315183ab61/files/thumbnail_eaf4d5c0-6930-408e-83e7-4552843c9ff2.jpg.512x512_q85_crop-%2C.jpg",
-      "downloadable": true,
-      "author": "Poly Haven",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "hdr",
-        "exr"
-      ],
-      "maxResolution": "8k"
-    },
-    {
       "id": "polyhaven:studio_country_hall",
       "provider": "polyhaven",
       "title": "Studio Country Hall",
@@ -671,6 +628,48 @@
         "exr"
       ],
       "maxResolution": "8k"
+    },
+    {
+      "id": "blenderkit:7a564701-df6d-407b-9059-dd416a02b8a0",
+      "provider": "blenderkit",
+      "title": "Studio Product Silver",
+      "type": "hdri",
+      "url": "https://www.blendkit.com/asset-gallery-detail/7a564701-df6d-407b-9059-dd416a02b8a0/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/0b28b025acdd481bbd0d696ecae2a03e/files/thumbnail_4e30cd32-e69e-4ec3-b2b7-111fcd1d717d.jpg.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Jon 13",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "blenderkit:7405b7ce-27c1-4d18-95bf-74628974dda6",
+      "provider": "blenderkit",
+      "title": "Minimal Stage Photo Studio",
+      "type": "hdri",
+      "url": "https://www.blendkit.com/asset-gallery-detail/7405b7ce-27c1-4d18-95bf-74628974dda6/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/7538cdeb8be14844b3763f7a72b9fe9d/files/thumbnail_65f3fc80-2afc-4325-ae96-cb1f9eda5ecd.png.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Paco Salas",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "2k"
     }
   ]
 }

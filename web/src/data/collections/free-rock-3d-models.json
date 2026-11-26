@@ -15,7 +15,7 @@
       "preview for"
     ]
   },
-  "updatedAt": "2026-11-25T14:53:36.919Z",
+  "updatedAt": "2026-11-26T14:21:27.188Z",
   "assets": [
     {
       "id": "polyhaven:rock_moss_set_02",
@@ -331,17 +331,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 326599
-    },
-    {
-      "id": "itchio:cosmo-art/low-poly-rocks",
-      "provider": "itchio",
-      "title": "Low Poly rocks",
-      "type": "model",
-      "url": "https://cosmo-art.itch.io/low-poly-rocks",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzEwODk4OTUxLmpwZw==/315x250%23c/ZEA%2B4n.jpg",
-      "downloadable": false,
-      "author": "Cosmo",
-      "free": true
     },
     {
       "id": "sharetextures:rock_10",
@@ -722,6 +711,27 @@
         "obj"
       ],
       "polyCount": 320
+    },
+    {
+      "id": "threedassets:amusement-arcade-and-seaside-pier-rock-and-sweet-stall-81d20bbb",
+      "provider": "threedassets",
+      "title": "Rock and sweet stall (Amusement Arcade and Seaside Pier)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/amusement-arcade-and-seaside-pier-rock-and-sweet-stall-81d20bbb",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/35419/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 3784
     }
   ]
 }

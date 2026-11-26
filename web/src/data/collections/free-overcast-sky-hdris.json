@@ -10,7 +10,7 @@
       "cannon"
     ]
   },
-  "updatedAt": "2026-10-07T09:06:21.932Z",
+  "updatedAt": "2026-11-26T14:21:18.291Z",
   "assets": [
     {
       "id": "polyhaven:overcast_soil_puresky",
@@ -155,27 +155,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "blenderkit:354046ef-b2b5-400a-9afc-dd30da12e297",
-      "provider": "blenderkit",
-      "title": "Overcast Soil Pure Sky",
-      "type": "hdri",
-      "url": "https://www.blendkit.com/asset-gallery-detail/354046ef-b2b5-400a-9afc-dd30da12e297/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/3e2615c5e28e42688f7b427c822ccb3f/files/thumbnail_5da82e34-e328-4d40-99d1-ba0a890b1a57.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Poly Haven",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "exr"
-      ],
-      "maxResolution": "8k"
-    },
-    {
       "id": "ambientcg:EveningSkyHDRI047B",
       "provider": "ambientcg",
       "title": "Evening Sky HDRI 047 B",
@@ -313,27 +292,6 @@
         "exr"
       ],
       "maxResolution": "16k"
-    },
-    {
-      "id": "blenderkit:fb201776-945b-4651-8451-78ec7dc79ab8",
-      "provider": "blenderkit",
-      "title": "Kloofendal Overcast Pure Sky",
-      "type": "hdri",
-      "url": "https://www.blendkit.com/asset-gallery-detail/fb201776-945b-4651-8451-78ec7dc79ab8/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/5a56495ab93c40438a40c32099325a5f/files/thumbnail_497ca000-3089-4129-885d-6ef7b3ec5e62.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Poly Haven",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "exr"
-      ],
-      "maxResolution": "8k"
     },
     {
       "id": "ambientcg:DaySkyHDRI068B",
@@ -745,6 +703,48 @@
         "exr"
       ],
       "maxResolution": "16k"
+    },
+    {
+      "id": "blenderkit:bc297b7a-82cc-4d00-8b5d-965514233c3c",
+      "provider": "blenderkit",
+      "title": "Overcast Cloudy Sky Paddy Field Village",
+      "type": "hdri",
+      "url": "https://www.blendkit.com/asset-gallery-detail/bc297b7a-82cc-4d00-8b5d-965514233c3c/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/bc62e88942184250bc71da5f9eaa9062/files/thumbnail_3cc0dd99-0ff1-485a-a2e5-ffa773331b79.jpg.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Nandu M",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "blenderkit:f4026b7c-7303-4118-90dd-543233bcfa68",
+      "provider": "blenderkit",
+      "title": "Soft Overcast Sky Studio Cloudy Neutral",
+      "type": "hdri",
+      "url": "https://www.blendkit.com/asset-gallery-detail/f4026b7c-7303-4118-90dd-543233bcfa68/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/6c96d9e4095c41f8a0eb73cf87272bd9/files/thumbnail_13ef8701-802a-45e4-b40c-965cbff78c64.jpg.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "DiCaprio",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "8k"
     }
   ]
 }

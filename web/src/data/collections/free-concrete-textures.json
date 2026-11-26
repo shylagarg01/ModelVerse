@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-23T15:16:12.295Z",
+  "updatedAt": "2026-11-26T14:20:52.252Z",
   "assets": [
     {
       "id": "polyhaven:concrete_floor_worn_001",
@@ -106,22 +106,6 @@
       "free": true
     },
     {
-      "id": "sharetextures:concrete_tile_3",
-      "provider": "sharetextures",
-      "title": "Concrete Tile 3",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/concrete/concrete_tile_3",
-      "thumbnailUrl": "https://images.sharetextures.com/u/concrete_tile_3-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:gravel-concrete-pbr-material",
       "provider": "threedtexel",
       "title": "Light Grey Gravel Concrete – PBR Material",
@@ -173,27 +157,6 @@
         "gltf"
       ],
       "maxResolution": "8k"
-    },
-    {
-      "id": "blenderkit:dd24a3f3-c195-4dc2-8706-d88580641154",
-      "provider": "blenderkit",
-      "title": "Concrete",
-      "type": "material",
-      "url": "https://www.blendkit.com/asset-gallery-detail/dd24a3f3-c195-4dc2-8706-d88580641154/",
-      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/36c04697aa80469390766698b68f4008/files/thumbnail_b6fd6f9d-143a-414e-8ec7-8ae07e4e85cc.png.512x512_q85_crop-%2C.png",
-      "downloadable": true,
-      "author": "Alexandr Droid",
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.blendkit.com/docs/licenses/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "formats": [
-        "blend"
-      ],
-      "maxResolution": "2k"
     },
     {
       "id": "ambientcg:Concrete048",
@@ -248,22 +211,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "sharetextures:seamless_concrete_48",
-      "provider": "sharetextures",
-      "title": "Seamless Concrete 48",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/concrete/seamless_concrete_48",
-      "thumbnailUrl": "https://images.sharetextures.com/u/seamless_concrete_48-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:gravel-concrete-brickwall-pbr-material",
@@ -389,22 +336,6 @@
       "maxResolution": "2k"
     },
     {
-      "id": "sharetextures:concrete-58",
-      "provider": "sharetextures",
-      "title": "Concrete 58",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/concrete/concrete-58",
-      "thumbnailUrl": "https://images.sharetextures.com/u/135a923d-7cb5-4fbc-a0ff-8baba75a1c14.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:concrete-tile-pbr-material-5",
       "provider": "threedtexel",
       "title": "Concrete Tile with Grime – PBR Material",
@@ -505,22 +436,6 @@
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "sharetextures:concrete_53",
-      "provider": "sharetextures",
-      "title": "Concrete 53",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/concrete/concrete_53",
-      "thumbnailUrl": "https://images.sharetextures.com/u/concrete_53-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
         "commercialUse": true,
         "attributionRequired": false
       },
@@ -646,6 +561,78 @@
         "png"
       ],
       "maxResolution": "8k"
+    },
+    {
+      "id": "blenderkit:3f5918cb-297d-45fa-a3aa-7d048725d894",
+      "provider": "blenderkit",
+      "title": "Concrete wall",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/3f5918cb-297d-45fa-a3aa-7d048725d894/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/f68ea3c0e40d455bbbda01ce3fae56d4/files/thumbnail_fa8a134b-0b14-40e1-89f2-5dbe28ad9147.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Mat Karmon",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "4k"
+    },
+    {
+      "id": "opengameart:seamless-terrain-and-concrete-textures",
+      "provider": "opengameart",
+      "title": "Seamless terrain and concrete textures",
+      "type": "texture",
+      "url": "https://opengameart.org/content/seamless-terrain-and-concrete-textures",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/2_17.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:e30e5153-a282-4b03-9ea3-130977a8e1f2",
+      "provider": "blenderkit",
+      "title": "Procedural Polished Concrete",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/e30e5153-a282-4b03-9ea3-130977a8e1f2/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/60e1b09c4a0946e3b47a4d4b3855ebc8/files/thumbnail_10d24ebd-4573-4883-89a4-dabc47482d1f.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "AR3Designs Digital Design Services",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ]
+    },
+    {
+      "id": "opengameart:hires-concrete-seamless-tiling-textures",
+      "provider": "opengameart",
+      "title": "HiRes Concrete Seamless Tiling Textures",
+      "type": "texture",
+      "url": "https://opengameart.org/content/hires-concrete-seamless-tiling-textures",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/overview.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:tempisq/concrete-vol1",
+      "provider": "itchio",
+      "title": "Concrete Vol.1",
+      "type": "texture",
+      "url": "https://tempisq.itch.io/concrete-vol1",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4OTI3ODEwLnBuZw==/315x250%23c/BvNHdP.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
     }
   ]
 }

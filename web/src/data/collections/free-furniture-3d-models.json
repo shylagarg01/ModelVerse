@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-25T14:53:11.158Z",
+  "updatedAt": "2026-11-26T14:21:02.787Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -31,23 +31,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 2159356
-    },
-    {
-      "id": "kenney:furniture-kit",
-      "provider": "kenney",
-      "title": "Furniture Kit",
-      "type": "model",
-      "url": "https://kenney.nl/assets/furniture-kit",
-      "thumbnailUrl": "https://kenney.nl/media/pages/assets/furniture-kit/4573c6a40b-1677580842/sample-400x.png",
-      "downloadable": true,
-      "author": "Kenney",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "quaternius:ultimatefurniture",
@@ -93,28 +76,6 @@
       ],
       "maxResolution": "2k",
       "polyCount": 50262
-    },
-    {
-      "id": "quaternius:furniture",
-      "provider": "quaternius",
-      "title": "Furniture Pack",
-      "type": "model",
-      "url": "https://quaternius.com/packs/furniture.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/furniture.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
-    },
-    {
-      "id": "itchio:ayu10/furniture-pack",
-      "provider": "itchio",
-      "title": "3D Furniture",
-      "type": "model",
-      "url": "https://ayu10.itch.io/furniture-pack",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzM3MjcyNTMucG5n/315x250%23c/I4TrOs.png",
-      "downloadable": false,
-      "author": "Ayu10",
-      "free": true
     },
     {
       "id": "polyhaven:Television_01",
@@ -163,22 +124,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 5372
-    },
-    {
-      "id": "sharetextures:sofa_1",
-      "provider": "sharetextures",
-      "title": "Sofa 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/furniture/sofa_1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/35601dee-f79e-44e5-ab60-1a00b8b106ad.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "itchio:mehrasaur/3d-furnitre-pack",
@@ -238,22 +183,6 @@
       ],
       "maxResolution": "4k",
       "polyCount": 2728
-    },
-    {
-      "id": "sharetextures:chair_19",
-      "provider": "sharetextures",
-      "title": "Chair 19",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/furniture/chair_19",
-      "thumbnailUrl": "https://images.sharetextures.com/u/cb96e0a1-c2ab-4729-8d01-711f5684af16.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "itchio:tmtenma/little-cozy-room",
@@ -458,6 +387,13 @@
       "url": "https://opengameart.org/content/furniture-kit",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Sample_56.png",
       "downloadable": true,
+      "author": "Kenney",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
       "free": true
     },
     {
@@ -534,21 +470,6 @@
         "glb"
       ],
       "polyCount": 320
-    },
-    {
-      "id": "cgtrader:furniture-pack-cba87a3a-5ebb-4e38-9bab-0336368ab284",
-      "provider": "cgtrader",
-      "title": "Furniture Pack",
-      "type": "model",
-      "url": "https://www.cgtrader.com/free-3d-models/interior/other/furniture-pack-cba87a3a-5ebb-4e38-9bab-0336368ab284",
-      "thumbnailUrl": "https://media.cgtrader.com/variants/C93FVwP3FpZZ7UZqeXZz75hd/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/untitle312312312231d.jpg",
-      "downloadable": false,
-      "free": true,
-      "formats": [
-        "obj",
-        "fbx",
-        "stl"
-      ]
     },
     {
       "id": "blenderkit:c698e635-51b6-46e6-99bc-9105286ed060",
@@ -635,6 +556,83 @@
         "glb"
       ],
       "polyCount": 22004
+    },
+    {
+      "id": "opengameart:furniture-low-poly",
+      "provider": "opengameart",
+      "title": "Furniture Low Poly",
+      "type": "model",
+      "url": "https://opengameart.org/content/furniture-low-poly",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Furniturepack2.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:spajx123c/round-tables-50-furniture-3d-models",
+      "provider": "itchio",
+      "title": "Round Tables: 50 Furniture 3D Models for Games and Interior Scenes",
+      "type": "model",
+      "url": "https://spajx123c.itch.io/round-tables-50-furniture-3d-models",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNDkyOTk0LmpwZw==/315x250%23c/A3Uqi8.jpg",
+      "downloadable": false,
+      "author": "spajx123c",
+      "free": true
+    },
+    {
+      "id": "cgtrader:dining-table-set-chair-furniture",
+      "provider": "cgtrader",
+      "title": "Dining Table Set - Chair - Furniture",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/furniture/table/dining-table-set-chair-furniture",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/spp1qiha14rhxp8xrfgl8uzcc227/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/1.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "blend",
+        "jpg",
+        "exr",
+        "hrd",
+        "fbx",
+        "obj"
+      ]
+    },
+    {
+      "id": "opengameart:medieval-furniture",
+      "provider": "opengameart",
+      "title": "Medieval furniture",
+      "type": "model",
+      "url": "https://opengameart.org/content/medieval-furniture",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/biurko.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:spajx123c/rustic-fantasy-stools-50-furniture-3d-models",
+      "provider": "itchio",
+      "title": "Rustic and Fantasy Stools: 50 Furniture 3D Models in GLB, FBX, USDZ",
+      "type": "model",
+      "url": "https://spajx123c.itch.io/rustic-fantasy-stools-50-furniture-3d-models",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNDg0NDExLmpwZw==/315x250%23c/93KQ%2FP.jpg",
+      "downloadable": false,
+      "author": "spajx123c",
+      "free": true
+    },
+    {
+      "id": "cgtrader:chair-furniture-wood",
+      "provider": "cgtrader",
+      "title": "Chair - Furniture Wood",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/furniture/chair/chair-furniture-wood",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/zfhtm6nsmonebhzwb63m6i04umy3/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/1.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "blend",
+        "jpg",
+        "fbx",
+        "obj",
+        "hrd"
+      ]
     }
   ]
 }

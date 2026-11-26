@@ -14,21 +14,8 @@
       "visualization"
     ]
   },
-  "updatedAt": "2026-11-06T12:26:49.986Z",
+  "updatedAt": "2026-11-26T14:21:30.866Z",
   "assets": [
-    {
-      "id": "quaternius:scifiessentialskit",
-      "provider": "quaternius",
-      "title": "Sci-Fi Essentials Kit",
-      "type": "model",
-      "url": "https://quaternius.com/packs/scifiessentialskit.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/scifiessentialskit.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true,
-      "animated": true,
-      "rigged": true
-    },
     {
       "id": "itchio:penusbmic/sci-fi-character-pack-12",
       "provider": "itchio",
@@ -62,17 +49,6 @@
       ],
       "maxResolution": "1k",
       "polyCount": 2033
-    },
-    {
-      "id": "quaternius:modularscifimegakit",
-      "provider": "quaternius",
-      "title": "Modular Sci-Fi Megakit",
-      "type": "model",
-      "url": "https://quaternius.com/packs/modularscifimegakit.html",
-      "thumbnailUrl": "https://quaternius.com/assets/images/thumbnails/modularscifimegakit.jpg",
-      "downloadable": false,
-      "author": "Quaternius",
-      "free": true
     },
     {
       "id": "itchio:thkaspar/sci-fi-robot-parts",
@@ -367,16 +343,6 @@
       "polyCount": 1272
     },
     {
-      "id": "opengameart:sci-fi-crate-1",
-      "provider": "opengameart",
-      "title": "Sci Fi Crate",
-      "type": "model",
-      "url": "https://opengameart.org/content/sci-fi-crate-1",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Preview_2.PNG",
-      "downloadable": true,
-      "free": true
-    },
-    {
       "id": "opengameart:sci-fi-gun-0",
       "provider": "opengameart",
       "title": "Sci Fi Gun",
@@ -549,6 +515,7 @@
       "url": "https://opengameart.org/content/modular-sci-fi-megakit",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_3_7.png",
       "downloadable": true,
+      "author": "Quaternius",
       "free": true
     },
     {
@@ -602,6 +569,68 @@
         "obj",
         "max"
       ]
+    },
+    {
+      "id": "sketchfab:df620a09588943ad901c83fcc29e79f5",
+      "provider": "sketchfab",
+      "title": "Sci-Fi Energy Rifle",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-df620a09588943ad901c83fcc29e79f5",
+      "thumbnailUrl": "https://media.sketchfab.com/models/df620a09588943ad901c83fcc29e79f5/thumbnails/684c6c09f39a45139d7b99e82247610f/193c7ac40b3a43bbb0a41bf17dba79be.jpeg",
+      "downloadable": false,
+      "author": "noobozkurt",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 29940
+    },
+    {
+      "id": "cgtrader:cyber-kunoichi-sci-fi-female-character",
+      "provider": "cgtrader",
+      "title": "Cyber Kunoichi Sci-Fi Female Character",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/character/sci-fi-character/cyber-kunoichi-sci-fi-female-character",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/t9y5uw6e5gw08tbx6sruz8tvpdmu/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/ChatGPT%20Image%20Aug%2010%2C%202026%2C%2010_41_02%20AM.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "unitypackage",
+        "gltf",
+        "usdz"
+      ],
+      "rigged": true
+    },
+    {
+      "id": "blenderkit:407c34b4-7d0a-4022-9636-c89eae89db1f",
+      "provider": "blenderkit",
+      "title": "Pile of Sci-Fi Crates.",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/407c34b4-7d0a-4022-9636-c89eae89db1f/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/a5a0ae51e88b4c669a4050c15abc071b/files/thumbnail_0400de25-2d40-41d2-81c7-cea89e6dce63.png.512x512_q85_crop-%2C.jpg",
+      "downloadable": true,
+      "author": "Adam McAnderson",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "4k",
+      "polyCount": 136
     }
   ]
 }

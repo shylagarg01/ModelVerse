@@ -11,7 +11,7 @@
       "delivery bag"
     ]
   },
-  "updatedAt": "2026-11-20T13:32:08.743Z",
+  "updatedAt": "2026-11-26T14:20:57.989Z",
   "assets": [
     {
       "id": "polyhaven:food_apple_01",
@@ -610,16 +610,6 @@
       "polyCount": 64000
     },
     {
-      "id": "opengameart:food-kit",
-      "provider": "opengameart",
-      "title": "Food Kit",
-      "type": "model",
-      "url": "https://opengameart.org/content/food-kit",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_1249.png",
-      "downloadable": true,
-      "free": true
-    },
-    {
       "id": "threedassets:street-food-market-and-food-trucks-food-truck-yellow-l-8a47eb0f",
       "provider": "threedassets",
       "title": "Food Truck Yellow Livery (Street Food Market and Food Trucks)",
@@ -711,6 +701,17 @@
         "unitypackage",
         "uasset"
       ]
+    },
+    {
+      "id": "itchio:jjsblenderart/chinese-food-stand-3d-model",
+      "provider": "itchio",
+      "title": "Stylized Chinese Food Stand 3D Model",
+      "type": "model",
+      "url": "https://jjsblenderart.itch.io/chinese-food-stand-3d-model",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzI5NzA0Mzc3LmpwZw==/315x250%23c/DrTit2.jpg",
+      "downloadable": false,
+      "author": "JJ's Blender Art",
+      "free": true
     }
   ]
 }

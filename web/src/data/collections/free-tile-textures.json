@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-23T15:17:23.898Z",
+  "updatedAt": "2026-11-26T14:21:40.755Z",
   "assets": [
     {
       "id": "polyhaven:floor_tiles_06",
@@ -210,22 +210,6 @@
       "maxResolution": "8k"
     },
     {
-      "id": "sharetextures:cement-tiles",
-      "provider": "sharetextures",
-      "title": "Cement Tiles",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/concrete/cement-tiles",
-      "thumbnailUrl": "https://images.sharetextures.com/u/cement_tiles-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "cgbookcase:black-tiles-06",
       "provider": "cgbookcase",
       "title": "Black Tiles 06",
@@ -336,22 +320,6 @@
         "png"
       ],
       "maxResolution": "8k"
-    },
-    {
-      "id": "sharetextures:tiles-9",
-      "provider": "sharetextures",
-      "title": "Tiles 9",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/tiles-9",
-      "thumbnailUrl": "https://images.sharetextures.com/u/tiles_9_mat-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "texturecan:651",
@@ -487,22 +455,6 @@
       "maxResolution": "2k"
     },
     {
-      "id": "sharetextures:pavement-tiles-1",
-      "provider": "sharetextures",
-      "title": "Pavement Tiles 1",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/road/pavement-tiles-1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/pavement_tiles_1-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "texturecan:643",
       "provider": "texturecan",
       "title": "Tiny Brown and White Wall Tiles",
@@ -636,22 +588,6 @@
       "maxResolution": "1k"
     },
     {
-      "id": "sharetextures:tiles-7",
-      "provider": "sharetextures",
-      "title": "Tiles 7",
-      "type": "material",
-      "url": "https://www.sharetextures.com/textures/floor/tiles-7",
-      "thumbnailUrl": "https://images.sharetextures.com/u/tiles_7_mat-min.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "texturecan:640",
       "provider": "texturecan",
       "title": "Floor Pavement Tiles of Squares and Diamond Shapes",
@@ -674,6 +610,58 @@
       "type": "texture",
       "url": "https://opengameart.org/content/wood-texture-tiles",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/wood1.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "freestylized:material:roof_tiles_12",
+      "provider": "freestylized",
+      "title": "Roof Tiles 12",
+      "type": "material",
+      "url": "https://freestylized.com/material/roof_tiles_12/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/roof_tiles_12_preview_hex151515.png",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "opengameart:dirty-tiles",
+      "provider": "opengameart",
+      "title": "Dirty tiles",
+      "type": "texture",
+      "url": "https://opengameart.org/content/dirty-tiles",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/all_11.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "freestylized:material:roof_tiles_11",
+      "provider": "freestylized",
+      "title": "Roof Tiles 11",
+      "type": "material",
+      "url": "https://freestylized.com/material/roof_tiles_11/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/roof_tiles_11_preview_hex151515.png",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "opengameart:ground-tiles-3",
+      "provider": "opengameart",
+      "title": "Ground tiles",
+      "type": "texture",
+      "url": "https://opengameart.org/content/ground-tiles-3",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/ground47.png",
       "downloadable": true,
       "free": true
     }
