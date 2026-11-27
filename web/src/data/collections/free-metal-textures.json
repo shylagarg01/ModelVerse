@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-26T14:21:14.783Z",
+  "updatedAt": "2026-11-27T14:16:21.671Z",
   "assets": [
     {
       "id": "polyhaven:metal_plate",
@@ -126,22 +126,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:metal-base-scratched-001",
-      "provider": "threedtextures",
-      "title": "Metal Base Scratched 001",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/09/30/metal-base-scratched-001/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/09/Material_2001.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "polyhaven:green_metal_rust",
@@ -319,22 +303,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:sci-fi-metal-plate-005",
-      "provider": "threedtextures",
-      "title": "Sci-fi Metal Plate 005",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/08/11/sci-fi-metal-plate-005/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/08/Material_2001.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:bumpy-metal-pbr-material-2",
       "provider": "threedtexel",
       "title": "Bumpy Dark Metal Surface – PBR Material",
@@ -492,22 +460,6 @@
         "gltf"
       ],
       "maxResolution": "16k"
-    },
-    {
-      "id": "threedtextures:metal-grill-027",
-      "provider": "threedtextures",
-      "title": "Metal Grill 027",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/06/16/metal-grill-027/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/06/material_2002.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "ambientcg:Metal048A",
@@ -672,6 +624,43 @@
       },
       "free": true,
       "maxResolution": "4k"
+    },
+    {
+      "id": "opengameart:free-texture-resource-pack-metal-and-other",
+      "provider": "opengameart",
+      "title": "Free texture resource pack: metal and other",
+      "type": "texture",
+      "url": "https://opengameart.org/content/free-texture-resource-pack-metal-and-other",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/tex_prev_1.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:tempisq/metal-vol1",
+      "provider": "itchio",
+      "title": "Metal Plates Vol.1",
+      "type": "texture",
+      "url": "https://tempisq.itch.io/metal-vol1",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzI4OTI4MDg3LnBuZw==/315x250%23c/nj1GAS.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
+    },
+    {
+      "id": "freestylized:material:metal_pattern_08",
+      "provider": "freestylized",
+      "title": "Metal Pattern 08",
+      "type": "material",
+      "url": "https://freestylized.com/material/metal_pattern_08/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/metal_pattern_08_preview_hex151515.png",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
     }
   ]
 }

@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-26T14:21:11.193Z",
+  "updatedAt": "2026-11-27T14:16:12.789Z",
   "assets": [
     {
       "id": "polyhaven:marble_01",
@@ -111,22 +111,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:green-marble-gold-encrusted-001",
-      "provider": "threedtextures",
-      "title": "Green Marble Gold Encrusted 001",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/09/02/green-marble-gold-encrusted-001/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/09/Material_2002.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:marble-surface-pbr-material-7",
       "provider": "threedtexel",
       "title": "White Marble Surface – PBR Material",
@@ -223,22 +207,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:white-marble-006",
-      "provider": "threedtextures",
-      "title": "White Marble 006",
-      "type": "material",
-      "url": "https://3dtextures.me/2025/05/07/white-marble-006/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2025/05/Material_1937.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:marble-surface-pbr-material-6",
       "provider": "threedtexel",
       "title": "Dark Cracked Marble Surface – PBR Material",
@@ -333,23 +301,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:marble-white-008",
-      "provider": "threedtextures",
-      "title": "Marble White 008",
-      "type": "material",
-      "url": "https://3dtextures.me/2022/06/20/marble-white-008/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2022/06/Material_2084.jpg?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
     },
     {
       "id": "polyhaven:marble_cliff_03",
@@ -450,23 +401,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:marble-grey-002",
-      "provider": "threedtextures",
-      "title": "Marble Grey 002",
-      "type": "material",
-      "url": "https://3dtextures.me/2022/01/09/marble-grey-002/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2022/01/Material_2003.jpg?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
     },
     {
       "id": "threedtexel:marble-surface-pbr-material-4",
@@ -586,23 +520,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:marble-white-007",
-      "provider": "threedtextures",
-      "title": "Marble White 007",
-      "type": "material",
-      "url": "https://3dtextures.me/2021/10/04/marble-white-007/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2021/10/Material_1939.jpg?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
-    },
-    {
       "id": "opengameart:real-marble-textures-collection-set-1",
       "provider": "opengameart",
       "title": "Real Marble Textures Collection-Set 1",
@@ -661,6 +578,69 @@
       "type": "texture",
       "url": "https://opengameart.org/content/real-marble-textures-collection-set-3-part-2",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Real%20marble%20set%203%20sharetextures%20free%20textures-2_0.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:tempisq/marble-palace-clear-pbr",
+      "provider": "itchio",
+      "title": "Marble Palace Clear PBR Materials",
+      "type": "material",
+      "url": "https://tempisq.itch.io/marble-palace-clear-pbr",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNjIyODkxLnBuZw==/315x250%23c/1k%2F2YX.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
+    },
+    {
+      "id": "blenderkit:ebdf8f26-65c6-4bd5-9421-1c816e4ba7de",
+      "provider": "blenderkit",
+      "title": "Luxurious White Marble",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/ebdf8f26-65c6-4bd5-9421-1c816e4ba7de/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/d4157305d71d45778870ab669ef5c962/files/thumbnail_c8a52f51-6720-4e83-9ca9-58b2e7a6e0f6.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Austin Michaud",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "1k"
+    },
+    {
+      "id": "opengameart:dark-marble-seamless",
+      "provider": "opengameart",
+      "title": "Dark Marble *Seamless*",
+      "type": "texture",
+      "url": "https://opengameart.org/content/dark-marble-seamless",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Marble_001v.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "itchio:tempisq/marble-palace-decay-pbr",
+      "provider": "itchio",
+      "title": "Marble Palace Decay PBR Materials",
+      "type": "material",
+      "url": "https://tempisq.itch.io/marble-palace-decay-pbr",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxNjIzMTMxLnBuZw==/315x250%23c/8WaZDp.png",
+      "downloadable": false,
+      "author": "tempisq",
+      "free": true
+    },
+    {
+      "id": "opengameart:4k-seamless-white-marble-stone-textures-public-domain",
+      "provider": "opengameart",
+      "title": "4k Seamless White Marble Stone Textures Public Domain",
+      "type": "texture",
+      "url": "https://opengameart.org/content/4k-seamless-white-marble-stone-textures-public-domain",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/WhiteMarble_COLOR.jpg",
       "downloadable": true,
       "free": true
     }

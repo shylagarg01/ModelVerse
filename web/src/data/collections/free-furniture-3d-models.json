@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-26T14:21:02.787Z",
+  "updatedAt": "2026-11-27T14:16:00.129Z",
   "assets": [
     {
       "id": "blenderkit:0f1918d7-7350-43a8-a012-469ddc446b35",
@@ -249,7 +249,7 @@
       "title": "KayKit : Furniture Bits",
       "type": "model",
       "url": "https://kaylousberg.itch.io/furniture-bits",
-      "thumbnailUrl": "https://img.itch.zone/aW1nLzMxOTg2MDg0LmpwZw==/315x250%23c/L4VzoO.jpg",
+      "thumbnailUrl": "https://img.itch.zone/aW1nLzMyODkzODE0LnBuZw==/315x250%23c/U1q4SX.png",
       "downloadable": false,
       "author": "Kay Lousberg",
       "free": true
@@ -378,23 +378,6 @@
         "glb"
       ],
       "polyCount": 19980
-    },
-    {
-      "id": "opengameart:furniture-kit",
-      "provider": "opengameart",
-      "title": "Furniture Kit",
-      "type": "model",
-      "url": "https://opengameart.org/content/furniture-kit",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Sample_56.png",
-      "downloadable": true,
-      "author": "Kenney",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedassets:garden-centre-and-florist-garden-furniture-display-dec-9e5b08fa",
@@ -633,6 +616,23 @@
         "obj",
         "hrd"
       ]
+    },
+    {
+      "id": "kenney:furniture-kit",
+      "provider": "kenney",
+      "title": "Furniture Kit",
+      "type": "model",
+      "url": "https://kenney.nl/assets/furniture-kit",
+      "thumbnailUrl": "https://kenney.nl/media/pages/assets/furniture-kit/4573c6a40b-1677580842/sample-400x.png",
+      "downloadable": true,
+      "author": "Kenney",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
     }
   ]
 }

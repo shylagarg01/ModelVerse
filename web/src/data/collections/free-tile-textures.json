@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-26T14:21:40.755Z",
+  "updatedAt": "2026-11-27T14:16:47.751Z",
   "assets": [
     {
       "id": "polyhaven:floor_tiles_06",
@@ -111,22 +111,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:tiles-073",
-      "provider": "threedtextures",
-      "title": "Tiles 073",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/09/18/tiles-073/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/09/Material_2005.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:concrete-tile-pbr-material-5",
       "provider": "threedtexel",
       "title": "Concrete Tile with Grime – PBR Material",
@@ -225,22 +209,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:terracotta-floor-tiles-009",
-      "provider": "threedtextures",
-      "title": "Terracotta Floor Tiles 009",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/09/14/terracotta-floor-tiles-009/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/09/Material_2004.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:concrete-tile-pbr-material-4",
@@ -353,22 +321,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:terracotta-floor-tiles-008",
-      "provider": "threedtextures",
-      "title": "Terracotta Floor Tiles 008",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/09/08/terracotta-floor-tiles-008/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/09/Material_2003.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:concrete-tile-pbr-material-3",
@@ -486,22 +438,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:wood-tiles-005",
-      "provider": "threedtextures",
-      "title": "Wood Tiles 005",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/08/24/wood-tiles-005/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/08/Material_2003.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:concrete-tile-pbr-material-2",
@@ -662,6 +598,63 @@
       "type": "texture",
       "url": "https://opengameart.org/content/ground-tiles-3",
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/ground47.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "freestylized:material:floor_tiles_35",
+      "provider": "freestylized",
+      "title": "Floor Tiles 35",
+      "type": "material",
+      "url": "https://freestylized.com/material/floor_tiles_35/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/floor_tiles_35_preview_hex151515.png",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "opengameart:space-tiles-128x128",
+      "provider": "opengameart",
+      "title": "Space Tiles 128x128",
+      "type": "texture",
+      "url": "https://opengameart.org/content/space-tiles-128x128",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/samps.png",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "blenderkit:7f214a6b-eedc-43ff-bc31-0212fd13b872",
+      "provider": "blenderkit",
+      "title": "Glossy Green Textured Chevron Tiles",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/7f214a6b-eedc-43ff-bc31-0212fd13b872/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/8d4bc8706f9146e59c505a915e325754/files/thumbnail_09c0d6db-3cb3-463c-9e4c-7f63afb7a4a2.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "NOVA Studio Studio",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ],
+      "maxResolution": "4k"
+    },
+    {
+      "id": "opengameart:seamless-concrete-tiles",
+      "provider": "opengameart",
+      "title": "Seamless Concrete Tiles",
+      "type": "texture",
+      "url": "https://opengameart.org/content/seamless-concrete-tiles",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/concrete_tiles.zip.preview.jpg",
       "downloadable": true,
       "free": true
     }

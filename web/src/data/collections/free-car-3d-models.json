@@ -21,7 +21,7 @@
       "lego"
     ]
   },
-  "updatedAt": "2026-11-26T14:20:50.596Z",
+  "updatedAt": "2026-11-27T14:15:41.435Z",
   "assets": [
     {
       "id": "polyhaven:covered_car",
@@ -344,23 +344,6 @@
       "free": true
     },
     {
-      "id": "opengameart:car-kit",
-      "provider": "opengameart",
-      "title": "Car Kit",
-      "type": "model",
-      "url": "https://opengameart.org/content/car-kit",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/preview_1375.png",
-      "downloadable": true,
-      "author": "Kenney",
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "itchio:pepeeldesarollador/car-3d",
       "provider": "itchio",
       "title": "car 3D",
@@ -661,6 +644,23 @@
       ],
       "polyCount": 3010,
       "rigged": true
+    },
+    {
+      "id": "kenney:car-kit",
+      "provider": "kenney",
+      "title": "Car Kit",
+      "type": "model",
+      "url": "https://kenney.nl/assets/car-kit",
+      "thumbnailUrl": "https://kenney.nl/media/pages/assets/car-kit/81f9d77bc7-1775131953/preview-400x.png",
+      "downloadable": true,
+      "author": "Kenney",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
     }
   ]
 }

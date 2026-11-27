@@ -15,7 +15,7 @@
       "preview for"
     ]
   },
-  "updatedAt": "2026-11-26T14:21:27.188Z",
+  "updatedAt": "2026-11-27T14:16:31.546Z",
   "assets": [
     {
       "id": "polyhaven:rock_moss_set_02",
@@ -64,22 +64,6 @@
       ],
       "maxResolution": "1k",
       "polyCount": 57647
-    },
-    {
-      "id": "sharetextures:rock_5",
-      "provider": "sharetextures",
-      "title": "Rock 5",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/rock_5",
-      "thumbnailUrl": "https://images.sharetextures.com/u/458e0ddf-81fa-4f1f-8382-3254c91c239d.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "texturescom:140759",
@@ -144,22 +128,6 @@
       ],
       "maxResolution": "8k",
       "polyCount": 86784
-    },
-    {
-      "id": "sharetextures:3d-rock-1",
-      "provider": "sharetextures",
-      "title": "Rock 1",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/3d-rock-1",
-      "thumbnailUrl": "https://images.sharetextures.com/u/bf879bf4-368c-40b9-841f-6569bc195d65.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:rock-01",
@@ -228,22 +196,6 @@
       ],
       "maxResolution": "8k",
       "polyCount": 2037497
-    },
-    {
-      "id": "sharetextures:rock_6",
-      "provider": "sharetextures",
-      "title": "Rock 6",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/rock_6",
-      "thumbnailUrl": "https://images.sharetextures.com/u/62ca0472-7214-4723-aa7c-980cbf488d83.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:mossy-rock-3d-asset-3",
@@ -333,22 +285,6 @@
       "polyCount": 326599
     },
     {
-      "id": "sharetextures:rock_10",
-      "provider": "sharetextures",
-      "title": "Rock 10",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/rock_10",
-      "thumbnailUrl": "https://images.sharetextures.com/u/c90196aa-2198-4561-b57d-cadd57505090.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:coast_rocks_05",
       "provider": "polyhaven",
       "title": "Coast Rocks 05",
@@ -420,22 +356,6 @@
       "polyCount": 139209
     },
     {
-      "id": "sharetextures:rock_8",
-      "provider": "sharetextures",
-      "title": "Rock 8",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/rock_8",
-      "thumbnailUrl": "https://images.sharetextures.com/u/fac22ed1-f9ea-469e-833b-79a7576eb843.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:desert-rock-3d-asset-26",
       "provider": "threedtexel",
       "title": "Desert Rock – 3D Asset",
@@ -500,22 +420,6 @@
       "polyCount": 202
     },
     {
-      "id": "sharetextures:rock_4",
-      "provider": "sharetextures",
-      "title": "Rock 4",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/rock_4",
-      "thumbnailUrl": "https://images.sharetextures.com/u/8a8497f7-5612-4702-be39-c2d147bab9ec.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:rock_09",
       "provider": "polyhaven",
       "title": "Rock 09",
@@ -539,22 +443,6 @@
       ],
       "maxResolution": "8k",
       "polyCount": 23280
-    },
-    {
-      "id": "sharetextures:rock_9",
-      "provider": "sharetextures",
-      "title": "Rock 9",
-      "type": "model",
-      "url": "https://www.sharetextures.com/models/nature/rock_9",
-      "thumbnailUrl": "https://images.sharetextures.com/u/43c86a15-fc6f-4c6e-85ae-62441e421b0e.webp",
-      "downloadable": false,
-      "license": {
-        "name": "CC0 (ShareTextures custom terms)",
-        "url": "https://www.sharetextures.com/p/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "polyhaven:coast_rocks_03",
@@ -732,6 +620,146 @@
         "glb"
       ],
       "polyCount": 3784
+    },
+    {
+      "id": "polyfork:red-scoria-rock-35bb9c",
+      "provider": "polyfork",
+      "title": "Red Scoria Rock",
+      "type": "model",
+      "url": "https://polyfork.dev/asset/red-scoria-rock-35bb9c",
+      "thumbnailUrl": "https://polyfork.dev/files/red-scoria-rock-35bb9c/renders/hero.png",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://polyfork.dev/licensing",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "fbx",
+        "usdz",
+        "obj"
+      ],
+      "polyCount": 688
+    },
+    {
+      "id": "cgtrader:8k-mountain-rock-scan-a",
+      "provider": "cgtrader",
+      "title": "Mountain Rock Scan A",
+      "type": "model",
+      "url": "https://www.cgtrader.com/free-3d-models/exterior/landscape/8k-mountain-rock-scan-a",
+      "thumbnailUrl": "https://media.cgtrader.com/variants/LJB9jyvQpFjKwKYSMuCLxNWX/a26e47dab5f2d22c43d6c5ce4b4b46ecc30c70918878397cba1a10c1e35d7bfc/mountain-rock-scan-a-3d-model-low-poly-obj-fbx-ztl.jpg",
+      "downloadable": false,
+      "free": true,
+      "formats": [
+        "ztl",
+        "obj",
+        "fbx"
+      ]
+    },
+    {
+      "id": "polyhaven:Rockingchair_01",
+      "provider": "polyhaven",
+      "title": "Rockingchair 01",
+      "type": "model",
+      "url": "https://polyhaven.com/a/Rockingchair_01",
+      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/Rockingchair_01.png?width=512&height=512",
+      "downloadable": true,
+      "author": "Jorge Camacho",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "gltf",
+        "blend",
+        "fbx",
+        "usd"
+      ],
+      "maxResolution": "4k",
+      "polyCount": 11866
+    },
+    {
+      "id": "threedassets:alpine-and-arctic-biomes-lichen-crusted-rock-94956233",
+      "provider": "threedassets",
+      "title": "Lichen-crusted rock (Snow, Ice and Mountain Nature)",
+      "type": "model",
+      "url": "https://3dassets.dev/assets/alpine-and-arctic-biomes-lichen-crusted-rock-94956233",
+      "thumbnailUrl": "https://cdn.3dassets.dev/assets/20965/v1/thumb.webp",
+      "downloadable": true,
+      "author": "3D Assets",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb"
+      ],
+      "polyCount": 3248
+    },
+    {
+      "id": "blenderkit:792f2c41-c506-46e9-ac2d-247c61f80379",
+      "provider": "blenderkit",
+      "title": "Beach Rock Formation Scan from Portugal",
+      "type": "model",
+      "url": "https://www.blendkit.com/asset-gallery-detail/792f2c41-c506-46e9-ac2d-247c61f80379/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/70a1457ede1143dc8c2f7d2416c91545/files/thumbnail_97dc60f5-11ff-4e2e-9531-a97ab0e4efc0.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Tedd Šámal",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend",
+        "glb"
+      ],
+      "maxResolution": "8k",
+      "polyCount": 204608
+    },
+    {
+      "id": "sketchfab:cbbe1e1ae71b4e44acc6bf1b5245f1bb",
+      "provider": "sketchfab",
+      "title": "Igneous rock: Basalt (A'a Lava Rock)",
+      "type": "model",
+      "url": "https://sketchfab.com/3d-models/none-cbbe1e1ae71b4e44acc6bf1b5245f1bb",
+      "thumbnailUrl": "https://media.sketchfab.com/models/cbbe1e1ae71b4e44acc6bf1b5245f1bb/thumbnails/8d88b958c641495bac7de7c8b8654fb6/b24de0d8060b419b87725fabc7c2a695.jpeg",
+      "downloadable": false,
+      "author": "Digital Atlas of Ancient Life",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "glb",
+        "gltf",
+        "usdz"
+      ],
+      "polyCount": 363958
+    },
+    {
+      "id": "opengameart:mossy-stone-rock",
+      "provider": "opengameart",
+      "title": "Mossy Stone Rock",
+      "type": "model",
+      "url": "https://opengameart.org/content/mossy-stone-rock",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Mossy%20stone.jpg",
+      "downloadable": true,
+      "free": true
     }
   ]
 }

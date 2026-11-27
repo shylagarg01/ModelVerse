@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-26T14:21:05.574Z",
+  "updatedAt": "2026-11-27T14:16:03.561Z",
   "assets": [
     {
       "id": "polyhaven:aerial_grass_rock",
@@ -193,23 +193,6 @@
         "png"
       ],
       "maxResolution": "8k"
-    },
-    {
-      "id": "threedtextures:stylized-grass-003",
-      "provider": "threedtextures",
-      "title": "Stylized Grass 003",
-      "type": "material",
-      "url": "https://3dtextures.me/2021/03/19/stylized-grass-003/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2021/03/Material_1553.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
     },
     {
       "id": "texturecan:468",
@@ -408,23 +391,6 @@
       "maxResolution": "2k"
     },
     {
-      "id": "threedtextures:stylized-grass-002",
-      "provider": "threedtextures",
-      "title": "Stylized Grass 002",
-      "type": "material",
-      "url": "https://3dtextures.me/2020/07/28/stylized-grass-002/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2020/07/Material_1597.jpg?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
-    },
-    {
       "id": "ambientcg:Grass008",
       "provider": "ambientcg",
       "title": "Grass 008",
@@ -485,23 +451,6 @@
         "gltf"
       ],
       "maxResolution": "8k"
-    },
-    {
-      "id": "threedtextures:stylized-grass-001",
-      "provider": "threedtextures",
-      "title": "Stylized Grass 001",
-      "type": "material",
-      "url": "https://3dtextures.me/2020/06/02/stylized-grass-001/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2020/06/Material_1786.jpg.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "1k"
     },
     {
       "id": "ambientcg:Grass006",
@@ -646,23 +595,6 @@
       "free": true
     },
     {
-      "id": "opengameart:grass-1",
-      "provider": "opengameart",
-      "title": "grass",
-      "type": "texture",
-      "url": "https://opengameart.org/content/grass-1",
-      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/grass_17.png",
-      "downloadable": true,
-      "license": {
-        "name": "Textures.com License",
-        "url": "https://www.textures.com/about/license",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true,
-      "maxResolution": "8K"
-    },
-    {
       "id": "freestylized:material:ice_with_grass_01",
       "provider": "freestylized",
       "title": "ice with grass 01",
@@ -687,6 +619,78 @@
       "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/Grass%2010.png",
       "downloadable": true,
       "free": true
+    },
+    {
+      "id": "texturescom:132474",
+      "provider": "texturescom",
+      "title": "Grass",
+      "type": "texture",
+      "url": "https://www.textures.com/download/3d-scanned-grass-atlas-12/132474",
+      "thumbnailUrl": "https://www.textures.com/system/gallery/photos/Nature/114636-Grass/ps132474/132474_thumbnail_small.jpg",
+      "downloadable": false,
+      "license": {
+        "name": "Textures.com License",
+        "url": "https://www.textures.com/about/license",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "maxResolution": "8K"
+    },
+    {
+      "id": "opengameart:30-grass-textures-tilable",
+      "provider": "opengameart",
+      "title": "30 Grass Textures (Tilable)",
+      "type": "texture",
+      "url": "https://opengameart.org/content/30-grass-textures-tilable",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/all3.jpg",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "polyhaven:grassy_cobblestone",
+      "provider": "polyhaven",
+      "title": "Grassy Cobblestone",
+      "type": "material",
+      "url": "https://polyhaven.com/a/grassy_cobblestone",
+      "thumbnailUrl": "https://cdn.polyhaven.com/asset_img/thumbs/grassy_cobblestone.png?width=512&height=512",
+      "downloadable": true,
+      "author": "Dario Barresi, Charlotte Baglioni",
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "jpg",
+        "png",
+        "exr",
+        "blend",
+        "gltf"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "blenderkit:5b9e35dc-d8e7-4e16-a038-b48d5b8a925f",
+      "provider": "blenderkit",
+      "title": "Natural Lawn Grass",
+      "type": "material",
+      "url": "https://www.blendkit.com/asset-gallery-detail/5b9e35dc-d8e7-4e16-a038-b48d5b8a925f/",
+      "thumbnailUrl": "https://public.blenderkit.com/thumbnails/assets/5e17ad0316414068ace083ce7a02c2bb/files/thumbnail_f8bbc7fb-4dc6-45ea-bc34-f64f730e103f.png.512x512_q85_crop-%2C.png",
+      "downloadable": true,
+      "author": "Paco Salas",
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://www.blendkit.com/docs/licenses/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "blend"
+      ]
     }
   ]
 }

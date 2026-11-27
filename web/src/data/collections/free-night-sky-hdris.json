@@ -7,7 +7,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-15T12:13:32.556Z",
+  "updatedAt": "2026-11-27T14:16:24.145Z",
   "assets": [
     {
       "id": "polyhaven:dikhololo_night",
@@ -73,22 +73,6 @@
       "maxResolution": "16k"
     },
     {
-      "id": "hdrihub:free-samples/free-hdri-downloads/hdr-city-road-night-lights-free",
-      "provider": "hdrihub",
-      "title": "HDR City Road Night Lights (free)",
-      "type": "hdri",
-      "url": "https://www.hdri-hub.com/shop/free-samples/free-hdri-downloads/hdr-city-road-night-lights-free",
-      "thumbnailUrl": "https://www.hdri-hub.com/media/hdr-city-road-night-lights-free-featured-3-400x267.jpg",
-      "downloadable": false,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.hdri-hub.com/terms-of-use",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "polyhaven:satara_night",
       "provider": "polyhaven",
       "title": "Satara Night",
@@ -150,22 +134,6 @@
         "exr"
       ],
       "maxResolution": "16k"
-    },
-    {
-      "id": "hdrihub:free-samples/free-hdri-downloads/hdr-night",
-      "provider": "hdrihub",
-      "title": "HDR Night (free)",
-      "type": "hdri",
-      "url": "https://www.hdri-hub.com/shop/free-samples/free-hdri-downloads/hdr-night",
-      "thumbnailUrl": "https://www.hdri-hub.com/media/hdr-night-featured-3-400x267.jpg",
-      "downloadable": false,
-      "license": {
-        "name": "Royalty Free",
-        "url": "https://www.hdri-hub.com/terms-of-use",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "polyhaven:satara_night_no_lamps",
@@ -742,6 +710,46 @@
       "type": "hdri",
       "url": "https://hdrmaps.com/freebies/egg-hill-cloudy-night-sky/",
       "thumbnailUrl": "https://hdrmaps.com/wp-content/uploads/2024/11/free_hdr_171_night_cloudy_sky-560x280.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "Royalty Free",
+        "url": "https://hdrmaps.com/terms-of-use/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "10k"
+    },
+    {
+      "id": "ambientcg:NightEnvironmentHDRI011",
+      "provider": "ambientcg",
+      "title": "Night Environment HDRI 011",
+      "type": "hdri",
+      "url": "https://ambientcg.com/a/NightEnvironmentHDRI011",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/NightEnvironmentHDRI011.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "exr"
+      ],
+      "maxResolution": "16k"
+    },
+    {
+      "id": "hdrmaps:theatre-de-verdure-at-night",
+      "provider": "hdrmaps",
+      "title": "Theatre de Verdure at night",
+      "type": "hdri",
+      "url": "https://hdrmaps.com/freebies/theatre-de-verdure-at-night/",
+      "thumbnailUrl": "https://hdrmaps.com/wp-content/uploads/2024/04/free_hdr_158_night_square_concrete_hdri-560x280.jpg",
       "downloadable": true,
       "license": {
         "name": "Royalty Free",

@@ -8,7 +8,7 @@
     ],
     "free": true
   },
-  "updatedAt": "2026-11-26T14:21:43.445Z",
+  "updatedAt": "2026-11-27T14:16:49.627Z",
   "assets": [
     {
       "id": "polyhaven:wood_table_001",
@@ -88,22 +88,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:wood-base-beech-001",
-      "provider": "threedtextures",
-      "title": "Wood Base Beech 001",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/10/06/wood-base-beech-001/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/10/Material_2002.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:tile-roof-pbr-material-3",
@@ -213,22 +197,6 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:wood-tiles-005",
-      "provider": "threedtextures",
-      "title": "Wood Tiles 005",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/08/24/wood-tiles-005/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/08/Material_2003.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
       "id": "threedtexel:stylized-wood-wall-pbr-material",
       "provider": "threedtexel",
       "title": "Stylized Wood Barrel – PBR Material",
@@ -318,22 +286,6 @@
       },
       "free": true,
       "maxResolution": "4k"
-    },
-    {
-      "id": "threedtextures:wood-wicker-013-free-seamless-pbr-texture",
-      "provider": "threedtextures",
-      "title": "Wood Wicker 013",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/05/29/wood-wicker-013-free-seamless-pbr-texture/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/05/Material_2006.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
     },
     {
       "id": "threedtexel:stylized-wood-pbr-material-3",
@@ -477,22 +429,6 @@
       "url": "https://www.texturecan.com/details/571/",
       "thumbnailUrl": "https://www.texturecan.com/img/textures/wood_0060/wood_0060_sphere_300.png",
       "downloadable": true,
-      "license": {
-        "name": "CC0",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "commercialUse": true,
-        "attributionRequired": false
-      },
-      "free": true
-    },
-    {
-      "id": "threedtextures:wood-floor-parquet-walnut-016-free-seamless-pbr-texture",
-      "provider": "threedtextures",
-      "title": "Wood Floor Parquet Walnut 016",
-      "type": "material",
-      "url": "https://3dtextures.me/2026/03/23/wood-floor-parquet-walnut-016-free-seamless-pbr-texture/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/03/Material_2003-1.png?fit=600%2C800&ssl=1",
-      "downloadable": false,
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
@@ -663,16 +599,84 @@
       "maxResolution": "4k"
     },
     {
-      "id": "threedtextures:wood-base-walnut-001",
-      "provider": "threedtextures",
-      "title": "Wood Base Walnut 001",
+      "id": "freestylized:material:wood_planks_26",
+      "provider": "freestylized",
+      "title": "Wood Planks 26",
       "type": "material",
-      "url": "https://3dtextures.me/2026/11/02/wood-base-walnut-001/",
-      "thumbnailUrl": "https://i0.wp.com/3dtextures.me/wp-content/uploads/2026/11/Material_2005.png?fit=600%2C800&ssl=1",
+      "url": "https://freestylized.com/material/wood_planks_26/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/wood_planks_26_preview_hex151515.png",
       "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true
+    },
+    {
+      "id": "ambientcg:Wood098",
+      "provider": "ambientcg",
+      "title": "Wood 098",
+      "type": "material",
+      "url": "https://ambientcg.com/a/Wood098",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Wood098.jpg",
+      "downloadable": true,
       "license": {
         "name": "CC0",
         "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "jpg",
+        "png"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "opengameart:free-texture-resource-pack-metal-nature-wood-and-structures",
+      "provider": "opengameart",
+      "title": "Free texture resource pack: metal, nature, wood and structures",
+      "type": "texture",
+      "url": "https://opengameart.org/content/free-texture-resource-pack-metal-nature-wood-and-structures",
+      "thumbnailUrl": "https://opengameart.org/sites/default/files/styles/thumbnail/public/tex-res-prev_2.JPG",
+      "downloadable": true,
+      "free": true
+    },
+    {
+      "id": "ambientcg:Wood097",
+      "provider": "ambientcg",
+      "title": "Wood 097",
+      "type": "material",
+      "url": "https://ambientcg.com/a/Wood097",
+      "thumbnailUrl": "https://acg-media.struffelproductions.com/file/ambientCG-Web/media/thumbnail/256-JPG-242424/Wood097.jpg",
+      "downloadable": true,
+      "license": {
+        "name": "CC0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true,
+        "attributionRequired": false
+      },
+      "free": true,
+      "formats": [
+        "jpg",
+        "png"
+      ],
+      "maxResolution": "8k"
+    },
+    {
+      "id": "freestylized:material:wood_planks_25",
+      "provider": "freestylized",
+      "title": "Wood Planks 25",
+      "type": "material",
+      "url": "https://freestylized.com/material/wood_planks_25/",
+      "thumbnailUrl": "https://freestylized.com/wp-content/uploads/2026/10/wood_planks_25_preview_hex151515.png",
+      "downloadable": false,
+      "license": {
+        "name": "FreeStylized Royalty Free (custom CC0)",
+        "url": "https://freestylized.com/disclaimer/",
         "commercialUse": true,
         "attributionRequired": false
       },
